@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+        "@includes/*": ["_includes/*"],
+        "@styles/*": ["styles/*"], // CSS 
+        "@projects/*": ["_projects/*"], // project markdown files
+        "@components/*": ["components/*"], // structure and layouts
+        "@lib/*": ["lib/*"], // logic, libraries
+        "@config/*": ["config/*"], // configuration/setting files
+        "@api/*": ["pages/api/*"]
+        }
+    }
+}

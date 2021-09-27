@@ -1,0 +1,115 @@
+/* main a {
+    /* color: rgba(4, 144, 209, 0.959); 
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    main p, main li {
+        @apply text-lg;
+    }
+
+    a:hover {
+        @apply underline;
+    }
+
+    main a {
+        @apply text-blue-600;
+    }
+
+    body {
+        @apply dark:bg-gray-800;
+        @apply overflow-y-scroll;
+    }
+
+    .active {
+        @apply underline;
+    }
+
+    ::selection {
+        @apply bg-blue-50;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    p {
+        @apply mt-2 mb-2;
+    }
+
+    main ul {
+        @apply list-disc;
+    }
+    
+}
+
+/* align icon images with text */
+footer .img-align {
+    display: inline-block;
+    vertical-align: middle
+}
+
+@layer components {
+    .navigation-underline {
+        @apply w-full border border-yellow-300;
+        @apply bg-white;
+        @apply text-blue-200;
+    }
+
+    header nav li a {
+        @apply text-white;
+        @apply transition duration-200;
+    }
+
+    .active-link a {
+        @apply bg-white;
+        @apply text-blue-500;
+    }
+
+    header nav li:hover a {
+        @apply bg-blue-400 overflow-hidden;
+    }
+
+    .active-link:hover a {
+        @apply bg-white;
+    }
+
+    main ul li {
+        @apply ml-5;
+    }
+
+}
+
+header {
+    background: #3E8ECC;
+}
+
+/* header h1 {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+} */
+
+header .active-link a {
+    color: #3E8ECC;
+}
+
+header nav li:hover a {
+    background-color: #276fa7;
+}
+
+
+
+form span {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+}
+
+
+

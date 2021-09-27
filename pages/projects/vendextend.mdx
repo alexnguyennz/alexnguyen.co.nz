@@ -1,0 +1,52 @@
+import { Info } from '@components/projects'
+
+export const metadata = {
+    title: 'Vend Extend',
+    id: 'vendextend',
+    author: 'Alex Nguyen',
+    description: 'Chrome extension for the Vend point-of-sale system.',
+    date: '2019/11 - 2020/09',
+    img: '/v1632471886/alexnguyen.co.nz/img/projects/vendextend_dwu2eq.png'
+}
+
+<Layout title={metadata.title}>
+<Info metadata={metadata} />
+
+
+In late 2019, I started developing Vend Extend for a line of retail stores using <a href="https://vendhq.com" target="_blank" rel="noreferrer noopener nofollow">Vend</a>, a cloud based point-of-sale (POS) system. Vend has a few drawbacks with non-fixed pricing when you have to alter the price for each item.
+
+The first feature I made was to highlight any focused field so that the user would not have to manually delete existing values - they could enter the price or quantity immediately after selecting the field. This removed a lot of user frustration (this feature is still useful with any store when adjusting quantity).
+
+About a year later, I added another feature to speed up the processing of items in a sale. Normally when an item is added, you have to open the item, then select the price field (this combines to one step if you select the price however users were often selecting the bin instead by mistake as it was too close). With this feature, when any new item is added, it would open up the price field automatically, simplifying most item processing to two steps - adding the item and changing the price.
+
+The last 'feature' I added was the removal of irrelevant info to clean up the user interface e.g. removing tax info or promo code options. These would be adjustable as settings. All features are demonstrated in some way below (without and with extension). 
+
+<div className="flex">
+    <div className="flex flex-col mx-auto">
+        <video id="video" width="400" height="300" className="self-end" autoPlay loop muted>
+            <source src="https://res.cloudinary.com/gladius/video/upload/v1632472619/alexnguyen.co.nz/video/vendextend-1_jm5icp.webm" type="video/webm" />Your browser does not support the video tag.
+        </video>
+    </div>
+    <div className="flex flex-col mx-auto">
+        <video id="video" width="400" height="300" className="self-start" autoPlay loop muted>
+            <source src="https://res.cloudinary.com/gladius/video/upload/v1632472619/alexnguyen.co.nz/video/vendextend-2_kvxjpz.webm" type="video/webm" />Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+I had planned to release this extension on the Chrome store and add more features to it, however Vend had changed something in their backend that the extension relied on which broke the automatic item opening to price feature. I decided that a consistent user experience (in case this happened again) was more important, so I decided not to continue developing it. This seems to work again after I recently tested out the extension again, which is why I was able to make the visual comparisons above.
+
+Fortunately the automatic field selecting is still in use and it is unlikely to break unless the class name for all inputs is changed (it does not rely on API interaction or MutationObservers).
+
+The remains of the extension are available on <a href="https://github.com/alexnguyennz/vendextend" target="_blank" rel="noreferrer noopener nofollow">GitHub</a>.
+
+</Layout>
+
+<!-- 
+The simple code for selecting the fields.
+
+<pre>
+<code className="language-javascript">document.addEventListener("click", e => &#123;</code><br />
+<code className="language-javascript">  if (e.target.matches(".vd-input")) e.target.select();</code><br />
+<code className="language-javascript">&#125;)</code>
+</pre> -->

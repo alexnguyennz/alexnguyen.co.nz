@@ -1,0 +1,38 @@
+export const metadata = {
+    title: 'First Post',
+    id: 'first-post',
+    author: 'Alex Nguyen',
+    description: 'Details about the development of this website.',
+    date: '2020-01-01'
+}
+
+<Layout title={metadata.title}>
+<h1 className="text-2xl">{metadata.title}</h1>
+<span>{metadata.date}</span><br />
+<Link href="/projects" passHref><a>Return to Projects</a></Link>
+
+<p className="text-lg">This website is built with <a href="https://nextjs.org/" target="_blank">Next.js</a>. I've been away from web development for a few years and wanted to become familiar with modern tools so I thought Next.js or something React based would be a good start - even though something more static site focused like <a href="https://jekyllrb.com/" target="blank">Jekyll</a> would have been more suitable for this site. I've learned a lot by adding features this site doesn't necessarily need, like a contact form (when  just an email address is probably easier when people can use their default preferred email client to send a basic message). Click here for blog posts that I've made regarding the development of this site.</p>
+<p>By leveraging services such as SendGrid, this site can be completely static and perform server-side tasks, like sending emails, as well as host the site for free on GitHub Pages.</p>
+
+**Services/Libraries**
+- <a href="https://nextjs.org/" target="_blank">Next.js</a> - React framework
+- <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> - static site hosting
+- <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> - CSS framework
+- <a href="https://www.vultr.com/" target="_blank">next-seo</a> - easier SEO management
+- <a href="https://www.framer.com/motion/" target="_blank">Framer Motion</a> - motion library for page transition effects
+- <a href="https://react-hook-form.com/" target="_blank">React Hook Form</a> - contact form validation
+- <a href="https://www.npmjs.com/package/@sendgrid/mail" target="_blank">SendGrid API</a> - contact form processing
+- <a href="https://www.npmjs.com/package/gray-matter" target="_blank">gray-matter</a> - Markdown processing 
+- <a href="https://github.com/mdx-js/mdx" target="_blank">mds-jx</a> - JSX in Markdown processing
+
+<Img src="profile.jpg" width="400" height="400" alt="profile pic" />
+</Layout>
+
+<!-- 
+---
+title: Alex Nguyen
+author: Alex Nguyen
+date: 08/2021 - Current
+description: Details about the development of this website
+---
+-->

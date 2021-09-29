@@ -4,12 +4,10 @@ import Layout from '@components/layout';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-export function encode(data) {
-    return (
-        Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&")
-    )
+function encode(data) {
+    return  Object.keys(data)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+            .join('&')
 }
 
 export default function Contact() {
@@ -17,16 +15,16 @@ export default function Contact() {
     const pageTitle = "Contact";
 
     const { register, handleSubmit, reset, formState: {errors, isSubmitting} } = useForm();
-    const [isSubmitted, setIsSuccessfullySubmitted] = React.useState(false);
+    const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-    const onSubmit = async (data) => { // form is only 'submitted' when there are no validation errors
+    const onSubmit = async (data, e) => { // form is only 'submitted' when there are no validation errors
 
-        fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: encode({ "form-name": "contact", ...data })
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode({ 'form-name': 'contact', ...data })
         }).then(() => {
-            setIsSuccessfullySubmitted(true); // display success message
+            setIsSubmitted(true); // display success message
             reset(); // clear form
         }).catch(error => console.log(error));
         
@@ -41,8 +39,8 @@ export default function Contact() {
                     <div className="w-full md:w-1/2 md:pr-2 mb-6 md:mb-0">
                         <label className="block uppercase text-xs font-semibold mb-2" htmlFor="name">Name</label>
                         <input className="block w-full text-gray-700 border border-gray-200 rounded p-3 focus:outline-none focus:border-gray-500" type="text" placeholder="Your Name" name="name" id="name" {...register("name", { required: true, pattern: /^[A-Za-z" "]+$/i })} disabled={isSubmitting} />
-                        {errors.name && errors.name.type === "required" && <span className="text-xs text-pink-500 an">Required.</span>}
-                        {errors.name && errors.name.type === "pattern" && <span className="text-xs text-pink-500 an">No special characters or numbers allowed.</span>}
+                        {errors.name && errors.name.type === "required" && <span className="text-xs text-pink-500">Required.</span>}
+                        {errors.name && errors.name.type === "pattern" && <span className="text-xs text-pink-500">No special characters or numbers allowed.</span>}
                     </div>
 
                     <div className="w-full md:w-1/2 md:pl-2">

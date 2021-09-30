@@ -16,10 +16,6 @@ const securityHeaders = [
         value: `img-src 'self' *.cloudinary.com data:; media-src 'self' *.cloudinary.com; script-src 'self'; frame-ancestors 'none'`
     },
     {
-        key: 'X-DNS-Prefetch-Control', // allows browsers to perform DNS on external links, images, CSS, JS
-        value: 'on'
-    },
-    {
         key: 'Strict-Transport-Security', // informs browsers site should only be accessed using HTTPS for a max-age of 2 years
         value: 'max-age=63072000; includeSubDomains; preload'
     },
@@ -34,8 +30,15 @@ const securityHeaders = [
     {
         key: 'X-Content-Type-Options',  // prevents browser from attempting to guess type of content if Content-Type header is not explicitly set
         value: 'nosniff'
-    }
-    
+    },
+    {
+        key: 'X-Frame-Options', // only allow site to be in iframe with same origin; superceded by CSP's frame-ancestors
+        value: 'SAMEORIGIN'
+    },
+    {
+        key: 'X-DNS-Prefetch-Control', // allows browsers to perform DNS on external links, images, CSS, JS
+        value: 'on'
+    },
 ];
 
 /* */
@@ -59,7 +62,36 @@ module.exports = withMDX(
                 {
                     // Apply these headers to all routes in your application
                     source: '/(.*)',
-                    headers: securityHeaders,
+                    headers: [
+                        {
+                            key: 'Content-Security-Policy',  // specify allowed origins for content - help prevent XSS, clickjacking and other code injection attacks
+                            value: `img-src 'self' *.cloudinary.com data:; media-src 'self' *.cloudinary.com; script-src 'self'; frame-ancestors 'none'`
+                        },
+                        {
+                            key: 'Strict-Transport-Security', // informs browsers site should only be accessed using HTTPS for a max-age of 2 years
+                            value: 'max-age=63072000; includeSubDomains; preload'
+                        },
+                        {
+                            key: 'X-XSS-Protection', // stops pages from loading when reflected XSS attacks are detected
+                            value: '1; mode=block'
+                        },
+                        {
+                            key: 'Referrer-Policy', // controls how much information the browser includes when navigating from the current website (origin) to another.
+                            value: 'strict-origin-when-cross-origin' 
+                        },
+                        {
+                            key: 'X-Content-Type-Options',  // prevents browser from attempting to guess type of content if Content-Type header is not explicitly set
+                            value: 'nosniff'
+                        },
+                        {
+                            key: 'X-Frame-Options', // only allow site to be in iframe with same origin; superceded by CSP's frame-ancestors
+                            value: 'SAMEORIGIN'
+                        },
+                        {
+                            key: 'X-DNS-Prefetch-Control', // allows browsers to perform DNS on external links, images, CSS, JS
+                            value: 'on'
+                        },
+                    ],
                 },
             ]
         },

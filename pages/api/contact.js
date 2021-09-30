@@ -1,5 +1,5 @@
 // include SendGrid API
-const mail = require('@sendgrid/mail');
+/*const mail = require('@sendgrid/mail');
 
 // set SendGrid API key
 mail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -36,3 +36,4 @@ const sendEmail = async (req, res) => {
 };
 
 export default sendEmail;
+*/

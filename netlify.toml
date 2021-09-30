@@ -3,10 +3,11 @@
   for = "/*"
 
   [headers.values]
-    Content-Security-Policy = "img-src 'self' *.cloudinary.com data:; media-src 'self' *.cloudinary.com; script-src 'self'; frame-ancestors 'none'"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    X-Frame-Options = "DENY"
+    Content-Security-Policy = "img-src 'self' *.cloudinary.com data:; media-src 'self' *.cloudinary.com; script-src 'self'; frame-ancestors 'none'"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-DNS-Prefetch-Control = "on"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"

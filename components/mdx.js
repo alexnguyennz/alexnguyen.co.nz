@@ -13,7 +13,6 @@ const Img = (props) => {
       width={width}
       height={height}
       alt={alt}
-      placeholder={`${!disablePlaceholder && 'blur'}`}
     />
   );
 };

@@ -9,9 +9,6 @@ import path from 'path';
 // import { getMetadataApi } from '@api/blog'
 
 import React, { Component } from 'react';
-import Pagination from 'next-pagination';
-import ReactPaginate from 'react-paginate';
-
 
 export default function Page( { blogMetadata } ) {
 
@@ -90,50 +87,3 @@ export async function getStaticProps() {
   }
 
 
-
-  /*
-
-  export async function getStaticProps() {
-
-    //const postsData = getPosts();
-
-    const url = 'https://dev.to/api/articles/me/all';
-
-    // MPyqxgfxy9Qi9X3ViuHMd5wJ
-
-    const settings = {
-        headers: {
-            'api-key': 'MPyqxgfxy9Qi9X3ViuHMd5wJ',
-            //'Accept': 'application/json',
-            //'Content-Type': 'application/json'
-        }
-    }
-
-    const response = await fetch(url, settings);
-    const postsData = await response.json();
-
-
-
-    return {
-      props: {
-        postsData
-      }
-    }
-  }
-
-  */
-
-
-
-
-
-  /* 
-  export async function getStaticProps() {
-    const allPostsData = getSortedPostsData()
-    return {
-      props: {
-        allPostsData
-      }
-    }
-  }
-  */

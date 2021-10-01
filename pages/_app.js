@@ -1,4 +1,3 @@
-// can only import global CSS files in _app.js
 import '@styles/globals.css'
 
 import "prismjs/themes/prism-okaidia.css"
@@ -10,8 +9,6 @@ import { AnimatePresence } from 'framer-motion'
 
 // SEO 
 import { DefaultSeo } from 'next-seo';
-
-import Layout from '@components/layout'
 
 export default function App({ Component, pageProps, router }) {
 
@@ -33,12 +30,6 @@ export default function App({ Component, pageProps, router }) {
                 url: url,
                 site_name: 'Alex Nguyen',
             }}
-            additionalLinkTags={[
-                {
-                rel: 'icon',
-                href: '/favicon.ico'
-                }
-            ]}
         />
         
         <AnimatePresence initial={false}>

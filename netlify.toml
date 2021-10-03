@@ -4,7 +4,7 @@
 
   [headers.values]
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Content-Security-Policy = "img-src 'self' *.cloudinary.com data:; media-src 'self' *.cloudinary.com; script-src 'self'; frame-ancestors 'none'"
+    Content-Security-Policy = "img-src 'self' *.cloudinary.com data:; media-src 'self' *.cloudinary.com; frame-ancestors 'none'"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"

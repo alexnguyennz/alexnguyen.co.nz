@@ -17,12 +17,11 @@
     }
 
     main a {
-        @apply text-blue-600;
+        @apply  font-medium;
     }
 
     body {
-        @apply dark:bg-gray-800;
-        @apply overflow-y-scroll;
+        @apply dark:bg-gray-800 overflow-y-scroll;
     }
 
     .active {
@@ -30,7 +29,7 @@
     }
 
     ::selection {
-        @apply bg-blue-50;
+        @apply  dark:bg-gray-600;
     }
 
     label {
@@ -47,11 +46,6 @@
     
 }
 
-/* align icon images with text */
-footer .img-align {
-    display: inline-block;
-    vertical-align: middle
-}
 
 @layer components {
     .navigation-underline {

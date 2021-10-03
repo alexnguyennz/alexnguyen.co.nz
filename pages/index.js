@@ -10,12 +10,12 @@ export default function Page( { blogMetadata, projectsMetadata } ) {
     return (
         <Layout home title={pageTitle} >
 
-      <section>
+      <section className="mb-10">
         <p>Hi, I&apos;m Alex and I work in IT. I&apos;m based in Wellington, New Zealand.</p>
 
         <p>I like to dabble in various technologies and projects. This site is a showcase of things I&apos;ve done.</p>
         
-        <p>All my projects can be found on <Link href="/projects"><a>Projects</a></Link>. I plan to write articles eventually once I&apos;m happy with this site (which may never happen).</p>
+        <p>All my projects can be found <Link href="/projects"><a>here</a></Link>. I plan to write articles eventually once I&apos;m happy with this site (which may never happen).</p>
       </section>
 
         <section>
@@ -42,7 +42,6 @@ export default function Page( { blogMetadata, projectsMetadata } ) {
                         <p><Link href={`/projects/${id}`}><a>{title}</a></Link><br />
                         {description}<br />
                         </p>
-                        {/*<Link href={`/projects/${id}`}><a><Image src={`/img/projects/${id}.png`} width={300} height={300} /></a></Link>*/}
                     </div>
                 ))}
             </div>

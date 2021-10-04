@@ -36,16 +36,18 @@ export default function Layout({ children, home, title }, props) {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#ffc40d" />
         <meta name="theme-color" content="#ffffff" />
+
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" />
       </Head>
      
-      <header className="sm:pt-5 dark:bg-gray-800 ">
+      <header className="sm:pt-5 bg-gray-600 dark:bg-gray-800 overflow-hidden">
             <div className="container mx-auto flex w-full justify-between items-center px-5 ">
                 <h1 className="text-white font-light text-2xl sm:text-4xl py-3 sm:py-2 dark:text-gray-200"><Link href="/"><a className="hover:no-underline">{pageName}</a></Link></h1>
                 
                 <nav>
                     <ul>
                         {navigation.map(( { name, href }) => (
-                            <li key={name} className={`inline text-lg  ${router.pathname == `${href}` ? "active-link" : ""}`}><Link href={href}><a className="p-2 xs:p-4 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-700">{name}</a></Link></li>
+                            <li key={name} className={`inline text-lg  ${router.pathname == `${href}` ? "active-link" : ""}`}><Link href={href}><a className="p-2 xs:p-5 hover:no-underline dark:text-gray-200 dark:hover:bg-gray-700">{name}</a></Link></li>
                         ))}
                     </ul>
                 </nav>

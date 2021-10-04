@@ -17,11 +17,12 @@
     }
 
     main a {
-        @apply  font-medium;
+        @apply  font-semibold;
     }
 
     body {
         @apply dark:bg-gray-800 overflow-y-scroll;
+        @apply tracking-tight;
     }
 
     .active {
@@ -61,11 +62,11 @@
 
     .active-link a {
         @apply bg-white;
-        @apply text-blue-500;
+        @apply text-gray-600;
     }
 
     header nav li:hover a {
-        @apply bg-blue-400 overflow-hidden;
+        @apply bg-gray-700;
     }
 
     .active-link:hover a {
@@ -78,21 +79,13 @@
 
 }
 
-header {
-    background: #3E8ECC;
+body {
+    font-family: Hack, monospace, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 /* header h1 {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 } */
-
-header .active-link a {
-    color: #3E8ECC;
-}
-
-header nav li:hover a {
-    background-color: #276fa7;
-}
 
 
 

@@ -62,7 +62,7 @@ export default function Contact() {
 
                 <div className="flex flex-wrap">
                     <div className="w-full">
-                        <input type="submit" className="w-full text-white font-semibold bg-blue-400 hover:bg-blue-500 p-2 rounded transition cursor-pointer dark:bg-gray-600 dark:hover:bg-gray-700" />
+                        <input type="submit" className="w-full text-white font-semibold bg-gray-600 hover:bg-gray-700 p-2 rounded transition cursor-pointer dark:bg-gray-600 dark:hover:bg-gray-700" />
                         {isSubmitted && <span className="text-base text-green-500">Message sent! I&apos;ll get back to you as soon as possible.</span>} 
                     </div>
                 </div>

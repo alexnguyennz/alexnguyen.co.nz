@@ -37,7 +37,13 @@ export default function Layout({ children, home, title }, props) {
         <meta name="msapplication-TileColor" content="#ffc40d" />
         <meta name="theme-color" content="#ffffff" />
 
+        {/*<link rel="stylesheet" href="/hack.css" media="screen" />*/}
         <link rel="stylesheet" href="/hack.css" media="screen" />
+        <link rel="preload" href="/fonts/hack-regular.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-bold.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-italic.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-bolditalic.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
+        
       </Head>
      
       <header className="sm:pt-5 bg-gray-600 dark:bg-gray-800 overflow-hidden">

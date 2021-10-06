@@ -78,9 +78,9 @@
     }
 
 }
-
-body {
-    font-family: Hack, monospace, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  
+  body {
+    font-family: 'Hack', monospace, Verdana, Tahoma, sans-serif;
 }
 
 /* header h1 {

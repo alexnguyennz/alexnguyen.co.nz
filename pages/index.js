@@ -15,7 +15,7 @@ export default function Page( { blogMetadata, projectsMetadata } ) {
 
         <p>I like to dabble in various technologies and projects. This site is a showcase of things I&apos;ve done.</p>
         
-        <p>All my projects can be found <Link href="/projects"><a>here</a></Link>. I plan to write articles eventually once I&apos;m happy with this site (which may never happen).</p>
+        <p>All my projects can be <Link href="/projects"><a>found here</a></Link>. I plan to write articles eventually once I&apos;m happy with this site (which may never happen).</p>
       </section>
 
         <section>

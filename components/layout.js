@@ -38,10 +38,10 @@ export default function Layout({ children, home, title }, props) {
         <meta name="theme-color" content="#ffffff" />
 
         {/*<link rel="stylesheet" href="/hack.css" media="screen" />*/}
-        <link rel="preload" href="/fonts/hack-regular.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/hack-bold.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/hack-italic.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/hack-bolditalic.woff2?sha=3114f1256" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-regular-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-bold-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-italic-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/hack-bolditalic-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="stylesheet" href="/hack.css" media="screen" />
       </Head>
      

@@ -37,7 +37,7 @@ export default function Layout({ children, home, title }, props) {
         <meta name="msapplication-TileColor" content="#ffc40d" />
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css" media="screen" />
       </Head>
      
       <header className="sm:pt-5 bg-gray-600 dark:bg-gray-800 overflow-hidden">

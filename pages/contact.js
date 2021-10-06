@@ -30,10 +30,9 @@ export default function Contact() {
         
     };
 
-    //onSubmit={handleSubmit(onSubmit)} noValidate
     return (
         <Layout title={pageTitle}>
-            <form className="w-full max-w-3xl mx-auto" name="contact" method="post" onSubmit={handleSubmit(onSubmit)} noValidate data-netlify="true">
+            <form className="w-full max-w-3xl mx-auto" name="contact" method="post" onSubmit={handleSubmit(onSubmit)}  data-netlify="true">
                 <input type="hidden" name="form-name" value="contact" /> {/* Netlify Form hook */}
 
                 <div className="flex flex-wrap mb-6">

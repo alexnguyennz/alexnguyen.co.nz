@@ -32,7 +32,7 @@ export default function Contact() {
 
     return (
         <Layout title={pageTitle}>
-            <form className="w-full max-w-3xl mx-auto" name="contact" method="post" onSubmit={handleSubmit(onSubmit)}  data-netlify="true">
+            <form className="w-full max-w-3xl mx-auto" name="contact" method="post" onSubmit={handleSubmit(onSubmit)} noValidate data-netlify="true">
                 <input type="hidden" name="form-name" value="contact" /> {/* Netlify Form hook */}
 
                 <div className="flex flex-wrap mb-6">
@@ -62,7 +62,7 @@ export default function Contact() {
                 <div className="flex flex-wrap">
                     <div className="w-full">
                         <input type="submit" className="w-full text-white font-semibold bg-gray-600 hover:bg-gray-700 p-2 rounded transition cursor-pointer dark:bg-gray-600 dark:hover:bg-gray-700" />
-                        {isSubmitted && <span className="text-base text-green-500">Message sent! I&apos;ll get back to you as soon as possible.</span>} 
+                        {isSubmitted && <p className="text-base text-green-500 mt-3 text-center">Message sent! I&apos;ll get back to you as soon as possible.</p>} 
                     </div>
                 </div>
             </form>

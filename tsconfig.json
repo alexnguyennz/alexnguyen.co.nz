@@ -7,9 +7,9 @@
             "esnext"
         ],
         "allowJs": true,
-        "alwaysStrict": true,
+        "alwaysStrict": false,
         "skipLibCheck": true,
-        "strict": true,
+        "strict": false,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "esModuleInterop": true,

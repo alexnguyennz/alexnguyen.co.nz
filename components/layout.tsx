@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -6,8 +8,12 @@ import FramerConfig from '@config/framer.config'; // Framer settings
 
 import Head from 'next/head';
 
+type Props = {
+    children: ReactNode,
+    title: string
+}
 
-export default function Layout({ children, home, title }, props) {
+function Layout({ children, title }: Props): JSX.Element {
 
     const router = useRouter();
 
@@ -22,10 +28,8 @@ export default function Layout({ children, home, title }, props) {
 
     const email = 'me@alexnguyen.co.nz';
     
-
   return (
 
-    
     <div className="flex flex-col min-h-screen "> {/* turn "body" into vertical flex container with .flex/.flex-col */}
       
       <Head><title>{title} - {pageName}</title>
@@ -71,3 +75,5 @@ export default function Layout({ children, home, title }, props) {
     </div>
   )
 }
+
+export default Layout;

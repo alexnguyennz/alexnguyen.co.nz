@@ -8,7 +8,7 @@ const pageTitle = 'Home';
 
 export default function Page( { blogMetadata, projectsMetadata } ) {
     return (
-        <Layout home title={pageTitle} >
+        <Layout title={pageTitle} >
 
       <section className="mb-10">
         <p>Hi, I&apos;m Alex and I work in IT. I&apos;m based in Wellington, New Zealand.</p>

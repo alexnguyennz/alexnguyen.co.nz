@@ -50,7 +50,7 @@ const securityHeaders = [
 // Next.js recommends enabling Strict Mode to highlight potential problems in an app; identifies unsafe lifecycles, legacy API usage, other features
 module.exports = withMDX(
     {
-        pageExtensions: ['js', 'jsx', 'md', 'mdx'], // have Next.js treat .mdx in /pages as pages
+        pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'], // have Next.js treat .mdx in /pages as pages
         reactStrictMode: true,
         images: {
             loader: 'cloudinary',

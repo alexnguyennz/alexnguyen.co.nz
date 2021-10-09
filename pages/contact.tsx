@@ -4,7 +4,12 @@ import Layout from '@components/layout';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-function encode(data) {
+type Props = {
+    data: object,
+    'form-name': string
+}
+
+function encode(data: Props) {
     return  Object.keys(data)
             .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
             .join('&')
@@ -17,12 +22,14 @@ export default function Contact() {
     const { register, handleSubmit, reset, formState: {errors, isSubmitting} } = useForm();
     const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-    const onSubmit = async (data, e) => { // form is only 'submitted' when there are no validation errors
+
+    
+    const onSubmit = async (data: Props) => { // form is only 'submitted' when there are no validation errors
 
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode({ 'form-name': 'contact', ...data })
+            body: encode({ ...data, 'form-name': 'contact' })
         }).then(() => {
             setIsSubmitted(true); // display success message
             reset(); // clear form

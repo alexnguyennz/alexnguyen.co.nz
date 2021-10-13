@@ -1,14 +1,27 @@
-import Layout from '@components/layout';
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 import fs from 'fs';
 import path from 'path';
 
+import Layout from '@components/layout';
+
 const pageTitle = 'Home';
 
-export default function Page( { blogMetadata, projectsMetadata } ) {
+interface ProjectsMetadata {
+    directory: string;
+    id: string;
+    title: string;
+    description: string;
+}
+
+interface Props {
+    projectsMetadata: ProjectsMetadata[];
+}
+
+export default function Page( { projectsMetadata }: Props ): JSX.Element {
     return (
-        <Layout title={pageTitle} >
+        <Layout title={pageTitle}>
 
       <section className="mb-10">
         <p>Hi, I&apos;m Alex and I work in IT. I&apos;m based in Wellington, New Zealand.</p>
@@ -54,7 +67,7 @@ export default function Page( { blogMetadata, projectsMetadata } ) {
   )
 }
 
-async function getMetadata(directory) {
+async function getMetadata(directory: string) {
 
     const filenames = fs.readdirSync(path.join(process.cwd(), directory));
     const modules = await Promise.all(
@@ -76,7 +89,7 @@ async function getMetadata(directory) {
     return sortedMetadata;
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 
     const blogMetadata = await getMetadata('pages/blog');
     const projectsMetadata = await getMetadata('pages/projects');

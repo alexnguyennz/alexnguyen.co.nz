@@ -1,16 +1,15 @@
 import type { AppProps } from 'next/app';
 
-import '../styles/globals.css';
-
-import 'prismjs/themes/prism-okaidia.css';
-
+// Libraries
 import { MDXProvider } from '@mdx-js/react';
 import MDXComponents from '@components/mdx';
 
 import { AnimatePresence } from 'framer-motion';
 
-// SEO 
 import { DefaultSeo } from 'next-seo';
+
+import '../styles/globals.css';
+import '../styles/hack.css';
 
 function App({ Component, pageProps, router }: AppProps): JSX.Element {
 
@@ -21,7 +20,6 @@ function App({ Component, pageProps, router }: AppProps): JSX.Element {
     if (!pageTitle) pageTitle = 'Home';
 
     return (
-
         <>
         <DefaultSeo 
             title = {pageTitle + ' - Alex Nguyen'}
@@ -40,7 +38,6 @@ function App({ Component, pageProps, router }: AppProps): JSX.Element {
             </MDXProvider>
         </AnimatePresence>
         </>
-
     )
 }
 

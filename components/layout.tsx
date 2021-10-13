@@ -30,7 +30,7 @@ function Layout({ children, title }: Props): JSX.Element {
     
   return (
 
-    <div className="flex flex-col min-h-screen "> {/* turn "body" into vertical flex container with .flex/.flex-col */}
+    <div className="flex flex-col min-h-screen"> {/* turn "body" into vertical flex container with .flex/.flex-col */}
       
       <Head><title>{title} - {pageName}</title>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -41,12 +41,11 @@ function Layout({ children, title }: Props): JSX.Element {
         <meta name="msapplication-TileColor" content="#ffc40d" />
         <meta name="theme-color" content="#ffffff" />
 
-        {/*<link rel="stylesheet" href="/hack.css" media="screen" />*/}
         <link rel="preload" href="/fonts/hack-regular-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/hack-bold-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/hack-italic-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/hack-bolditalic-subset.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="/hack.css" media="screen" />
+        {/*<link rel="stylesheet" href="/hack.css" media="screen" />*/}
       </Head>
      
       <header className="sm:pt-5 bg-gray-600 dark:bg-gray-800 overflow-hidden">

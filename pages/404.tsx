@@ -3,7 +3,7 @@ import Layout from '@components/layout';
 
 const pageTitle = 'Page could not be found';
 
-const Page = () => (
+const Page = (): JSX.Element => (
     <Layout title={pageTitle}>
         <section className="text-center">
             <h1 className="text-4xl font-bold">404 error</h1>

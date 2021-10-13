@@ -1,6 +1,20 @@
 import Link from 'next/link';
 
-export function Info({metadata}) {
+interface ProjectsMetadata {
+    metadata: object;
+    title: string;
+    id?: string;
+    author?: string;
+    description?: string;
+    date: string;
+    img?: string;
+}
+
+interface Props {
+    metadata: ProjectsMetadata;
+}
+
+export function Info({metadata}: Props): JSX.Element {
 
     return (
     <div className="text-center sm:text-left">

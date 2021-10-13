@@ -3,7 +3,7 @@ import Layout from '@components/layout';
 
 const pageTitle = 'An error(s) occurred';
 
-const Page = () => (
+const Page = (): JSX.Element => (
     <Layout title={pageTitle}>
         <section className="text-center">
             <h1 className="text-4xl font-bold">500 error</h1>

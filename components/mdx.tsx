@@ -3,9 +3,16 @@
 import Layout from '@components/layout';
 import Image from 'next/image';
 import Link from 'next/link';
+interface Props {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    disablePlaceholder?: string;
+}
 
 // custom Image component for easier src input
-const Img = (props) => {
+const Img = (props: Props) => {
   const { src, width, height, alt, disablePlaceholder } = props;
   return (
     <Image

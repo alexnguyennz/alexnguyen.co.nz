@@ -1,17 +1,33 @@
-import Layout from '@components/layout';
 import Link from 'next/link';
 import Image from 'next/image';
+import { GetStaticProps } from 'next';
 
 import fs from 'fs';
 import path from 'path';
 
-const pageTitle = 'Projects'
+import Layout from '@components/layout';
 
-export default function Page( {projectsMetadata} ) {
+const pageTitle = 'Projects';
+
+interface ProjectsMetadata {
+    title: string;
+    id: string;
+    description: string;
+    img: string;
+}
+
+interface Props {
+    projectsMetadata: ProjectsMetadata[];
+}
+
+
+export default function Page( {projectsMetadata}: Props ): JSX.Element {
+
+    console.log(projectsMetadata)
     return (
-        <Layout title={pageTitle} className="container px-6 py-4 mx-auto">
+        <Layout title={pageTitle}>
 
-        <div className="flex flex-wrap first:bg-red-400">
+        <div className="flex flex-wrap">
 
             {projectsMetadata.map(({title, id, description, img}) => (
                 <div className="md:flex-1 sm:flex-auto text-center w-full my-3 sm:my-0 sm:mx-5" key={id}>
@@ -30,7 +46,7 @@ export default function Page( {projectsMetadata} ) {
     )
 }
 
-async function getMetadata(directory) {
+async function getMetadata(directory: string) {
 
     const filenames = fs.readdirSync(path.join(process.cwd(), directory));
     const modules = await Promise.all(
@@ -39,21 +55,10 @@ async function getMetadata(directory) {
 
     const metadata = modules.map((exports) => exports.metadata);
 
-    /* const sortedMetadata = metadata.sort(( { date: a }, { date: b }) => {
-        if (a < b) {
-            return 1
-        } else if (a > b) {
-            return -1
-        } else {
-            return 0
-        }
-    }); */
-
     return metadata;
 }
 
-
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 
     const projectsMetadata = await getMetadata('pages/projects');
 

@@ -1,21 +1,30 @@
 import Layout from '@components/layout'
 import Link from 'next/link';
+import { GetStaticProps } from 'next';
 
 const pageTitle = 'Blog';
 
-/* import { getMetadata } from '@lib/metadata' */
 import fs from 'fs';
 import path from 'path';
-// import { getMetadataApi } from '@api/blog'
 
-import React, { Component } from 'react';
 
-export default function Page( { blogMetadata } ) {
+interface BlogMetadata {
+    id: number;
+    title: string;
+    description: string;
+}
+
+interface Props {
+    blogMetadata: BlogMetadata[];
+}
+
+
+export default function Page( { blogMetadata }: Props ): JSX.Element {
 
     return (
-        <Layout title={pageTitle} className="container px-6 py-4 mx-auto">
+        <Layout title={pageTitle}>
             <section>
-                { blogMetadata.map( ( { id, title, description } ) => (
+                { blogMetadata.map(({ id, title, description }) => (
                     <div key={id}>
                         <p><Link href={`/blog/${id}`}><a>{title}</a></Link><br />
                         {description}<br />
@@ -31,7 +40,7 @@ export default function Page( { blogMetadata } ) {
     )
 }
 
-async function getMetadata(directory) {
+async function getMetadata(directory: string) {
 
     const filenames = fs.readdirSync(path.join(process.cwd(), directory));
     const modules = await Promise.all(
@@ -53,31 +62,9 @@ async function getMetadata(directory) {
     return sortedMetadata;
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 
     const blogMetadata = await getMetadata('pages/blog');
-    //const blogMetadata = await getMetadataApi();
-     
-    /*
-    const directory = 'pages/blog';
-    const filenames = fs.readdirSync(path.join(process.cwd(), directory));
-    const modules = await Promise.all(
-        filenames.map(async (p) => import(`${directory}/${p}`))
-    );
-
-    const postsMetadata = modules.map((exports) => exports.metadata);
-
-    const blogMetadata = postsMetadata.sort(( { date: a }, { date: b }) => {
-        if (a < b) {
-            return 1
-        } else if (a > b) {
-            return -1
-        } else {
-            return 0
-        }
-    });
-
-    */
 
     return {
       props: {

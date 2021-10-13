@@ -61,6 +61,7 @@ module.exports = withMDX(
             defaultLocale: 'en',
         },
         compress: true, /* gzip compression to compress rendered content and static files */
+        generateBuildId: () => 'build',
         /*
         async headers() {
             return [

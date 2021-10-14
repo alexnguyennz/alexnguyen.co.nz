@@ -21,16 +21,8 @@ const color: { [key: string]: any } = {
 }; */
 
 interface Data {
-    data: Options;
-    'form-name'?: string;
-    name: string;
-    email: string;
-    message: string;
-}
-
-
-
-interface Options {
+    [key: string]: string;
+    'form-name': string;
     name: string;
     email: string;
     message: string;
@@ -38,9 +30,8 @@ interface Options {
 
 function encode(data: Data) {
 
-    let objKeys = Object.keys(data) as Array<keyof Options>;
-
-    return  objKeys.map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data.data[key])).join('&');
+    const objKeys = Object.keys(data) as Array<keyof Data>;
+    return objKeys.map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
 }
 
 export default function Contact():JSX.Element {
@@ -54,12 +45,12 @@ export default function Contact():JSX.Element {
     
     const onSubmit = async (data: Data) => { // form is only 'submitted' when there are no validation errors
 
-        //console.log(encode({ 'form-name': 'contact', ...data }));
+        console.log(encode({ ...data, 'form-name': 'contact' }));
 
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: encode({ 'form-name': 'contact', ...data })
+            body: encode({ ...data, 'form-name': 'contact' })
         }).then(() => {
             setIsSubmitted(true); // display success message
             reset(); // clear form

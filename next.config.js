@@ -61,7 +61,7 @@ module.exports = withMDX(
             defaultLocale: 'en',
         },
         compress: true, /* gzip compression to compress rendered content and static files */
-        generateBuildId: () => 'build',
+        generateBuildId: () => 'build', // "set build ID to static value for faster deploy times" Netlify
         /*
         async headers() {
             return [

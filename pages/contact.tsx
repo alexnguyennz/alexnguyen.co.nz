@@ -21,27 +21,26 @@ const color: { [key: string]: any } = {
 }; */
 
 interface Data {
+    data: Options;
     'form-name'?: string;
     name: string;
     email: string;
     message: string;
-    'data.key': Options;
 }
 
 
 
 interface Options {
-    key: string;
     name: string;
     email: string;
     message: string;
 }
 
-function encode(data: any) {
+function encode(data: Data) {
 
-    return  Object.keys(data)
-            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-            .join('&');
+    let objKeys = Object.keys(data) as Array<keyof Options>;
+
+    return  objKeys.map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data.data[key])).join('&');
 }
 
 export default function Contact():JSX.Element {

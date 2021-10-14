@@ -49,8 +49,6 @@ export default function Contact():JSX.Element {
     
     const onSubmit = async (data: Data) => { // form is only 'submitted' when there are no validation errors
 
-        console.log(encode({ ...data, 'form-name': 'contact' }));
-
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

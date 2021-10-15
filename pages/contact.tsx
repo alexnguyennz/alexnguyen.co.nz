@@ -4,22 +4,6 @@ import Layout from '@components/layout';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-
-
-/*type KeyOfType = {
-    'form-name'?: string;
-    name: string;
-    email: string;
-    message: string;
-}
-
-const color: { [key: string]: any } = {
-    'form-name': null,
-    name: null,
-    email: null,
-    message: null
-}; */
-
 interface Data {
     'form-name': string;
     name: string;

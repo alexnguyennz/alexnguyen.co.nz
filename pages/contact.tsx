@@ -22,7 +22,7 @@ const color: { [key: string]: any } = {
 
 interface Data {
     'form-name': string;
-    names: string;
+    name: string;
     email: string;
     message: string;
 }

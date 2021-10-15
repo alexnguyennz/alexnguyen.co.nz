@@ -21,10 +21,6 @@ const color: { [key: string]: any } = {
 }; */
 
 interface Data {
-    [key: string]: string;
-}
-
-interface Form {
     'form-name': string;
     names: string;
     email: string;
@@ -33,7 +29,7 @@ interface Form {
 
 function encode(data: Data) {
 
-    const objKeys = Object.keys(data) as Array<keyof Form>;
+    const objKeys = Object.keys(data) as Array<keyof Data>;
     
     return objKeys.map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
 }

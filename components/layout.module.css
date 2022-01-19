@@ -1,0 +1,15 @@
+/* .nguyen span {
+
+    @apply block transition-all duration-300;
+  }
+  
+
+.nguyen {
+    @apply inline-block overflow-hidden h-16 sm:h-10;
+}
+  
+.nguyen:hover .span {
+
+    @apply -mt-20 sm:-mt-10;
+}
+*/

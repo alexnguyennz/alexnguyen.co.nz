@@ -7,8 +7,6 @@ import path from 'path';
 
 import Layout from '@components/layout';
 
-const pageTitle = 'Projects';
-
 interface ProjectsMetadata {
     title: string;
     id: string;
@@ -21,26 +19,26 @@ interface Props {
 }
 
 
-export default function Page( {projectsMetadata}: Props ): JSX.Element {
+export default function Page( {projectsMetadata}: Props ) {
 
-    console.log(projectsMetadata)
+    const pageTitle = 'Projects';
+
     return (
         <Layout title={pageTitle}>
 
-        <div className="flex flex-wrap">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
 
-            {projectsMetadata.map(({title, id, description, img}) => (
-                <div className="md:flex-1 sm:flex-auto text-center w-full my-3 sm:my-0 sm:mx-5" key={id}>
-                    <h2 className="text-lg font-semibold"><Link href={`/projects/${id}`}><a>{title}</a></Link></h2>
-                    <p className="mt-0 2xl:h-14">{description}</p>
-                    <div className="p-3 xl:p-10  w-1/2 mx-auto md:w-full  dark:bg-gray-600">
-                        <Link href={`/projects/${id}`}><a><Image src={img} width={400} height={400} alt={`${title} Image`} placeholder="blur" blurDataURL={`data:image/png:base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=`} /></a></Link>
+                {projectsMetadata.map(({title, id, description, img}) => (
+                    <div className="text-center" key={id}>
+                        <h2 className="text-lg font-semibold"><Link href={`/projects/${id}`}><a>{title}</a></Link></h2>
+                        <p className="mt-0 2xl:h-14">{description}</p>
+                        <div className="p-3 xl:p-10  w-1/2 mx-auto md:w-full  dark:bg-gray-600">
+                            <Link href={`/projects/${id}`}><a><Image src={img} width={400} height={400} alt={`${title} Image`} placeholder="blur" blurDataURL={`data:image/png:base64, iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=`} /></a></Link>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
 
-        </div>
-
+            </div>
 
         </Layout>
     )
@@ -63,8 +61,8 @@ export const getStaticProps: GetStaticProps = async () => {
     const projectsMetadata = await getMetadata('pages/projects');
 
     return {
-      props: {
-        projectsMetadata
-      }
+        props: {
+            projectsMetadata
+        }
     }
-  }
+}

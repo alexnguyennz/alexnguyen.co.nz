@@ -14,19 +14,17 @@ interface Data {
 function encode(data: Data) {
 
     const objKeys = Object.keys(data) as Array<keyof Data>;
-    
+
     return objKeys.map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
 }
 
-export default function Contact():JSX.Element {
+export default function Contact() {
 
     const pageTitle = "Contact";
 
     const { register, handleSubmit, reset, formState: {errors, isSubmitting} } = useForm();
     const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-
-    
     const onSubmit = async (data: Data) => { // form is only 'submitted' when there are no validation errors
 
         fetch('/', {

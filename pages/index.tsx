@@ -6,8 +6,6 @@ import path from 'path';
 
 import Layout from '@components/layout';
 
-const pageTitle = 'Home';
-
 interface ProjectsMetadata {
     directory: string;
     id: string;
@@ -19,20 +17,22 @@ interface Props {
     projectsMetadata: ProjectsMetadata[];
 }
 
-export default function Page( { projectsMetadata }: Props ): JSX.Element {
+const Page = ({ projectsMetadata }: Props) => {
+
+    const pageTitle = 'Home';
+
     return (
         <Layout title={pageTitle}>
 
-      <section className="mb-10">
-        <p>Hi, I&apos;m Alex and I work in IT. I&apos;m based in Wellington, New Zealand.</p>
+        <section className="mb-10">
+            <p>Hi, I&apos;m Alex and I work in IT. I&apos;m based in Wellington, New Zealand.</p>
 
-        <p>I like to dabble in various technologies and projects. This site is a showcase of things I&apos;ve done.</p>
-        
-        <p>All my projects can be <Link href="/projects"><a>found here</a></Link>. I plan to write articles eventually once I&apos;m happy with this site (which may never happen).</p>
-      </section>
+            <p>I like to dabble in various technologies and projects. This site is a showcase of things I&apos;ve done.</p>
+            
+            <p>All my projects can be <Link href="/projects"><a>found here</a></Link>. I plan to write articles eventually once I&apos;m happy with this site (which may never happen).</p>
+        </section>
 
         <section>
-            <div className="flex">
             {/*<div className="flex flex-col w-full items-center">
                 <h2 className="text-xl font-semibold">Latest Posts</h2>
 
@@ -58,14 +58,13 @@ export default function Page( { projectsMetadata }: Props ): JSX.Element {
                     </div>
                 ))}
             </div>
-            </div>
         </section>
-      
-      
-
     </Layout>
   )
 }
+
+export default Page;
+
 
 async function getMetadata(directory: string) {
 
@@ -95,9 +94,9 @@ export const getStaticProps: GetStaticProps = async () => {
     const projectsMetadata = await getMetadata('pages/projects');
     
     return {
-      props: {
-        blogMetadata,
-        projectsMetadata
-      }
+        props: {
+            blogMetadata,
+            projectsMetadata
+        }
     }
-  }
+}

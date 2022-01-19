@@ -79,11 +79,16 @@
     font-family: 'Hack', monospace, Verdana, Tahoma, sans-serif;
 }
 
-/* header h1 {
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-} */
 
+@keyframes slide-up {
+  0% {transform: translateY(100px) }
+  100% {transform: translateY(0) }
+}
 
+@keyframes slide-down {
+    0% {transform: translateY(0) }
+    100% {transform: translateY(100px); content: '"win"'; }
+  }
 
 form span {
     animation: fadeIn 0.3s ease;

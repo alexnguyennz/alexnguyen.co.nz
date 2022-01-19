@@ -3,6 +3,7 @@
 import Layout from '@components/layout';
 import Image from 'next/image';
 import Link from 'next/link';
+
 interface Props {
     src: string;
     width: number;
@@ -13,15 +14,15 @@ interface Props {
 
 // custom Image component for easier src input
 const Img = (props: Props) => {
-  const { src, width, height, alt, disablePlaceholder } = props;
-  return (
-    <Image
-      src={require(`../public/img/${src}`)}
-      width={width}
-      height={height}
-      alt={alt}
-    />
-  );
+    const { src, width, height, alt, disablePlaceholder } = props;
+    return (
+        <Image
+            src={require(`../public/img/${src}`)}
+            width={width}
+            height={height}
+            alt={alt}
+        />
+    );
 };
 
 const MDXComponents = {

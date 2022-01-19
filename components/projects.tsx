@@ -14,7 +14,7 @@ interface Props {
     metadata: ProjectsMetadata;
 }
 
-export function Info({metadata}: Props): JSX.Element {
+export function Info({metadata}: Props) {
 
     return (
     <div className="text-center sm:text-left">

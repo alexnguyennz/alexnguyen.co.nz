@@ -2,8 +2,6 @@ import Layout from '@components/layout'
 import Link from 'next/link';
 import { GetStaticProps } from 'next';
 
-const pageTitle = 'Blog';
-
 import fs from 'fs';
 import path from 'path';
 
@@ -19,7 +17,9 @@ interface Props {
 }
 
 
-export default function Page( { blogMetadata }: Props ): JSX.Element {
+const Page = ({ blogMetadata }: Props) => {
+
+    const pageTitle = 'Blog';
 
     return (
         <Layout title={pageTitle}>
@@ -39,6 +39,8 @@ export default function Page( { blogMetadata }: Props ): JSX.Element {
         </Layout>
     )
 }
+
+export default Page;
 
 async function getMetadata(directory: string) {
 
@@ -67,10 +69,10 @@ export const getStaticProps: GetStaticProps = async () => {
     const blogMetadata = await getMetadata('pages/blog');
 
     return {
-      props: {
-        blogMetadata
-      }
+        props: {
+            blogMetadata
+        }
     }
-  }
+}
 
 

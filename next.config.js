@@ -56,10 +56,10 @@ module.exports = withMDX(
             loader: 'cloudinary',
             path: 'https://res.cloudinary.com/gladius/image/upload'
         },
-        i18n: {
+        /* i18n: {
             locales: ['en'],
             defaultLocale: 'en',
-        },
+        }, */
         compress: true, /* gzip compression to compress rendered content and static files */
         generateBuildId: () => 'build', // "set build ID to static value for faster deploy times" Netlify
         /*

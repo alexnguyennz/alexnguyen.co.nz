@@ -23,7 +23,7 @@ const entry = await getEntry("projects", slug);
 const { Content } = await entry.render();
 ---
 
-<div class="slide-up project-item grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+<div class="grid gap-5 sm:gap-8 md:grid-cols-2 xl:grid-cols-5">
   <div class="md:col-span-1 xl:col-span-2">
     <a href={url} target="_blank" rel="noopener" aria-label={name + " link"}>
       <div class="project-image">
@@ -135,7 +135,7 @@ const { Content } = await entry.render();
     </div>
 
     {/* Tags */}
-    <div class="ml-5 flex items-center gap-3 gap-3">
+    <div class="flex items-center gap-3 gap-3">
       {tags.map((tag) => <Tag data={tag} />)}
     </div>
   </div>

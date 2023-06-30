@@ -1,6 +1,6 @@
 Version 3 of my personal site (v1 built with Next.js, v2 built with Deno Fresh).
 
-This site uses Astro, React and Tailwind CSS and is deployed on Netlify.
+This site uses Astro and Tailwind CSS, and is deployed on Netlify.
 
 ### Main Tools
 

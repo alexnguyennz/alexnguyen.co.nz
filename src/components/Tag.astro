@@ -1,0 +1,28 @@
+---
+import { Image } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+
+import Tooltip from "@components/Tooltip.astro";
+
+export interface Props {
+  name: string;
+  slug: string;
+  url: string;
+}
+
+const {
+  data: { name, slug, url },
+} = Astro.props;
+---
+
+<Tooltip title={name}>
+  <a
+    slot="content"
+    href={url}
+    target="_blank"
+    rel="noopener"
+    aria-label={name + " link"}
+  >
+    <Icon name={slug} class="h-8 w-auto fill-[#034AD8]" />
+  </a>
+</Tooltip>

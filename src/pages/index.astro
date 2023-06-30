@@ -1,0 +1,85 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon";
+
+import Layout from "@layouts/Layout.astro";
+import Tool from "@components/Tool.astro";
+import Project from "@components/Project.astro";
+import TypedText from "@components/TypedText.astro";
+
+const tools = (await getCollection("tools")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Layout>
+  <section class="flex py-28 sm:h-screen">
+    <div class="m-auto space-y-10 text-center">
+      <h2 class="text-4xl">Hi, I'm Alex - a web developer.</h2>
+      <h3 class="text-2xl">
+        <a href="#projects" class="contrast-link">
+          My projects <Icon
+            pack="tabler"
+            name="arrow-down"
+            class="mb-1 inline h-6 w-6"
+          />
+        </a>
+      </h3>
+
+      <div class="space-y-5 text-xl">
+        <h3 class="text-2xl">Some cool stuff I&apos;ve worked with:</h3>
+        <ul class="space-y-3 sm:columns-2">
+          {
+            tools.map((tool) => (
+              <Tool
+                name={tool.data.name}
+                slug={tool.data.slug}
+                url={tool.data.url}
+              />
+            ))
+          }
+        </ul>
+      </div>
+
+      <h3 class="text-2xl">
+        Feel free to{" "}
+        <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
+          say hi <Icon
+            pack="tabler"
+            name="mailbox"
+            class="mb-2 inline h-6 w-6"
+          />
+        </a>
+      </h3>
+    </div>
+  </section>
+
+  <section id="projects" class="flex flex-col py-28">
+    <div class="m-auto flex flex-col gap-12 text-center">
+      <TypedText title="/projects" />
+
+      <div class="grid gap-12 text-left xl:grid-cols-2">
+        {
+          projects.map((project) => (
+            <Project
+              body={project.data.body}
+              name={project.data.name}
+              slug={project.data.slug}
+              description={project.data.description}
+              image={project.data.image}
+              url={project.data.url}
+              source={project.data.source}
+              tags={project.data.tags}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

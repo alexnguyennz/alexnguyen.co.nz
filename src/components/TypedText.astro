@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div
+  x-data=`{
+        shown: false,
+        text: '',
+        textArray : ['${title}'],
+        textIndex: 0,
+        charIndex: 0,
+        typeSpeed: 75,
+        cursorSpeed: 500,
+        pauseEnd: 1500,
+        pauseStart: 20,
+        direction: 'forward',
+    }`
+  x-intersect.once="$nextTick(() => {
+        let typingInterval = setInterval(startTyping, $data.typeSpeed);
+
+        function startTyping(){
+            let current = $data.textArray[ $data.textIndex ];
+
+            $data.text = current.substring(0, $data.charIndex);
+
+            if($data.direction == 'forward')
+            {
+                $data.charIndex += 1;
+            }
+        }
+
+        // cursor blink
+        setInterval(function(){
+            if($refs.cursor.classList.contains('hidden'))
+            {
+                $refs.cursor.classList.remove('hidden');
+            }
+            else
+            {
+                $refs.cursor.classList.add('hidden');
+            }
+        }, $data.cursorSpeed);
+    })"
+  class="mx-auto flex h-[56px] items-center justify-center text-center"
+>
+  <div class="relative flex items-center justify-center">
+    <h2 class="text-4xl tracking-tight" x-text="text">{title}</h2>
+    <span class="absolute right-0 -mr-2 h-full w-1 bg-gray-300" x-ref="cursor"
+    ></span>
+  </div>
+</div>

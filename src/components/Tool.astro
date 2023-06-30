@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+  name: string;
+  slug: string;
+  url: string;
+}
+
+const { name, slug, url } = Astro.props;
+---
+
+<li class="grid grid-cols-2 items-center gap-2">
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener"
+    class="justify-self-end"
+    aria-label=`${name} website link`
+  >
+    <Icon name={slug} class="h-8 w-auto" />
+  </a>
+
+  <a
+    class="animated-link justify-self-start"
+    href={url}
+    target="_blank"
+    rel="noopener"
+  >
+    {name}
+  </a>
+</li>

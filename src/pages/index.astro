@@ -18,22 +18,6 @@ const projects = (await getCollection("projects")).sort(
 );
 ---
 
-<script>
-  import Atropos from "atropos";
-
-  import "atropos/css/min";
-
-  document.querySelectorAll(".atropos").forEach((element) => {
-    Atropos({
-      el: element as string,
-      shadow: false,
-      highlight: false,
-      rotateXMax: 5,
-      rotateYMax: 5,
-    });
-  });
-</script>
-
 <Layout>
   <section class="flex py-28 sm:h-screen">
     <div class="m-auto space-y-10 text-center">
@@ -99,3 +83,19 @@ const projects = (await getCollection("projects")).sort(
     </div>
   </section>
 </Layout>
+
+<script>
+  import Atropos from "atropos";
+
+  import "atropos/css/min";
+
+  document.querySelectorAll(".atropos").forEach((element) => {
+    Atropos({
+      el: element as string,
+      shadow: false,
+      highlight: false,
+      rotateXMax: 5,
+      rotateYMax: 5,
+    });
+  });
+</script>

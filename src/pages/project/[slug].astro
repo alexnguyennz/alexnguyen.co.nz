@@ -7,6 +7,7 @@ import { marked } from "marked";
 import Layout from "@layouts/Layout.astro";
 import Tooltip from "@components/Tooltip.astro";
 import TypedText from "@components/TypedText.astro";
+import Tag from "../../components/Tag.astro";
 
 const projects = await getCollection("projects");
 
@@ -71,30 +72,40 @@ const readme = marked.parse(markdown);
           aria-label={project.data.name + " link"}
           class="xl:col-span-2"
         >
-          <div class="relative w-full">
-            <!--<Picture
-              src={import(
-                `../../assets/images/projects/${project.data.slug}.png`
-              )}
-              widths={[200, 400, 800]}
-              alt={project.data.name}
-              loading="eager"
-              fetchPriority="high"
-            />-->
-            <Image
-              src={import(
-                `../../assets/images/projects/${project.data.slug}.png`
-              )}
-              format="webp"
-              width={800}
-              style={{ width: "100%", height: "auto" }}
-              alt={project.data.name}
-              loading="eager"
-              fetchPriority="high"
-            />
+          <div class="atropos">
+            <div class="atropos-scale">
+              <div class="atropos-rotate">
+                <div class="atropos-inner p-4">
+                  <div class="relative w-full">
+                    <!--<Picture
+                    src={import(
+                      `../../assets/images/projects/${project.data.slug}.png`
+                    )}
+                    widths={[200, 400, 800]}
+                    alt={project.data.name}
+                    loading="eager"
+                    fetchPriority="high"
+                  />-->
+                    <Image
+                      src={import(
+                        `../../assets/images/projects/${project.data.slug}.png`
+                      )}
+                      format="webp"
+                      width={800}
+                      style={{ width: "100%", height: "auto" }}
+                      alt={project.data.name}
+                      loading="eager"
+                      fetchPriority="high"
+                    />
 
-            <div class="absolute bottom-0 right-0 bg-indigo-700 p-2 text-lg">
-              {project.data.date}
+                    <div
+                      class="absolute bottom-0 right-0 bg-indigo-700 p-2 text-lg"
+                    >
+                      {project.data.date}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </a>
@@ -124,3 +135,17 @@ const readme = marked.parse(markdown);
     @apply leading-loose;
   }
 </style>
+
+<script>
+  import Atropos from "atropos";
+
+  import "atropos/css/min";
+
+  Atropos({
+    el: ".atropos",
+    shadow: false,
+    highlight: false,
+    rotateXMax: 5,
+    rotateYMax: 5,
+  });
+</script>

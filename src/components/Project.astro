@@ -23,120 +23,133 @@ const entry = await getEntry("projects", slug);
 const { Content } = await entry.render();
 ---
 
-<div class="grid gap-5 sm:gap-8 md:grid-cols-2 xl:grid-cols-5">
-  <div class="md:col-span-1 xl:col-span-2">
-    <a href={url} target="_blank" rel="noopener" aria-label={name + " link"}>
-      <div class="project-image">
-        <!-- <Picture
-          formats="webp"
-          src={import(`../assets/images/projects/${slug}.png`)}
-          widths={[200, 400]}
-          sizes="(max-width: 400px) 100vw, 400px"
-          alt={name}
-        />-->
-        <Image
-          src={import(`../assets/images/projects/${slug}.png`)}
-          format="webp"
-          width={500}
-          style={{ width: "100%", height: "auto" }}
-          alt={name}
-          loading="lazy"
-        />
-      </div>
-    </a>
-  </div>
+<div class="atropos">
+  <div class="atropos-scale">
+    <div class="atropos-rotate">
+      <div class="atropos-inner p-4">
+        <div class="grid gap-5 sm:gap-8 md:grid-cols-2 xl:grid-cols-5">
+          <div class="md:col-span-1 xl:col-span-2">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener"
+              aria-label={name + " link"}
+            >
+              <div class="project-image">
+                <!-- <Picture
+                  formats="webp"
+                  src={import(`../assets/images/projects/${slug}.png`)}
+                  widths={[200, 400]}
+                  sizes="(max-width: 400px) 100vw, 400px"
+                  alt={name}
+                />-->
+                <Image
+                  src={import(`../assets/images/projects/${slug}.png`)}
+                  format="webp"
+                  width={500}
+                  style={{ width: "100%", height: "auto" }}
+                  alt={name}
+                  loading="lazy"
+                />
+              </div>
+            </a>
+          </div>
 
-  <div class="col-span-1 space-y-3 xl:col-span-3">
-    <div class="flex items-center justify-between">
-      <h3 class="text-2xl">
-        <a
-          href={`/project/${slug}`}
-          aria-label={name + " project page"}
-          rel="prefetch"
-        >
-          {name}
-        </a>
-      </h3>
+          <div class="col-span-1 space-y-3 xl:col-span-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-2xl">
+                <a
+                  href={`/project/${slug}`}
+                  aria-label={name + " project page"}
+                  rel="prefetch"
+                >
+                  {name}
+                </a>
+              </h3>
 
-      <div class="flex gap-3">
-        <Tooltip title="View">
-          <a
-            slot="content"
-            href={url}
-            target="_blank"
-            rel="noopener"
-            aria-label={name + " link"}
-          >
-            <Icon pack="tabler" name="external-link" class="h-6 w-6" />
-          </a>
-        </Tooltip>
+              <div class="flex gap-3">
+                <Tooltip title="View" position="bottom">
+                  <a
+                    slot="content"
+                    href={url}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={name + " link"}
+                  >
+                    <Icon pack="tabler" name="external-link" class="h-6 w-6" />
+                  </a>
+                </Tooltip>
 
-        <Tooltip title="More info">
-          <a
-            slot="content"
-            href={`/project/${slug}`}
-            aria-label={name + " project page"}
-            class="logo"
-            rel="prefetch"
-          >
-            <Icon pack="tabler" name="folder" class="h-6 w-6" />
-          </a>
-        </Tooltip>
+                <Tooltip title="More info" position="bottom">
+                  <a
+                    slot="content"
+                    href={`/project/${slug}`}
+                    aria-label={name + " project page"}
+                    class="logo"
+                    rel="prefetch"
+                  >
+                    <Icon pack="tabler" name="folder" class="h-6 w-6" />
+                  </a>
+                </Tooltip>
 
-        <Tooltip title="Code">
-          <a
-            slot="content"
-            href={source}
-            target="_blank"
-            rel="noopener"
-            aria-label={name + " link"}
-            class="logo"
-          >
-            <Icon pack="tabler" name="code" class="h-6 w-6" />
-          </a>
-        </Tooltip>
-      </div>
-    </div>
+                <Tooltip title="Code" position="bottom">
+                  <a
+                    slot="content"
+                    href={source}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={name + " link"}
+                    class="logo"
+                  >
+                    <Icon pack="tabler" name="code" class="h-6 w-6" />
+                  </a>
+                </Tooltip>
+              </div>
+            </div>
 
-    <div
-      x-data="{
+            <div
+              x-data="{
         activeAccordion: '',
         setActiveAccordion(id) {
             this.activeAccordion = (this.activeAccordion == id) ? '' : id
         }
     }"
-      class="relative mx-auto w-full overflow-hidden border border-gray-300"
-    >
-      <div x-data="{ id: $id('accordion') }">
-        <button
-          @click="setActiveAccordion(id)"
-          class="flex w-full items-center justify-between p-3 px-5 text-lg"
-        >
-          <span>{description}</span>
-          <svg
-            class="h-5 w-5 duration-200 ease-out"
-            :class="{ 'rotate-180': activeAccordion==id }"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><polyline points="6 9 12 15 18 9"></polyline></svg
-          >
-        </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
-          <div class="markdown-body p-5 pt-0 text-lg leading-loose">
-            <Content />
+              class="relative mx-auto w-full overflow-hidden border border-gray-300"
+            >
+              <div x-data="{ id: $id('accordion') }">
+                <button
+                  @click="setActiveAccordion(id)"
+                  class="flex w-full items-center justify-between p-3 px-5 text-lg"
+                >
+                  <span>{description}</span>
+                  <svg
+                    class="h-5 w-5 duration-200 ease-out"
+                    :class="{ 'rotate-180': activeAccordion==id }"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><polyline points="6 9 12 15 18 9"></polyline></svg
+                  >
+                </button>
+                <div x-show="activeAccordion==id" x-collapse x-cloak>
+                  <div class="markdown-body p-5 pt-0 text-lg leading-loose">
+                    <Content />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Tags */}
+            <div class="flex items-center gap-3 gap-3">
+              {tags.map((tag) => <Tag data={tag} />)}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    {/* Tags */}
-    <div class="flex items-center gap-3 gap-3">
-      {tags.map((tag) => <Tag data={tag} />)}
     </div>
   </div>
 </div>

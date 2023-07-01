@@ -5,7 +5,7 @@ export interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
+const { title, position } = Astro.props;
 ---
 
 <div
@@ -13,7 +13,7 @@ const { title } = Astro.props;
         tooltipVisible: false,
         tooltipText: '${title}',
         tooltipArrow: true,
-        tooltipPosition: 'top',
+        tooltipPosition: '${position}',
     }`
   x-init="$refs.content.addEventListener('mouseenter', () => { tooltipVisible = true; }); $refs.content.addEventListener('mouseleave', () => { tooltipVisible = false; });"
   class="relative"
@@ -22,7 +22,7 @@ const { title } = Astro.props;
     x-ref="tooltip"
     x-show="tooltipVisible"
     :class="{ '-top-1 left-1/2 -translate-x-1/2 -mt-0.5 -translate-y-full' : tooltipPosition == 'top', 'top-1/2 -translate-y-1/2 -ml-0.5 left-0 -translate-x-full' : tooltipPosition == 'left', 'bottom-0 left-1/2 -translate-x-1/2 -mb-0.5 translate-y-full' : tooltipPosition == 'bottom', 'top-1/2 -translate-y-1/2 -mr-0.5 right-0 translate-x-full' : tooltipPosition == 'right' }"
-    class="absolute w-auto"
+    class="absolute z-10 w-auto"
     x-cloak
   >
     <div

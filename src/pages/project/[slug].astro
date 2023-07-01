@@ -37,7 +37,7 @@ const readme = marked.parse(markdown);
         <TypedText title={project.data.name} />
 
         <div class="flex gap-3">
-          <Tooltip title="View">
+          <Tooltip title="View" position="top">
             <a
               slot="content"
               href={project.data.url}
@@ -49,7 +49,7 @@ const readme = marked.parse(markdown);
             </a>
           </Tooltip>
 
-          <Tooltip title="Code">
+          <Tooltip title="Code" position="top">
             <a
               slot="content"
               href={project.data.source}

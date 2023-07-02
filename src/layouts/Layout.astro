@@ -128,7 +128,7 @@ const { title } = Astro.props;
   }
 
   header nav a {
-    @apply text-3xl tracking-tight transition hover:text-indigo-400;
+    @apply text-2xl tracking-tight transition hover:text-indigo-400 sm:text-3xl;
   }
 
   /***** Components ******/
@@ -145,9 +145,10 @@ const { title } = Astro.props;
     transition: top 0.1s ease-out, left 0.1s ease-out, box-shadow 0.05s ease-out;
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+    transition-duration: 200ms;
   }
 
+  .contrast-link:hover,
   .contrast-link:active {
     top: 4px;
     left: 4px;
@@ -180,5 +181,14 @@ const { title } = Astro.props;
   .markdown-body ul {
     list-style-type: square;
     padding-left: 1.5rem;
+  }
+
+  /* Atropos */
+  .atropos-scale {
+    pointer-events: none;
+  }
+
+  .atropos-rotate {
+    pointer-events: all;
   }
 </style>

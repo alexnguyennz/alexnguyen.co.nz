@@ -26,7 +26,7 @@ const { Content } = await entry.render();
 <div class="atropos">
   <div class="atropos-scale">
     <div class="atropos-rotate">
-      <div class="atropos-inner flex flex-col">
+      <div class="atropos-inner h-auto">
         <a
           slot="content"
           href={url}
@@ -37,7 +37,7 @@ const { Content } = await entry.render();
             src={import(`../assets/images/projects/${slug}.png`)}
             format="webp"
             width={500}
-            class={"sm:h-60 object-contain bg-white"}
+            class={"sm:h-60 object-contain bg-white opacity-90 transition-opacity"}
             alt={name}
             loading="lazy"
           /></a
@@ -139,10 +139,3 @@ const { Content } = await entry.render();
     </div>
   </div>
 </div>
-
-<!--<style>
-  h3 {
-    font-family: "FF", system-ui, san-serif;
-    font-size: 1.75rem !important;
-  }
-</style>-->

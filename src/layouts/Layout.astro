@@ -72,13 +72,20 @@ const { title } = Astro.props;
   @font-face {
     font-family: "FF";
     src: url("/fonts/ff.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
   }
 
+  @font-face {
+    font-family: "Adjusted Trebuchet MS Fallback";
+    src: local(Trebuchet MS);
+    size-adjust: 76%;
+    ascent-override: normal;
+    descent-override: normal;
+    line-gap-override: normal;
+  }
+
   header {
-    font-family: "FF", system-ui, san-serif;
+    font-family: "FF", "Adjusted Trebuchet MS Fallback", system-ui, san-serif;
   }
 
   body {

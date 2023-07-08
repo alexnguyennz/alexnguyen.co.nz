@@ -1,28 +1,25 @@
 ---
 import { Icon } from "astro-icon";
-
 import Tooltip from "@components/Tooltip.astro";
 ---
 
-<footer class="z-50 my-10 mt-auto flex justify-center gap-5">
+<footer class="z-10 my-10 mt-auto flex justify-center gap-5">
   <Tooltip title="Get in touch" position="top">
     <a
       slot="content"
       href="mailto:me@alexnguyen.co.nz"
-      class="transition hover:scale-110"
       aria-label="Alex Nguyen's email address"
     >
       <Icon pack="tabler" name="mailbox" class="h-8 w-8" />
     </a>
   </Tooltip>
-  <Tooltip title="My GitHub profile" position="top">
+  <Tooltip title="My GitHub" position="top">
     <a
       slot="content"
       href="https://github.com/alexnguyennz"
       target="_blank"
       rel="noopener"
       aria-label="Alex Nguyen's GitHub page"
-      class="transition hover:scale-110"
     >
       <Icon pack="tabler" name="brand-github" class="h-8 w-8" />
     </a>

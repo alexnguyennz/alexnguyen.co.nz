@@ -21,7 +21,7 @@ const projects = (await getCollection("projects")).sort(
 <Layout>
   <section class="flex py-28 sm:h-screen">
     <div class="m-auto space-y-10 text-center">
-      <h2 class="text-4xl">Hi, I'm Alex - a web developer.</h2>
+      <h2 class="text-4xl">Hi, I'm Alex — a web developer</h2>
       <h3 class="text-2xl">
         <a href="#projects" class="contrast-link">
           My projects <Icon
@@ -60,28 +60,26 @@ const projects = (await getCollection("projects")).sort(
     </div>
   </section>
 
-  <section id="projects" class="flex flex-col py-28">
-    <div class="m-auto flex flex-col gap-12 text-center">
-      <TypedText title="/projects" />
+  <section id="projects" class="flex flex-col gap-12 py-28">
+    <TypedText title="/projects" />
 
-      <div
-        class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4"
-      >
-        {
-          projects.map((project) => (
-            <Project
-              body={project.data.body}
-              name={project.data.name}
-              slug={project.data.slug}
-              description={project.data.description}
-              image={project.data.image}
-              url={project.data.url}
-              source={project.data.source}
-              tags={project.data.tags}
-            />
-          ))
-        }
-      </div>
+    <div
+      class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4"
+    >
+      {
+        projects.map((project) => (
+          <Project
+            body={project.data.body}
+            name={project.data.name}
+            slug={project.data.slug}
+            description={project.data.description}
+            image={project.data.image}
+            url={project.data.url}
+            source={project.data.source}
+            tags={project.data.tags}
+          />
+        ))
+      }
     </div>
   </section>
 </Layout>

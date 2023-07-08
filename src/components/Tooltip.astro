@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon";
-
 export interface Props {
   title: string;
 }
@@ -33,7 +31,7 @@ const { title, position } = Astro.props;
       x-transition:leave="transition ease-in duration-100"
       x-transition:leave-start="opacity-100 scale-100 translate-x-0"
       x-transition:leave-end="opacity-0 scale-90 -translate-x-2"
-      class="relative border border-gray-300 bg-[#05082F] px-2 py-1 text-gray-200"
+      class="tooltip-box relative rounded-md bg-[#05082F] px-2 py-1 text-gray-200"
     >
       <p
         x-text="tooltipText"
@@ -43,12 +41,12 @@ const { title, position } = Astro.props;
       <div
         x-ref="tooltipArrow"
         x-show="tooltipArrow"
-        :class="{ 'bottom-0 -translate-x-1/2 left-1/2 w-2.5 translate-y-full' : tooltipPosition == 'top', 'right-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px translate-x-full' : tooltipPosition == 'left', 'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full' : tooltipPosition == 'bottom', 'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full' : tooltipPosition == 'right' }"
+        :class="{ '-bottom-0.5 -translate-x-1/2 left-1/2 w-5 translate-y-full' : tooltipPosition == 'top', 'right-0 -translate-y-1/2 top-1/2 h-5 -mt-px translate-x-full' : tooltipPosition == 'left', 'top-0 -translate-x-1/2 left-1/2 w-2.5 -translate-y-full' : tooltipPosition == 'bottom', 'left-0 -translate-y-1/2 top-1/2 h-2.5 -mt-px -translate-x-full' : tooltipPosition == 'right' }"
         class="absolute inline-flex items-center justify-center overflow-hidden"
       >
         <div
           :class="{ 'origin-top-left -rotate-45' : tooltipPosition == 'top', 'origin-top-left rotate-45' : tooltipPosition == 'left', 'origin-bottom-left rotate-45' : tooltipPosition == 'bottom', 'origin-top-right -rotate-45' : tooltipPosition == 'right' }"
-          class="h-1.5 w-1.5 transform border border-gray-300 bg-[#05082F]"
+          class="tooltip-arrow h-4 w-4 transform bg-[#05082F]"
         >
         </div>
       </div>
@@ -59,3 +57,16 @@ const { title, position } = Astro.props;
     <slot name="content" />
   </div>
 </div>
+
+<style>
+  .tooltip-box {
+    border: 6px solid transparent;
+    border-image: var(--border) 20 round;
+  }
+
+  .tooltip-arrow {
+    border: 4px solid transparent;
+    border-image: var(--border) 12 round;
+    border-radius: 9999px;
+  }
+</style>

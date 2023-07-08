@@ -7,30 +7,28 @@ import TypedText from "@components/TypedText.astro";
 ---
 
 <Layout title="404 Page Not Found -">
-  <section class="container flex py-28">
-    <div class="m-auto flex flex-col items-center gap-10">
-      <TypedText title="404 Page Not Found" />
+  <section class="container flex flex-col items-center py-28">
+    <TypedText title="404 Page Not Found" />
 
-      <Image
-        src={import("../assets/images/404.png")}
-        format="webp"
-        alt="sad cartoon image"
-        width="261"
-        height="225"
-        class={"mx-auto"}
-        loading="eager"
-        fetchPriority="high"
-      />
+    <Image
+      src={import("../assets/images/404.png")}
+      format="webp"
+      alt="sad chocobo image"
+      width="261"
+      height="225"
+      class={"mx-auto"}
+      loading="eager"
+      fetchPriority="high"
+    />
 
-      <h3 class="mt-6 text-2xl">
-        <a href="/" class="contrast-link px-2 py-1">
-          Home <Icon
-            pack="tabler"
-            name="arrow-back"
-            class="mb-1 inline h-6 w-6"
-          />
-        </a>
-      </h3>
-    </div>
+    <h3 class="mt-6 text-2xl">
+      <a href="/" class="contrast-link">
+        Home <Icon
+          pack="tabler"
+          name="arrow-back"
+          class="mb-1 inline h-6 w-6"
+        />
+      </a>
+    </h3>
   </section>
 </Layout>

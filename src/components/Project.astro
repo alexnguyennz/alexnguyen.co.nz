@@ -23,7 +23,7 @@ const entry = await getEntry("projects", slug);
 const { Content } = await entry.render();
 ---
 
-<div class="atropos">
+<article class="atropos">
   <div class="atropos-scale">
     <div class="atropos-rotate">
       <div class="atropos-inner h-auto">
@@ -43,93 +43,85 @@ const { Content } = await entry.render();
           /></a
         >
 
-        <div>
-          <div class={`space-y-2 pt-5 text-center`}>
-            <div class="flex items-center justify-center gap-3">
-              <Tooltip title="View" position="top">
-                <a
-                  slot="content"
-                  href={url}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label={name + " link"}
-                >
-                  <Icon pack="tabler" name="external-link" class="h-6 w-6" />
-                </a>
-              </Tooltip>
-
-              <Tooltip title="More info" position="top">
-                <a
-                  slot="content"
-                  href={`/project/${slug}`}
-                  aria-label={name + " project page"}
-                  class="logo"
-                >
-                  <Icon pack="tabler" name="folder" class="h-6 w-6" />
-                </a>
-              </Tooltip>
-
-              <Tooltip title="Code" position="top">
-                <a
-                  slot="content"
-                  href={source}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label={name + " link"}
-                  class="logo"
-                >
-                  <Icon pack="tabler" name="code" class="h-6 w-6" />
-                </a>
-              </Tooltip>
-            </div>
-            <h3 class="text-2xl">
+        <div class="mt-5 space-y-1">
+          <div class="flex items-center justify-center gap-3">
+            <Tooltip title="Check it out" position="top">
               <a
+                slot="content"
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                aria-label={name + " link"}
+              >
+                <Icon pack="tabler" name="external-link" class="h-6 w-6" />
+              </a>
+            </Tooltip>
+
+            <Tooltip title="More info" position="top">
+              <a
+                slot="content"
                 href={`/project/${slug}`}
                 aria-label={name + " project page"}
-                rel="prefetch"
+                class="logo"
               >
-                {name}
+                <Icon pack="tabler" name="folder" class="h-6 w-6" />
               </a>
-            </h3>
-          </div>
+            </Tooltip>
 
-          <div
-            x-data="{
+            <Tooltip title="Source Code" position="top">
+              <a
+                slot="content"
+                href={source}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                aria-label={name + " link"}
+                class="logo"
+              >
+                <Icon pack="tabler" name="code" class="h-6 w-6" />
+              </a>
+            </Tooltip>
+          </div>
+          <h3 class="text-center text-2xl">
+            <a
+              href={`/project/${slug}`}
+              aria-label={name + " project page"}
+              rel="prefetch"
+            >
+              {name}
+            </a>
+          </h3>
+        </div>
+
+        <div
+          x-data="{
         activeAccordion: '',
         setActiveAccordion(id) {
             this.activeAccordion = (this.activeAccordion == id) ? '' : id
         }
     }"
-            class="relative mx-auto w-full overflow-hidden"
-          >
-            <div x-data="{ id: $id('accordion') }">
-              <button
-                @click="setActiveAccordion(id)"
-                class="flex w-full flex-col items-center justify-center p-3 text-lg"
+          class="relative mx-auto w-full overflow-hidden"
+        >
+          <div x-data="{ id: $id('accordion') }">
+            <button
+              @click="setActiveAccordion(id)"
+              class="flex w-full flex-col items-center justify-center p-3 text-lg"
+            >
+              <span>{description}</span>
+              <Icon
+                pack="tabler"
+                name="chevron-down"
+                class="h-6 w-6 duration-200 ease-out"
+                :class="{ '-rotate-180': activeAccordion==id }"
+              />
+            </button>
+            <div x-show="activeAccordion==id" x-collapse x-cloak>
+              <div
+                class="markdown-body flex justify-center p-3 pt-0 text-lg leading-loose"
               >
-                <span>{description}</span>
-                <svg
-                  class="h-6 w-6 duration-200 ease-out"
-                  :class="{ 'rotate-180': activeAccordion==id }"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><polyline points="6 9 12 15 18 9"></polyline></svg
-                >
-              </button>
-              <div x-show="activeAccordion==id" x-collapse x-cloak>
-                <div
-                  class="markdown-body flex justify-center p-3 pt-0 text-lg leading-loose"
-                >
-                  <Content />
-                </div>
-                <div class="mb-5 flex items-center justify-center gap-3">
-                  {tags.map((tag) => <Tag data={tag} />)}
-                </div>
+                <Content />
+              </div>
+              <div class="mb-5 flex items-center justify-center gap-3">
+                {tags.map((tag) => <Tag data={tag} />)}
               </div>
             </div>
           </div>
@@ -137,4 +129,4 @@ const { Content } = await entry.render();
       </div>
     </div>
   </div>
-</div>
+</article>

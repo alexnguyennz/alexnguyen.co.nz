@@ -100,11 +100,21 @@ const { title } = Astro.props;
       default;
   }
 
+  ::selection {
+    color: black;
+    background-color: #c7d2fe;
+  }
+
   a,
   button,
   #logo-canvas {
     cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAYAAAA2Lt7lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAEwSURBVEhLzZUtFoJAEMfXj2AwGAwcgUgkGDyAwSMQPICRSDQaiUSjRyAajXsAg4FgMNDQGXcUF9gH6KC/9+bN7IPHzH92dhEmLMvOwNSyFX3l2egpXwAq94I1xlGwRX8+y8r3q2BXUID6HsVxdklTND8M0drsCbuC/0xArarTMnYFQ+UbsdmF6KWU6O9j/FShjzK7gmc26iUdLtu2xdJ1Md4fDuipYngG0DqPfij5FeiVUwXQZ1JAkBIdkxJ2BYPxeBpAsItCMXMccZ2MhDN3xWqxwBfyyNNJRe8kSaKiF8f4oZZdQSEBTAhNyTfoTgFMCBhMjj49n8CuoNFJrsJ0Dgr/2Pz1m09WhunDRHctKqOsbUCdS474nQKonir3PQ+9jn6NA7qS/9iDJnS8B0LcAFzijPYwhg80AAAAAElFTkSuQmCC),
-      pointer !important;
+      pointer;
+  }
+
+  a:focus {
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAMAAAAB8C7XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAPUExURRgYKHiYmKDAwPD4+AAAAJeGRxwAAAAFdFJOU/////8A+7YOUwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAGxJREFUKFOd0NEOgCAIhWFE3/+Z45xopk6h2Lr5vyaZtM38B5nfiEBKmegMIlorCMOcBlVyBGKbDRDx2ID2gMyjQBinE2Av+hdQnpQHz2l4XfCeDn7LMQdAG/6UBeY9WH6+zCkC7O/DwLxAaxfDjAZuz7iCjgAAAABJRU5ErkJggg==),
+      default;
   }
 
   /******* Scrollbar ******/

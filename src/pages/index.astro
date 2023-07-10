@@ -5,6 +5,8 @@ import { getCollection } from "astro:content";
 import { Icon } from "astro-icon";
 
 import Layout from "@layouts/Layout.astro";
+import Logo from "@components/Logo.astro";
+
 import Tool from "@components/Tool.astro";
 import Project from "@components/Project.astro";
 import TypedText from "@components/TypedText.astro";
@@ -20,16 +22,11 @@ const projects = (await getCollection("projects")).sort(
 
 <Layout>
   <section class="flex py-28 sm:h-screen">
-    <div class="m-auto space-y-10 text-center">
-      <div>
-        <canvas
-          id="logo-canvas"
-          width="150"
-          height="80"
-          class="mx-auto h-auto w-1/2 transition duration-500 hover:scale-125"
-        ></canvas>
-        <h2 class="text-4xl">Hi, I'm Alex — a web developer</h2>
-      </div>
+    <div class="m-auto max-w-xl grow space-y-10 text-center">
+      <Logo />
+
+      <h2 class="text-4xl">Hi, I'm Alex — a web developer.</h2>
+
       <h3 class="text-2xl">
         <a href="#projects" class="contrast-link">
           My projects <Icon
@@ -93,56 +90,6 @@ const projects = (await getCollection("projects")).sort(
 </Layout>
 
 <script>
-  import Zdog from "zdog";
-
-  let isMoving = false;
-
-  const logo = new Zdog.Illustration({
-    element: "#logo-canvas",
-    zoom: 1,
-    dragRotate: true,
-    onDragStart: () => (isMoving = false),
-    onDragEnd: () => (isMoving = true),
-  });
-
-  const logoGroup = new Zdog.Group({
-    addTo: logo,
-    translate: { z: 20 },
-  });
-
-  new Zdog.Shape({
-    addTo: logoGroup,
-    path: [
-      { x: -50, y: 20 },
-      { x: 45, y: -40 },
-      { x: 40, y: 20 },
-    ],
-    fill: true,
-    stroke: false,
-    color: "black",
-  });
-
-  new Zdog.Shape({
-    addTo: logoGroup,
-    path: [
-      { x: 25, y: -20 },
-      { x: 20, y: 20 },
-      { x: -40, y: 20 },
-    ],
-    fill: true,
-    stroke: false,
-    color: "#ED1F24",
-  });
-
-  function animate() {
-    logo.rotate.x = 0; // lock x rotation
-    logo.rotate.y += isMoving ? 0.01 : 0;
-    logo.updateRenderGraph();
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-
   // Animate project cards
   import Atropos from "atropos";
 

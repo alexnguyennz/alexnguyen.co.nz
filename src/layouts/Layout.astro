@@ -1,6 +1,7 @@
 ---
 import Header from "@layouts/Header.astro";
 import Footer from "@layouts/Footer.astro";
+import Waves from "./Waves.astro";
 
 export interface Props {
   title: string;
@@ -41,9 +42,11 @@ const { title } = Astro.props;
     <script src="../assets/js/alpinejs_collapse@3.x.x.min.js"></script>
   </head>
   <body class="flex min-h-screen flex-col">
+    <Waves />
+
     <Header />
 
-    <main class="container mx-auto px-5">
+    <main class="container z-10 mx-auto px-5">
       <slot />
     </main>
 
@@ -93,7 +96,7 @@ const { title } = Astro.props;
     background: linear-gradient(
       0deg,
       rgba(5, 8, 47, 1) 0%,
-      rgba(83, 83, 169, 1) 100%
+      rgba(6, 182, 212, 1) 100%
     );
     color: white;
     cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAaCAYAAABCfffNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAH3SURBVEhLrZavT8NAFMdvwy7BNGRiAlmJ3J+BRE4ikZPDIZGTk8j9AZMI5GQlcgkVhEzMELjPW1/zertb28An6d5du3vfez+umxuP8x8u55zaf2eA49niQSarxbNYZbcrBtXwTwwrW6OCYCOzEXOZeSu1yHw2c8X7VsahkHU2Xy65V82EVjERyfPGoihPL8uGODBHFHQzMUGpCQ5up9Pqlne4WonVGvEciqIQm8LW1NZTIpnf3bv125vciMFzaIs4jFRB5Oo4dLUQ9QFdZBcjpNc5bNqGPqwPBrpbC466pkqJRXPSwmE0SmznqWhUSKMRER8NJrpbGiIU7IuIeMVGmBqN7bgUXaKp06XtF6sNdBFMIb2MGsq2z/X0W861uU11+A7kMF56+xl2RaoOKaGwnirEoSRdX0xwah3rqe9CrGFoJm0oRKQu+fUNRoQoZqqgXWpDFDQTSOG92rfMOhJLV2xDpF+F6u4CjQa6dhOpsulCUOur9oKP/b58HI2yBePJ9CiUTyZiqU15OLj1ZuNet1uXZZncV5iXZSlp5nvAHLT4jUigfuP6qBDgi/bsMA53H3Yia1QAGr/hFImOIJdqFTvXNITObbrBrxH/vf4osAksIlYg5Vw5SVcbGgXg3ArgPBSA3iJAvtt2b+mVLo+kK6hViw/nfgEcFwLL85sMOAAAAABJRU5ErkJggg==),
@@ -127,7 +130,7 @@ const { title } = Astro.props;
   }
 
   body::-webkit-scrollbar-thumb {
-    background-color: rgb(83, 83, 169);
+    background-color: #155e75;
     border: 4px solid transparent;
     background-clip: content-box;
     border-radius: 10px;
@@ -158,7 +161,7 @@ const { title } = Astro.props;
 
   /******* Home Header ********/
   header div.container {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border: 12px solid transparent;
     border-image: var(--border) 20 round;
   }
@@ -231,10 +234,6 @@ const { title } = Astro.props;
 
   .atropos-rotate {
     pointer-events: all;
-  }
-
-  .atropos-inner:hover img {
-    opacity: 100;
   }
 </style>
 

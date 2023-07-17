@@ -1,9 +1,9 @@
-<div class="z-50 opacity-100">
+<div class="relative z-30 opacity-100">
   <canvas
     id="logo-canvas"
     width="150"
     height="80"
-    class="z-90 mx-auto h-auto w-1/2 opacity-100"></canvas>
+    class="bottom-0 left-0 right-0 mx-auto h-auto w-1/2 sm:absolute"></canvas>
 </div>
 
 <script>
@@ -54,7 +54,7 @@
     const tween = Zdog.easeInOut(progress % 1, 10); // apply easing to rotation
 
     logo.rotate.x = 0; // lock x rotation
-    // logo.rotate.y = tween * Zdog.TAU;
+    logo.rotate.y = tween * Zdog.TAU;
 
     ticker++;
 

@@ -1,8 +1,8 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import { Image, Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
-import { marked } from "marked";
+import { marked } from 'marked';
 
 import Layout from "@layouts/Layout.astro";
 import Tooltip from "@components/Tooltip.astro";
@@ -129,7 +129,6 @@ const readme = marked.parse(markdown);
 
 <script>
   import Atropos from "atropos";
-
   import "atropos/css/min";
 
   Atropos({

@@ -1,11 +1,11 @@
 ---
-import { Image, Picture } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
-import Tag from "../components/Tag.astro";
+import Tag from "@components/Tag.astro";
 import Tooltip from "@components/Tooltip.astro";
 
-export interface Props {
+interface Props {
   body: string;
   name: string;
   slug: string;

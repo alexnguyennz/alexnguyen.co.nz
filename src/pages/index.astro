@@ -12,11 +12,11 @@ import Project from "@components/Project.astro";
 import TypedText from "@components/TypedText.astro";
 
 const tools = (await getCollection("tools")).sort(
-  (a, b) => a.data.order - b.data.order
+  (a, b) => a.data.order - b.data.order,
 );
 
 const projects = (await getCollection("projects")).sort(
-  (a, b) => a.data.order - b.data.order
+  (a, b) => a.data.order - b.data.order,
 );
 ---
 
@@ -69,7 +69,7 @@ const projects = (await getCollection("projects")).sort(
     <TypedText title="/projects" />
 
     <div
-      class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4"
+      class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
     >
       {
         projects.map((project) => (
@@ -90,17 +90,16 @@ const projects = (await getCollection("projects")).sort(
 </Layout>
 
 <script>
-  // Animate project cards
   import Atropos from "atropos";
-
   import "atropos/css/min";
 
   document.querySelectorAll(".atropos").forEach((element) => {
     Atropos({
       el: element as string,
       shadow: false,
-      rotateXMax: 8,
-      rotateYMax: 8,
+      highlight: false,
+      rotateXMax: 12,
+      rotateYMax: 12,
       rotateTouch: false,
     });
   });

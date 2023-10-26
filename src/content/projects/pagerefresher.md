@@ -17,11 +17,5 @@ tags:
       'url': 'https://www.microsoft.com/en-us/windows/microsoft-edge',
     }
 date: 07/20 - 08/20
-order: 6
-hidden: true
+order: 3
 ---
-
-- tab based reloads
-- customizable intervals
-- blocks automatic reloads
-- bypasses local cache

@@ -12,14 +12,11 @@ tags:
       'url': 'https://kit.svelte.dev/',
     }
   - {
-      'name': 'Flowbite',
-      'slug': 'flowbite',
-      'url': 'https://flowbite-svelte.com',
-    }
+    'name': 'Melt UI',
+    'slug': 'meltui',
+    'url': 'https://www.melt-ui.com/',
+  }
 date: 01/23 - 02/23
-order: 4
+order: 1
 ---
 
-- [SvelteKit](https://kit.svelte.dev) - web framework
-- [Flowbite](https://flowbite-svelte.com) - UI components
-- [Cloudinary](https://cloudinary.com) - image hosting

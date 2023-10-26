@@ -4,12 +4,11 @@ export const prerender = true;
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon";
 
-import Layout from "@layouts/Layout.astro";
-import Logo from "@components/Logo.astro";
+import Layout from "@/layouts/Layout.astro";
+import Logo from "@/components/Logo.astro";
 
-import Tool from "@components/Tool.astro";
-import Project from "@components/Project.astro";
-import TypedText from "@components/TypedText.astro";
+import Tool from "@/components/Tool.astro";
+import Project from "@/components/Project.astro";
 
 const tools = (await getCollection("tools")).sort(
   (a, b) => a.data.order - b.data.order,
@@ -29,11 +28,7 @@ const projects = (await getCollection("projects")).sort(
 
       <h3 class="text-2xl">
         <a href="#projects" class="contrast-link">
-          My projects <Icon
-            pack="tabler"
-            name="arrow-down"
-            class="mb-1 inline h-6 w-6"
-          />
+          My projects <Icon pack="tabler" name="arrow-down" class="h-6 w-6" />
         </a>
       </h3>
 
@@ -53,12 +48,11 @@ const projects = (await getCollection("projects")).sort(
       </div>
 
       <h3 class="text-2xl">
-        Feel free to{" "}
         <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
-          say hi <Icon
+          Feel free to say hi <Icon
             pack="tabler"
             name="mailbox"
-            class="mb-2 inline h-6 w-6"
+            class="h-6 w-6"
           />
         </a>
       </h3>
@@ -66,7 +60,7 @@ const projects = (await getCollection("projects")).sort(
   </section>
 
   <section id="projects" class="flex flex-col gap-12 py-28">
-    <TypedText title="/projects" />
+    <h2>/projects</h2>
 
     <div
       class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"

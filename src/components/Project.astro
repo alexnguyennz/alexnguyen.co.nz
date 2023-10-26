@@ -2,8 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
-import Tag from "@components/Tag.astro";
-import Tooltip from "@components/Tooltip.astro";
+import Tag from "@/components/Tag.astro";
+import { Tooltip } from "@/components/Tooltip";
 
 interface Props {
   body: string;
@@ -27,27 +27,21 @@ const { Content } = await entry.render();
   <div class="atropos-scale">
     <div class="atropos-rotate">
       <div class="atropos-inner h-auto">
-        <a
-          slot="content"
-          href={url}
-          target="_blank"
-          rel="noopener"
-          aria-label={name + " link"}
+        <a href={`/project/${slug}`} rel="prefetch"
           ><Image
             src={import(`../assets/images/projects/${slug}.png`)}
-            format="webp"
             width={500}
             class={"sm:h-60 object-contain bg-white"}
             alt={name}
             loading="lazy"
+            transition:name={`project-image-${slug}`}
           /></a
         >
 
         <div class="mt-5 space-y-1">
           <div class="flex items-center justify-center gap-3">
-            <Tooltip title="Check it out" position="top">
+            <Tooltip client:visible title="View">
               <a
-                slot="content"
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
@@ -57,73 +51,38 @@ const { Content } = await entry.render();
               </a>
             </Tooltip>
 
-            <Tooltip title="More info" position="top">
+            <Tooltip client:visible title="More info">
               <a
-                slot="content"
                 href={`/project/${slug}`}
                 aria-label={name + " project page"}
                 class="logo"
               >
-                <Icon pack="tabler" name="folder" class="h-6 w-6" />
-              </a>
-            </Tooltip>
-
-            <Tooltip title="Source code" position="top">
-              <a
-                slot="content"
-                href={source}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                aria-label={name + " link"}
-                class="logo"
-              >
-                <Icon pack="tabler" name="code" class="h-6 w-6" />
+                <Icon pack="tabler" name="file" class="h-6 w-6" />
               </a>
             </Tooltip>
           </div>
-          <h3 class="text-center text-2xl">
+          <h3 class="text-center text-xl font-medium">
             <a
               href={`/project/${slug}`}
-              aria-label={name + " project page"}
               rel="prefetch"
+              transition:name={`project-name-${slug}`}
             >
               {name}
             </a>
           </h3>
         </div>
 
-        <div
-          x-data="{
-        activeAccordion: '',
-        setActiveAccordion(id) {
-            this.activeAccordion = (this.activeAccordion == id) ? '' : id
-        }
-    }"
-          class="relative mx-auto w-full overflow-hidden"
-        >
-          <div x-data="{ id: $id('accordion') }">
-            <button
-              @click="setActiveAccordion(id)"
-              class="flex w-full flex-col items-center justify-center p-3 text-lg"
-            >
-              <span>{description}</span>
-              <Icon
-                pack="tabler"
-                name="chevron-down"
-                class="h-6 w-6 duration-200 ease-out"
-                :class="{ '-rotate-180': activeAccordion==id }"
-              />
-            </button>
-            <div x-show="activeAccordion==id" x-collapse x-cloak>
-              <div
-                class="markdown-body flex justify-center p-3 pt-0 text-lg leading-loose"
-              >
-                <Content />
-              </div>
-              <div class="mb-5 flex items-center justify-center gap-3">
-                {tags.map((tag) => <Tag data={tag} />)}
-              </div>
-            </div>
+        <div class="flex flex-col items-center gap-4">
+          <h4>{description}</h4>
+
+          <div class="flex items-center justify-center gap-3">
+            <Icon
+              pack="tabler"
+              name="tool"
+              class="h-5 w-5"
+              aria-label="tools icon"
+            />
+            {tags.map((tag) => <Tag data={tag} />)}
           </div>
         </div>
       </div>

@@ -1,6 +1,4 @@
 ---
-export const prerender = true;
-
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon";
 
@@ -36,12 +34,8 @@ const projects = (await getCollection("projects")).sort(
         <h3 class="text-2xl">Some cool stuff I&apos;ve used:</h3>
         <ul class="space-y-3 sm:columns-2">
           {
-            tools.map((tool) => (
-              <Tool
-                name={tool.data.name}
-                slug={tool.data.slug}
-                url={tool.data.url}
-              />
+            tools.map(({ slug, data: tool }) => (
+              <Tool name={tool.name} slug={slug} url={tool.url} />
             ))
           }
         </ul>
@@ -66,16 +60,14 @@ const projects = (await getCollection("projects")).sort(
       class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
     >
       {
-        projects.map((project) => (
+        projects.map(({ slug, data: project }) => (
           <Project
-            body={project.data.body}
-            name={project.data.name}
-            slug={project.data.slug}
-            description={project.data.description}
-            image={project.data.image}
-            url={project.data.url}
-            source={project.data.source}
-            tags={project.data.tags}
+            name={project.name}
+            slug={slug}
+            description={project.description}
+            image={project.image}
+            url={project.url}
+            tags={project.tags}
           />
         ))
       }

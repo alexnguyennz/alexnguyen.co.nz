@@ -4,8 +4,6 @@ import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 
-import netlify from "@astrojs/netlify/functions";
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://alexnguyen.co.nz",
@@ -20,6 +18,4 @@ export default defineConfig({
     prefetch(),
     sitemap(),
   ],
-  output: "server",
-  adapter: netlify(),
 });

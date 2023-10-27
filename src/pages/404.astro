@@ -1,12 +1,10 @@
 ---
-export const prerender = true;
-
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
 import Layout from "@/layouts/Layout.astro";
 
-import image from "@/assets/images/404.png";
+import image from "../assets/img/404.png";
 ---
 
 <Layout title="404 Page Not Found -">
@@ -15,12 +13,12 @@ import image from "@/assets/images/404.png";
 
     <Image
       src={image}
-      alt="sad chocobo image"
+      alt="sad bird image"
       width="261"
       height="225"
       class="mx-auto"
       loading="eager"
-      fetchPriority="high"
+      fetchpriority="high"
     />
 
     <h3 class="mt-6 text-2xl">

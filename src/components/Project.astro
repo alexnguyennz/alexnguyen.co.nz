@@ -1,4 +1,6 @@
 ---
+import { getEntries, type CollectionEntry } from "astro:content";
+
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
@@ -6,32 +8,28 @@ import Tag from "@/components/Tag.astro";
 import { Tooltip } from "@/components/Tooltip";
 
 interface Props {
-  body: string;
   name: string;
   slug: string;
   description: string;
   image: string;
   url: string;
-  source: string;
-  tags: string[];
+  tags: CollectionEntry<"tags">[];
 }
 
-const { body, name, slug, description, image, url, source, tags } = Astro.props;
+const { name, slug, description, image, url, tags } = Astro.props;
 
-import { getEntry } from "astro:content";
-const entry = await getEntry("projects", slug);
-const { Content } = await entry.render();
+const tagsData = await getEntries(tags);
 ---
 
-<article class="atropos">
+<article class="atropos mx-auto">
   <div class="atropos-scale">
     <div class="atropos-rotate">
       <div class="atropos-inner h-auto">
         <a href={`/project/${slug}`} rel="prefetch"
           ><Image
-            src={import(`../assets/images/projects/${slug}.png`)}
+            src={image}
             width={500}
-            class={"sm:h-60 object-contain bg-white"}
+            class={"project-img object-cover bg-white sm:h-60"}
             alt={name}
             loading="lazy"
             transition:name={`project-image-${slug}`}
@@ -61,7 +59,7 @@ const { Content } = await entry.render();
               </a>
             </Tooltip>
           </div>
-          <h3 class="text-center text-xl font-medium">
+          <h3 class="text-center text-xl">
             <a
               href={`/project/${slug}`}
               rel="prefetch"
@@ -75,14 +73,18 @@ const { Content } = await entry.render();
         <div class="flex flex-col items-center gap-4">
           <h4>{description}</h4>
 
-          <div class="flex items-center justify-center gap-3">
+          <div class="relative flex items-center justify-center gap-3">
             <Icon
               pack="tabler"
               name="tool"
-              class="h-5 w-5"
+              class="absolute -left-8 h-5 w-5"
               aria-label="tools icon"
             />
-            {tags.map((tag) => <Tag data={tag} />)}
+            {
+              tagsData.map(({ slug, data: tag }) => (
+                <Tag name={tag.name} slug={slug} url={tag.url} />
+              ))
+            }
           </div>
         </div>
       </div>

@@ -1,11 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
 import { Tooltip } from "@/components/Tooltip";
 
-const {
-  data: { name, slug, url },
-} = Astro.props;
+const { name, slug, url } = Astro.props;
 ---
 
 <Tooltip client:visible title={name}>

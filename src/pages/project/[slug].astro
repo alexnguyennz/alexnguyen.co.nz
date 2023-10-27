@@ -1,36 +1,25 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
-import { marked } from "marked";
 
 import Layout from "@/layouts/Layout.astro";
 import { Tooltip } from "@/components/Tooltip";
 
-const projects = await getCollection("projects");
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
 
-const { slug } = Astro.params;
-const project = projects.find((page) => page.slug === slug);
-if (!project) return Astro.redirect("/404");
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
 
+const { project } = Astro.props;
 const { Content } = await project.render();
-
-const title = `${project.data.name} - `;
-
-marked.use({
-  mangle: false,
-  headerIds: false,
-});
-
-// fetch project ReadMe
-const response = await fetch(
-  `https://raw.githubusercontent.com/alexnguyennz/${slug}/main/README.md`,
-);
-const markdown = await response.text();
-const readme = marked.parse(markdown);
 ---
 
-<Layout title={title}>
+<Layout title={project.data.name + " -"}>
   <section class="container flex py-28">
     <div class="m-auto flex flex-col gap-10">
       <div class="flex flex-col items-center justify-between">
@@ -59,7 +48,7 @@ const readme = marked.parse(markdown);
             </a>
           </Tooltip>
         </div>
-        <h2 transition:name={`project-name-${project.data.slug}`}>
+        <h2 transition:name={`project-name-${project.slug}`}>
           {project.data.name}
         </h2>
       </div>
@@ -78,16 +67,14 @@ const readme = marked.parse(markdown);
                 <div class="atropos-inner">
                   <div class="mx-auto w-full">
                     <Image
-                      src={import(
-                        `../../assets/images/projects/${project.data.slug}.png`
-                      )}
-                      format="webp"
+                      src={project.data.image}
                       width={800}
                       style={{ width: "100%", height: "auto" }}
                       alt={project.data.name}
+                      class="project-img"
                       fetchpriority="high"
                       loading="eager"
-                      transition:name={`project-image-${project.data.slug}`}
+                      transition:name={`project-image-${project.slug}`}
                     />
                   </div>
                 </div>
@@ -95,30 +82,21 @@ const readme = marked.parse(markdown);
             </div>
           </div>
         </a>
-        <div class="markdown-body project space-y-6 text-xl">
-          <article set:html={readme} />
+        <div class="markdown-body space-y-6 text-xl">
+          <Content />
         </div>
       </div>
     </div>
   </section>
 </Layout>
 
-<style is:global>
-  /* Individual project pages */
-  article h3 {
-    @apply my-5 text-2xl;
+<style>
+  h3 {
+    @apply text-xl;
   }
 
-  article h4 {
-    @apply mt-5;
-  }
-
-  article p {
-    @apply mb-5;
-  }
-
-  article li {
-    @apply leading-loose;
+  :global(.markdown-body li a:after) {
+    bottom: -10px;
   }
 </style>
 

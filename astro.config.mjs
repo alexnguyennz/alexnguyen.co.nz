@@ -1,15 +1,21 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import netlify from "@astrojs/netlify/functions";
+import prefetch from "@astrojs/prefetch";
+import sitemap from "@astrojs/sitemap";
 
+// https://astro.build/config
 export default defineConfig({
+  site: "https://alexnguyen.co.nz",
   server: {
-    port: 3000
+    port: 3000,
   },
-  integrations: [tailwind()],
-  output: "server",
-  adapter: netlify(),
-  build: {
-    inlineStylesheets: 'always'
-  }
+  integrations: [
+    react(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    prefetch(),
+    sitemap(),
+  ],
 });

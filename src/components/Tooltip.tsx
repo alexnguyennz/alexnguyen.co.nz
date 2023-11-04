@@ -15,7 +15,7 @@ export function Tooltip({
   return (
     <TooltipProvider>
       <UITooltip>
-        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipTrigger>{children}</TooltipTrigger>
         <TooltipContent>{title}</TooltipContent>
       </UITooltip>
     </TooltipProvider>

@@ -6,7 +6,7 @@ url: https://blueseat.co.nz
 tags:
   - sveltekit
   - meltui
-order: 1
+order: 2
 ---
 
 Blue Seat / Yellow Seat / Orange Seat / Green Seat are a set of businesses offering services such as catering, cleaning and event management.

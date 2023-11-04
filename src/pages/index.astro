@@ -22,16 +22,16 @@ const projects = (await getCollection("projects")).sort(
     <div class="m-auto max-w-xl grow space-y-10 text-center">
       <Logo />
 
-      <h2 class="text-4xl">Hi, I'm Alex — a web developer.</h2>
+      <h1 class="text-4xl">Hi, I'm Alex — a web developer.</h1>
 
-      <h3 class="text-2xl">
+      <h2 class="text-2xl">
         <a href="#projects" class="contrast-link">
           My projects <Icon pack="tabler" name="arrow-down" class="h-6 w-6" />
         </a>
-      </h3>
+      </h2>
 
       <div class="space-y-5 text-xl">
-        <h3 class="text-2xl">Some cool stuff I&apos;ve used:</h3>
+        <h2 class="text-2xl">Some cool stuff I&apos;ve used:</h2>
         <ul class="space-y-3 sm:columns-2">
           {
             tools.map(({ slug, data: tool }) => (
@@ -41,7 +41,7 @@ const projects = (await getCollection("projects")).sort(
         </ul>
       </div>
 
-      <h3 class="text-2xl">
+      <h2 class="text-2xl">
         <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
           Feel free to say hi <Icon
             pack="tabler"
@@ -49,7 +49,7 @@ const projects = (await getCollection("projects")).sort(
             class="h-6 w-6"
           />
         </a>
-      </h3>
+      </h2>
     </div>
   </section>
 
@@ -59,18 +59,7 @@ const projects = (await getCollection("projects")).sort(
     <div
       class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
     >
-      {
-        projects.map(({ slug, data: project }) => (
-          <Project
-            name={project.name}
-            slug={slug}
-            description={project.description}
-            image={project.image}
-            url={project.url}
-            tags={project.tags}
-          />
-        ))
-      }
+      {projects.map((project) => <Project project={project} />)}
     </div>
   </section>
 </Layout>
@@ -81,7 +70,7 @@ const projects = (await getCollection("projects")).sort(
 
   document.querySelectorAll(".atropos").forEach((element) => {
     Atropos({
-      el: element as string,
+      el: element as unknown as string,
       shadow: false,
       highlight: false,
       rotateXMax: 12,

@@ -38,6 +38,7 @@ body {
     default;
 }
 
+h1,
 h2 {
   @apply text-center text-4xl font-medium tracking-tight;
 }
@@ -122,7 +123,6 @@ header nav a {
 
 /* Projects */
 .project-img {
-  border: 5px solid rgb(216, 252, 252);
   border-radius: 51% 49% 63% 37% / 34% 50% 50% 66%;
 }
 

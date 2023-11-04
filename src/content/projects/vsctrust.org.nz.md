@@ -6,7 +6,7 @@ url: https://vsctrust.org.nz
 tags:
   - astro
   - cloudcannon
-order: 2
+order: 1
 ---
 
 [Vulnerable Support Charitable Trust](https://vsctrust.org.nz) is a New Zealand based charity keen on improving the well being of Wellington 's most vulnerable people.

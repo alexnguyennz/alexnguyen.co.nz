@@ -8,31 +8,26 @@ import Tag from "@/components/Tag.astro";
 import { Tooltip } from "@/components/Tooltip";
 
 interface Props {
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-  url: string;
-  tags: CollectionEntry<"tags">[];
+  project: CollectionEntry<"projects">;
 }
 
-const { name, slug, description, image, url, tags } = Astro.props;
+const { project } = Astro.props;
 
-const tagsData = await getEntries(tags);
+const tagsData = await getEntries(project.data.tags);
 ---
 
 <article class="atropos mx-auto">
   <div class="atropos-scale">
     <div class="atropos-rotate">
       <div class="atropos-inner h-auto">
-        <a href={`/project/${slug}`} rel="prefetch"
+        <a href={`/project/${project.slug}`} rel="prefetch"
           ><Image
-            src={image}
+            src={project.data.image}
             width={500}
             class={"project-img object-cover bg-white sm:h-60"}
-            alt={name}
+            alt={project.data.name}
             loading="lazy"
-            transition:name={`project-image-${slug}`}
+            transition:name={`project-image-${project.slug}`}
           /></a
         >
 
@@ -40,10 +35,10 @@ const tagsData = await getEntries(tags);
           <div class="flex items-center justify-center gap-3">
             <Tooltip client:visible title="View">
               <a
-                href={url}
+                href={project.data.url}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                aria-label={name + " link"}
+                aria-label={project.data.name + " link"}
               >
                 <Icon pack="tabler" name="external-link" class="h-6 w-6" />
               </a>
@@ -51,8 +46,8 @@ const tagsData = await getEntries(tags);
 
             <Tooltip client:visible title="More info">
               <a
-                href={`/project/${slug}`}
-                aria-label={name + " project page"}
+                href={`/project/${project.slug}`}
+                aria-label={project.data.name + " project page"}
                 class="logo"
               >
                 <Icon pack="tabler" name="file" class="h-6 w-6" />
@@ -61,17 +56,17 @@ const tagsData = await getEntries(tags);
           </div>
           <h3 class="text-center text-xl">
             <a
-              href={`/project/${slug}`}
+              href={`/project/${project.slug}`}
               rel="prefetch"
-              transition:name={`project-name-${slug}`}
+              transition:name={`project-name-${project.slug}`}
             >
-              {name}
+              {project.data.name}
             </a>
           </h3>
         </div>
 
         <div class="flex flex-col items-center gap-4">
-          <h4>{description}</h4>
+          <h4>{project.data.description}</h4>
 
           <div class="relative flex items-center justify-center gap-3">
             <Icon

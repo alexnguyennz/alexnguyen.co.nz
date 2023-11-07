@@ -26,6 +26,7 @@
 }
 
 body {
+  font-family: "Jost", system-ui, sans-serif;
   @apply text-lg;
   background: rgb(5, 8, 47);
   background: linear-gradient(

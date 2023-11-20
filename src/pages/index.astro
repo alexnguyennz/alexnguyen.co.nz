@@ -68,14 +68,20 @@ const projects = (await getCollection("projects")).sort(
   import Atropos from "atropos";
   import "atropos/css/min";
 
-  document.querySelectorAll(".atropos").forEach((element) => {
-    Atropos({
-      el: element as unknown as string,
-      shadow: false,
-      highlight: false,
-      rotateXMax: 12,
-      rotateYMax: 12,
-      rotateTouch: false,
+  function initAtropos() {
+    document.querySelectorAll(".atropos").forEach((element) => {
+      Atropos({
+        el: element as unknown as string,
+        shadow: false,
+        highlight: false,
+        rotateXMax: 12,
+        rotateYMax: 12,
+        rotateTouch: false,
+      });
     });
-  });
+  }
+
+  initAtropos();
+
+  document.addEventListener("astro:after-swap", initAtropos);
 </script>

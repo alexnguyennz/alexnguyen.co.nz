@@ -1,6 +1,8 @@
 ---
 import "@/styles/globals.css";
 
+import { ViewTransitions } from "astro:transitions";
+
 import Header from "@/layouts/Header.astro";
 import Footer from "@/layouts/Footer.astro";
 import Waves from "./Waves.astro";
@@ -39,6 +41,8 @@ const { title } = Astro.props;
       type="font/woff2"
       crossorigin="anonymous"
     />
+
+    <ViewTransitions fallback="swap" />
   </head>
   <body class="relative flex min-h-screen flex-col">
     <Waves />

@@ -9,58 +9,62 @@
 <script>
   import Zdog from "zdog";
 
-  const logo = new Zdog.Illustration({
-    element: "#logo-canvas",
-    zoom: 1,
-    dragRotate: true,
-  });
-
-  const logoGroup = new Zdog.Group({
-    addTo: logo,
-    translate: { z: 20 },
-  });
-
-  // outer triangle
-  new Zdog.Shape({
-    addTo: logoGroup,
-    path: [
-      { x: -50, y: 20 },
-      { x: 45, y: -40 },
-      { x: 40, y: 20 },
-    ],
-    fill: true,
-    stroke: false,
-    color: "black",
-  });
-
-  // inner triangle
-  new Zdog.Shape({
-    addTo: logoGroup,
-    path: [
-      { x: 25, y: -20 },
-      { x: 20, y: 20 },
-      { x: -40, y: 20 },
-    ],
-    fill: true,
-    stroke: false,
-    color: "#ED1F24",
-  });
-
   const cycleCount = 500;
   let ticker = 0;
 
   function animate() {
-    const progress = ticker / cycleCount;
-    const tween = Zdog.easeInOut(progress % 1, 10); // apply easing to rotation
+    if (document.getElementById("logo-canvas")) {
+      const logo = new Zdog.Illustration({
+        element: "#logo-canvas",
+        zoom: 1,
+        dragRotate: true,
+      });
 
-    logo.rotate.x = 0; // lock x rotation
-    logo.rotate.y = tween * Zdog.TAU;
+      const logoGroup = new Zdog.Group({
+        addTo: logo,
+        translate: { z: 20 },
+      });
 
-    ticker++;
+      // outer triangle
+      new Zdog.Shape({
+        addTo: logoGroup,
+        path: [
+          { x: -50, y: 20 },
+          { x: 45, y: -40 },
+          { x: 40, y: 20 },
+        ],
+        fill: true,
+        stroke: false,
+        color: "black",
+      });
 
-    logo.updateRenderGraph();
-    requestAnimationFrame(animate);
+      // inner triangle
+      new Zdog.Shape({
+        addTo: logoGroup,
+        path: [
+          { x: 25, y: -20 },
+          { x: 20, y: 20 },
+          { x: -40, y: 20 },
+        ],
+        fill: true,
+        stroke: false,
+        color: "#ED1F24",
+      });
+
+      const progress = ticker / cycleCount;
+      const tween = Zdog.easeInOut(progress % 1, 10); // apply easing to rotation
+
+      logo.rotate.x = 0; // lock x rotation
+      logo.rotate.y = tween * Zdog.TAU;
+
+      ticker++;
+
+      logo.updateRenderGraph();
+      requestAnimationFrame(animate);
+    }
   }
 
   animate();
+
+  document.addEventListener("astro:after-swap", animate);
 </script>

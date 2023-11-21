@@ -16,67 +16,61 @@ const { project } = Astro.props;
 const tagsData = await getEntries(project.data.tags);
 ---
 
-<article class="atropos mx-auto">
-  <div class="atropos-scale">
-    <div class="atropos-rotate">
-      <div class="atropos-inner h-auto">
-        <a href={`/project/${project.slug}`} rel="prefetch"
-          ><Image
-            src={project.data.image}
-            width={500}
-            class={"project-img object-cover bg-white sm:h-60"}
-            alt={project.data.name}
-            loading="lazy"
-          /></a
+<article
+  class="relative rounded-3xl bg-blue-100 p-5 text-blue-950 shadow-xl transition duration-300 hover:translate-y-2"
+>
+  <div class="absolute right-4 top-4">
+    <Tooltip client:visible title="View">
+      <a
+        href={project.data.url}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        aria-label={project.data.name + " link"}
+      >
+        <Icon pack="tabler" name="external-link" class="h-4 w-4" />
+      </a>
+    </Tooltip>
+  </div>
+
+  <div>
+    <a href={`/project/${project.slug}`} rel="prefetch"
+      ><Image
+        src={project.data.image}
+        height={128}
+        alt={project.data.name}
+        class="mx-auto mb-2"
+        loading="lazy"
+      /></a
+    >
+
+    <!-- <div class="flex items-center justify-center gap-3">
+      <Tooltip client:visible title="View">
+        <a
+          href={project.data.url}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          aria-label={project.data.name + " link"}
         >
+          <Icon pack="tabler" name="external-link" class="h-6 w-6" />
+        </a>
+      </Tooltip>
+    </div>-->
 
-        <div class="mt-5 space-y-1">
-          <div class="flex items-center justify-center gap-3">
-            <Tooltip client:visible title="View">
-              <a
-                href={project.data.url}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                aria-label={project.data.name + " link"}
-              >
-                <Icon pack="tabler" name="external-link" class="h-6 w-6" />
-              </a>
-            </Tooltip>
+    <h3>
+      <a href={`/project/${project.slug}`} rel="prefetch">
+        {project.data.name}
+      </a>
+    </h3>
 
-            <Tooltip client:visible title="More info">
-              <a
-                href={`/project/${project.slug}`}
-                aria-label={project.data.name + " project page"}
-                class="logo"
-              >
-                <Icon pack="tabler" name="file" class="h-6 w-6" />
-              </a>
-            </Tooltip>
-          </div>
-          <h3 class="text-center text-xl">
-            <a href={`/project/${project.slug}`} rel="prefetch">
-              {project.data.name}
-            </a>
-          </h3>
-        </div>
+    <div class="flex flex-col items-center gap-4">
+      <h4>{project.data.description}</h4>
 
-        <div class="flex flex-col items-center gap-4">
-          <h4>{project.data.description}</h4>
-
-          <div class="relative flex items-center justify-center gap-3">
-            <Icon
-              pack="tabler"
-              name="tool"
-              class="absolute -left-8 h-5 w-5"
-              aria-label="tools icon"
-            />
-            {
-              tagsData.map(({ slug, data: tag }) => (
-                <Tag name={tag.name} slug={slug} url={tag.url} />
-              ))
-            }
-          </div>
-        </div>
+      <div class="relative flex items-center justify-center gap-3">
+        {
+          tagsData.map(({ slug, data: tag }) => (
+            <Tag name={tag.name} slug={slug} url={tag.url} />
+          ))
+        }
       </div>
     </div>
   </div>

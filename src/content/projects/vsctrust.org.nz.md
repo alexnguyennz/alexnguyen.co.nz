@@ -9,7 +9,7 @@ tags:
 order: 1
 ---
 
-[Vulnerable Support Charitable Trust](https://vsctrust.org.nz) is a New Zealand based charity keen on improving the well being of Wellington 's most vulnerable people.
+[Vulnerable Support Charitable Trust](https://vsctrust.org.nz) is a New Zealand based charity keen on improving the well-being of Wellington 's most vulnerable people.
 
 Built with Astro, CloudCannon, and Tailwind CSS.
 

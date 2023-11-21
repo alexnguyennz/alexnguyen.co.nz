@@ -33,38 +33,25 @@ body {
     rgba(5, 8, 47, 1) 0%,
     rgba(6, 182, 212, 1) 100%
   );
-  color: white;
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAaCAYAAABCfffNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAH3SURBVEhLrZavT8NAFMdvwy7BNGRiAlmJ3J+BRE4ikZPDIZGTk8j9AZMI5GQlcgkVhEzMELjPW1/zertb28An6d5du3vfez+umxuP8x8u55zaf2eA49niQSarxbNYZbcrBtXwTwwrW6OCYCOzEXOZeSu1yHw2c8X7VsahkHU2Xy65V82EVjERyfPGoihPL8uGODBHFHQzMUGpCQ5up9Pqlne4WonVGvEciqIQm8LW1NZTIpnf3bv125vciMFzaIs4jFRB5Oo4dLUQ9QFdZBcjpNc5bNqGPqwPBrpbC466pkqJRXPSwmE0SmznqWhUSKMRER8NJrpbGiIU7IuIeMVGmBqN7bgUXaKp06XtF6sNdBFMIb2MGsq2z/X0W861uU11+A7kMF56+xl2RaoOKaGwnirEoSRdX0xwah3rqe9CrGFoJm0oRKQu+fUNRoQoZqqgXWpDFDQTSOG92rfMOhJLV2xDpF+F6u4CjQa6dhOpsulCUOur9oKP/b58HI2yBePJ9CiUTyZiqU15OLj1ZuNet1uXZZncV5iXZSlp5nvAHLT4jUigfuP6qBDgi/bsMA53H3Yia1QAGr/hFImOIJdqFTvXNITObbrBrxH/vf4osAksIlYg5Vw5SVcbGgXg3ArgPBSA3iJAvtt2b+mVLo+kK6hViw/nfgEcFwLL85sMOAAAAABJRU5ErkJggg==),
-    default;
+  @apply text-blue-50;
 }
 
 h1 {
-  @apply text-center text-4xl font-bold;
+  @apply text-center text-3xl font-bold tracking-tight;
 }
 
 h2 {
-  @apply text-center text-2xl font-medium;
+  @apply text-center text-2xl font-medium tracking-tight;
 }
 
-a,
-button {
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAYAAAA2Lt7lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAEwSURBVEhLzZUtFoJAEMfXj2AwGAwcgUgkGDyAwSMQPICRSDQaiUSjRyAajXsAg4FgMNDQGXcUF9gH6KC/9+bN7IPHzH92dhEmLMvOwNSyFX3l2egpXwAq94I1xlGwRX8+y8r3q2BXUID6HsVxdklTND8M0drsCbuC/0xArarTMnYFQ+UbsdmF6KWU6O9j/FShjzK7gmc26iUdLtu2xdJ1Md4fDuipYngG0DqPfij5FeiVUwXQZ1JAkBIdkxJ2BYPxeBpAsItCMXMccZ2MhDN3xWqxwBfyyNNJRe8kSaKiF8f4oZZdQSEBTAhNyTfoTgFMCBhMjj49n8CuoNFJrsJ0Dgr/2Pz1m09WhunDRHctKqOsbUCdS474nQKonir3PQ+9jn6NA7qS/9iDJnS8B0LcAFzijPYwhg80AAAAAElFTkSuQmCC),
-    pointer;
-}
-
-label {
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAaCAYAAABCfffNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAH3SURBVEhLrZavT8NAFMdvwy7BNGRiAlmJ3J+BRE4ikZPDIZGTk8j9AZMI5GQlcgkVhEzMELjPW1/zertb28An6d5du3vfez+umxuP8x8u55zaf2eA49niQSarxbNYZbcrBtXwTwwrW6OCYCOzEXOZeSu1yHw2c8X7VsahkHU2Xy65V82EVjERyfPGoihPL8uGODBHFHQzMUGpCQ5up9Pqlne4WonVGvEciqIQm8LW1NZTIpnf3bv125vciMFzaIs4jFRB5Oo4dLUQ9QFdZBcjpNc5bNqGPqwPBrpbC466pkqJRXPSwmE0SmznqWhUSKMRER8NJrpbGiIU7IuIeMVGmBqN7bgUXaKp06XtF6sNdBFMIb2MGsq2z/X0W861uU11+A7kMF56+xl2RaoOKaGwnirEoSRdX0xwah3rqe9CrGFoJm0oRKQu+fUNRoQoZqqgXWpDFDQTSOG92rfMOhJLV2xDpF+F6u4CjQa6dhOpsulCUOur9oKP/b58HI2yBePJ9CiUTyZiqU15OLj1ZuNet1uXZZncV5iXZSlp5nvAHLT4jUigfuP6qBDgi/bsMA53H3Yia1QAGr/hFImOIJdqFTvXNITObbrBrxH/vf4osAksIlYg5Vw5SVcbGgXg3ArgPBSA3iJAvtt2b+mVLo+kK6hViw/nfgEcFwLL85sMOAAAAABJRU5ErkJggg==),
-    default;
-}
-
-a:focus {
-  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAeCAMAAAAB8C7XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAPUExURRgYKHiYmKDAwPD4+AAAAJeGRxwAAAAFdFJOU/////8A+7YOUwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAGxJREFUKFOd0NEOgCAIhWFE3/+Z45xopk6h2Lr5vyaZtM38B5nfiEBKmegMIlorCMOcBlVyBGKbDRDx2ID2gMyjQBinE2Av+hdQnpQHz2l4XfCeDn7LMQdAG/6UBeY9WH6+zCkC7O/DwLxAaxfDjAZuz7iCjgAAAABJRU5ErkJggg==),
-    default;
+h3 {
+  @apply text-center text-lg font-medium;
 }
 
 /******* Header ********/
 header nav a {
-  @apply font-medium tracking-tight text-blue-950 transition;
+  @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-blue-950 transition;
+  @apply hover:bg-blue-200;
 }
 
 /***** Components ******/
@@ -112,42 +99,4 @@ header nav a {
   width: 14px;
   height: 14px;
   margin-right: 0.5rem;
-}
-
-/* Projects */
-.project-img {
-  border-radius: 51% 49% 63% 37% / 34% 50% 50% 66%;
-}
-
-#projects article:first-child {
-  animation: bobbing 2s infinite;
-}
-
-#projects article:nth-child(2) {
-  animation: bobbing 2s 0.5s infinite;
-}
-
-#projects article:last-child {
-  animation: bobbing 2s 0.75s infinite;
-}
-
-@keyframes bobbing {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* Atropos */
-.atropos-scale {
-  pointer-events: none;
-}
-
-.atropos-rotate {
-  pointer-events: all;
 }

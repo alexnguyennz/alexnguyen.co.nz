@@ -5,8 +5,6 @@ import { ViewTransitions } from "astro:transitions";
 
 import Header from "@/layouts/Header.astro";
 import Footer from "@/layouts/Footer.astro";
-import Waves from "./Waves.astro";
-import Ground from "./Ground.astro";
 
 interface Props {
   title?: string;
@@ -25,7 +23,7 @@ const { title } = Astro.props;
     />
     <meta name="keywords" content="web, development, portfolio, projects" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title} Alex Nguyen</title>
+    <title>{title} Alex Nguyen - Web Developer</title>
 
     <link
       rel="preload"
@@ -49,18 +47,9 @@ const { title } = Astro.props;
       crossorigin="anonymous"
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
-      rel="stylesheet"
-    />
-
     <ViewTransitions fallback="swap" />
   </head>
   <body class="relative flex min-h-screen flex-col">
-    <Waves />
-
     <Header />
 
     <main class="container z-10 mx-auto px-5">
@@ -68,7 +57,5 @@ const { title } = Astro.props;
     </main>
 
     <Footer />
-
-    <Ground />
   </body>
 </html>

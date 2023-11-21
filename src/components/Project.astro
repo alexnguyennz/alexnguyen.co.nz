@@ -27,7 +27,6 @@ const tagsData = await getEntries(project.data.tags);
             class={"project-img object-cover bg-white sm:h-60"}
             alt={project.data.name}
             loading="lazy"
-            transition:name={`project-image-${project.slug}`}
           /></a
         >
 
@@ -55,11 +54,7 @@ const tagsData = await getEntries(project.data.tags);
             </Tooltip>
           </div>
           <h3 class="text-center text-xl">
-            <a
-              href={`/project/${project.slug}`}
-              rel="prefetch"
-              transition:name={`project-name-${project.slug}`}
-            >
+            <a href={`/project/${project.slug}`} rel="prefetch">
               {project.data.name}
             </a>
           </h3>

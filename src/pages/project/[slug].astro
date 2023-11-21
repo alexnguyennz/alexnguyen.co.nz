@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
 import Layout from "@/layouts/Layout.astro";
+import { Fade } from "@/components/Fade";
 
 export const getStaticPaths = async () => {
   const projects = await getCollection("projects");
@@ -18,49 +19,50 @@ const { Content } = await project.render();
 ---
 
 <Layout title={project.data.name + " -"}>
-  <section class="container flex py-28">
-    <div class="m-auto flex flex-col gap-10">
-      <div class="flex flex-col items-center justify-between">
-        <h1 transition:name={`project-name-${project.slug}`}>
-          {project.data.name}
-        </h1>
-      </div>
+  <Fade client:visible>
+    <section class="container flex py-28">
+      <div class="m-auto flex flex-col gap-10">
+        <div class="flex flex-col items-center justify-between">
+          <h1>
+            {project.data.name}
+          </h1>
+        </div>
 
-      <div class="grid gap-10 xl:grid-cols-3">
-        <a
-          href={project.data.url}
-          target="_blank"
-          rel="noopener"
-          aria-label={project.data.name + " link"}
-          class="xl:col-span-2"
-        >
-          <div class="atropos">
-            <div class="atropos-scale">
-              <div class="atropos-rotate">
-                <div class="atropos-inner">
-                  <div class="mx-auto w-full">
-                    <Image
-                      src={project.data.image}
-                      width={800}
-                      style={{ width: "100%", height: "auto" }}
-                      alt={project.data.name}
-                      class="project-img"
-                      fetchpriority="high"
-                      loading="eager"
-                      transition:name={`project-image-${project.slug}`}
-                    />
+        <div class="grid gap-10 xl:grid-cols-3">
+          <a
+            href={project.data.url}
+            target="_blank"
+            rel="noopener"
+            aria-label={project.data.name + " link"}
+            class="xl:col-span-2"
+          >
+            <div class="atropos">
+              <div class="atropos-scale">
+                <div class="atropos-rotate">
+                  <div class="atropos-inner">
+                    <div class="mx-auto w-full">
+                      <Image
+                        src={project.data.image}
+                        width={800}
+                        style={{ width: "100%", height: "auto" }}
+                        alt={project.data.name}
+                        class="project-img"
+                        fetchpriority="high"
+                        loading="eager"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </a>
+          <div class="markdown-body space-y-6 text-xl">
+            <Content />
           </div>
-        </a>
-        <div class="markdown-body space-y-6 text-xl">
-          <Content />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </Fade>
 </Layout>
 
 <style>

@@ -22,7 +22,7 @@ const tools = (await getCollection("tools")).sort(
       <Fade client:visible delay={0.25}>
         <div class="flex max-w-xl flex-col gap-6">
           <div class="space-y-4">
-            <h3>Some cool stuff I&apos;ve used</h3>
+            <h2>Some cool stuff I&apos;ve used</h2>
             <ul class="space-y-2 sm:columns-2">
               {
                 tools.map(({ slug, data: tool }) => (
@@ -32,7 +32,7 @@ const tools = (await getCollection("tools")).sort(
             </ul>
           </div>
 
-          <h3>
+          <h2>
             <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
               Feel free to say hi <Icon
                 pack="lucide"
@@ -40,7 +40,7 @@ const tools = (await getCollection("tools")).sort(
                 class="h-5 w-5"
               />
             </a>
-          </h3>
+          </h2>
         </div>
       </Fade>
     </div>

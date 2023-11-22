@@ -41,11 +41,11 @@ h1 {
 }
 
 h2 {
-  @apply text-center text-2xl font-medium tracking-tight;
+  @apply text-center text-lg font-medium;
 }
 
 h3 {
-  @apply text-center text-lg font-medium;
+  @apply font-medium;
 }
 
 /******* Header ********/

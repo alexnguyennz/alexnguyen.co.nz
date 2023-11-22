@@ -1,5 +1,5 @@
-import { m, LazyMotion, domAnimation, useInView } from "framer-motion";
 import { useRef } from "react";
+import { m, LazyMotion, domAnimation, useInView } from "framer-motion";
 
 export function Fade({
   delay,

@@ -1,5 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import { cn } from "@/lib/utils";
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header class="fixed top-5 z-20 w-full px-5">
@@ -19,13 +22,20 @@ import { Image } from "astro:assets";
     <nav>
       <ul class="flex items-center gap-1">
         <li>
-          <a href="/">Home</a>
+          <a href="/" class={cn(pathname === "/" && "active")}>Home</a>
         </li>
         <li>
-          <a href="/#projects">Projects</a>
+          <a
+            href="/projects"
+            class={cn(pathname.startsWith("/project") && "active")}>Projects</a
+          >
         </li>
         <li>
-          <a href="/nonprofit">Nonprofit</a>
+          <a
+            href="/nonprofit"
+            class={cn(pathname.startsWith("/nonprofit") && "active")}
+            >Nonprofit</a
+          >
         </li>
       </ul>
     </nav>

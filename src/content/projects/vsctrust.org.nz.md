@@ -1,6 +1,7 @@
 ---
 name: vsctrust.org.nz
 description: Astro + CloudCannon site
+cover: "./vsctrust.org.nz-cover.png"
 image: "./vsctrust.org.nz.png"
 url: https://vsctrust.org.nz
 tags:

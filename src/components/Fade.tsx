@@ -31,7 +31,7 @@ export function Fade({
         animate={inView ? "animate" : "initial"}
         initial={false}
         transition={{
-          duration: 0.6,
+          duration: 0.5,
           delay: delay ?? 0.1,
         }}
         variants={fadeVariants}

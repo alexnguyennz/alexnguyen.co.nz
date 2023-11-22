@@ -2,13 +2,15 @@
 import { Icon } from "astro-icon";
 ---
 
-<footer class="relative z-10 my-10 mt-auto flex flex-col justify-center">
-  <div class="flex justify-center gap-6">
+<footer
+  class="bottom-0 z-10 my-10 mt-auto flex w-full flex-col justify-center sm:fixed"
+>
+  <div class="mx-auto flex justify-center gap-6">
     <a
       href="mailto:me@alexnguyen.co.nz"
       aria-label="Alex Nguyen's email address"
     >
-      <Icon pack="lucide" name="mail" class="h-6 w-6" />
+      <Icon pack="lucide" name="mail" class="h-5 w-5" />
     </a>
 
     <a
@@ -17,7 +19,7 @@ import { Icon } from "astro-icon";
       rel="noopener"
       aria-label="Alex Nguyen's GitHub page"
     >
-      <Icon pack="lucide" name="github" class="h-6 w-6" />
+      <Icon pack="lucide" name="github" class="h-5 w-5" />
     </a>
   </div>
 </footer>

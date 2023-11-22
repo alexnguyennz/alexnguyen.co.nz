@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import { Fade } from "@/components/Fade";
+import Project from "@/components/Project.astro";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Layout title="Projects - ">
+  <section class="flex flex-col gap-10 py-28 sm:h-screen">
+    <div class="m-auto flex flex-col gap-6">
+      <Fade client:visible>
+        <h1>Projects</h1>
+      </Fade>
+      <div
+        class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
+      >
+        {
+          projects.map((project) => (
+            <Fade client:visible delay={0.25}>
+              <Project project={project} />
+            </Fade>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

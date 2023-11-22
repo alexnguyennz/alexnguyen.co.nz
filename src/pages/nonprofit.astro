@@ -1,7 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon";
-
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,51 +9,53 @@ import { Fade } from "@/components/Fade";
 ---
 
 <Layout title="Nonprofit Work -">
-  <Fade client:visible>
-    <section class="flex py-28 sm:h-screen">
-      <div class="m-auto flex flex-col items-center gap-6">
-        <h1>Nonprofit Work</h1>
+  <section class="flex py-28 sm:h-screen">
+    <div class="m-auto flex flex-col gap-6">
+      <Fade client:visible><h1>Nonprofit Work</h1></Fade>
 
-        <p>
-          I offer free web development work for New Zealand charities and
-          nonprofit organisations.
-        </p>
+      <Fade client:visible delay={0.25}>
+        <div class="flex flex-col items-center gap-6">
+          <p>
+            I offer free web development work for New Zealand charities and
+            nonprofits.
+          </p>
 
-        <div>
-          <p>Please get in touch if you're looking for:</p>
-          <ul class="ml-5 list-disc">
-            <li>web or app development</li>
-            <li>website maintenance or updates</li>
-            <li>general web consulting</li>
-          </ul>
+          <div>
+            <p>Please get in touch if you're looking for:</p>
+            <ul class="ml-5 list-disc">
+              <li>web or app development</li>
+              <li>website maintenance or updates</li>
+              <li>general web consulting</li>
+            </ul>
+          </div>
+
+          <form
+            name="nonprofit"
+            method="POST"
+            data-netlify="true"
+            class="flex w-full max-w-md flex-col gap-3"
+          >
+            <div>
+              <Label htmlFor="name">Name</Label>
+              <Input type="text" id="name" name="name" required />
+            </div>
+
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input type="email" id="email" name="email" required />
+            </div>
+
+            <div>
+              <Label htmlFor="message">Message</Label>
+              <Textarea id="message" name="message" rows={4} required />
+            </div>
+
+            <Button type="submit" variant="outline" className="mt-2 self-start">
+              Send
+            </Button>
+          </form>
         </div>
-
-        <form
-          name="nonprofit"
-          method="POST"
-          data-netlify="true"
-          class="flex w-full max-w-md flex-col gap-3"
-        >
-          <div>
-            <Label htmlFor="name">Name</Label>
-            <Input type="text" id="name" name="name" required />
-          </div>
-
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input type="email" id="email" name="email" required />
-          </div>
-
-          <div>
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" name="message" rows={4} required />
-          </div>
-
-          <Button type="submit" variant="outline" className="mt-2 self-start">
-            Send
-          </Button>
-        </form>
-      </div>
-    </section>
-  </Fade>
+      </Fade>
+    </div>
+  </section>
 </Layout>

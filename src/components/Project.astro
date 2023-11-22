@@ -17,17 +17,19 @@ const tagsData = await getEntries(project.data.tags);
 ---
 
 <article
-  class="relative rounded-3xl bg-blue-100 p-5 text-blue-950 shadow-xl transition duration-300 hover:translate-y-2"
+  class="group relative origin-top rounded-3xl bg-blue-50 p-5 text-blue-950 shadow-lg transition duration-300 hover:translate-y-2 hover:scale-[101%] hover:shadow-2xl"
 >
-  <div class="absolute right-4 top-4">
-    <Tooltip client:visible title="View">
+  <div
+    class="absolute right-4 top-4 opacity-0 transition duration-300 group-hover:opacity-100"
+  >
+    <Tooltip client:visible title="Have a look">
       <a
         href={project.data.url}
         target="_blank"
         rel="noopener noreferrer nofollow"
         aria-label={project.data.name + " link"}
       >
-        <Icon pack="tabler" name="external-link" class="h-4 w-4" />
+        <Icon pack="lucide" name="external-link" class="h-5 w-5" />
       </a>
     </Tooltip>
   </div>
@@ -35,26 +37,13 @@ const tagsData = await getEntries(project.data.tags);
   <div>
     <a href={`/project/${project.slug}`} rel="prefetch"
       ><Image
-        src={project.data.image}
+        src={project.data.cover}
         height={128}
         alt={project.data.name}
         class="mx-auto mb-2"
         loading="lazy"
       /></a
     >
-
-    <!-- <div class="flex items-center justify-center gap-3">
-      <Tooltip client:visible title="View">
-        <a
-          href={project.data.url}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          aria-label={project.data.name + " link"}
-        >
-          <Icon pack="tabler" name="external-link" class="h-6 w-6" />
-        </a>
-      </Tooltip>
-    </div>-->
 
     <h3>
       <a href={`/project/${project.slug}`} rel="prefetch">

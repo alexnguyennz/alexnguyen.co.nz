@@ -4,6 +4,7 @@ description: Astro + CloudCannon site
 cover: "./vsctrust.org.nz-cover.png"
 image: "./vsctrust.org.nz.png"
 url: https://vsctrust.org.nz
+source: https://github.com/alexnguyennz/vsctrust.org.nz
 tags:
   - astro
   - cloudcannon

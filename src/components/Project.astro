@@ -22,6 +22,20 @@ const tagsData = await getEntries(project.data.tags);
   <div
     class="absolute right-4 top-4 opacity-0 transition duration-300 group-hover:opacity-100"
   >
+    {
+      project.data.source && (
+        <Tooltip client:visible title="Source code">
+          <a
+            href={project.data.source}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            aria-label={project.data.name + " source code"}
+          >
+            <Icon pack="lucide" name="code" class="mr-2 h-5 w-5" />
+          </a>
+        </Tooltip>
+      )
+    }
     <Tooltip client:visible title="Have a look">
       <a
         href={project.data.url}

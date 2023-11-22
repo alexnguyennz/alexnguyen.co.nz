@@ -8,13 +8,13 @@ tags:
   - eleventy
   - alpinejs
   - picocss
-order: 3
+order: 4
 ---
 
 Concept Food is a catering business based in the Wellington region of New Zealand.
 
 **Main Tools**
 
-- [Eleventy](https://www.11ty.dev/) - web framework
+- [Eleventy](https://www.11ty.dev/) - static site generator
 - [Pico.css](https://picocss.com/) - CSS framework
 - [Alpine.js](https://alpinejs.dev/) - JavaScript library

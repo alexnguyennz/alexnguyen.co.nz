@@ -19,6 +19,7 @@ const projects = defineCollection({
       cover: image(),
       image: image(),
       url: z.string(),
+      source: z.string().optional(),
       tags: z.array(reference("tags")),
       order: z.number(),
     }),

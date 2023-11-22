@@ -1,13 +1,14 @@
 ---
 name: Page Refresher
-description: Page refresher for Chrome
+description: Page refresher for Chrome & Edge
 cover: "./pagerefresher-cover.png"
 image: "./pagerefresher.png"
 url: https://chrome.google.com/webstore/detail/page-refresher/hedjdjlfiijoibijchekancllfeppchp
+source: https://github.com/alexnguyennz/pagerefresher
 tags:
   - chrome
   - edge
-order: 4
+order: 5
 ---
 
 A simple per-tab automatic page refresher/reloader for Google Chrome and Microsoft Edge.

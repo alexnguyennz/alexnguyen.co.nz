@@ -4,6 +4,7 @@ description: SvelteKit site
 cover: "./seat-cover.png"
 image: "./seat.png"
 url: https://blueseat.co.nz
+source: https://github.com/alexnguyennz/seat
 tags:
   - sveltekit
   - meltui

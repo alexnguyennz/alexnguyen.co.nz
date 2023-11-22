@@ -1,16 +1,40 @@
-<header class="fixed top-3 z-20 w-full px-5">
+---
+import { Image } from "astro:assets";
+import { cn } from "@/lib/utils";
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<header class="fixed top-5 z-20 w-full px-5">
   <div
-    class="container mx-auto flex max-w-2xl items-center justify-between px-2"
+    class="container mx-auto flex max-w-sm items-center justify-center gap-2 rounded-3xl bg-blue-100 p-3 shadow-xl"
   >
-    <a href="/" class="text-3xl sm:text-4xl">Alex Nguyen</a>
+    <a href="/"
+      ><Image
+        src={import("../assets/img/logo.png")}
+        width="64"
+        alt="logo"
+        class="mx-auto h-auto w-[40px]"
+      /></a
+    >
 
     <nav>
-      <ul class="flex gap-6">
+      <ul class="flex items-center gap-1">
         <li>
-          <a href="/">/</a>
+          <a href="/" class={cn(pathname === "/" && "active")}>Home</a>
         </li>
         <li>
-          <a href="/#projects">/projects</a>
+          <a
+            href="/projects"
+            class={cn(pathname.startsWith("/project") && "active")}>Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="/nonprofit"
+            class={cn(pathname.startsWith("/nonprofit") && "active")}
+            >Nonprofit</a
+          >
         </li>
       </ul>
     </nav>

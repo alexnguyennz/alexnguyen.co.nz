@@ -1,10 +1,10 @@
 ---
 import "@/styles/globals.css";
 
+import { ViewTransitions } from "astro:transitions";
+
 import Header from "@/layouts/Header.astro";
 import Footer from "@/layouts/Footer.astro";
-import Waves from "./Waves.astro";
-import Ground from "./Ground.astro";
 
 interface Props {
   title?: string;
@@ -23,34 +23,39 @@ const { title } = Astro.props;
     />
     <meta name="keywords" content="web, development, portfolio, projects" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title} Alex Nguyen</title>
+    <title>{title} Alex Nguyen | Web Developer</title>
 
     <link
       rel="preload"
-      href="/fonts/jost-latin-400-normal.woff2"
+      href="/fonts/DMSans-Regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="/fonts/ff.woff2"
+      href="/fonts/DMSans-Medium.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <link
+      rel="preload"
+      href="/fonts/DMSans-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <ViewTransitions fallback="swap" />
   </head>
   <body class="relative flex min-h-screen flex-col">
-    <Waves />
-
     <Header />
 
-    <main class="container z-10 mx-auto px-5">
+    <main class="container z-10 mx-auto overflow-hidden px-5">
       <slot />
     </main>
 
     <Footer />
-
-    <Ground />
   </body>
 </html>

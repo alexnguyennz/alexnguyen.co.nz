@@ -7,6 +7,9 @@ module.exports = {
       center: true,
     },
     extend: {
+      fontFamily: {
+        sans: ["DM Sans", "sans-serif"],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

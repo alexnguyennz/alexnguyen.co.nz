@@ -1,6 +1,7 @@
 ---
 name: Page Refresher
-description: Simple page refresher for Chrome/Edge
+description: Page refresher for Chrome & Edge
+cover: "./pagerefresher-cover.png"
 image: "./pagerefresher.png"
 url: https://chrome.google.com/webstore/detail/page-refresher/hedjdjlfiijoibijchekancllfeppchp
 tags:

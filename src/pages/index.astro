@@ -3,79 +3,46 @@ import { getCollection } from "astro:content";
 import { Icon } from "astro-icon";
 
 import Layout from "@/layouts/Layout.astro";
-import Logo from "@/components/Logo.astro";
+import { Fade } from "@/components/Fade";
 
 import Tool from "@/components/Tool.astro";
-import Project from "@/components/Project.astro";
 
 const tools = (await getCollection("tools")).sort(
-  (a, b) => a.data.order - b.data.order,
-);
-
-const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 ---
 
 <Layout>
-  <section class="flex py-28 sm:h-screen">
-    <div class="m-auto max-w-xl grow space-y-10 text-center">
-      <Logo />
+  <section class="flex flex-col gap-10 py-28 sm:h-screen">
+    <div class="m-auto flex flex-col gap-6">
+      <Fade client:visible>
+        <h1>Hi, I'm Alex</h1>
+      </Fade>
 
-      <h1 class="text-4xl">Hi, I'm Alex — a web developer.</h1>
+      <Fade client:visible delay={0.25}>
+        <div class="flex max-w-xl flex-col gap-6">
+          <div class="space-y-4">
+            <h2>Some cool stuff I&apos;ve used</h2>
+            <ul class="space-y-2 sm:columns-2">
+              {
+                tools.map(({ slug, data: tool }) => (
+                  <Tool name={tool.name} slug={slug} url={tool.url} />
+                ))
+              }
+            </ul>
+          </div>
 
-      <h2 class="text-2xl">
-        <a href="#projects" class="contrast-link">
-          My projects <Icon pack="tabler" name="arrow-down" class="h-6 w-6" />
-        </a>
-      </h2>
-
-      <div class="space-y-5 text-xl">
-        <h2 class="text-2xl">Some cool stuff I&apos;ve used:</h2>
-        <ul class="space-y-3 sm:columns-2">
-          {
-            tools.map(({ slug, data: tool }) => (
-              <Tool name={tool.name} slug={slug} url={tool.url} />
-            ))
-          }
-        </ul>
-      </div>
-
-      <h2 class="text-2xl">
-        <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
-          Feel free to say hi <Icon
-            pack="tabler"
-            name="mailbox"
-            class="h-6 w-6"
-          />
-        </a>
-      </h2>
-    </div>
-  </section>
-
-  <section id="projects" class="flex flex-col gap-12 py-28">
-    <h2>/projects</h2>
-
-    <div
-      class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
-    >
-      {projects.map((project) => <Project project={project} />)}
+          <h2>
+            <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
+              Feel free to say hi <Icon
+                pack="lucide"
+                name="mail"
+                class="h-5 w-5"
+              />
+            </a>
+          </h2>
+        </div>
+      </Fade>
     </div>
   </section>
 </Layout>
-
-<script>
-  import Atropos from "atropos";
-  import "atropos/css/min";
-
-  document.querySelectorAll(".atropos").forEach((element) => {
-    Atropos({
-      el: element as unknown as string,
-      shadow: false,
-      highlight: false,
-      rotateXMax: 12,
-      rotateYMax: 12,
-      rotateTouch: false,
-    });
-  });
-</script>

@@ -16,9 +16,7 @@ const projects = (await getCollection("projects")).sort(
       <Fade client:visible>
         <h1>Projects</h1>
       </Fade>
-      <div
-        class="grid gap-10 text-left md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3"
-      >
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {
           projects.map((project) => (
             <Fade client:visible delay={0.25}>

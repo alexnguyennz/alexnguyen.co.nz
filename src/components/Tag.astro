@@ -3,6 +3,12 @@ import { Icon } from "astro-icon";
 
 import { Tooltip } from "@/components/Tooltip";
 
+interface Props {
+  name: string;
+  slug: string;
+  url: string;
+}
+
 const { name, slug, url } = Astro.props;
 ---
 

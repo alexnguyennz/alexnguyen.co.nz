@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { Icon } from "astro-icon";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
@@ -16,14 +15,14 @@ const tools = (await getCollection("tools")).sort(
   <section class="flex flex-col gap-10 py-28 sm:h-screen">
     <div class="m-auto flex flex-col gap-6">
       <Fade client:visible>
-        <h1>Hi, I'm Alex</h1>
+        <h1>Hi, I'm Alex.</h1>
       </Fade>
 
       <Fade client:visible delay={0.25}>
         <div class="flex max-w-xl flex-col gap-6">
           <div class="space-y-4">
-            <h2>Some cool stuff I&apos;ve used</h2>
-            <ul class="space-y-2 sm:columns-2">
+            <h2>Some cool stuff I&apos;ve worked with..</h2>
+            <ul class="space-y-2.5 sm:columns-2">
               {
                 tools.map(({ slug, data: tool }) => (
                   <Tool name={tool.name} slug={slug} url={tool.url} />
@@ -33,12 +32,8 @@ const tools = (await getCollection("tools")).sort(
           </div>
 
           <h2>
-            <a href="mailto:me@alexnguyen.co.nz" class="contrast-link">
-              Feel free to say hi <Icon
-                pack="lucide"
-                name="mail"
-                class="h-5 w-5"
-              />
+            <a href="mailto:me@alexnguyen.co.nz" class="animated-link">
+              Feel free to say hi. ✉
             </a>
           </h2>
         </div>

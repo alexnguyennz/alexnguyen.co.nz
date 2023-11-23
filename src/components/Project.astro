@@ -17,11 +17,25 @@ const tagsData = await getEntries(project.data.tags);
 ---
 
 <article
-  class="group relative origin-top rounded-3xl bg-blue-50 p-5 text-blue-950 shadow-lg transition duration-300 hover:translate-y-2 hover:scale-[101%] hover:shadow-2xl"
+  class="group relative flex h-full flex-1 flex-col rounded-3xl bg-blue-50 p-5 text-blue-950 shadow-lg transition duration-300 hover:translate-y-2 hover:scale-[101%] hover:shadow-2xl"
 >
   <div
-    class="absolute right-4 top-4 opacity-0 transition duration-300 group-hover:opacity-100"
+    class="absolute right-4 top-4 transition duration-300 group-hover:opacity-100 sm:opacity-0"
   >
+    {
+      project.data.source && (
+        <Tooltip client:visible title="Code">
+          <a
+            href={project.data.source}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            aria-label={project.data.name + " source code"}
+          >
+            <Icon pack="lucide" name="code" class="mr-2 h-5 w-5" />
+          </a>
+        </Tooltip>
+      )
+    }
     <Tooltip client:visible title="Have a look">
       <a
         href={project.data.url}
@@ -29,18 +43,18 @@ const tagsData = await getEntries(project.data.tags);
         rel="noopener noreferrer nofollow"
         aria-label={project.data.name + " link"}
       >
-        <Icon pack="lucide" name="external-link" class="h-5 w-5" />
+        <Icon pack="lucide" name="arrow-up-right" class="h-5 w-5" />
       </a>
     </Tooltip>
   </div>
 
-  <div>
+  <div class="mt-auto">
     <a href={`/project/${project.slug}`} rel="prefetch"
       ><Image
         src={project.data.cover}
-        height={128}
+        height={192}
         alt={project.data.name}
-        class="mx-auto mb-2"
+        class="mx-auto mb-2 h-[128px] w-auto"
         loading="lazy"
       /></a
     >
@@ -52,9 +66,9 @@ const tagsData = await getEntries(project.data.tags);
     </h2>
 
     <div class="flex flex-col items-center gap-4">
-      <h3>{project.data.description}</h3>
+      <h3 class="text-sm">{project.data.description}</h3>
 
-      <div class="relative flex items-center justify-center gap-3">
+      <div class="relative flex items-center justify-center gap-4">
         {
           tagsData.map(({ slug, data: tag }) => (
             <Tag name={tag.name} slug={slug} url={tag.url} />

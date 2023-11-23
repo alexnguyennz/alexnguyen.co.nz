@@ -7,9 +7,9 @@ import { cn } from "@/lib/utils";
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<header class="fixed left-1/2 top-5 z-20 -translate-x-1/2 px-5">
+<header class="fixed left-1/2 top-6 z-20 -translate-x-1/2 px-5 sm:w-full">
   <div
-    class="container mx-auto flex items-center justify-center gap-6 rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:gap-3"
+    class="container mx-auto flex max-w-md items-center justify-center gap-6 rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:gap-3"
   >
     <a href="/" class="shrink-0"
       ><Image
@@ -23,34 +23,97 @@ const pathname = new URL(Astro.request.url).pathname;
       /></a
     >
 
-    <button class="sm:hidden">
+    <button
+      id="mobile-toggle"
+      class="sm:hidden"
+      aria-label="toggle mobile menu"
+    >
       <Icon pack="lucide" name="menu" class="h-6 w-6 text-blue-950" /></button
     >
 
     <nav class="hidden sm:block">
       <ul class="flex items-center gap-1">
         <li>
-          <a href="/" class={cn(pathname === "/" && "active")}>Home</a>
+          <a href="/" class={cn(pathname === "/" && "active")}>home</a>
         </li>
         <li>
           <a
             href="/projects"
-            class={cn(pathname.startsWith("/project") && "active")}>Projects</a
+            class={cn(pathname.startsWith("/project") && "active")}>projects</a
           >
         </li>
         <li>
           <a
             href="/nonprofit"
             class={cn(pathname.startsWith("/nonprofit") && "active")}
-            >Nonprofit</a
+            >nonprofit</a
           >
         </li>
         <li>
           <a href="/about" class={cn(pathname.startsWith("/about") && "active")}
-            >About</a
+            >about</a
           >
         </li>
       </ul>
     </nav>
   </div>
+
+  <nav
+    id="mobile-menu"
+    class="absolute left-0 mt-2 hidden w-full rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:hidden"
+  >
+    <ul class="flex flex-col items-center gap-2">
+      <li>
+        <a href="/" class={cn(pathname === "/" && "active")}>Home</a>
+      </li>
+      <li>
+        <a
+          href="/projects"
+          class={cn(pathname.startsWith("/project") && "active")}>Projects</a
+        >
+      </li>
+      <li>
+        <a
+          href="/nonprofit"
+          class={cn(pathname.startsWith("/nonprofit") && "active")}>Nonprofit</a
+        >
+      </li>
+      <li>
+        <a href="/about" class={cn(pathname.startsWith("/about") && "active")}
+          >About</a
+        >
+      </li>
+    </ul>
+  </nav>
 </header>
+
+<style>
+  #mobile-menu li {
+    @apply w-full text-center;
+  }
+
+  #mobile-menu a {
+    @apply block;
+  }
+</style>
+
+<script define:vars={{ pathname }}>
+  const mobileToggle = document.getElementById("mobile-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  function initMobileMenu() {
+    mobileToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  initMobileMenu();
+
+  document.addEventListener("astro:after-swap", () =>
+    mobileToggle.addEventListener("click", () => initMobileMenu),
+  );
+
+  document.addEventListener("astro:before-preparation", () => {
+    mobileMenu.classList.add("hidden");
+  });
+</script>

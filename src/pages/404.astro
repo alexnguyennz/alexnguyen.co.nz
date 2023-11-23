@@ -9,26 +9,20 @@ import { Fade } from "@/components/Fade";
 ---
 
 <Layout title="404 Page Not Found -">
-  <Fade client:visible>
-    <section class="flex flex-col gap-10 py-28 sm:h-screen">
-      <div class="m-auto flex flex-col gap-6">
-        <h1>404 Page Not Found</h1>
+  <Fade client:visible><h1>404 Page Not Found</h1></Fade>
 
-        <Image
-          src={image}
-          alt="sad bird image"
-          width="192"
-          class="mx-auto h-auto"
-          loading="eager"
-          fetchpriority="high"
-        />
+  <Fade client:visible delay={0.25}>
+    <Image
+      src={image}
+      alt="sad bird image"
+      width="192"
+      class="mx-auto h-auto"
+      loading="eager"
+      fetchpriority="high"
+    />
 
-        <h2>
-          <a href="/" class="contrast-link">
-            Home <Icon pack="tabler" name="arrow-back" class="h-5 w-5" />
-          </a>
-        </h2>
-      </div>
-    </section>
+    <h2>
+      <a href="/" class="animated-link">Home</a>
+    </h2>
   </Fade>
 </Layout>

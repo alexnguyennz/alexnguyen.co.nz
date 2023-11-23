@@ -34,4 +34,15 @@ const tags = defineCollection({
     }),
 });
 
-export const collections = { tools, projects, tags };
+const posts = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.date(),
+      image: image(),
+      published: z.boolean(),
+    }),
+});
+
+export const collections = { tools, projects, tags, posts };

@@ -4,12 +4,35 @@ import { Icon } from "astro-icon";
 
 import { cn } from "@/lib/utils";
 
+const links = [
+  {
+    name: "home",
+    href: "/",
+  },
+  {
+    name: "projects",
+    href: "/projects",
+  },
+  {
+    name: "blog",
+    href: "/blog",
+  },
+  {
+    name: "nonprofit",
+    href: "/nonprofit",
+  },
+  {
+    name: "about",
+    href: "/about",
+  },
+];
+
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header class="fixed left-1/2 top-6 z-20 -translate-x-1/2 px-5 sm:w-full">
   <div
-    class="container mx-auto flex max-w-md items-center justify-center gap-6 rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:gap-3"
+    class="container mx-auto flex max-w-lg items-center justify-center gap-6 rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:gap-3"
   >
     <a href="/" class="shrink-0"
       ><Image
@@ -32,28 +55,24 @@ const pathname = new URL(Astro.request.url).pathname;
     >
 
     <nav class="hidden sm:block">
-      <ul class="flex items-center gap-1">
-        <li>
-          <a href="/" class={cn(pathname === "/" && "active")}>home</a>
-        </li>
-        <li>
-          <a
-            href="/projects"
-            class={cn(pathname.startsWith("/project") && "active")}>projects</a
-          >
-        </li>
-        <li>
-          <a
-            href="/nonprofit"
-            class={cn(pathname.startsWith("/nonprofit") && "active")}
-            >nonprofit</a
-          >
-        </li>
-        <li>
-          <a href="/about" class={cn(pathname.startsWith("/about") && "active")}
-            >about</a
-          >
-        </li>
+      <ul class="flex items-center gap-1.5">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={cn(
+                  link.name === "home"
+                    ? pathname === "/" && "active"
+                    : pathname.startsWith(link.href) && "active",
+                )}
+                data-astro-prefetch
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </nav>
   </div>
@@ -63,26 +82,23 @@ const pathname = new URL(Astro.request.url).pathname;
     class="absolute left-0 mt-2 hidden w-full rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:hidden"
   >
     <ul class="flex flex-col items-center gap-2">
-      <li>
-        <a href="/" class={cn(pathname === "/" && "active")}>Home</a>
-      </li>
-      <li>
-        <a
-          href="/projects"
-          class={cn(pathname.startsWith("/project") && "active")}>Projects</a
-        >
-      </li>
-      <li>
-        <a
-          href="/nonprofit"
-          class={cn(pathname.startsWith("/nonprofit") && "active")}>Nonprofit</a
-        >
-      </li>
-      <li>
-        <a href="/about" class={cn(pathname.startsWith("/about") && "active")}
-          >About</a
-        >
-      </li>
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={cn(
+                link.name === "home"
+                  ? pathname === "/" && "active"
+                  : pathname.startsWith(link.href) && "active",
+              )}
+              data-astro-prefetch
+            >
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>

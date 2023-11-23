@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="flex flex-col bg-blue-50 text-center text-blue-950">
+  <a
+    href={`/blog/${post.slug}/`}
+    class="group overflow-hidden rounded-2xl"
+    data-astro-prefetch
+  >
+    <Image
+      src={post.data.image}
+      width="300"
+      height="300"
+      alt={post.data.title}
+      class="aspect-[4/3] w-full rounded-2xl object-cover shadow-md transition duration-500 group-hover:scale-110"
+      transition:name={`news-image-${post.slug}`}
+    />
+  </a>
+
+  <div class="mt-4 flex flex-1 flex-col">
+    <h2
+      class="text-sm font-normal"
+      transition:name={`news-author-${post.slug}`}
+    >
+      {
+        new Date(post.data.date).toLocaleDateString("en-NZ", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }
+    </h2>
+
+    <h2 class="mb-0 line-clamp-2" transition:name={`news-title-${post.slug}`}>
+      <a href={`/blog/${post.slug}/`} class="animated-link" data-astro-prefetch
+        >{post.data.title}</a
+      >
+    </h2>
+  </div>
+</article>

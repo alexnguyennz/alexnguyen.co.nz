@@ -11,22 +11,18 @@ const projects = (await getCollection("projects")).sort(
 ---
 
 <Layout title="Projects - ">
-  <section class="flex flex-col gap-10 py-28 sm:h-screen">
-    <div class="m-auto flex flex-col gap-6">
-      <Fade client:visible>
-        <h1>projects</h1>
-      </Fade>
-      <div
-        class="grid gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 xl:grid-cols-4"
-      >
-        {
-          projects.map((project) => (
-            <Fade client:visible delay={0.25}>
-              <Project project={project} />
-            </Fade>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <Fade client:visible>
+    <h1>projects</h1>
+  </Fade>
+  <div
+    class="grid gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3 xl:grid-cols-4"
+  >
+    {
+      projects.map((project) => (
+        <Fade client:visible delay={0.25}>
+          <Project project={project} />
+        </Fade>
+      ))
+    }
+  </div>
 </Layout>

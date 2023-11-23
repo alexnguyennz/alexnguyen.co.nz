@@ -49,7 +49,7 @@ const tagsData = await getEntries(project.data.tags);
   </div>
 
   <div class="mt-auto">
-    <a href={`/project/${project.slug}`} rel="prefetch"
+    <a href={`/project/${project.slug}`} data-astro-prefetch
       ><Image
         src={project.data.cover}
         height={192}
@@ -60,7 +60,7 @@ const tagsData = await getEntries(project.data.tags);
     >
 
     <h2>
-      <a href={`/project/${project.slug}`} rel="prefetch">
+      <a href={`/project/${project.slug}`} data-astro-prefetch>
         {project.data.name}
       </a>
     </h2>

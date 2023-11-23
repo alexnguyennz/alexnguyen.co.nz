@@ -57,11 +57,6 @@ header nav a.active {
   @apply bg-blue-200;
 }
 
-/***** Components ******/
-.contrast-link {
-  @apply animated-link inline-flex items-center gap-2;
-}
-
 .animated-link,
 .animated-button span,
 .markdown-body a {
@@ -75,10 +70,10 @@ header nav a.active {
   width: 100%;
   transform: scaleX(0);
   height: 2px;
-  bottom: -1px;
+  bottom: -3px;
   left: 0;
   background-color: white;
-  transition: transform 0.15s ease-out;
+  transition: transform 0.1s ease-out;
 }
 
 .animated-link:hover:after,

@@ -1,0 +1,150 @@
+---
+import { getEntries, type CollectionEntry } from "astro:content";
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon";
+
+import Tag from "@/components/Tag.astro";
+import { Tooltip } from "@/components/Tooltip";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const tagsData = await getEntries(project.data.tags);
+---
+
+<article
+  class="group relative flex h-full flex-1 flex-col rounded-3xl bg-cyan-50 p-5 text-cyan-800 transition duration-300 hover:translate-y-1"
+>
+  <div
+    class="absolute right-4 top-4 transition duration-300 group-hover:opacity-100 sm:opacity-0"
+  >
+    {
+      project.data.source && (
+        <Tooltip client:visible title="Source code">
+          <a
+            href={project.data.source}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            aria-label={project.data.name + " source code"}
+          >
+            <Icon pack="lucide" name="code" class="mr-2 h-5 w-5" />
+          </a>
+        </Tooltip>
+      )
+    }
+    <Tooltip client:visible title="Have a look">
+      <a
+        href={project.data.url}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        aria-label={project.data.name + " link"}
+      >
+        <Icon pack="lucide" name="arrow-up-right" class="h-5 w-5" />
+      </a>
+    </Tooltip>
+  </div>
+
+  <div class="mt-auto">
+    <a href={`/projects/${project.slug}`} data-astro-prefetch
+      ><Image
+        src={project.data.cover}
+        height={192}
+        alt={project.data.name}
+        class="mx-auto mb-2 h-[128px] object-contain"
+        loading="lazy"
+      /></a
+    >
+
+    <h2>
+      <a href={`/projects/${project.slug}`} data-astro-prefetch>
+        {project.data.name}
+      </a>
+    </h2>
+
+    <div class="flex flex-col items-center gap-4">
+      <h3 class="text-sm">{project.data.description}</h3>
+
+      <div class="relative flex items-center justify-center gap-4">
+        {
+          tagsData.map(({ slug, data: tag }) => (
+            <Tag name={tag.name} slug={slug} url={tag.url} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    --color: #41b011;
+    --radius: 0%;
+    --elevation: 0px;
+    --bevel: 2px;
+    --angle: 216deg;
+    --intensity: 42;
+    --diffusion: 0;
+    --sin: calc(sin(var(--angle)));
+    --cos: calc(cos(var(--angle)));
+    --x-displacement: calc(-1 * var(--cos) * (var(--elevation) + 1px));
+    --y-displacement: calc(-1 * var(--sin) * (var(--elevation) + 1px));
+    --edge-opacity: calc(var(--intensity) * 0.006 - var(--diffusion) * 0.002);
+    --edge-blur: calc(var(--bevel) * 1.5);
+    --surface-contrast: calc(
+      var(--intensity) * 0.01 - var(--diffusion) * 0.005
+    );
+    box-shadow:
+      var(--x-displacement) var(--y-displacement)
+        calc(var(--diffusion) * 0.3px + (var(--elevation)))
+        calc(var(--elevation) / 2) rgba(0, 0, 0, calc(var(--intensity) * 0.006)),
+      0px 0px calc(var(--diffusion) * 1.4px)
+        rgba(255, 255, 255, calc(var(--intensity) * 0.004)),
+      inset calc(var(--bevel) * -1) 0 var(--edge-blur)
+        hsla(100, 0%, calc((var(--cos) + 1) * 50%), var(--edge-opacity)),
+      inset 0 var(--bevel) var(--edge-blur)
+        hsla(100, 0%, calc((-1 * var(--sin) + 1) * 50%), var(--edge-opacity)),
+      inset var(--bevel) 0 var(--edge-blur)
+        hsla(100, 0%, calc((-1 * var(--cos) + 1) * 50%), var(--edge-opacity)),
+      inset 0 calc(var(--bevel) * -1) var(--edge-blur)
+        hsla(100, 0%, calc((var(--sin) + 1) * 50%), var(--edge-opacity));
+    background-blend-mode: soft-light;
+  }
+
+  article:hover {
+    --color: #41b011;
+    --radius: 0%;
+    --elevation: 3px;
+    --bevel: 2px;
+    --angle: 216deg;
+    --intensity: 42;
+    --diffusion: 0;
+    --sin: calc(sin(var(--angle)));
+    --cos: calc(cos(var(--angle)));
+    --x-displacement: calc(-1 * var(--cos) * (var(--elevation) + 1px));
+    --y-displacement: calc(-1 * var(--sin) * (var(--elevation) + 1px));
+    --edge-opacity: calc(var(--intensity) * 0.006 - var(--diffusion) * 0.002);
+    --edge-blur: calc(var(--bevel) * 1.5);
+    --surface-contrast: calc(
+      var(--intensity) * 0.01 - var(--diffusion) * 0.005
+    );
+    box-shadow:
+      var(--x-displacement) var(--y-displacement)
+        calc(var(--diffusion) * 0.3px + (var(--elevation)))
+        calc(var(--elevation) / 2) rgba(0, 0, 0, calc(var(--intensity) * 0.006)),
+      0px 0px calc(var(--diffusion) * 1.4px)
+        rgba(255, 255, 255, calc(var(--intensity) * 0.004)),
+      inset calc(var(--bevel) * -1) 0 var(--edge-blur)
+        hsla(100, 0%, calc((var(--cos) + 1) * 50%), var(--edge-opacity)),
+      inset 0 var(--bevel) var(--edge-blur)
+        hsla(100, 0%, calc((-1 * var(--sin) + 1) * 50%), var(--edge-opacity)),
+      inset var(--bevel) 0 var(--edge-blur)
+        hsla(100, 0%, calc((-1 * var(--cos) + 1) * 50%), var(--edge-opacity)),
+      inset 0 calc(var(--bevel) * -1) var(--edge-blur)
+        hsla(100, 0%, calc((var(--sin) + 1) * 50%), var(--edge-opacity));
+    background-blend-mode: soft-light;
+  }
+</style>

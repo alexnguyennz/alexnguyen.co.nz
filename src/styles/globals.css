@@ -33,7 +33,7 @@ body {
     rgba(5, 8, 47, 1) 0%,
     rgba(6, 182, 212, 1) 100%
   );
-  @apply text-blue-50;
+  @apply text-cyan-50;
 }
 
 h1 {
@@ -49,12 +49,12 @@ h3 {
 
 /******* Header ********/
 header nav a {
-  @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-blue-950 transition;
-  @apply hover:bg-blue-200;
+  @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition;
+  @apply hover:bg-cyan-200;
 }
 
 header nav a.active {
-  @apply bg-blue-200;
+  @apply bg-cyan-200;
 }
 
 .animated-link,

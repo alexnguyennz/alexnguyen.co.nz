@@ -41,6 +41,7 @@ const posts = defineCollection({
       title: z.string(),
       date: z.date(),
       image: image(),
+      tags: z.array(reference("tags")).optional(),
       published: z.boolean(),
     }),
 });

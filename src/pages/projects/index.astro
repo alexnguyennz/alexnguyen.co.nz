@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
-import Project from "@/components/Project.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
@@ -20,7 +20,7 @@ const projects = (await getCollection("projects")).sort(
     {
       projects.map((project) => (
         <Fade client:visible delay={0.25}>
-          <Project project={project} />
+          <ProjectCard project={project} />
         </Fade>
       ))
     }

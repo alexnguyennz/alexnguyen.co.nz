@@ -10,6 +10,9 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  redirects: {
+    "/project/[...slug]": "/projects/[...slug]",
+  },
   integrations: [
     react(),
     tailwind({

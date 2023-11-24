@@ -3,10 +3,14 @@ import { getCollection } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
-
 import Tool from "@/components/Tool.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
 
 const tools = (await getCollection("tools")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 ---
@@ -19,8 +23,8 @@ const tools = (await getCollection("tools")).sort(
   <Fade client:visible delay={0.25}>
     <div class="flex max-w-xl flex-col gap-6">
       <div class="space-y-4">
-        <h2>Some cool stuff I&apos;ve worked with..</h2>
-        <ul class="space-y-2.5 sm:columns-2">
+        <h2>Some cool stuff I&apos;ve worked with</h2>
+        <ul class="space-y-3 sm:columns-2">
           {
             tools.map(({ slug, data: tool }) => (
               <Tool name={tool.name} slug={slug} url={tool.url} />
@@ -28,12 +32,19 @@ const tools = (await getCollection("tools")).sort(
           }
         </ul>
       </div>
-
-      <h2>
-        <a href="mailto:me@alexnguyen.co.nz" class="animated-link">
-          Feel free to say hi. ✉
-        </a>
-      </h2>
     </div>
   </Fade>
+
+  <Fade client:visible delay={0.35}>
+    <h2 class="mt-6">Some of my projects</h2>
+  </Fade>
+  <div class="grid gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+    {
+      projects.map((project) => (
+        <Fade client:visible delay={0.45}>
+          <ProjectCard project={project} />
+        </Fade>
+      ))
+    }
+  </div>
 </Layout>

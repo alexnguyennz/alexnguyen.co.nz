@@ -36,10 +36,7 @@ const tagsData = await getEntries(post.data.tags);
       }
     </h2>
 
-    <h2
-      class="mb-0 line-clamp-2 text-base"
-      transition:name={`news-title-${post.slug}`}
-    >
+    <h2 class="mb-0 line-clamp-2 text-base">
       <a href={`/blog/${post.slug}/`} data-astro-prefetch>{post.data.title}</a>
     </h2>
 

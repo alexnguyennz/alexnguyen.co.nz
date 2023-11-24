@@ -4,8 +4,8 @@ import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
 ---
 
-<Layout title="About Me -">
-  <Fade client:visible><h1>about me</h1></Fade>
+<Layout title="About -">
+  <Fade client:visible><h1>About</h1></Fade>
 
   <Fade client:visible delay={0.25}>
     <div class="flex max-w-xl flex-col gap-6">
@@ -19,23 +19,14 @@ import { Fade } from "@/components/Fade";
         I'm currently taking on new projects, and I'm interested in developer
         roles (local or remote). Feel free to <a
           href="mailto:me@alexnguyen.co.nz"
-          class="animated-link">get in touch ✉</a
+          class="animated-link">contact me ✉</a
         > about any opportunities or projects.
       </p>
 
       <p>
-        In my spare time, I like to read (slowly), run on local tracks
-        (quickly), go to the cinema, and play the piano (poorly). I also watch
-        too much basketball (probably).
-      </p>
-
-      <p>
-        This website is built with <a
-          href="https://astro.build"
-          target="_blank"
-          rel="noreferrer nofollow noopener"
-          class="animated-link">Astro ↗</a
-        >.
+        In my spare time, I like to read (slowly), run on local tracks, go to
+        the cinema, and play the piano (poorly). I also watch too much
+        basketball.
       </p>
     </div>
   </Fade>

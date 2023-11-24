@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
@@ -26,7 +25,7 @@ const { Content } = await post.render();
           {post.data.title}
         </h1>
 
-        <h2>
+        <h2 class="text-base">
           {
             new Date(post.data.date).toLocaleDateString("en-NZ", {
               year: "numeric",
@@ -38,21 +37,8 @@ const { Content } = await post.render();
       </div>
     </Fade>
 
-    <div class="post"><Fade client:visible delay={0.25}><Content /></Fade></div>
+    <div class="prose prose-a:no-underline">
+      <Fade client:visible delay={0.25}><Content /></Fade>
+    </div>
   </article>
 </Layout>
-
-<!--  <Image
-  src={post.data.image}
-  width="700"
-  height="700"
-  alt={post.data.title}
-  class="shadow-border h-96 w-full rounded-md object-cover"
-  transition:name={`news-image-${post.slug}`}
-/>-->
-
-<style is:global>
-  .post img {
-    @apply mx-auto mb-4 mt-6 max-w-2xl rounded-md;
-  }
-</style>

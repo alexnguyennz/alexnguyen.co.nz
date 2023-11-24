@@ -10,7 +10,7 @@ interface Props {
 const { name, slug, url } = Astro.props;
 ---
 
-<li class="grid grid-cols-2 items-center gap-2">
+<li class="grid grid-cols-2 items-center gap-3">
   <a
     href={url}
     target="_blank"
@@ -18,7 +18,7 @@ const { name, slug, url } = Astro.props;
     class="justify-self-end"
     aria-label={`${name} website`}
   >
-    <Icon name={slug} class="h-8 w-auto" />
+    <Icon name={slug} class="h-6 w-auto" />
   </a>
 
   <a

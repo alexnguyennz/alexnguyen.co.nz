@@ -6,23 +6,19 @@ import { cn } from "@/lib/utils";
 
 const links = [
   {
-    name: "home",
+    name: "Home",
     href: "/",
   },
   {
-    name: "projects",
-    href: "/projects",
-  },
-  {
-    name: "blog",
+    name: "Blog",
     href: "/blog",
   },
   {
-    name: "nonprofit",
+    name: "Nonprofit",
     href: "/nonprofit",
   },
   {
-    name: "about",
+    name: "About",
     href: "/about",
   },
 ];
@@ -32,7 +28,7 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <header class="fixed left-1/2 top-6 z-20 -translate-x-1/2 px-5 sm:w-full">
   <div
-    class="container mx-auto flex max-w-lg items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:gap-3"
+    class="container mx-auto flex max-w-[396px] items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:gap-3"
   >
     <a href="/" class="shrink-0"
       ><Image
@@ -51,7 +47,7 @@ const pathname = new URL(Astro.request.url).pathname;
       class="sm:hidden"
       aria-label="toggle mobile menu"
     >
-      <Icon pack="lucide" name="menu" class="h-6 w-6 text-blue-950" /></button
+      <Icon pack="lucide" name="menu" class="h-6 w-6 text-cyan-900" /></button
     >
 
     <nav class="hidden sm:block">
@@ -62,7 +58,7 @@ const pathname = new URL(Astro.request.url).pathname;
               <a
                 href={link.href}
                 class={cn(
-                  link.name === "home"
+                  link.href === "/"
                     ? pathname === "/" && "active"
                     : pathname.startsWith(link.href) && "active",
                 )}
@@ -79,7 +75,7 @@ const pathname = new URL(Astro.request.url).pathname;
 
   <nav
     id="mobile-menu"
-    class="absolute left-0 mt-2 hidden w-full rounded-3xl bg-blue-100 p-3.5 shadow-xl sm:hidden"
+    class="absolute left-0 mt-2 hidden w-full rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:hidden"
   >
     <ul class="flex flex-col items-center gap-2">
       {
@@ -88,7 +84,7 @@ const pathname = new URL(Astro.request.url).pathname;
             <a
               href={link.href}
               class={cn(
-                link.name === "home"
+                link.href === "/"
                   ? pathname === "/" && "active"
                   : pathname.startsWith(link.href) && "active",
               )}

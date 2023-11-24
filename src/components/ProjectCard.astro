@@ -17,7 +17,7 @@ const tagsData = await getEntries(project.data.tags);
 ---
 
 <article
-  class="group relative flex h-full flex-1 flex-col rounded-3xl bg-cyan-50 p-5 text-cyan-800 transition duration-300 hover:translate-y-1"
+  class="group relative flex h-full max-w-xs flex-1 flex-col rounded-3xl bg-cyan-50 p-5 text-cyan-800 transition duration-300 hover:translate-y-1"
 >
   <div
     class="absolute right-4 top-4 transition duration-300 group-hover:opacity-100 sm:opacity-0"
@@ -49,7 +49,7 @@ const tagsData = await getEntries(project.data.tags);
   </div>
 
   <div class="mt-auto">
-    <a href={`/projects/${project.slug}`} data-astro-prefetch
+    <a href={`/project/${project.slug}`} data-astro-prefetch
       ><Image
         src={project.data.cover}
         height={192}
@@ -60,7 +60,7 @@ const tagsData = await getEntries(project.data.tags);
     >
 
     <h2>
-      <a href={`/projects/${project.slug}`} data-astro-prefetch>
+      <a href={`/project/${project.slug}`} data-astro-prefetch>
         {project.data.name}
       </a>
     </h2>
@@ -119,7 +119,7 @@ const tagsData = await getEntries(project.data.tags);
     --radius: 0%;
     --elevation: 3px;
     --bevel: 2px;
-    --angle: 216deg;
+    --angle: 270deg;
     --intensity: 42;
     --diffusion: 0;
     --sin: calc(sin(var(--angle)));

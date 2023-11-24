@@ -9,10 +9,10 @@ const links = [
     name: "Home",
     href: "/",
   },
-  /*  {
+  {
     name: "Blog",
     href: "/blog",
-  },*/
+  },
   {
     name: "Nonprofit",
     href: "/nonprofit",
@@ -59,8 +59,8 @@ const pathname = new URL(Astro.request.url).pathname;
                 href={link.href}
                 class={cn(
                   link.href === "/"
-                    ? pathname === "/" && "active"
-                    : pathname.startsWith(link.href) && "active",
+                    ? pathname === "/" && "bg-cyan-200 shadow-sm"
+                    : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
                 )}
                 data-astro-prefetch
               >
@@ -85,8 +85,8 @@ const pathname = new URL(Astro.request.url).pathname;
               href={link.href}
               class={cn(
                 link.href === "/"
-                  ? pathname === "/" && "active"
-                  : pathname.startsWith(link.href) && "active",
+                  ? pathname === "/" && "bg-cyan-200 shadow-sm"
+                  : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
               )}
               data-astro-prefetch
             >
@@ -100,12 +100,18 @@ const pathname = new URL(Astro.request.url).pathname;
 </header>
 
 <style>
+  header nav a {
+    @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition;
+    @apply hover:bg-cyan-200 hover:shadow-sm;
+  }
+
   #mobile-menu li {
-    @apply w-full text-center;
+    width: 100%;
+    text-align: center;
   }
 
   #mobile-menu a {
-    @apply block;
+    display: block;
   }
 </style>
 

@@ -33,30 +33,30 @@ body {
     rgba(5, 8, 47, 1) 0%,
     rgba(6, 182, 212, 1) 100%
   );
-  @apply text-cyan-50;
 }
 
 h1 {
-  @apply text-center text-3xl font-bold tracking-tight;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  letter-spacing: -0.025em;
 }
 
 h2 {
-  @apply text-center text-xl font-medium tracking-tight;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  letter-spacing: -0.025em;
 }
 
 h3 {
-  @apply font-medium;
-}
-
-header nav a {
-  @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition;
-  @apply hover:bg-cyan-200 hover:shadow-sm;
-}
-
-header nav a.active {
-  @apply bg-cyan-200 shadow-sm;
+  font-weight: 500;
 }
 
 main a:hover {
-  @apply underline decoration-2 underline-offset-2;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }

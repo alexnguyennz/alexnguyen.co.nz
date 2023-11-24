@@ -14,14 +14,29 @@ module.exports = {
         DEFAULT: {
           css: {
             color: "#ecfeff",
-            h2: {
+            h1: {
               color: "#ecfeff",
             },
+            h2: {
+              color: "#ecfeff",
+              textAlign: "left",
+            },
+            h3: {
+              color: "#ecfeff",
+              fontSize: "1.125rem",
+            },
             a: {
+              color: "#ecfeff",
+              textDecoration: "none",
+            },
+            strong: {
               color: "#ecfeff",
             },
             code: {
               color: "#67e8f9",
+            },
+            li: {
+              margin: 0,
             },
           },
         },

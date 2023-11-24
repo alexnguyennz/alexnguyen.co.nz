@@ -18,27 +18,23 @@ const { Content } = await post.render();
 ---
 
 <Layout title={post.data.title + " -"}>
-  <article class="section-container space-y-10">
+  <article class="prose">
     <Fade client:visible>
-      <div>
-        <h1>
-          {post.data.title}
-        </h1>
+      <h1 class="mb-0 text-3xl">
+        {post.data.title}
+      </h1>
 
-        <h2 class="text-base">
-          {
-            new Date(post.data.date).toLocaleDateString("en-NZ", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
-        </h2>
-      </div>
+      <p class="mt-0 text-center">
+        {
+          new Date(post.data.date).toLocaleDateString("en-NZ", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </p>
     </Fade>
 
-    <div class="prose prose-a:no-underline">
-      <Fade client:visible delay={0.25}><Content /></Fade>
-    </div>
+    <Fade client:visible delay={0.25}><Content /></Fade>
   </article>
 </Layout>

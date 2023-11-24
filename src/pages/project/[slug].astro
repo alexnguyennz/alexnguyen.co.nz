@@ -28,26 +28,23 @@ const { Content } = await project.render();
   </Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="grid gap-10 xl:grid-cols-3">
+    <div class="grid gap-10 lg:grid-cols-2">
       <a
         href={project.data.url}
         target="_blank"
         rel="noopener"
         aria-label={project.data.name + " link"}
-        class="xl:col-span-2"
       >
-        <div class="mx-auto w-full">
-          <Image
-            src={project.data.image}
-            width={800}
-            alt={project.data.name}
-            class="h-auto rounded-2xl"
-            fetchpriority="high"
-            loading="eager"
-          />
-        </div>
+        <Image
+          src={project.data.image}
+          width={800}
+          alt={project.data.name}
+          class="mx-auto w-full max-w-xl rounded-2xl"
+          fetchpriority="high"
+          loading="eager"
+        />
       </a>
-      <div class="markdown-body space-y-4">
+      <div class="prose">
         <Content />
       </div>
     </div>

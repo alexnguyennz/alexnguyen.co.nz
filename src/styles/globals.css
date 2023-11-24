@@ -33,59 +33,30 @@ body {
     rgba(5, 8, 47, 1) 0%,
     rgba(6, 182, 212, 1) 100%
   );
-  @apply text-blue-50;
+  @apply text-cyan-50;
 }
 
 h1 {
   @apply text-center text-3xl font-bold tracking-tight;
 }
+
 h2 {
-  @apply text-center text-lg font-medium;
+  @apply text-center text-xl font-medium tracking-tight;
 }
 
 h3 {
   @apply font-medium;
 }
 
-/******* Header ********/
 header nav a {
-  @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-blue-950 transition;
-  @apply hover:bg-blue-200;
+  @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition;
+  @apply hover:bg-cyan-200 hover:shadow-sm;
 }
 
 header nav a.active {
-  @apply bg-blue-200;
+  @apply bg-cyan-200 shadow-sm;
 }
 
-/***** Components ******/
-.contrast-link {
-  @apply animated-link inline-flex items-center gap-2;
-}
-
-.animated-link,
-.animated-button span,
-.markdown-body a {
-  position: relative;
-}
-
-.animated-link:after,
-.markdown-body a:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: -1px;
-  left: 0;
-  background-color: white;
-  transition: transform 0.15s ease-out;
-}
-
-.animated-link:hover:after,
-.markdown-body a:hover:after {
-  transform: scaleX(1);
-}
-
-.markdown-body ul {
-  @apply ml-5 list-disc;
+main a:hover {
+  @apply underline decoration-2 underline-offset-2;
 }

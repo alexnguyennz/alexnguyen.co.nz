@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import { Fade } from "@/components/Fade";
+
+export const getStaticPaths = async () => {
+  const posts = await getCollection("posts", ({ data }) => data.published);
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title + " -"}>
+  <article class="section-container space-y-10">
+    <Fade client:visible>
+      <div>
+        <h1>
+          {post.data.title}
+        </h1>
+
+        <h2 class="text-base">
+          {
+            new Date(post.data.date).toLocaleDateString("en-NZ", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </h2>
+      </div>
+    </Fade>
+
+    <div class="prose prose-a:no-underline">
+      <Fade client:visible delay={0.25}><Content /></Fade>
+    </div>
+  </article>
+</Layout>

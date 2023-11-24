@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 
@@ -16,15 +15,15 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    prefetch(),
     sitemap(),
   ],
+  prefetch: true,
   markdown: {
     rehypePlugins: [
       [
         rehypeExternalLinks,
         {
-          content: { type: "text", value: " 🡥" },
+          content: { type: "text", value: " ↗" },
         },
       ],
     ],

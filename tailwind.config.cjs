@@ -28,6 +28,8 @@ module.exports = {
             a: {
               color: "#ecfeff",
               textDecoration: "none",
+              /*textDecorationThickness: "2px",
+              textUnderlineOffset: "3px",*/
             },
             strong: {
               color: "#ecfeff",

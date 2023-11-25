@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntries } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
@@ -15,6 +15,8 @@ export const getStaticPaths = async () => {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const tagsData = await getEntries(post.data.tags);
 ---
 
 <Layout title={post.data.title + " -"}>
@@ -33,6 +35,16 @@ const { Content } = await post.render();
           })
         }
       </p>
+
+      <div class="flex items-center justify-center gap-1.5">
+        {
+          tagsData.map(({ data: tag }) => (
+            <span class="rounded-3xl bg-cyan-800 px-2 py-1 text-xs">
+              {tag.name}
+            </span>
+          ))
+        }
+      </div>
     </Fade>
 
     <Fade client:visible delay={0.25}><Content /></Fade>

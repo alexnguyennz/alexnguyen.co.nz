@@ -9,10 +9,10 @@ const links = [
     name: "Home",
     href: "/",
   },
-  {
+  /*  {
     name: "Blog",
     href: "/blog",
-  },
+  },*/
   {
     name: "Nonprofit",
     href: "/nonprofit",
@@ -27,7 +27,7 @@ const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header
-  class="container fixed left-1/2 top-6 z-10 mx-auto flex max-w-[130px] -translate-x-1/2 items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[396px] sm:gap-3"
+  class="container fixed left-1/2 top-6 z-10 mx-auto flex max-w-[130px] -translate-x-1/2 items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[400px] sm:gap-3"
 >
   <a href="/" class="shrink-0"
     ><Image
@@ -35,6 +35,7 @@ const pathname = new URL(Astro.request.url).pathname;
       width="64"
       height="41"
       alt="logo"
+      id="logo"
       class="mx-auto h-auto w-[40px]"
       fetchpriority="high"
       loading="eager"
@@ -53,6 +54,7 @@ const pathname = new URL(Astro.request.url).pathname;
             <a
               href={link.href}
               class={cn(
+                "rounded-3xl px-3.5 py-1.5 font-semibold tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
                 link.href === "/"
                   ? pathname === "/" && "bg-cyan-200 shadow-sm"
                   : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
@@ -78,6 +80,7 @@ const pathname = new URL(Astro.request.url).pathname;
             <a
               href={link.href}
               class={cn(
+                "rounded-3xl px-3.5 py-1.5 font-semibold tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
                 link.href === "/"
                   ? pathname === "/" && "bg-cyan-200 shadow-sm"
                   : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
@@ -94,11 +97,6 @@ const pathname = new URL(Astro.request.url).pathname;
 </header>
 
 <style>
-  header nav a {
-    @apply rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition;
-    @apply hover:bg-cyan-200 hover:shadow-sm;
-  }
-
   nav#mobile-menu {
     opacity: 0;
   }
@@ -157,9 +155,10 @@ const pathname = new URL(Astro.request.url).pathname;
     const mobileToggle = document.getElementById("mobile-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    mobileToggle.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
+    if (mobileToggle && mobileMenu)
+      mobileToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
   }
 
   initMobileMenu();
@@ -170,15 +169,19 @@ const pathname = new URL(Astro.request.url).pathname;
     "astro:page-load",
     () => {
       const header = document.querySelector("header");
-      header.style.animation = "animate-header 1s forwards";
+      if (header) header.style.animation = "animate-header 1s forwards";
 
-      const headerNav = document.querySelector("header nav");
-      headerNav.classList.add("opacity-0");
-      headerNav.style.animation = "fade-header 0.75s 0.25s forwards";
+      const headerNav = document.querySelector("nav");
+      if (headerNav) {
+        headerNav.classList.add("opacity-0");
+        headerNav.style.animation = "fade-header 0.75s 0.25s forwards";
+      }
 
-      const headerImage = document.querySelector("header img");
-      headerImage.classList.add("opacity-0");
-      headerImage.style.animation = "fade-image 0.5s 0.25s forwards";
+      const headerImage = document.querySelector("img");
+      if (headerImage) {
+        headerImage.classList.add("opacity-0");
+        headerImage.style.animation = "fade-image 0.5s 0.25s forwards";
+      }
     },
     { once: true },
   );

@@ -26,56 +26,52 @@ const links = [
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<header class="fixed left-1/2 top-6 z-20 -translate-x-1/2 px-5 sm:w-full">
-  <div
-    class="container mx-auto flex max-w-[396px] items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:gap-3"
+<header
+  class="container fixed left-1/2 top-6 z-10 mx-auto flex max-w-[130px] -translate-x-1/2 items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[400px] sm:gap-3"
+>
+  <a href="/" class="shrink-0"
+    ><Image
+      src="/logo.png"
+      width="64"
+      height="41"
+      alt="logo"
+      id="logo"
+      class="mx-auto h-auto w-[40px]"
+      fetchpriority="high"
+      loading="eager"
+    /></a
   >
-    <a href="/" class="shrink-0"
-      ><Image
-        src="/logo.png"
-        width="64"
-        height="41"
-        alt="logo"
-        class="mx-auto h-auto w-[40px]"
-        fetchpriority="high"
-        loading="eager"
-      /></a
-    >
 
-    <button
-      id="mobile-toggle"
-      class="sm:hidden"
-      aria-label="toggle mobile menu"
-    >
-      <Icon pack="lucide" name="menu" class="h-6 w-6 text-cyan-900" /></button
-    >
+  <button id="mobile-toggle" class="sm:hidden" aria-label="toggle mobile menu">
+    <Icon pack="lucide" name="menu" class="h-6 w-6 text-cyan-900" /></button
+  >
 
-    <nav class="hidden sm:block">
-      <ul class="flex items-center gap-1.5">
-        {
-          links.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class={cn(
-                  link.href === "/"
-                    ? pathname === "/" && "active"
-                    : pathname.startsWith(link.href) && "active",
-                )}
-                data-astro-prefetch
-              >
-                {link.name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
-  </div>
+  <nav class="hidden sm:block">
+    <ul class="flex items-center gap-1.5">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class={cn(
+                "rounded-3xl px-3.5 py-1.5 font-semibold tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                link.href === "/"
+                  ? pathname === "/" && "bg-cyan-200 shadow-sm"
+                  : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
+              )}
+              data-astro-prefetch
+            >
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 
   <nav
     id="mobile-menu"
-    class="absolute left-0 mt-2 hidden w-full rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:hidden"
+    class="absolute left-0 top-14 mt-2 hidden w-full rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:hidden"
   >
     <ul class="flex flex-col items-center gap-2">
       {
@@ -84,9 +80,10 @@ const pathname = new URL(Astro.request.url).pathname;
             <a
               href={link.href}
               class={cn(
+                "rounded-3xl px-3.5 py-1.5 font-semibold tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
                 link.href === "/"
-                  ? pathname === "/" && "active"
-                  : pathname.startsWith(link.href) && "active",
+                  ? pathname === "/" && "bg-cyan-200 shadow-sm"
+                  : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
               )}
               data-astro-prefetch
             >
@@ -100,32 +97,92 @@ const pathname = new URL(Astro.request.url).pathname;
 </header>
 
 <style>
+  nav#mobile-menu {
+    opacity: 0;
+  }
+
+  nav#mobile-menu {
+    animation: fade-header 0.25s forwards;
+  }
+
+  @keyframes fade-header {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+
+  @media (min-width: 640px) {
+    @keyframes animate-header {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+      100% {
+        width: 100%;
+        opacity: 100;
+      }
+    }
+  }
+
+  @keyframes fade-image {
+    0% {
+      scale: 50%;
+    }
+    50% {
+      scale: 125%;
+    }
+    100% {
+      scale: 100%;
+      opacity: 100%;
+    }
+  }
+
   #mobile-menu li {
-    @apply w-full text-center;
+    width: 100%;
+    text-align: center;
   }
 
   #mobile-menu a {
-    @apply block;
+    display: block;
   }
 </style>
 
-<script define:vars={{ pathname }}>
-  const mobileToggle = document.getElementById("mobile-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-
+<script>
   function initMobileMenu() {
-    mobileToggle.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileToggle && mobileMenu)
+      mobileToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
   }
 
   initMobileMenu();
 
-  document.addEventListener("astro:after-swap", () =>
-    mobileToggle.addEventListener("click", () => initMobileMenu),
-  );
+  document.addEventListener("astro:after-swap", () => initMobileMenu());
 
-  document.addEventListener("astro:before-preparation", () => {
-    mobileMenu.classList.add("hidden");
-  });
+  document.addEventListener(
+    "astro:page-load",
+    () => {
+      const header = document.querySelector("header");
+      if (header) header.style.animation = "animate-header 1s forwards";
+
+      const headerNav = document.querySelector("nav");
+      if (headerNav) {
+        headerNav.classList.add("opacity-0");
+        headerNav.style.animation = "fade-header 0.75s 0.25s forwards";
+      }
+
+      const headerImage = document.querySelector("img");
+      if (headerImage) {
+        headerImage.classList.add("opacity-0");
+        headerImage.style.animation = "fade-image 0.5s 0.25s forwards";
+      }
+    },
+    { once: true },
+  );
 </script>

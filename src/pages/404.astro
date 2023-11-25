@@ -1,27 +1,14 @@
 ---
-import { Image } from "astro:assets";
-
 import Layout from "@/layouts/Layout.astro";
-
-import image from "@/assets/img/404.png";
 import { Fade } from "@/components/Fade";
 ---
 
 <Layout title="404 Page Not Found -">
-  <Fade client:visible><h1>404 Page Not Found</h1></Fade>
+  <Fade client:visible><h1>Page Not Found :(</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <Image
-      src={image}
-      alt="sad bird image"
-      width="192"
-      class="mx-auto h-auto"
-      loading="eager"
-      fetchpriority="high"
-    />
-
     <h2>
-      <a href="/" class="animated-link">← Home</a>
+      <a href="/" class="animated-link">Home</a>
     </h2>
   </Fade>
 </Layout>

@@ -10,7 +10,7 @@ export function Fade({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, {
-    once: true,
+    once: false,
   });
 
   const fadeVariants = {

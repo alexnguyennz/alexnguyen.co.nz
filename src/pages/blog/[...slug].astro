@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntries } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
@@ -15,30 +15,46 @@ export const getStaticPaths = async () => {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const tagsData = await getEntries(post.data.tags);
 ---
 
 <Layout title={post.data.title + " -"}>
-  <article class="section-container space-y-10">
+  <article class="prose">
     <Fade client:visible>
-      <div>
-        <h1>
-          {post.data.title}
-        </h1>
+      <h1 class="mb-0 text-3xl">
+        {post.data.title}
+      </h1>
 
-        <h2 class="text-base">
-          {
-            new Date(post.data.date).toLocaleDateString("en-NZ", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          }
-        </h2>
+      <p class="mt-0 text-center">
+        {
+          new Date(post.data.date).toLocaleDateString("en-NZ", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }
+      </p>
+
+      <div class="flex items-center justify-center gap-1.5">
+        {
+          tagsData.map(({ data: tag }) => (
+            <span class="rounded-3xl bg-cyan-800 px-2 py-1 text-xs">
+              {tag.name}
+            </span>
+          ))
+        }
       </div>
     </Fade>
 
-    <div class="prose prose-a:no-underline">
-      <Fade client:visible delay={0.25}><Content /></Fade>
-    </div>
+    <Fade client:visible delay={0.25}><Content /></Fade>
   </article>
 </Layout>
+
+<style is:global>
+  article img {
+    max-width: 32rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+  }
+</style>

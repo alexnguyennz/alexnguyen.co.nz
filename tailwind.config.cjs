@@ -35,6 +35,11 @@ module.exports = {
             code: {
               color: "#67e8f9",
             },
+            ol: {
+              li: {
+                "&::marker": { color: "#ecfeff" },
+              },
+            },
             li: {
               margin: 0,
             },

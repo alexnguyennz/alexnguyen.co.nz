@@ -27,9 +27,9 @@ const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header
-  class="container fixed left-1/2 top-6 z-10 mx-auto flex max-w-[130px] -translate-x-1/2 items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[400px] sm:gap-3"
+  class="container fixed left-1/2 top-6 z-10 mx-auto flex hidden max-w-[130px] -translate-x-1/2 items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[400px] sm:gap-3"
 >
-  <a href="/" class="shrink-0"
+  <a href="/" class="shrink-0 rounded-3xl"
     ><Image
       src="/logo.png"
       width="64"
@@ -42,7 +42,11 @@ const pathname = new URL(Astro.request.url).pathname;
     /></a
   >
 
-  <button id="mobile-toggle" class="sm:hidden" aria-label="toggle mobile menu">
+  <button
+    id="mobile-toggle"
+    class="rounded-3xl sm:hidden"
+    aria-label="toggle mobile menu"
+  >
     <Icon pack="lucide" name="menu" class="h-6 w-6 text-cyan-900" /></button
   >
 
@@ -54,7 +58,7 @@ const pathname = new URL(Astro.request.url).pathname;
             <a
               href={link.href}
               class={cn(
-                "rounded-3xl px-3.5 py-1.5 font-semibold tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
                 link.href === "/"
                   ? pathname === "/" && "bg-cyan-200 shadow-sm"
                   : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
@@ -80,7 +84,7 @@ const pathname = new URL(Astro.request.url).pathname;
             <a
               href={link.href}
               class={cn(
-                "rounded-3xl px-3.5 py-1.5 font-semibold tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
                 link.href === "/"
                   ? pathname === "/" && "bg-cyan-200 shadow-sm"
                   : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
@@ -150,26 +154,15 @@ const pathname = new URL(Astro.request.url).pathname;
   }
 </style>
 
-<script>
-  function initMobileMenu() {
-    const mobileToggle = document.getElementById("mobile-toggle");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (mobileToggle && mobileMenu)
-      mobileToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-  }
-
-  initMobileMenu();
-
-  document.addEventListener("astro:after-swap", () => initMobileMenu());
-
+<script is:inline>
   document.addEventListener(
     "astro:page-load",
     () => {
       const header = document.querySelector("header");
-      if (header) header.style.animation = "animate-header 1s forwards";
+      if (header) {
+        header.classList.remove("hidden");
+        header.style.animation = "animate-header 1s forwards";
+      }
 
       const headerNav = document.querySelector("nav");
       if (headerNav) {
@@ -185,4 +178,25 @@ const pathname = new URL(Astro.request.url).pathname;
     },
     { once: true },
   );
+
+  function initMobileMenu() {
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileToggle && mobileMenu)
+      mobileToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+  }
+
+  initMobileMenu();
+
+  document.addEventListener("astro:after-swap", () => {
+    initMobileMenu();
+
+    const header = document.querySelector("header");
+    if (header) {
+      header.classList.remove("hidden");
+    }
+  });
 </script>

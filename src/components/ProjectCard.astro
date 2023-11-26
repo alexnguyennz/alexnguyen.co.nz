@@ -5,7 +5,6 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
 import Tag from "@/components/Tag.astro";
-import { Tooltip } from "@/components/Tooltip";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -17,35 +16,41 @@ const tagsData = await getEntries(project.data.tags);
 ---
 
 <article
-  class="group relative flex h-full max-w-xs flex-1 flex-col rounded-3xl bg-cyan-50 p-5 text-cyan-800 transition duration-300 hover:translate-y-1"
+  class="group relative flex h-full max-w-xs flex-1 flex-col rounded-[3rem] bg-cyan-50 p-5 text-cyan-800 transition duration-300 hover:translate-y-1"
 >
   <div
-    class="absolute right-4 top-4 transition duration-300 group-hover:opacity-100 sm:opacity-0"
+    class="absolute right-4 top-4 flex gap-2 transition group-hover:opacity-100 sm:opacity-0"
   >
     {
       project.data.source && (
-        <Tooltip client:visible title="Source code">
-          <a
-            href={project.data.source}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            aria-label={project.data.name + " source code"}
-          >
-            <Icon pack="lucide" name="code" class="mr-2 h-8 w-8 p-1" />
-          </a>
-        </Tooltip>
+        <a
+          href={project.data.source}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          aria-label={project.data.name + " source code"}
+        >
+          <Icon
+            pack="lucide"
+            name="code"
+            class="h-8 w-8 p-1"
+            title="Source code"
+          />
+        </a>
       )
     }
-    <Tooltip client:visible title="Have a look">
-      <a
-        href={project.data.url}
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        aria-label={project.data.name + " link"}
-      >
-        <Icon pack="lucide" name="arrow-up-right" class="h-8 w-8 p-1" />
-      </a>
-    </Tooltip>
+    <a
+      href={project.data.url}
+      target="_blank"
+      rel="noopener noreferrer nofollow"
+      aria-label={project.data.name + " link"}
+    >
+      <Icon
+        pack="lucide"
+        name="arrow-up-right"
+        class="h-8 w-8 p-1"
+        title="View"
+      />
+    </a>
   </div>
 
   <div class="mt-auto">

@@ -10,15 +10,19 @@ const { post } = Astro.props;
 ---
 
 <article
-  class="flex origin-top flex-col space-y-4 rounded-2xl p-5 text-center transition duration-300 hover:scale-[102%] hover:bg-cyan-600 hover:shadow-lg"
+  class="group flex origin-top flex-col space-y-4 rounded-2xl p-5 text-center transition duration-300 hover:bg-cyan-600 hover:shadow-lg"
 >
-  <a href={`/blog/${post.slug}/`} class="rounded-2xl" data-astro-prefetch>
+  <a
+    href={`/blog/${post.slug}/`}
+    class="overflow-hidden rounded-2xl"
+    data-astro-prefetch
+  >
     <Image
       src={post.data.image}
       width="300"
       height="300"
       alt={post.data.title}
-      class="aspect-[4/3] w-full rounded-2xl object-cover"
+      class="aspect-[4/3] w-full rounded-2xl object-cover transition duration-500 group-hover:scale-110"
     />
   </a>
 

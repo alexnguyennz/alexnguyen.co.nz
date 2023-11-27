@@ -13,6 +13,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            maxWidth: "56rem",
             color: "#ecfeff",
             h1: {
               color: "#ecfeff",
@@ -28,8 +29,6 @@ module.exports = {
             a: {
               color: "#ecfeff",
               textDecoration: "none",
-              /*textDecorationThickness: "2px",
-              textUnderlineOffset: "3px",*/
             },
             strong: {
               color: "#ecfeff",

@@ -1,0 +1,261 @@
+---
+import { getEntry } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+
+import { Fade } from "@/components/Fade";
+
+const notes = await getEntry("notes", "astro");
+const { Content } = await notes.render();
+---
+
+<Layout title="All About Astro -">
+  <Fade client:visible><h1>All About Astro</h1></Fade>
+
+  <Fade client:visible delay={0.25}>
+    <div class="prose">
+      <p>
+        Some notes I've made when using <a
+          href="https://astro.build"
+          target="_blank"
+          rel="noreferrer noopener nofollow">Astro ↗</a
+        > that don't warrant a separate post.
+      </p>
+
+      <p>
+        These may be things I've missed in the documentation, something I've
+        done incorrectly (very likely), or an actual issue/bug (less likely).
+      </p>
+
+      <p>
+        All notes apply to at least <a
+          href="https://github.com/withastro/astro/releases/tag/astro%403.6.0"
+          target="_blank"
+          rel="noreferrer noopener nofollow">astro@3.6.0</a
+        >.
+      </p>
+
+      <p class="text-xs">
+        👍 to <a
+          href="https://kld.dev/toc-animation/"
+          target="_blank"
+          rel="noreferrer noopener nofollow">KLD ↗</a
+        > and <a
+          href="https://lab.hakim.se/progress-nav/"
+          target="_blank"
+          rel="noreferrer noopener nofollow">Hakim ↗</a
+        > for the table of contents.
+      </p>
+
+      <div class="flex items-start">
+        <article class="flex-1">
+          <Content />
+        </article>
+
+        <nav class="toc sticky top-0 hidden md:block">
+          <ul>
+            <li><a href="#view-transitions">View Transitions</a></li>
+            <li>
+              <ul>
+                <li>
+                  <a href="#selectors-with-page-events"
+                    >Selectors with page events</a
+                  >
+                </li>
+                <li>
+                  <a href="#using-definevars-with-lifecycle-events"
+                    >Using define:vars with lifecycle events</a
+                  >
+                </li>
+                <li>
+                  <a href="#fallback-issues-with-css-animations"
+                    >Fallback issues with CSS animations</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li><a href="#framework-components">Framework Components</a></li>
+            <li>
+              <ul>
+                <li><a href="#mixing-frameworks">Mixing Frameworks</a></li>
+              </ul>
+            </li>
+          </ul>
+          <svg class="toc-progress" xmlns="http://www.w3.org/2000/svg">
+            <path
+              class="toc-marker"
+              fill="none"
+              stroke="#ecfeff"
+              stroke-linecap="round"
+              stroke-width="2"
+              stroke-dashoffset="1"
+              stroke-linejoin="round"></path>
+          </svg>
+        </nav>
+      </div>
+    </div>
+  </Fade>
+</Layout>
+
+<style>
+  ul {
+    list-style-type: none;
+  }
+
+  nav a {
+    display: block;
+    padding-left: 0.5rem;
+  }
+
+  svg.toc-progress {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  path.toc-marker {
+    transition: stroke-dasharray 0.3s ease;
+  }
+</style>
+
+<script>
+  // Create some WeakMaps to store the distances to the top and
+  // bottom of each link
+  const linkStarts = new WeakMap();
+  const linkEnds = new WeakMap();
+
+  addIntersectionObserver();
+  addResizeObserver();
+
+  document.addEventListener("astro:after-swap", () => {
+    addIntersectionObserver();
+    addResizeObserver();
+  });
+
+  function addIntersectionObserver() {
+    const observer = new IntersectionObserver((sections) => {
+      sections.forEach((section) => {
+        const heading = section.target.querySelector("h2, h3");
+        if (!heading) return;
+        const id = heading.getAttribute("id");
+
+        // Get the link to this section's heading
+        const link = document.querySelector(`nav.toc li a[href="#${id}"]`);
+        if (!link) return;
+
+        // Add/remove the .active class based on whether the
+        // section is visible
+        const addRemove = section.intersectionRatio > 0 ? "add" : "remove";
+        link.classList[addRemove]("active");
+      });
+      updatePath();
+    });
+
+    // Observe all the sections of the article
+    document.querySelectorAll("article section").forEach((section) => {
+      observer.observe(section);
+    });
+  }
+
+  function addResizeObserver() {
+    if (document.querySelector("nav.toc")) {
+      const observer = new ResizeObserver(() => {
+        drawPath();
+        updatePath();
+      });
+
+      observer.observe(document.querySelector("nav.toc")!);
+    }
+  }
+
+  function drawPath() {
+    const path: SVGGeometryElement | null =
+      document.querySelector("path.toc-marker");
+    const links: HTMLLinkElement[] = Array.from(
+      document.querySelectorAll("nav.toc a"),
+    );
+    if (!links.length) return;
+
+    // Start with an empty array of path data values (joined with
+    // spaces later)
+    type PathData = "M" | "L" | number;
+
+    let pathData: PathData[] = [];
+    let left = 0; // The last x position / indentation
+
+    if (path) {
+      // Iterate over each link to build up the pathData
+      links.forEach((link, i) => {
+        const x = link.offsetLeft;
+        const y = link.offsetTop;
+        const height = link.offsetHeight;
+        if (i === 0) {
+          // The top of the first link starts at 0px along the path.
+          linkStarts.set(link, 0);
+          // Like drawing with a pen...
+          // 'M'ove to the top left of the first link,
+          // and then draw a 'L'ine to the bottom left
+          pathData.push("M", x, y, "L", x, y + height);
+        } else {
+          // If the current link is indented differently than the last,
+          // then come down to the current link's top before moving
+          // left or right. This ensures we get 90-degrees angle at the
+          // corners.
+          if (left !== x) pathData.push("L", left, y);
+
+          // Draw a line to the top left of the current link
+          pathData.push("L", x, y);
+
+          // Apply the current path data to the path element
+          path.setAttribute("d", pathData.join(" "));
+
+          // Get the total length of the path now that it extends
+          // to the top of this link, and store it in our linkStarts
+          // WeakMap.
+          linkStarts.set(link, path.getTotalLength());
+
+          // Draw a line to the bottom left of the current link
+          pathData.push("L", x, y + height);
+        }
+
+        // Save the current link's x position to compare with the next
+        // link
+        left = x;
+
+        // Apply the current path data to the path element again
+        path.setAttribute("d", pathData.join(" "));
+
+        // Get the length of the path that now extends to the
+        // bottom of this link, and store it in our linkEnds WeakMap.
+        linkEnds.set(link, path.getTotalLength());
+      });
+    }
+  }
+
+  function updatePath() {
+    const path: SVGGeometryElement | null =
+      document.querySelector("path.toc-marker");
+
+    if (path && path?.getTotalLength()) {
+      const activeLinks = document.querySelectorAll("nav.toc a.active");
+      let linkStart = path.getTotalLength();
+      let linkEnd = 0;
+      activeLinks.forEach((link) => {
+        // Set linkStart to the top of the earliest active link
+        linkStart = Math.min(linkStart, linkStarts.get(link));
+        // Set linkEnd to the bottom of the furthest active link
+        linkEnd = Math.max(linkEnd, linkEnds.get(link));
+      });
+      // If there are no active links, hide the path
+      path.style.display = activeLinks.length ? "inline" : "none";
+      // FINALLY, do the thing!
+      path.setAttribute(
+        "stroke-dasharray",
+        `1 ${linkStart} ${linkEnd - linkStart} ${path.getTotalLength()}`,
+      );
+    }
+  }
+</script>

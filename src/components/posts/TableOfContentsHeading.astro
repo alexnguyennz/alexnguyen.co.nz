@@ -1,0 +1,50 @@
+---
+import type { Heading } from "./TableOfContents.astro";
+
+interface Props {
+  heading: Heading;
+}
+
+const { heading } = Astro.props;
+
+console.log("heading test", heading);
+---
+
+<li>
+  <a href={"#" + heading.slug}>
+    {heading.text}
+  </a>
+  {
+    heading.subheadings.length > 0 && (
+      <ul>
+        {heading.subheadings.map((subheading) => (
+          <Astro.self heading={subheading} />
+        ))}
+      </ul>
+    )
+  }
+</li>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin-top: 0;
+    padding-left: 1rem;
+  }
+
+  a {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    padding: 0.5rem 0.75rem;
+    transition-property: color, background-color, border-color,
+      text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  a:not(.active) {
+    color: #0f172a;
+  }
+</style>

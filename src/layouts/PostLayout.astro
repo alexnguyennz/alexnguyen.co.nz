@@ -1,0 +1,43 @@
+---
+import Layout from "./Layout.astro";
+import TableOfContents from "@/components/posts/TableOfContents.astro";
+
+import { Fade } from "@/components/Fade";
+
+const { frontmatter, headings } = Astro.props;
+---
+
+<Layout title={`${frontmatter.title} - `}>
+  <Fade client:visible><h1>{frontmatter.title}</h1></Fade>
+
+  <Fade client:visible delay={0.25}>
+    <div class="prose">
+      <p>
+        Some findings or quirks I've noticed when using <a
+          href="https://astro.build"
+          target="_blank"
+          rel="noreferrer noopener nofollow">Astro <span>↗</span></a
+        >. These may be things I've missed in the documentation, something I've
+        done incorrectly (very likely), or an actual issue/bug (less likely).
+      </p>
+
+      <p>
+        All notes apply to at least <a
+          href="https://github.com/withastro/astro/releases/tag/astro%403.6.0"
+          target="_blank"
+          rel="noreferrer noopener nofollow">astro@3.6.0 <span>↗</span></a
+        >.
+      </p>
+
+      <div class="flex flex-col items-start md:flex-row">
+        <article class="flex-1">
+          <slot />
+        </article>
+
+        <!-- Credit to Kevin Drum https://kld.dev/toc-animation/ and Hakim El Hattab https://lab.hakim.se/progress-nav/ for the table of contents -->
+
+        <TableOfContents headings={headings} />
+      </div>
+    </div>
+  </Fade>
+</Layout>

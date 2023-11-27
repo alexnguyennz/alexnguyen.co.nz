@@ -1,5 +1,5 @@
 ---
-
+title: All About Astro
 ---
 
 <section>
@@ -32,7 +32,7 @@ When selecting elements with methods like `querySelector()`, make sure to call t
 
 <section>
 
-### Using define:vars with lifecycle events
+### define:vars with lifecycle events
 
 If you use [define:vars](https://docs.astro.build/en/reference/directives-reference/#definevars) to pass frontmatter variables into your script tag, everything inside will re-run everytime that variable changes:
 

@@ -64,6 +64,44 @@ The workaround was to use a fallback of `swap`:
 
 <section>
 
+## Astro Image
+</section>
+
+<section>
+
+### Remote images with subdomains
+
+You need to specify the subdomain for any [remote image](https://docs.astro.build/en/guides/images/#remote-images) links in `astro.config.mjs`, otherwise it won't get optimized and the original source will be used:
+
+
+```astro
+<!-- resolves to https://fastly.picsum.photos/** -->
+<Image
+  src="https://picsum.photos/200/300"
+  width="500"
+  height="500"
+  alt="remote image"
+/>
+```
+
+```typescript
+export default defineConfig({
+  image: {
+    domains: ["fastly.picsum.photos"],
+    // or if you need a wildcard
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: '**.picsum.photos'
+    }]
+  }
+});
+```
+
+
+</section>
+
+<section>
+
 ## Framework Components
 </section>
 
@@ -82,4 +120,75 @@ import { Gallery } from "./Gallery"; // error
 This is likely because without it, Astro doesn't know how to process that particular component.
 
 Alternatively (although I'm not sure why you would do this), you can force the component to render for a particular framework with [client:only](https://docs.astro.build/en/reference/directives-reference/#clientonly) to make it work without the extension.
+</section>
+
+<section>
+
+## Miscellaneous
+</section>
+
+<section>
+
+### Importing the Astro config
+
+If you want to import your config from `astro.config.mjs` elsewhere in your project, it will only work in development.
+
+All of these methods will fail during build:
+
+```typescript
+// 1
+import config from "../../astro.config.mjs";
+console.log("Astro config", config);
+
+// 2
+const config = await Astro.glob("../../astro.config.mjs");
+console.log("Astro config", config[0].default);
+
+// 3
+const config = import.meta.glob("../../astro.config.mjs");
+
+for (const path in config) {
+  config[path]().then((mod) => {
+    console.log(mod.default);
+  });
+}
+```
+
+This is due to the use of any imported Astro functions (like `@astrojs/react`) which I guess can't be properly parsed.
+
+One workaround is to create a separate config file that doesn't use any Astro related imports which you import in `astro.config.mjs` and anywhere else:
+
+```typescript
+// src/config.ts
+export default {
+  site: "example.com",
+  server: {
+    port: 3000,
+  },
+  // yada yada
+};
+```
+
+```typescript
+// astro.config.mjs
+import config from "/src/config.ts";
+import react from "@astrojs/react";
+
+export default defineConfig({
+  ...config,
+  integrations: [
+    react(),
+  ],
+  // etc.
+});
+
+```
+
+```typescript
+// Astro.component
+import config from "../config.ts";
+console.log("config", config);
+```
+
+With this method you won't be able to read the functions you set, but if you wanted to, you could set additional key values in the config object (`config.ts`) which you import in `astro.config.mjs`, and manually add the functions to the relevant key e.g. `integrations` based on which ones exist.
 </section>

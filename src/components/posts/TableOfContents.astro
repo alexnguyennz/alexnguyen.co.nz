@@ -1,21 +1,14 @@
 ---
 import TableOfContentsHeading from "./TableOfContentsHeading.astro";
+import type { Heading } from "@/lib/types";
 
 const { headings } = Astro.props;
 const toc = buildToc(headings);
-
-export interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
-  subheadings: Heading[];
-}
 
 function buildToc(headings: Heading[]) {
   const toc: Heading[] = [];
   const parentHeadings = new Map();
   headings.forEach((h: Heading) => {
-    console.log("h", h);
     const heading = { ...h, subheadings: [] };
     parentHeadings.set(heading.depth, heading);
 

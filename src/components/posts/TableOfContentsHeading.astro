@@ -1,13 +1,11 @@
 ---
-import type { Heading } from "./TableOfContents.astro";
+import type { Heading } from "@/lib/types";
 
 interface Props {
   heading: Heading;
 }
 
 const { heading } = Astro.props;
-
-console.log("heading test", heading);
 ---
 
 <li>

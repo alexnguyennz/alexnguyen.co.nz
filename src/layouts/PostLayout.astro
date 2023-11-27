@@ -17,25 +17,17 @@ const { frontmatter, headings } = Astro.props;
           href="https://astro.build"
           target="_blank"
           rel="noreferrer noopener nofollow">Astro <span>↗</span></a
-        >. These may be things I've missed in the documentation, something I've
-        done incorrectly (very likely), or an actual issue/bug (less likely).
+        > (at least 3.6.0). These may be things I've missed in the
+        documentation, something I've done incorrectly (very likely), or an
+        actual issue/bug (less likely).
       </p>
 
-      <p>
-        All notes apply to at least <a
-          href="https://github.com/withastro/astro/releases/tag/astro%403.6.0"
-          target="_blank"
-          rel="noreferrer noopener nofollow">astro@3.6.0 <span>↗</span></a
-        >.
-      </p>
-
-      <div class="flex flex-col items-start md:flex-row">
+      <div class="flex flex-col md:flex-row md:items-start">
         <article class="flex-1">
           <slot />
         </article>
 
         <!-- Credit to Kevin Drum https://kld.dev/toc-animation/ and Hakim El Hattab https://lab.hakim.se/progress-nav/ for the table of contents -->
-
         <TableOfContents headings={headings} />
       </div>
     </div>

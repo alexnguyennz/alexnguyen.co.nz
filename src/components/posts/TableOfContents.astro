@@ -23,7 +23,9 @@ function buildToc(headings: Heading[]) {
 }
 ---
 
-<nav class="toc sticky top-24 hidden md:block">
+<nav
+  class="toc sticky bottom-0 top-24 hidden max-h-screen overflow-y-auto md:block"
+>
   <ul>
     {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
   </ul>
@@ -40,6 +42,10 @@ function buildToc(headings: Heading[]) {
 </nav>
 
 <style>
+  nav {
+    height: calc(100vh - 80px);
+  }
+
   nav ul {
     list-style-type: none;
     margin-top: 0;
@@ -56,10 +62,6 @@ function buildToc(headings: Heading[]) {
       text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
-  }
-
-  nav a:not(.active) {
-    color: #0f172a;
   }
 
   nav svg {

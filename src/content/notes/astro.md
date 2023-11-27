@@ -165,7 +165,7 @@ export default {
   server: {
     port: 3000,
   },
-  // yada yada
+  // ...
 };
 ```
 
@@ -178,8 +178,8 @@ export default defineConfig({
   ...config,
   integrations: [
     react(),
-  ],
-  // etc.
+  ], 
+  // ...
 });
 
 ```

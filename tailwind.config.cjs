@@ -8,12 +8,12 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "sans-serif"],
+        sans: ["'DM Sans'", "sans-serif"],
       },
       typography: {
         DEFAULT: {
           css: {
-            maxWidth: "56rem",
+            maxWidth: "64rem",
             color: "#ecfeff",
             h1: {
               color: "#ecfeff",
@@ -30,6 +30,7 @@ module.exports = {
             a: {
               color: "#ecfeff",
               textDecoration: "none",
+              fontWeight: 400,
             },
             strong: {
               color: "#ecfeff",
@@ -50,5 +51,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [require("@tailwindcss/typography")],
 };

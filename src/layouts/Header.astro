@@ -167,8 +167,10 @@ const pathname = new URL(Astro.request.url).pathname;
     () => {
       const navbar = document.getElementById("navbar");
       if (navbar) {
-        navbar.classList.remove("hidden");
-        navbar.style.animation = "animate-header 1s forwards";
+        setTimeout(() => {
+          navbar.classList.remove("hidden");
+          navbar.style.animation = "animate-header 1s forwards";
+        }, 50);
       }
 
       const headerNav = document.querySelector("nav");

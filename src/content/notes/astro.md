@@ -5,7 +5,7 @@ title: All About Astro
 <p class="mt-0">I've recently fallen in love with <a
   href="https://astro.build"
   target="_blank"
-  rel="noreferrer noopener nofollow">Astro <span>↗</span></a> for building websites. I've become a fan of its developer experience, features, community, and frequent updates by its great developer team. 
+  rel="noreferrer noopener nofollow">Astro <span>↗</span></a> for building websites. It has a great developer experience, features, community, and frequent updates. 
 </p>
 
 <p>These are some findings or quirks I've noted when using it. These may be things I've missed in the documentation, something I've done incorrectly (very likely), or an actual issue/bug (less likely).</p>
@@ -59,9 +59,9 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <section>
 
-### Fallback issues with CSS animations
+### Issues with CSS animations
 
-There is a visual issue I've encountered with Firefox when using the `<ViewTransitions />` with the [default fallback](https://docs.astro.build/en/guides/view-transitions/#fallback-control) (for browsers that don't support the View Transitions API yet) and a CSS opacity animation on page load.
+There is a visual issue I've encountered with Firefox when using `<ViewTransitions />` with the [default fallback](https://docs.astro.build/en/guides/view-transitions/#fallback-control) (for browsers that don't support the View Transitions API yet) and a CSS opacity animation on page load.
 
 The opacity was set to 0 and set to animate to 100% with a CSS animation but using View Transitions resulted in the animation never running (or the opacity not being set).
 
@@ -249,16 +249,6 @@ console.log("config", config);
 With this method you won't be able to read the functions you set, but if you wanted to, you could set additional key values in the config object (`config.ts`) which you import in `astro.config.mjs`, and manually add the functions to the relevant key e.g. `integrations` based on which ones exist.
 </section>
 
-<p class="text-sm">Credit to <a
-  href="https://kld.dev/toc-animation/"
-  target="_blank"
-  rel="noreferrer noopener nofollow">Kevin Drum <span>↗</span></a
-> and <a
-  href="https://lab.hakim.se/progress-nav/"
-  target="_blank"
-  rel="noreferrer noopener nofollow">Hakim El Hattab <span>↗</span></a
-> for the table of contents</p>
-
 <section>
 
 ### Rehype plugins
@@ -272,3 +262,13 @@ markdown: {
 ```
 
 </section>
+
+<p class="text-sm">Credit to <a
+  href="https://kld.dev/toc-animation/"
+  target="_blank"
+  rel="noreferrer noopener nofollow">Kevin Drum <span>↗</span></a
+> and <a
+  href="https://lab.hakim.se/progress-nav/"
+  target="_blank"
+  rel="noreferrer noopener nofollow">Hakim El Hattab <span>↗</span></a
+> for the table of contents.</p>

@@ -12,12 +12,12 @@ import { Fade } from "@/components/Fade";
   <Fade client:visible><h1>Nonprofit Web Development</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="prose">
-      <p>
+    <div class="prose flex flex-col items-center">
+      <p class="mb-0">
         I offer volunteer web development services for charities and nonprofits.
       </p>
 
-      <p>Please get in touch if you're looking for:</p>
+      <p class="mb-0">Please get in touch if you're looking for:</p>
       <ul>
         <li>web or app development</li>
         <li>website maintenance or updates</li>
@@ -28,7 +28,7 @@ import { Fade } from "@/components/Fade";
         name="nonprofit"
         method="POST"
         data-netlify="true"
-        class="flex w-full max-w-md flex-col gap-3"
+        class="flex w-full flex-col gap-3"
       >
         <div>
           <Label htmlFor="name">Name</Label>

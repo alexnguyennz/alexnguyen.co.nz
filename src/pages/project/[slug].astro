@@ -22,13 +22,14 @@ const { Content } = await project.render();
   <Fade client:visible>
     <h1>
       <a href={project.data.url} target="_blank" rel="noopener">
-        {project.data.name} ↗
+        {project.data.name}
+        <span class="text-xl">↗</span>
       </a>
     </h1>
   </Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="grid gap-10 lg:grid-cols-2">
+    <div class="grid gap-10">
       <a
         href={project.data.url}
         target="_blank"
@@ -39,12 +40,12 @@ const { Content } = await project.render();
           src={project.data.image}
           width={800}
           alt={project.data.name}
-          class="mx-auto w-full max-w-xl rounded-2xl"
+          class="w-full max-w-xl rounded-2xl"
           fetchpriority="high"
           loading="eager"
         />
       </a>
-      <div class="prose">
+      <div class="prose max-w-xl">
         <Content />
       </div>
     </div>

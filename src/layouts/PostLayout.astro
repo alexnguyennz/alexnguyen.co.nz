@@ -12,17 +12,7 @@ const { frontmatter, headings } = Astro.props;
 
   <Fade client:visible delay={0.25}>
     <div class="prose">
-      <p>
-        Some findings or quirks I've noticed when using <a
-          href="https://astro.build"
-          target="_blank"
-          rel="noreferrer noopener nofollow">Astro <span>↗</span></a
-        > (at least 3.6.0). These may be things I've missed in the
-        documentation, something I've done incorrectly (very likely), or an
-        actual issue/bug (less likely).
-      </p>
-
-      <div class="flex flex-col md:flex-row md:items-start">
+      <div class="flex flex-col gap-4 md:flex-row md:items-start">
         <article class="flex-1">
           <slot />
         </article>
@@ -33,3 +23,29 @@ const { frontmatter, headings } = Astro.props;
     </div>
   </Fade>
 </Layout>
+
+<style is:global>
+  code {
+    counter-reset: line;
+  }
+
+  code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-right: 2rem;
+    text-align: right;
+    color: red;
+  }
+
+  code[data-line-numbers-max-digits="2"] > [data-line]::before {
+    width: 2rem;
+  }
+
+  code[data-line-numbers-max-digits="3"] > [data-line]::before {
+    width: 3rem;
+  }
+</style>

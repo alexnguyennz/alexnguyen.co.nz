@@ -19,6 +19,7 @@ module.exports = {
               color: "#ecfeff",
             },
             h2: {
+              marginTop: "1.5rem",
               color: "#ecfeff",
               textAlign: "left",
             },

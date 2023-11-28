@@ -1,13 +1,11 @@
 ---
-import type { Heading } from "./TableOfContents.astro";
+import type { Heading } from "@/lib/types";
 
 interface Props {
   heading: Heading;
 }
 
 const { heading } = Astro.props;
-
-console.log("heading test", heading);
 ---
 
 <li>
@@ -45,6 +43,6 @@ console.log("heading test", heading);
   }
 
   a:not(.active) {
-    color: #0f172a;
+    color: #67e8f9;
   }
 </style>

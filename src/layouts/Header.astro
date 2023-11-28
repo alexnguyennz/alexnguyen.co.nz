@@ -14,8 +14,8 @@ const links = [
     href: "/blog",
   },*/
   {
-    name: "Notes",
-    href: "/notes",
+    name: "Astro",
+    href: "/astro",
   },
   {
     name: "Nonprofit",
@@ -30,78 +30,81 @@ const links = [
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<header
-  class="container fixed left-1/2 top-6 z-10 mx-auto flex hidden max-w-[130px] -translate-x-1/2 items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[410px] sm:gap-3"
->
-  <a href="/" class="shrink-0 rounded-3xl"
-    ><Image
-      src="/logo.png"
-      width="64"
-      height="41"
-      alt="logo"
-      id="logo"
-      class="mx-auto h-auto w-[40px]"
-      fetchpriority="high"
-      loading="eager"
-    /></a
+<header class="fixed left-1/2 top-6 z-10 w-full -translate-x-1/2">
+  <div
+    id="navbar"
+    class="relative z-50 mx-auto flex hidden max-w-[130px] items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[410px] sm:gap-3"
   >
+    <a href="/" class="shrink-0"
+      ><Image
+        src="/logo.png"
+        width="64"
+        height="41"
+        alt="logo"
+        id="logo"
+        class="w-[40px]"
+        fetchpriority="high"
+        loading="eager"
+      /></a
+    >
 
-  <button
-    id="mobile-toggle"
-    class="rounded-3xl sm:hidden"
-    aria-label="toggle mobile menu"
-  >
-    <Icon pack="lucide" name="menu" class="h-6 w-6 text-cyan-900" /></button
-  >
+    <button
+      id="mobile-toggle"
+      class="rounded-3xl sm:hidden"
+      aria-label="toggle mobile menu"
+    >
+      <Icon pack="lucide" name="menu" class="h-6 w-6 text-cyan-900" /></button
+    >
 
-  <nav class="hidden sm:block">
-    <ul class="flex items-center gap-1.5">
-      {
-        links.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class={cn(
-                "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
-                link.href === "/"
-                  ? pathname === "/" && "bg-cyan-200 shadow-sm"
-                  : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
-              )}
-              data-astro-prefetch
-            >
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+    <nav class="hidden sm:block">
+      <ul class="flex items-center gap-1.5">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={cn(
+                  "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                  link.href === "/"
+                    ? pathname === "/" && "bg-cyan-200 shadow-sm"
+                    : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
+                )}
+                data-astro-prefetch
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
 
-  <nav
-    id="mobile-menu"
-    class="absolute left-0 top-14 mt-2 hidden w-full rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:hidden"
-  >
-    <ul class="flex flex-col items-center gap-2">
-      {
-        links.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class={cn(
-                "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
-                link.href === "/"
-                  ? pathname === "/" && "bg-cyan-200 shadow-sm"
-                  : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
-              )}
-              data-astro-prefetch
-            >
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+    <nav
+      id="mobile-menu"
+      class="absolute left-0 top-14 mt-2 hidden w-full rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:hidden"
+    >
+      <ul class="flex flex-col items-center gap-2">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={cn(
+                  "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                  link.href === "/"
+                    ? pathname === "/" && "bg-cyan-200 shadow-sm"
+                    : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
+                )}
+                data-astro-prefetch
+              >
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <style>
@@ -162,10 +165,10 @@ const pathname = new URL(Astro.request.url).pathname;
   document.addEventListener(
     "astro:page-load",
     () => {
-      const header = document.querySelector("header");
-      if (header) {
-        header.classList.remove("hidden");
-        header.style.animation = "animate-header 1s forwards";
+      const navbar = document.getElementById("navbar");
+      if (navbar) {
+        navbar.classList.remove("hidden");
+        navbar.style.animation = "animate-header 1s forwards";
       }
 
       const headerNav = document.querySelector("nav");
@@ -198,9 +201,9 @@ const pathname = new URL(Astro.request.url).pathname;
   document.addEventListener("astro:after-swap", () => {
     initMobileMenu();
 
-    const header = document.querySelector("header");
-    if (header) {
-      header.classList.remove("hidden");
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      navbar.classList.remove("hidden");
     }
   });
 </script>

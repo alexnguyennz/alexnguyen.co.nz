@@ -3,8 +3,8 @@ import { getCollection } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
-import Tool from "@/components/Tool.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
+import Tool from "@/components/pages/home/Tool.astro";
+import ProjectCard from "@/components/pages/home/ProjectCard.astro";
 
 const tools = (await getCollection("tools")).sort(
   (a, b) => a.data.order - b.data.order,
@@ -23,7 +23,7 @@ const projects = (await getCollection("projects")).sort(
   <Fade client:visible delay={0.25}>
     <div class="flex max-w-xl flex-col gap-6">
       <div class="space-y-4">
-        <h2>Some things I&apos;ve worked with</h2>
+        <h2>Some cool things I've worked with..</h2>
         <ul class="space-y-3 sm:columns-2">
           {
             tools.map(({ slug, data: tool }) => (
@@ -36,7 +36,7 @@ const projects = (await getCollection("projects")).sort(
   </Fade>
 
   <Fade client:visible delay={0.25}>
-    <h2 class="mt-6">Some of my projects</h2>
+    <h2 class="mt-6">Some of my projects...</h2>
   </Fade>
   <div
     class="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10"

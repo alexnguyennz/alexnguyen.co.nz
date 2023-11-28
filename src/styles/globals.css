@@ -26,13 +26,30 @@
   font-display: swap;
 }
 
-body {
+html.dark:root {
+  color-scheme: dark;
+}
+
+html {
+  background: rgb(255, 251, 235);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 251, 235, 1) 0%,
+    rgba(250, 248, 242, 1) 100%
+  );
+}
+
+html.dark {
   background: rgb(5, 8, 47);
   background: linear-gradient(
     0deg,
     rgba(5, 8, 47, 1) 0%,
     rgba(6, 182, 212, 1) 100%
   );
+}
+
+html:not(.dark) .dark-logo {
+  display: none;
 }
 
 h1 {

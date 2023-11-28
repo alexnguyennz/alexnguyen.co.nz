@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
+import ThemeToggle from "./ThemeToggle.astro";
+
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -33,7 +35,7 @@ const pathname = new URL(Astro.request.url).pathname;
 <header class="fixed left-1/2 top-6 z-10 w-full -translate-x-1/2">
   <div
     id="navbar"
-    class="relative z-50 mx-auto flex hidden max-w-[130px] items-center justify-center gap-6 rounded-3xl bg-cyan-100 p-3.5 px-5 shadow-xl sm:max-w-[410px] sm:gap-3"
+    class="relative z-50 mx-auto flex hidden max-w-[130px] items-center justify-center gap-6 rounded-3xl bg-white p-3.5 px-5 shadow-md dark:bg-cyan-100 sm:max-w-[410px] sm:gap-3"
   >
     <a href="/" class="shrink-0"
       ><Image
@@ -64,10 +66,12 @@ const pathname = new URL(Astro.request.url).pathname;
               <a
                 href={link.href}
                 class={cn(
-                  "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                  "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-slate-700 transition hover:bg-slate-800 hover:text-slate-100 hover:shadow-sm dark:text-cyan-900 dark:hover:bg-cyan-200",
                   link.href === "/"
-                    ? pathname === "/" && "bg-cyan-200 shadow-sm"
-                    : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
+                    ? pathname === "/" &&
+                        "bg-slate-800 text-slate-100 shadow-sm dark:bg-cyan-200"
+                    : pathname.startsWith(link.href) &&
+                        "bg-slate-800 text-slate-100 shadow-sm dark:bg-cyan-200",
                 )}
                 data-astro-prefetch
               >
@@ -81,7 +85,7 @@ const pathname = new URL(Astro.request.url).pathname;
 
     <nav
       id="mobile-menu"
-      class="absolute left-0 top-14 mt-2 hidden w-full rounded-3xl bg-cyan-100 p-3.5 shadow-xl sm:hidden"
+      class="absolute left-0 top-14 mt-2 hidden w-full rounded-3xl bg-white p-3.5 shadow-xl dark:bg-cyan-100 sm:hidden"
     >
       <ul class="flex flex-col items-center gap-2">
         {
@@ -90,10 +94,12 @@ const pathname = new URL(Astro.request.url).pathname;
               <a
                 href={link.href}
                 class={cn(
-                  "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-cyan-900 transition hover:bg-cyan-200 hover:shadow-sm",
+                  "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-slate-700 transition hover:bg-slate-800 hover:text-slate-100 hover:shadow-sm dark:text-cyan-900 dark:hover:bg-cyan-200",
                   link.href === "/"
-                    ? pathname === "/" && "bg-cyan-200 shadow-sm"
-                    : pathname.startsWith(link.href) && "bg-cyan-200 shadow-sm",
+                    ? pathname === "/" &&
+                        "bg-slate-800 text-slate-100 shadow-sm dark:bg-cyan-200"
+                    : pathname.startsWith(link.href) &&
+                        "bg-slate-800 text-slate-100 shadow-sm dark:bg-cyan-200",
                 )}
                 data-astro-prefetch
               >
@@ -106,6 +112,7 @@ const pathname = new URL(Astro.request.url).pathname;
     </nav>
   </div>
 </header>
+<ThemeToggle />
 
 <style>
   nav#mobile-menu {

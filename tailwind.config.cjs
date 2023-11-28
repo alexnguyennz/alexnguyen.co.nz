@@ -10,7 +10,7 @@ module.exports = {
       fontFamily: {
         sans: ["'DM Sans'", "sans-serif"],
       },
-      typography: {
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
             maxWidth: "64rem",
@@ -48,7 +48,7 @@ module.exports = {
             },
           },
         },
-      },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

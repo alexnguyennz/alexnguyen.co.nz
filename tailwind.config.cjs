@@ -8,47 +8,34 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "sans-serif"],
+        sans: ["'DM Sans'", "sans-serif"],
       },
-      typography: {
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            maxWidth: "56rem",
-            color: "#ecfeff",
-            h1: {
-              color: "#ecfeff",
-            },
+            "--tw-prose-body": "black",
+            "--tw-prose-invert-body": "white",
+            "--tw-prose-links": "black",
+            "--tw-prose-invert-links": "white",
+            "--tw-prose-bullets": "black",
+            "--tw-prose-invert-bullets": "white",
+            "--tw-prose-code": theme("colors.red[500]"),
+            "--tw-prose-invert-code": theme("colors.red[300]"),
+            maxWidth: "64rem",
             h2: {
-              marginTop: "1.5rem",
-              color: "#ecfeff",
               textAlign: "left",
             },
-            h3: {
-              color: "#ecfeff",
-              fontSize: "1.125rem",
-            },
             a: {
-              color: "#ecfeff",
               textDecoration: "none",
-            },
-            strong: {
-              color: "#ecfeff",
-            },
-            code: {
-              color: "#67e8f9",
-            },
-            ol: {
-              li: {
-                "&::marker": { color: "#ecfeff" },
-              },
+              fontWeight: 400,
             },
             li: {
               margin: 0,
             },
           },
         },
-      },
+      }),
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+  plugins: [require("@tailwindcss/typography")],
 };

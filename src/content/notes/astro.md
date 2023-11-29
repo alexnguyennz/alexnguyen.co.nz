@@ -2,10 +2,10 @@
 title: All About Astro
 ---
 
-<p class="mt-0">I've recently fallen in love with <a
+<p class="mt-0"><a
   href="https://astro.build"
   target="_blank"
-  rel="noreferrer noopener nofollow">Astro <span>↗</span></a> for building websites. I've become a fan of its developer experience, features, community, and frequent updates by its great developer team. 
+  rel="noreferrer noopener nofollow">Astro <span>↗</span></a> has recently become my favourite framework for building websites. It has a great developer experience, features, community, and it's frequently updated. 
 </p>
 
 <p>These are some findings or quirks I've noted when using it. These may be things I've missed in the documentation, something I've done incorrectly (very likely), or an actual issue/bug (less likely).</p>
@@ -19,7 +19,7 @@ title: All About Astro
 
 ### Selectors with page events
 
-When selecting elements with methods like `querySelector()`, make sure to call them inside the function or block of the event listener, otherwise the reference will be stale by the time it runs on the next page:
+When selecting elements, make sure to call them inside the function or block of the event listener, otherwise the reference will be stale when you get to the next page:
 
 ```astro
 <script>
@@ -59,9 +59,9 @@ const pathname = new URL(Astro.request.url).pathname;
 
 <section>
 
-### Fallback issues with CSS animations
+### Issues with CSS animations
 
-There is a visual issue I've encountered with Firefox when using the `<ViewTransitions />` with the [default fallback](https://docs.astro.build/en/guides/view-transitions/#fallback-control) (for browsers that don't support the View Transitions API yet) and a CSS opacity animation on page load.
+There is a visual issue I've encountered with Firefox when using `<ViewTransitions />` with the [default fallback](https://docs.astro.build/en/guides/view-transitions/#fallback-control) (for browsers that don't support the View Transitions API yet) and a CSS opacity animation on page load.
 
 The opacity was set to 0 and set to animate to 100% with a CSS animation but using View Transitions resulted in the animation never running (or the opacity not being set).
 
@@ -119,20 +119,46 @@ export default defineConfig({
 
 ### Mixing frameworks
 
-When using components from multiple frameworks together, not adding the extension (which your IDE or autocomplete may miss) results in an error of `This component likely uses @astrojs/react ...`:
+When using components from multiple frameworks together, not adding the extension can result in an error of `This component likely uses @astrojs/react ...`:
+
+```ts
+import { Gallery } from "./Gallery"; // doesn't work
+```
+
+Change this to: 
 
 ```ts
 import { Gallery } from "./Gallery.tsx"; // React
 import { Gallery } from "./Gallery.vue"; // Vue
-import { Gallery } from "./Gallery"; // error
+import { Gallery } from "./Gallery.svelte"; // Svelte
 ```
 
 This is likely because without it, Astro doesn't know how to process that particular component.
 
-Alternatively (although I'm not sure why you would do this), you can force the component to render for a particular framework with [client:only](https://docs.astro.build/en/reference/directives-reference/#clientonly) to make it work without the extension.
+Alternatively (although I'm not sure why you would do this), you can force the component to hydrate for a particular framework with [client:only](https://docs.astro.build/en/reference/directives-reference/#clientonly) to make it work without the extension.
 </section>
 
 <section>
+
+<section>
+
+### Svelte without client directive
+
+You must apply a [client directive](https://docs.astro.build/en/reference/directives-reference/#client-directives) for a Svelte component's slot to appear, even if this component doesn't need to hydrate.
+
+```astro
+<Button client:load>Button Text</Button>
+```
+
+```svelte
+<!-- Button.svelte -->
+<button>
+  <slot />
+</button>
+```
+
+The same behaviour also happens with [named slots](https://svelte.dev/docs/special-elements#slot-slot-name-name). You don't need to do this with React or Vue.
+</section>
 
 ## TypeScript
 </section>
@@ -141,14 +167,16 @@ Alternatively (although I'm not sure why you would do this), you can force the c
 
 ### Props with client directives
 
-You may get various type errors when using [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) alongside any props (other than `children`):
+You may get various type errors when using [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) with any props other than `children` (not sure if this applies to other non-React frameworks):
 
 ```tsx
 <Fade client:visible delay={0.25}><h1>Title</h1></Fade>
+```
 
-/* 
+Which results in:
+```
 Type '{ children: any; "client:visible": true; }' is not assignable to type 'IntrinsicAttributes & { delay: number; children: ReactNode; }.
-Property 'delay' is missing in type '{ children: any; "client:visible": true; }' but required in type '{ delay: number; children: ReactNode; }' */
+Property 'delay' is missing in type '{ children: any; "client:visible": true; }' but required in type '{ delay: number; children: ReactNode; }'
 ```
 
 A (bad) workaround is to mark these prop(s) as optional in your type or interface inside that component:
@@ -163,7 +191,7 @@ export function Fade({
 }) {}
 ```
 
-There is likely something better as this just hides the error even if the prop(s) isn't optional.
+There is likely a better solution as this hides the error even if the prop(s) isn't optional.
 </section>
 
 <section>
@@ -249,19 +277,9 @@ console.log("config", config);
 With this method you won't be able to read the functions you set, but if you wanted to, you could set additional key values in the config object (`config.ts`) which you import in `astro.config.mjs`, and manually add the functions to the relevant key e.g. `integrations` based on which ones exist.
 </section>
 
-<p class="text-sm">Credit to <a
-  href="https://kld.dev/toc-animation/"
-  target="_blank"
-  rel="noreferrer noopener nofollow">Kevin Drum <span>↗</span></a
-> and <a
-  href="https://lab.hakim.se/progress-nav/"
-  target="_blank"
-  rel="noreferrer noopener nofollow">Hakim El Hattab <span>↗</span></a
-> for the table of contents</p>
-
 <section>
 
-### Rehype plugins
+### Syntax or rehype plugins
 
 To use a plugin like [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/), you will need to disable the default Astro syntax highlighting in your `astro.config.mjs`:
 
@@ -271,4 +289,16 @@ markdown: {
 }
 ```
 
+I believe Astro's highlighting runs last so it overtakes any existing plugins)
+
 </section>
+
+<p class="text-sm">Credit to <a
+  href="https://kld.dev/toc-animation/"
+  target="_blank"
+  rel="noreferrer noopener nofollow">Kevin Drum <span>↗</span></a
+> and <a
+  href="https://lab.hakim.se/progress-nav/"
+  target="_blank"
+  rel="noreferrer noopener nofollow">Hakim El Hattab <span>↗</span></a
+> for the table of contents.</p>

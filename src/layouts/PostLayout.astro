@@ -1,6 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import TableOfContents from "@/components/posts/TableOfContents.astro";
+import TableOfContents from "@/components/pages/blog/TableOfContents.astro";
 
 import { Fade } from "@/components/Fade";
 
@@ -11,41 +11,14 @@ const { frontmatter, headings } = Astro.props;
   <Fade client:visible><h1>{frontmatter.title}</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="prose">
-      <div class="flex flex-col gap-4 md:flex-row md:items-start">
+    <div class="prose dark:prose-invert">
+      <div class="flex flex-col md:flex-row md:items-start">
         <article class="flex-1">
           <slot />
         </article>
 
-        <!-- Credit to Kevin Drum https://kld.dev/toc-animation/ and Hakim El Hattab https://lab.hakim.se/progress-nav/ for the table of contents -->
         <TableOfContents headings={headings} />
       </div>
     </div>
   </Fade>
 </Layout>
-
-<style is:global>
-  code {
-    counter-reset: line;
-  }
-
-  code > [data-line]::before {
-    counter-increment: line;
-    content: counter(line);
-
-    /* Other styling */
-    display: inline-block;
-    width: 1rem;
-    margin-right: 2rem;
-    text-align: right;
-    color: red;
-  }
-
-  code[data-line-numbers-max-digits="2"] > [data-line]::before {
-    width: 2rem;
-  }
-
-  code[data-line-numbers-max-digits="3"] > [data-line]::before {
-    width: 3rem;
-  }
-</style>

@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 
 import { ViewTransitions } from "astro:transitions";
 
-import Header from "@/layouts/Header.astro";
-import Footer from "@/layouts/Footer.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -17,10 +17,13 @@ const { title } = Astro.props;
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Website of developer Alex Nguyen" />
-    <meta name="keywords" content="web, development, portfolio, projects" />
+    <meta name="description" content="Website of web developer Alex Nguyen" />
+    <meta
+      name="keywords"
+      content="web, development, software, portfolio, projects"
+    />
     <meta name="viewport" content="width=device-width" />
-    <title>{title} Alex Nguyen - Developer</title>
+    <title>{title} Alex Nguyen - Web Developer</title>
 
     <link rel="preload" href="/logo.png" as="image" />
     <link
@@ -49,7 +52,7 @@ const { title } = Astro.props;
 
     <ViewTransitions fallback="swap" />
   </head>
-  <body class="flex min-h-screen flex-col px-5 text-cyan-50">
+  <body class="flex min-h-screen flex-col px-5">
     <Header />
 
     <main class="mb-10 mt-32 flex flex-col gap-6 sm:mt-52 sm:items-center">

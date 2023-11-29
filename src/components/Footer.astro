@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<footer class="my-10 mt-auto flex items-center justify-center gap-4">
+  <a href="mailto:me@alexnguyen.co.nz" title="My email" aria-label="Email">
+    <Icon pack="lucide" name="mail" class="h-6 w-6" />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/anguyennz/"
+    target="_blank"
+    rel="noopener"
+    title="My LinkedIn"
+    aria-label="LinkedIn"
+  >
+    <Icon name="linkedin" class="h-6 w-6" />
+  </a>
+
+  <a
+    href="https://github.com/alexnguyennz"
+    target="_blank"
+    rel="noopener"
+    title="My GitHub"
+    aria-label="GitHub"
+  >
+    <Icon name="github" class="h-6 w-6 dark:hidden" />
+    <Icon name="github-white" class="dark-logo h-6 w-6" />
+  </a>
+</footer>

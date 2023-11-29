@@ -1,0 +1,37 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+  name: string;
+  slug: string;
+  url: string;
+}
+
+const { name, slug, url } = Astro.props;
+---
+
+<li class="justify-self-center">
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener"
+    title={name}
+    aria-label={`${name} website`}
+  >
+    {
+      slug === "astro" ? (
+        <>
+          <Icon name="astro" class="h-7 w-auto dark:hidden" />
+          <Icon name="astro-light" class="dark-logo h-7 w-auto" />
+        </>
+      ) : slug === "nodejs" ? (
+        <>
+          <Icon name="nodejs" class="h-7 w-auto dark:hidden" />
+          <Icon name="nodejs-light" class="dark-logo h-7 w-auto" />
+        </>
+      ) : (
+        <Icon name={slug} class="h-7 w-auto fill-[#00ACD7]" />
+      )
+    }
+  </a>
+</li>

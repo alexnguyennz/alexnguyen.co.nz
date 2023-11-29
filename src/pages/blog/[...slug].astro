@@ -20,7 +20,7 @@ const tagsData = await getEntries(post.data.tags);
 ---
 
 <Layout title={post.data.title + " -"}>
-  <article class="prose">
+  <article class="prose dark:prose-invert">
     <Fade client:visible>
       <h1 class="mb-0 text-3xl">
         {post.data.title}

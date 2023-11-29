@@ -26,13 +26,25 @@
   font-display: swap;
 }
 
-body {
+html.dark:root {
+  color-scheme: dark;
+}
+
+html {
+  background: rgb(240, 249, 255);
+}
+
+html.dark {
   background: rgb(5, 8, 47);
   background: linear-gradient(
     0deg,
     rgba(5, 8, 47, 1) 0%,
-    rgba(6, 182, 212, 1) 100%
+    rgba(21, 94, 117, 1) 100%
   );
+}
+
+html:not(.dark) .dark-logo {
+  display: none;
 }
 
 h1 {
@@ -73,4 +85,14 @@ main a:hover,
 main span {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+input,
+textarea {
+  @apply appearance-none; /* reset Safari styles to fix inputs with box shadow */
+}
+
+label.required:after {
+  @apply font-bold text-red-500;
+  content: " *";
 }

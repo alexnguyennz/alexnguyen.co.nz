@@ -1,18 +1,22 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-
 import { Fade } from "@/components/Fade";
+
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 ---
 
 <Layout title="About -">
   <Fade client:visible><h1>About</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="prose">
+    <div class="prose max-w-lg dark:prose-invert">
       <p>
-        Hi there, I'm a freelance web developer based in New Zealand. After
-        initially wanting to be a network engineer and working in IT support
-        type roles for a few years, I decided to become a developer in 2023.
+        Hi there, I'm a web developer from New Zealand. After studying to be a
+        network engineer and working in IT support related roles, I decided to
+        become a developer in 2023.
       </p>
 
       <p>
@@ -27,6 +31,32 @@ import { Fade } from "@/components/Fade";
         the cinema, and play the piano (poorly). I also watch too much
         basketball.
       </p>
+
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        class="flex w-full flex-col gap-4"
+      >
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="name" className="required">Name</Label>
+            <Input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <Label htmlFor="email" className="required">Email</Label>
+            <Input type="email" id="email" name="email" required />
+          </div>
+        </div>
+
+        <div>
+          <Label htmlFor="message" className="required">Message</Label>
+          <Textarea id="message" name="message" rows={4} required />
+        </div>
+
+        <Button type="submit" className="mt-1 self-start">Get in touch</Button>
+      </form>
     </div>
   </Fade>
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import TableOfContentsHeading from "./TableOfContentsHeading.astro";
-import type { Heading } from "@/lib/types";
+import type { Heading } from "../../../lib/types";
 
 const { headings } = Astro.props;
 const toc = buildToc(headings);
@@ -31,9 +31,8 @@ function buildToc(headings: Heading[]) {
   </ul>
   <svg class="toc-progress" xmlns="http://www.w3.org/2000/svg">
     <path
-      class="toc-marker"
+      class="toc-marker stroke-red-500 dark:stroke-red-300"
       fill="none"
-      stroke="#ecfeff"
       stroke-linecap="round"
       stroke-width="2"
       stroke-dashoffset="1"
@@ -56,7 +55,6 @@ function buildToc(headings: Heading[]) {
     display: block;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    font-weight: 400;
     padding: 0.5rem 0.75rem;
     transition-property: color, background-color, border-color,
       text-decoration-color, fill, stroke;

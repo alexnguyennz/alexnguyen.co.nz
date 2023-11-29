@@ -38,7 +38,10 @@ const tags = await getEntries(project.data.tags);
         src={project.data.cover}
         height={192}
         alt={project.data.name}
-        class="mx-auto mb-2 h-[128px] object-contain"
+        class={cn(
+          "mx-auto mb-2 h-[128px] object-contain",
+          project.slug === "vsctrustorgnz" && "dark:invert",
+        )}
         loading="lazy"
       /></a
     >

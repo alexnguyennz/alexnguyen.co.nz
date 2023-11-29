@@ -12,7 +12,7 @@ import { Fade } from "@/components/Fade";
   <Fade client:visible><h1>Nonprofit Web Development</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="prose flex flex-col items-center">
+    <div class="prose flex flex-col items-center dark:prose-invert">
       <p class="mb-0">
         I offer volunteer web development services for charities and nonprofits.
       </p>
@@ -45,9 +45,7 @@ import { Fade } from "@/components/Fade";
           <Textarea id="message" name="message" rows={4} required />
         </div>
 
-        <Button type="submit" variant="outline" className="mt-2 self-start">
-          Send
-        </Button>
+        <Button type="submit" className="mt-2 self-start">Send</Button>
       </form>
     </div>
   </Fade>

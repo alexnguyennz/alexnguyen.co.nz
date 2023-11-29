@@ -34,7 +34,6 @@ const { heading } = Astro.props;
     display: block;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    font-weight: 400;
     padding: 0.5rem 0.75rem;
     transition-property: color, background-color, border-color,
       text-decoration-color, fill, stroke;
@@ -43,6 +42,10 @@ const { heading } = Astro.props;
   }
 
   a:not(.active) {
+    color: #475569;
+  }
+
+  html.dark a:not(.active) {
     color: #67e8f9;
   }
 </style>

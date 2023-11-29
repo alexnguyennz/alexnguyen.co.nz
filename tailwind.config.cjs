@@ -13,35 +13,21 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            "--tw-prose-body": "black",
+            "--tw-prose-invert-body": "white",
+            "--tw-prose-links": "black",
+            "--tw-prose-invert-links": "white",
+            "--tw-prose-bullets": "black",
+            "--tw-prose-invert-bullets": "white",
+            "--tw-prose-code": theme("colors.red[500]"),
+            "--tw-prose-invert-code": theme("colors.red[300]"),
             maxWidth: "64rem",
-            color: "#ecfeff",
-            h1: {
-              color: "#ecfeff",
-            },
             h2: {
-              marginTop: "1.5rem",
-              color: "#ecfeff",
               textAlign: "left",
             },
-            h3: {
-              color: "#ecfeff",
-              fontSize: "1.125rem",
-            },
             a: {
-              color: "#ecfeff",
               textDecoration: "none",
               fontWeight: 400,
-            },
-            strong: {
-              color: "#ecfeff",
-            },
-            code: {
-              color: "#67e8f9",
-            },
-            ol: {
-              li: {
-                "&::marker": { color: "#ecfeff" },
-              },
             },
             li: {
               margin: 0,

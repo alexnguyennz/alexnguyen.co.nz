@@ -1,5 +1,5 @@
 ---
 name: TypeScript
 url: https://www.typescriptlang.org
-order: 1
+order: 5
 ---

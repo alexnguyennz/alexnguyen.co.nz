@@ -11,7 +11,7 @@ const { frontmatter, headings } = Astro.props;
   <Fade client:visible><h1>{frontmatter.title}</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="prose">
+    <div class="prose dark:prose-invert">
       <div class="flex flex-col md:flex-row md:items-start">
         <article class="flex-1">
           <slot />

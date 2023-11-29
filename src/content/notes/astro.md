@@ -119,20 +119,46 @@ export default defineConfig({
 
 ### Mixing frameworks
 
-When using components from multiple frameworks together, not adding the extension (which your IDE or autocomplete may miss) results in an error of `This component likely uses @astrojs/react ...`:
+When using components from multiple frameworks together, not adding the extension can result in an error of `This component likely uses @astrojs/react ...`:
+
+```ts
+import { Gallery } from "./Gallery"; // doesn't work
+```
+
+Change this to: 
 
 ```ts
 import { Gallery } from "./Gallery.tsx"; // React
 import { Gallery } from "./Gallery.vue"; // Vue
-import { Gallery } from "./Gallery"; // error
+import { Gallery } from "./Gallery.svelte"; // Svelte
 ```
 
 This is likely because without it, Astro doesn't know how to process that particular component.
 
-Alternatively (although I'm not sure why you would do this), you can force the component to render for a particular framework with [client:only](https://docs.astro.build/en/reference/directives-reference/#clientonly) to make it work without the extension.
+Alternatively (although I'm not sure why you would do this), you can force the component to hydrate for a particular framework with [client:only](https://docs.astro.build/en/reference/directives-reference/#clientonly) to make it work without the extension.
 </section>
 
 <section>
+
+<section>
+
+### Svelte without client directive
+
+You must apply a [client directive](https://docs.astro.build/en/reference/directives-reference/#client-directives) for a Svelte component's slot to appear, even if this component doesn't need to hydrate.
+
+```astro
+<Button client:load>Button Text</Button>
+```
+
+```svelte
+<!-- Button.svelte -->
+<button>
+  <slot />
+</button>
+```
+
+The same behaviour also happens with [named slots](https://svelte.dev/docs/special-elements#slot-slot-name-name). You don't need to do this with React or Vue.
+</section>
 
 ## TypeScript
 </section>
@@ -141,14 +167,16 @@ Alternatively (although I'm not sure why you would do this), you can force the c
 
 ### Props with client directives
 
-You may get various type errors when using [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) alongside any props (other than `children`):
+You may get various type errors when using [client directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) with any props other than `children` (not sure if this applies to other non-React frameworks):
 
 ```tsx
 <Fade client:visible delay={0.25}><h1>Title</h1></Fade>
+```
 
-/* 
+Which results in:
+```
 Type '{ children: any; "client:visible": true; }' is not assignable to type 'IntrinsicAttributes & { delay: number; children: ReactNode; }.
-Property 'delay' is missing in type '{ children: any; "client:visible": true; }' but required in type '{ delay: number; children: ReactNode; }' */
+Property 'delay' is missing in type '{ children: any; "client:visible": true; }' but required in type '{ delay: number; children: ReactNode; }'
 ```
 
 A (bad) workaround is to mark these prop(s) as optional in your type or interface inside that component:
@@ -163,7 +191,7 @@ export function Fade({
 }) {}
 ```
 
-There is likely something better as this just hides the error even if the prop(s) isn't optional.
+There is likely a better solution as this hides the error even if the prop(s) isn't optional.
 </section>
 
 <section>
@@ -251,7 +279,7 @@ With this method you won't be able to read the functions you set, but if you wan
 
 <section>
 
-### Rehype plugins
+### Syntax or rehype plugins
 
 To use a plugin like [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/), you will need to disable the default Astro syntax highlighting in your `astro.config.mjs`:
 
@@ -260,6 +288,8 @@ markdown: {
   syntaxHighlight: false,
 }
 ```
+
+I believe Astro's highlighting runs last so it overtakes any existing plugins)
 
 </section>
 

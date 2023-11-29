@@ -15,7 +15,7 @@ const tags = await getEntries(project.data.tags);
 ---
 
 <article
-  class="group relative flex h-full max-w-xs flex-1 flex-col rounded-[3rem] bg-white p-5 transition duration-300 hover:translate-y-1 dark:bg-slate-900"
+  class="group relative flex h-full max-w-xs flex-1 flex-col rounded-[3rem] border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
 >
   <div
     class="absolute right-4 top-4 flex gap-2 transition group-hover:opacity-100 sm:opacity-0"
@@ -78,73 +78,3 @@ const tags = await getEntries(project.data.tags);
     </div>
   </div>
 </article>
-
-<style>
-  article {
-    --color: #41b011;
-    --radius: 0%;
-    --elevation: 0px;
-    --bevel: 2px;
-    --angle: 216deg;
-    --intensity: 42;
-    --diffusion: 0;
-    --sin: calc(sin(var(--angle)));
-    --cos: calc(cos(var(--angle)));
-    --x-displacement: calc(-1 * var(--cos) * (var(--elevation) + 1px));
-    --y-displacement: calc(-1 * var(--sin) * (var(--elevation) + 1px));
-    --edge-opacity: calc(var(--intensity) * 0.006 - var(--diffusion) * 0.002);
-    --edge-blur: calc(var(--bevel) * 1.5);
-    --surface-contrast: calc(
-      var(--intensity) * 0.01 - var(--diffusion) * 0.005
-    );
-    box-shadow:
-      var(--x-displacement) var(--y-displacement)
-        calc(var(--diffusion) * 0.3px + (var(--elevation)))
-        calc(var(--elevation) / 2) rgba(0, 0, 0, calc(var(--intensity) * 0.006)),
-      0px 0px calc(var(--diffusion) * 1.4px)
-        rgba(255, 255, 255, calc(var(--intensity) * 0.004)),
-      inset calc(var(--bevel) * -1) 0 var(--edge-blur)
-        hsla(100, 0%, calc((var(--cos) + 1) * 50%), var(--edge-opacity)),
-      inset 0 var(--bevel) var(--edge-blur)
-        hsla(100, 0%, calc((-1 * var(--sin) + 1) * 50%), var(--edge-opacity)),
-      inset var(--bevel) 0 var(--edge-blur)
-        hsla(100, 0%, calc((-1 * var(--cos) + 1) * 50%), var(--edge-opacity)),
-      inset 0 calc(var(--bevel) * -1) var(--edge-blur)
-        hsla(100, 0%, calc((var(--sin) + 1) * 50%), var(--edge-opacity));
-    background-blend-mode: soft-light;
-  }
-
-  article:hover {
-    --color: #41b011;
-    --radius: 0%;
-    --elevation: 2px;
-    --bevel: 1px;
-    --angle: 270deg;
-    --intensity: 42;
-    --diffusion: 0;
-    --sin: calc(sin(var(--angle)));
-    --cos: calc(cos(var(--angle)));
-    --x-displacement: calc(-1 * var(--cos) * (var(--elevation) + 1px));
-    --y-displacement: calc(-1 * var(--sin) * (var(--elevation) + 1px));
-    --edge-opacity: calc(var(--intensity) * 0.006 - var(--diffusion) * 0.002);
-    --edge-blur: calc(var(--bevel) * 1.5);
-    --surface-contrast: calc(
-      var(--intensity) * 0.01 - var(--diffusion) * 0.005
-    );
-    box-shadow:
-      var(--x-displacement) var(--y-displacement)
-        calc(var(--diffusion) * 0.3px + (var(--elevation)))
-        calc(var(--elevation) / 2) rgba(0, 0, 0, calc(var(--intensity) * 0.006)),
-      0px 0px calc(var(--diffusion) * 1.4px)
-        rgba(255, 255, 255, calc(var(--intensity) * 0.004)),
-      inset calc(var(--bevel) * -1) 0 var(--edge-blur)
-        hsla(100, 0%, calc((var(--cos) + 1) * 50%), var(--edge-opacity)),
-      inset 0 var(--bevel) var(--edge-blur)
-        hsla(100, 0%, calc((-1 * var(--sin) + 1) * 50%), var(--edge-opacity)),
-      inset var(--bevel) 0 var(--edge-blur)
-        hsla(100, 0%, calc((-1 * var(--cos) + 1) * 50%), var(--edge-opacity)),
-      inset 0 calc(var(--bevel) * -1) var(--edge-blur)
-        hsla(100, 0%, calc((var(--sin) + 1) * 50%), var(--edge-opacity));
-    background-blend-mode: soft-light;
-  }
-</style>

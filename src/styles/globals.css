@@ -32,11 +32,6 @@ html.dark:root {
 
 html {
   background: rgb(240, 249, 255);
-  background: linear-gradient(
-    0deg,
-    rgba(240, 249, 255, 1) 0%,
-    rgba(240, 249, 255, 1) 100%
-  );
 }
 
 html.dark {
@@ -90,4 +85,14 @@ main a:hover,
 main span {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+input,
+textarea {
+  @apply appearance-none; /* reset Safari styles to fix inputs with box shadow */
+}
+
+label.required:after {
+  @apply font-bold text-red-500;
+  content: " *";
 }

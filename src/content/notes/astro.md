@@ -2,10 +2,10 @@
 title: All About Astro
 ---
 
-<p class="mt-0">I've recently fallen in love with <a
+<p class="mt-0"><a
   href="https://astro.build"
   target="_blank"
-  rel="noreferrer noopener nofollow">Astro <span>↗</span></a> for building websites. It has a great developer experience, features, community, and frequent updates. 
+  rel="noreferrer noopener nofollow">Astro <span>↗</span></a> has recently become my favourite framework for building websites. It has a great developer experience, features, community, and it's frequently updated. 
 </p>
 
 <p>These are some findings or quirks I've noted when using it. These may be things I've missed in the documentation, something I've done incorrectly (very likely), or an actual issue/bug (less likely).</p>
@@ -19,7 +19,7 @@ title: All About Astro
 
 ### Selectors with page events
 
-When selecting elements with methods like `querySelector()`, make sure to call them inside the function or block of the event listener, otherwise the reference will be stale by the time it runs on the next page:
+When selecting elements, make sure to call them inside the function or block of the event listener, otherwise the reference will be stale when you get to the next page:
 
 ```astro
 <script>

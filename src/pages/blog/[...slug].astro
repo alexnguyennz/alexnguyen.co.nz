@@ -1,8 +1,7 @@
 ---
 import { getCollection, getEntries } from "astro:content";
 
-import Layout from "@/layouts/Layout.astro";
-import { Fade } from "@/components/Fade";
+import PostLayout from "@/layouts/PostLayout.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -14,42 +13,14 @@ export const getStaticPaths = async () => {
 };
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
-const tagsData = await getEntries(post.data.tags);
+const tags = await getEntries(post.data.tags);
 ---
 
-<Layout title={post.data.title + " -"}>
-  <article class="prose dark:prose-invert">
-    <Fade client:visible>
-      <h1 class="mb-0 text-3xl">
-        {post.data.title}
-      </h1>
-
-      <p class="mt-0 text-center">
-        {
-          new Date(post.data.date).toLocaleDateString("en-NZ", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        }
-      </p>
-
-      <div class="flex items-center justify-center gap-1.5">
-        {
-          tagsData.map(({ data: tag }) => (
-            <span class="rounded-3xl bg-cyan-800 px-2 py-1 text-xs">
-              {tag.name}
-            </span>
-          ))
-        }
-      </div>
-    </Fade>
-
-    <Fade client:visible delay={0.25}><Content /></Fade>
-  </article>
-</Layout>
+<PostLayout frontmatter={post.data} headings={headings} tags={tags}>
+  <Content />
+</PostLayout>
 
 <style is:global>
   article img {
@@ -57,5 +28,8 @@ const tagsData = await getEntries(post.data.tags);
     max-width: 32rem;
     margin: 0 auto;
     border-radius: 1rem;
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 </style>

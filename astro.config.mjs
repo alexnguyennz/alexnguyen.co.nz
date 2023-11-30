@@ -15,7 +15,11 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        page !==
+        "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/",
+    }),
   ],
   prefetch: true,
   markdown: {

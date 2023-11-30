@@ -20,7 +20,7 @@ const projects = (await getCollection("projects")).sort(
     <h1>Hi, I'm Alex.</h1>
   </Fade>
 
-  <Fade client:visible delay={0.25}>
+  <Fade client:visible>
     <div class="flex flex-col gap-6">
       <div class="space-y-4">
         <h2>Some cool things I've worked with</h2>
@@ -43,7 +43,7 @@ const projects = (await getCollection("projects")).sort(
   >
     {
       projects.map((project) => (
-        <Fade client:visible delay={0.35}>
+        <Fade client:visible delay={0.25}>
           <ProjectCard project={project} />
         </Fade>
       ))

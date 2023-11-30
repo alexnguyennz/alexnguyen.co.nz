@@ -144,7 +144,7 @@ Alternatively (although I'm not sure why you would do this), you can force the c
 
 ### Svelte without client directive
 
-You must apply a [client directive](https://docs.astro.build/en/reference/directives-reference/#client-directives) for a Svelte component's slot to appear, even if this component doesn't need to hydrate.
+You must use a [client directive](https://docs.astro.build/en/reference/directives-reference/#client-directives) for a Svelte component's slot to appear, even if this component doesn't need to hydrate.
 
 ```astro
 <Button client:load>Button Text</Button>
@@ -157,7 +157,22 @@ You must apply a [client directive](https://docs.astro.build/en/reference/direct
 </button>
 ```
 
-The same behaviour also happens with [named slots](https://svelte.dev/docs/special-elements#slot-slot-name-name). You don't need to do this with React or Vue.
+The same behaviour also happens with [named slots](https://svelte.dev/docs/special-elements#slot-slot-name-name). 
+
+```astro
+<Button>
+  <Fragment slot="text">Button Text</Fragment>
+</Button>
+```
+
+```svelte
+<!-- Button.svelte -->
+<button>
+  <slot name="text" />
+</button>
+```
+
+You don't need to do this with React or Vue.
 </section>
 
 ## TypeScript

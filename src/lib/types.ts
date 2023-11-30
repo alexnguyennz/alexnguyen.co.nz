@@ -1,6 +1,5 @@
-export interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
+import { type MarkdownHeading } from "astro";
+
+export interface Heading extends MarkdownHeading {
   subheadings: Heading[];
 }

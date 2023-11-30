@@ -1,5 +1,6 @@
 {
   "name": "alexnguyen.co.nz",
+  "author": "Alex Nguyen",
   "type": "module",
   "version": "3.0.0",
   "scripts": {
@@ -8,7 +9,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/check": "0.3.1",
@@ -35,6 +37,7 @@
     "@types/node": "20.10.0",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
+    "husky": "8.0.3",
     "prettier": "3.1.0",
     "prettier-plugin-astro": "0.12.2",
     "prettier-plugin-tailwindcss": "0.5.7"

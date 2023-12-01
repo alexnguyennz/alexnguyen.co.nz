@@ -1,30 +1,36 @@
 ---
 import { Icon } from "astro-icon";
+
+import ThemeToggle from "@/components/ThemeToggle.astro";
 ---
 
-<footer class="mt-auto flex items-center justify-center gap-6 py-10">
-  <a href="mailto:me@alexnguyen.co.nz" title="My email" aria-label="Email">
-    <Icon pack="lucide" name="mail" class="h-6 w-6" />
-  </a>
+<footer class="mt-auto flex flex-col items-center gap-2 py-6">
+  <div class="flex items-center justify-center gap-6">
+    <a href="mailto:me@alexnguyen.co.nz" title="My email" aria-label="Email">
+      <Icon name="mail" class="h-[26px] w-[26px]" />
+    </a>
 
-  <a
-    href="https://www.linkedin.com/in/anguyennz/"
-    target="_blank"
-    rel="noopener"
-    title="My LinkedIn"
-    aria-label="LinkedIn"
-  >
-    <Icon name="linkedin" class="h-6 w-6" />
-  </a>
+    <a
+      href="https://www.linkedin.com/in/anguyennz/"
+      target="_blank"
+      rel="noopener"
+      title="My LinkedIn"
+      aria-label="LinkedIn"
+    >
+      <Icon name="linkedin" class="h-[24px] w-[24px]" />
+    </a>
 
-  <a
-    href="https://github.com/alexnguyennz"
-    target="_blank"
-    rel="noopener"
-    title="My GitHub"
-    aria-label="GitHub"
-  >
-    <Icon name="github" class="h-6 w-6 dark:hidden" />
-    <Icon name="github-white" class="dark-logo h-6 w-6" />
-  </a>
+    <a
+      href="https://github.com/alexnguyennz"
+      target="_blank"
+      rel="noopener"
+      title="My GitHub"
+      aria-label="GitHub"
+    >
+      <Icon name="github" class="h-[24px] w-[24px] dark:hidden" />
+      <Icon name="github-dark" class="dark-logo h-[24px] w-[24px]" />
+    </a>
+  </div>
+
+  <ThemeToggle />
 </footer>

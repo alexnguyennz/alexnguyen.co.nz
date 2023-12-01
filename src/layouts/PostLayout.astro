@@ -8,7 +8,9 @@ import TableOfContents from "@/components/pages/blog/TableOfContents.astro";
 import { Fade } from "@/components/Fade";
 
 interface Props {
-  frontmatter: CollectionEntry<"posts">["data"];
+  frontmatter:
+    | CollectionEntry<"posts">["data"]
+    | CollectionEntry<"notes">["data"];
   headings: MarkdownHeading[];
   tags?: CollectionEntry<"tags">[];
 }
@@ -17,9 +19,23 @@ const { frontmatter, headings, tags } = Astro.props;
 ---
 
 <Layout title={`${frontmatter.title} - `}>
+  <Fragment slot="head">
+    <slot name="head" />
+  </Fragment>
+
   <Fade client:visible><h1>{frontmatter.title}</h1></Fade>
 
   <Fade client:visible delay={0.25}>
+    <p class="mb-2 text-center text-sm">
+      {frontmatter.title === "All About Astro" && "Last updated"}
+      {
+        new Date(frontmatter.date).toLocaleDateString("en-NZ", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      }
+    </p>
     <div class="flex items-center justify-center gap-1.5">
       {
         tags &&
@@ -30,7 +46,7 @@ const { frontmatter, headings, tags } = Astro.props;
           ))
       }
     </div>
-    <div class="prose dark:prose-invert">
+    <div class="prose mt-4 dark:prose-invert">
       <div class="flex flex-col md:flex-row md:items-start">
         <article class="flex-1">
           <slot />

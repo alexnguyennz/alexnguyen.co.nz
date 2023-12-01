@@ -23,7 +23,7 @@ const tags = await getEntries(post.data.tags);
 <PostLayout frontmatter={post.data} headings={headings} tags={tags}>
   <Fragment slot="head">
     <SEO
-      description={`${post.data.title} blog post of Alex Nguyen`}
+      description={post.data.excerpt}
       openGraph={{
         basic: {
           title: `${post.data.title} - Alex Nguyen - Web Developer`,

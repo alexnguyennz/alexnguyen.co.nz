@@ -11,7 +11,7 @@ interface Props {
 
 const { project } = Astro.props;
 
-const tags = await getEntries(project.data.tags);
+const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
 ---
 
 <article
@@ -66,13 +66,26 @@ const tags = await getEntries(project.data.tags);
                 title={tag.name}
                 aria-label={tag.name}
               >
-                <Icon
-                  name={slug}
-                  class={cn(
-                    "w-auto fill-[#034AD8]",
-                    tag.name === "Nuxt" ? "h-8" : "h-6",
-                  )}
-                />
+                {slug === "astro" ? (
+                  <>
+                    <Icon
+                      name="astro"
+                      class={"h-6  fill-[#034AD8] dark:hidden"}
+                    />
+                    <Icon
+                      name="astro-dark"
+                      class={"dark-logo h-6  fill-[#034AD8]"}
+                    />
+                  </>
+                ) : (
+                  <Icon
+                    name={slug}
+                    class={cn(
+                      "fill-[#034AD8]",
+                      tag.name === "Nuxt" ? "h-8" : "h-6",
+                    )}
+                  />
+                )}
               </a>
             ))
           }

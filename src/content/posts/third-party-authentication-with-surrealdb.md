@@ -6,6 +6,7 @@ tags:
   - surrealdb
   - google
   - nextjs
+excerpt: Third-party authentication with Next.js and SurrealDB 
 published: false
 ---
 

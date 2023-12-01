@@ -5,6 +5,7 @@ image: ./astro-loading-spinners.png
 tags:
   - astro
 published: true
+excerpt: How to use loading spinners with Astro framework components
 ---
 
 <section>

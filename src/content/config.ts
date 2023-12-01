@@ -46,4 +46,13 @@ const posts = defineCollection({
     }),
 });
 
-export const collections = { tools, projects, tags, posts };
+const notes = defineCollection({
+  type: "content",
+  schema: () =>
+    z.object({
+      title: z.string(),
+      date: z.date(),
+    }),
+});
+
+export const collections = { tools, projects, tags, posts, notes };

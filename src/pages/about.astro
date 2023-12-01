@@ -1,29 +1,19 @@
 ---
+import { Icon } from "astro-icon";
+
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
-
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 ---
 
 <Layout title="About -">
   <Fade client:visible><h1>About</h1></Fade>
 
   <Fade client:visible delay={0.25}>
-    <div class="prose max-w-lg dark:prose-invert">
+    <div class="prose max-w-xl dark:prose-invert">
       <p>
         Hi there, I'm a web developer from New Zealand. After studying to be a
         network engineer and working in IT support related roles, I decided to
         become a developer in 2023.
-      </p>
-
-      <p>
-        I'm currently taking on new projects, and I'm interested in developer
-        roles (local or remote). Feel free to <a
-          href="mailto:me@alexnguyen.co.nz">contact me <span>✉</span></a
-        > about any opportunities or projects.
       </p>
 
       <p>
@@ -32,31 +22,45 @@ import { Button } from "@/components/ui/button";
         basketball.
       </p>
 
-      <form
-        name="contact"
-        method="POST"
-        data-netlify="true"
-        class="flex w-full flex-col gap-4"
-      >
-        <div class="grid gap-4 sm:grid-cols-2">
-          <div>
-            <Label htmlFor="name" className="required">Name</Label>
-            <Input type="text" id="name" name="name" required />
-          </div>
-
-          <div>
-            <Label htmlFor="email" className="required">Email</Label>
-            <Input type="email" id="email" name="email" required />
-          </div>
-        </div>
-
-        <div>
-          <Label htmlFor="message" className="required">Message</Label>
-          <Textarea id="message" name="message" rows={4} required />
-        </div>
-
-        <Button type="submit" className="mt-1 self-start">Get in touch</Button>
-      </form>
+      <p>
+        This site is built with <a
+          href="https://astro.build"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Astro"
+          ><Icon name="astro-name" class="mt-0.5 inline h-6 dark:hidden" /><Icon
+            name="astro-name-dark"
+            class="dark-logo mt-0.5 inline h-6"
+          /></a
+        > +
+        <a
+          href="https://tailwindcss.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          class="mx-1"
+          title="Tailwind CSS"
+          ><Icon
+            name="tailwind-name"
+            class="mb-0.5 inline h-3 dark:hidden"
+          /><Icon
+            name="tailwind-name-dark"
+            class="dark-logo mb-0.5 inline h-3"
+          /></a
+        > and hosted on <a
+          href="https://www.netlify.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          class="mx-1"
+          title="Netlify"
+          ><Icon
+            name="netlify-name"
+            class="mb-0.5 inline h-7 dark:hidden"
+          /><Icon
+            name="netlify-name-dark"
+            class="dark-logo mb-0.5 inline h-7"
+          /></a
+        >.
+      </p>
     </div>
   </Fade>
 </Layout>

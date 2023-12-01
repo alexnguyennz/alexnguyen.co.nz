@@ -1,6 +1,8 @@
 ---
 import { getCollection, getEntries } from "astro:content";
 
+import { SEO } from "astro-seo";
+
 import PostLayout from "@/layouts/PostLayout.astro";
 
 export const getStaticPaths = async () => {
@@ -19,6 +21,18 @@ const tags = await getEntries(post.data.tags);
 ---
 
 <PostLayout frontmatter={post.data} headings={headings} tags={tags}>
+  <Fragment slot="head">
+    <SEO
+      description={`${post.data.title} blog post of Alex Nguyen`}
+      openGraph={{
+        basic: {
+          title: `${post.data.title} - Alex Nguyen - Web Developer`,
+          type: "article",
+          image: `https://alexnguyen.co.nz${post.data.image.src}`,
+        },
+      }}
+    />
+  </Fragment>
   <Content />
 </PostLayout>
 

@@ -1,0 +1,182 @@
+---
+import { Icon } from "astro-icon";
+
+import Layout from "@/layouts/Layout.astro";
+import { Fade } from "@/components/Fade";
+
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+---
+
+<Layout title="Services -">
+  <Fade client:visible><h1>Services</h1></Fade>
+
+  <Fade client:visible delay={0.25}>
+    <div class="prose max-w-xl dark:prose-invert">
+      <p>
+        I'm a freelance web developer with mainly experience in frontend and
+        some exposure to backend tech.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="https://react.dev"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="React"><Icon name="react" class="h-5" /></a
+        >
+
+        <a
+          href="https://nextjs.org"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Next.js"
+          ><Icon name="nextjs-name" class="h-4 dark:hidden" /><Icon
+            name="nextjs-name-dark"
+            class="dark-logo h-4"
+          /></a
+        >
+
+        <a
+          href="https://astro.build"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Astro"
+          ><Icon name="astro-name" class="h-8 dark:hidden" /><Icon
+            name="astro-name-dark"
+            class="dark-logo h-8"
+          /></a
+        >
+
+        <a
+          href="https://vuejs.org"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Vue.js"><Icon name="vue" class="h-4" /></a
+        >
+
+        <a
+          href="https://nuxt.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Nuxt"
+          ><Icon name="nuxt-name" class="h-4 dark:hidden" /><Icon
+            name="nuxt-name-dark"
+            class="dark-logo h-4"
+          /></a
+        >
+
+        <a
+          href="https://nuxt.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Svelte"
+          ><Icon name="svelte-name" class="h-6 dark:hidden" /><Icon
+            name="sveltekit"
+            class="dark-logo h-6"
+          /></a
+        >
+
+        <a
+          href="https://tailwindcss.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Tailwind CSS"
+          ><Icon name="tailwind-name" class="h-4 dark:hidden" /><Icon
+            name="tailwind-name-dark"
+            class="dark-logo h-4"
+          /></a
+        >
+
+        <a
+          href="https://nodejs.org"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Node.js"
+          ><Icon name="nodejs" class="h-5 dark:hidden" /><Icon
+            name="nodejs-dark"
+            class="dark-logo h-5"
+          /></a
+        >
+        <a
+          href="https://supabase.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Supabase"
+          ><Icon name="supabase-name" class="h-5 dark:hidden" /><Icon
+            name="supabase-name-dark"
+            class="dark-logo h-5"
+          /></a
+        >
+        <a
+          href="https://www.netlify.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Netlify"
+          ><Icon name="netlify-name" class="h-9 dark:hidden" /><Icon
+            name="netlify-name-dark"
+            class="dark-logo h-9"
+          /></a
+        >
+        <a
+          href="https://vercel.com"
+          target="_blank"
+          rel="noreferrer noopener nofollow"
+          title="Vercel"
+          ><Icon name="vercel-name" class="h-4 dark:hidden" /><Icon
+            name="vercel-name-dark"
+            class="dark-logo h-4"
+          /></a
+        >
+      </div>
+
+      <p>
+        I'm currently taking on new projects, and I'm interested in developer
+        roles (local or remote). Feel free to <a
+          href="mailto:me@alexnguyen.co.nz">contact me <span>✉</span></a
+        > about any projects or opportunities.
+      </p>
+
+      <p>
+        I also offer volunteer web development for charities and nonprofits.
+      </p>
+
+      <p class="text-center">Please contact me if you're looking for:</p>
+
+      <div class="flex max-w-xl flex-col items-center">
+        <ul class="mt-0 self-center">
+          <li>web or app development</li>
+          <li>web consulting</li>
+        </ul>
+      </div>
+
+      <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        class="mx-auto flex w-full max-w-lg flex-col gap-4"
+      >
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <Label htmlFor="name" className="required">Name</Label>
+            <Input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <Label htmlFor="email" className="required">Email</Label>
+            <Input type="email" id="email" name="email" required />
+          </div>
+        </div>
+
+        <div>
+          <Label htmlFor="message" className="required">Message</Label>
+          <Textarea id="message" name="message" rows={4} required />
+        </div>
+
+        <Button type="submit" className="mt-1 self-start">Get in touch</Button>
+      </form>
+    </div>
+  </Fade>
+</Layout>

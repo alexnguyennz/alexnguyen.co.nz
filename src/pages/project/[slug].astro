@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
+import { SEO } from "astro-seo";
+
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
 
@@ -19,6 +21,19 @@ const { Content } = await project.render();
 ---
 
 <Layout title={project.data.name + " -"}>
+  <Fragment slot="head">
+    <SEO
+      description={`${project.data.name} project of Alex Nguyen`}
+      openGraph={{
+        basic: {
+          title: `${project.data.name} - Alex Nguyen - Web Developer`,
+          type: "article",
+          image: `https://alexnguyen.co.nz${project.data.image.src}`,
+        },
+      }}
+    />
+  </Fragment>
+
   <Fade client:visible>
     <h1>
       <a href={project.data.url} target="_blank" rel="noopener">

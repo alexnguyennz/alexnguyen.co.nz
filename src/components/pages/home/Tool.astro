@@ -18,6 +18,7 @@ const { name, slug, url } = Astro.props;
     title={name}
     aria-label={`${name} website`}
   >
+    <span class="sr-only">{name}</span>
     {
       slug === "astro" ? (
         <>

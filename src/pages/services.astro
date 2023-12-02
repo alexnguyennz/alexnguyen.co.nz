@@ -4,10 +4,10 @@ import { Icon } from "astro-icon";
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
 
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import Label from "@/components/ui/Label.astro";
+import Input from "@/components/ui/Input.astro";
+import Textarea from "@/components/ui/Textarea.astro";
+import Button from "@/components/ui/Button.astro";
 ---
 
 <Layout title="Services -">
@@ -25,7 +25,11 @@ import { Button } from "@/components/ui/button";
           href="https://react.dev"
           target="_blank"
           rel="noreferrer noopener nofollow"
-          title="React"><Icon name="react" class="h-5" /></a
+          title="React"
+          ><span class="sr-only">React</span><Icon
+            name="react"
+            class="h-5"
+          /></a
         >
 
         <a
@@ -33,10 +37,10 @@ import { Button } from "@/components/ui/button";
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Next.js"
-          ><Icon name="nextjs-name" class="h-4 dark:hidden" /><Icon
-            name="nextjs-name-dark"
-            class="dark-logo h-4"
-          /></a
+          ><span class="sr-only">Next.js</span><Icon
+            name="nextjs-name"
+            class="h-4 dark:hidden"
+          /><Icon name="nextjs-name-dark" class="dark-logo h-4" /></a
         >
 
         <a
@@ -44,17 +48,18 @@ import { Button } from "@/components/ui/button";
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Astro"
-          ><Icon name="astro-name" class="h-8 dark:hidden" /><Icon
-            name="astro-name-dark"
-            class="dark-logo h-8"
-          /></a
+          ><span class="sr-only">Astro</span><Icon
+            name="astro-name"
+            class="h-8 dark:hidden"
+          /><Icon name="astro-name-dark" class="dark-logo h-8" /></a
         >
 
         <a
           href="https://vuejs.org"
           target="_blank"
           rel="noreferrer noopener nofollow"
-          title="Vue.js"><Icon name="vue" class="h-4" /></a
+          title="Vue.js"
+          ><span class="sr-only">Vue.js</span><Icon name="vue" class="h-4" /></a
         >
 
         <a
@@ -62,21 +67,21 @@ import { Button } from "@/components/ui/button";
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Nuxt"
-          ><Icon name="nuxt-name" class="h-4 dark:hidden" /><Icon
-            name="nuxt-name-dark"
-            class="dark-logo h-4"
-          /></a
+          ><span class="sr-only">Nuxt</span><Icon
+            name="nuxt-name"
+            class="h-4 dark:hidden"
+          /><Icon name="nuxt-name-dark" class="dark-logo h-4" /></a
         >
 
         <a
-          href="https://nuxt.com"
+          href="https://svelte.dev"
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Svelte"
-          ><Icon name="svelte-name" class="h-6 dark:hidden" /><Icon
-            name="sveltekit"
-            class="dark-logo h-6"
-          /></a
+          ><span class="sr-only">Svelte</span><Icon
+            name="svelte-name"
+            class="h-6 dark:hidden"
+          /><Icon name="sveltekit" class="dark-logo h-6" /></a
         >
 
         <a
@@ -84,10 +89,10 @@ import { Button } from "@/components/ui/button";
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Tailwind CSS"
-          ><Icon name="tailwind-name" class="h-4 dark:hidden" /><Icon
-            name="tailwind-name-dark"
-            class="dark-logo h-4"
-          /></a
+          ><span class="sr-only">Tailwind CSS</span><Icon
+            name="tailwind-name"
+            class="h-4 dark:hidden"
+          /><Icon name="tailwind-name-dark" class="dark-logo h-4" /></a
         >
 
         <a
@@ -95,40 +100,40 @@ import { Button } from "@/components/ui/button";
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Node.js"
-          ><Icon name="nodejs" class="h-5 dark:hidden" /><Icon
-            name="nodejs-dark"
-            class="dark-logo h-5"
-          /></a
+          ><span class="sr-only">Node.js</span><Icon
+            name="nodejs"
+            class="h-5 dark:hidden"
+          /><Icon name="nodejs-dark" class="dark-logo h-5" /></a
         >
         <a
           href="https://supabase.com"
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Supabase"
-          ><Icon name="supabase-name" class="h-5 dark:hidden" /><Icon
-            name="supabase-name-dark"
-            class="dark-logo h-5"
-          /></a
+          ><span class="sr-only">Supabase</span><Icon
+            name="supabase-name"
+            class="h-5 dark:hidden"
+          /><Icon name="supabase-name-dark" class="dark-logo h-5" /></a
         >
         <a
           href="https://www.netlify.com"
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Netlify"
-          ><Icon name="netlify-name" class="h-9 dark:hidden" /><Icon
-            name="netlify-name-dark"
-            class="dark-logo h-9"
-          /></a
+          ><span class="sr-only">Netlify</span><Icon
+            name="netlify-name"
+            class="h-9 dark:hidden"
+          /><Icon name="netlify-name-dark" class="dark-logo h-9" /></a
         >
         <a
           href="https://vercel.com"
           target="_blank"
           rel="noreferrer noopener nofollow"
           title="Vercel"
-          ><Icon name="vercel-name" class="h-4 dark:hidden" /><Icon
-            name="vercel-name-dark"
-            class="dark-logo h-4"
-          /></a
+          ><span class="sr-only">Vercel</span><Icon
+            name="vercel-name"
+            class="h-4 dark:hidden"
+          /><Icon name="vercel-name-dark" class="dark-logo h-4" /></a
         >
       </div>
 

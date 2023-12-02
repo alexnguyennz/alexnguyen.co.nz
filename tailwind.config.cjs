@@ -7,9 +7,6 @@ module.exports = {
       center: true,
     },
     extend: {
-      fontFamily: {
-        sans: ["'DM Sans'", "sans-serif"],
-      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {

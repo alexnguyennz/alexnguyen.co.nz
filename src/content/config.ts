@@ -42,7 +42,7 @@ const posts = defineCollection({
       date: z.date(),
       image: image(),
       tags: z.array(reference("tags")),
-      excerpt: z.string(),
+      description: z.string(),
       published: z.boolean(),
     }),
 });

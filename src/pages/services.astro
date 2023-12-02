@@ -4,9 +4,9 @@ import { Icon } from "astro-icon";
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
 
-import Label from "@/components/form/Label.astro";
-import Input from "@/components/form/Input.astro";
-import Textarea from "@/components/form/Textarea.astro";
+import Label from "@/components/ui/Label.astro";
+import Input from "@/components/ui/Input.astro";
+import Textarea from "@/components/ui/Textarea.astro";
 import Button from "@/components/ui/Button.astro";
 ---
 
@@ -165,18 +165,18 @@ import Button from "@/components/ui/Button.astro";
       >
         <div class="grid gap-4 sm:grid-cols-2">
           <div>
-            <Label for="name" className="required">Name</Label>
+            <Label htmlFor="name" className="required">Name</Label>
             <Input type="text" id="name" name="name" required />
           </div>
 
           <div>
-            <Label for="email" className="required">Email</Label>
+            <Label htmlFor="email" className="required">Email</Label>
             <Input type="email" id="email" name="email" required />
           </div>
         </div>
 
         <div>
-          <Label for="message" className="required">Message</Label>
+          <Label htmlFor="message" className="required">Message</Label>
           <Textarea id="message" name="message" rows={4} required />
         </div>
 

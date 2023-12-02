@@ -1,4 +1,6 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
+  parser: "@typescript-eslint/parser",
   extends: ["plugin:astro/recommended", "plugin:astro/jsx-a11y-recommended"],
   overrides: [
     {

@@ -3,13 +3,15 @@ import type { HTMLAttributes } from "astro/types";
 import { cn } from "@/lib/utils";
 
 interface Props extends HTMLAttributes<"label"> {
+  htmlFor: string;
   className?: string;
 }
 
-const { className, ...props } = Astro.props;
+const { htmlFor, className, ...props } = Astro.props;
 ---
 
 <label
+  for={htmlFor}
   class={cn(
     "text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
     className,

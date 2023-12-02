@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { cn } from "@/lib/utils";
+
+interface Props extends HTMLAttributes<"label"> {
+  className?: string;
+}
+
+const { className, ...props } = Astro.props;
+---
+
+<label
+  class={cn(
+    "text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+    className,
+  )}
+  {...props}><slot /></label
+>

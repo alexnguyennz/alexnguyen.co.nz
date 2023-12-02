@@ -66,6 +66,7 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
                 title={tag.name}
                 aria-label={tag.name}
               >
+                <span class="sr-only">{tag.name}</span>
                 {slug === "astro" ? (
                   <>
                     <Icon

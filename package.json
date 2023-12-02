@@ -10,6 +10,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro",
+    "lint": "eslint .",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -35,6 +36,11 @@
     "@types/node": "20.10.0",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
+    "@typescript-eslint/parser": "6.13.1",
+    "eslint": "8.55.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-astro": "0.30.0",
+    "eslint-plugin-jsx-a11y": "6.8.0",
     "husky": "8.0.3",
     "prettier": "3.1.0",
     "prettier-plugin-astro": "0.12.2",

@@ -18,17 +18,22 @@ const { post } = Astro.props;
 const { Content, headings } = await post.render();
 
 const tags = await getEntries(post.data.tags);
+
+const ogImageUrl = new URL(
+  `/api/og/?title=${encodeURI(post.data.title)}`,
+  Astro.site,
+);
 ---
 
 <PostLayout frontmatter={post.data} headings={headings} tags={tags}>
   <Fragment slot="head">
     <SEO
-      description={post.data.excerpt}
+      description={post.data.description}
       openGraph={{
         basic: {
           title: `${post.data.title} - Alex Nguyen - Web Developer`,
           type: "article",
-          image: `https://alexnguyen.co.nz${post.data.image.src}`,
+          image: ogImageUrl.href,
         },
       }}
     />

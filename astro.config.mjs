@@ -7,9 +7,6 @@ import rehypeExternalLinks from "rehype-external-links";
 // https://astro.build/config
 export default defineConfig({
   site: "https://alexnguyen.co.nz",
-  server: {
-    port: 3000,
-  },
   integrations: [
     react(),
     tailwind({
@@ -29,7 +26,10 @@ export default defineConfig({
         {
           target: "_blank",
           rel: "noopener noreferrer nofollow",
-          content: { type: "text", value: " ↗" },
+          content: {
+            type: "text",
+            value: " ↗",
+          },
         },
       ],
     ],

@@ -1,25 +1,17 @@
 import React from "https://esm.sh/react@18.2.0";
 import { ImageResponse } from "https://deno.land/x/og_edge/mod.ts";
 
-const fontRegular = fetch(
-  `http://localhost:8888/fonts/DMSans-Regular.ttf`,
-).then((res) => res.arrayBuffer());
-
-const fontMedium = fetch(`http://localhost:8888/fonts/DMSans-Medium.ttf`).then(
-  (res) => res.arrayBuffer(),
-);
-
-const fontSemiBold = fetch(
-  `http://localhost:8888/fonts/DMSans-SemiBold.ttf`,
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: Request) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title");
 
-  const fontDataRegular = await fontRegular;
-  const fontDataMedium = await fontMedium;
-  const fontDataSemiBold = await fontSemiBold;
+  const mediumFont = await (
+    await fetch("https://alexnguyen.co.nz/fonts/DMSans-Medium.ttf")
+  ).arrayBuffer();
+
+  const semiBoldFont = await (
+    await fetch("https://alexnguyen.co.nz/fonts/DMSans-SemiBold.ttf")
+  ).arrayBuffer();
 
   return new ImageResponse(
     (
@@ -33,45 +25,52 @@ export default async function handler(req: Request) {
           justifyContent: "center",
           fontSize: 64,
           background: "rgb(240,249,255)",
-          padding: "0 200px",
-          fontFamily: '"DM Sans"',
+          fontWeight: "500",
+          fontFamily: '"DMSansMedium"',
         }}
       >
-        {title}
+        <p
+          style={{
+            fontWeight: "600",
+            fontFamily: "DMSansSemiBold",
+          }}
+        >
+          {title}
+        </p>
 
         <div
           style={{
+            position: "absolute",
+            bottom: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            fontSize: "48px",
           }}
         >
           <img
             src="https://alexnguyen.co.nz/logo.png"
-            width="128"
+            width="96"
             alt="Alex Nguyen logo"
+            style={{ marginRight: "1rem" }}
           />
           <p>alexnguyen.co.nz</p>
         </div>
       </div>
     ),
     {
+      width: 1200,
+      height: 630,
       fonts: [
         {
-          name: "DMSans",
-          data: fontDataRegular,
-          style: "normal",
-          weight: 400,
-        },
-        {
           name: "DMSansMedium",
-          data: fontDataMedium,
+          data: mediumFont,
           style: "normal",
           weight: 500,
         },
         {
           name: "DMSansSemiBold",
-          data: fontDataSemiBold,
+          data: semiBoldFont,
           style: "normal",
           weight: 700,
         },

@@ -1,17 +1,16 @@
-/* @ jsxImportSource https://esm.sh/react */
 import React from "https://esm.sh/react@18.2.0";
 import { ImageResponse } from "https://deno.land/x/og_edge/mod.ts";
 
 const fontRegular = fetch(
-  `https://alexnguyen.co.nz/fonts/DMSans-Regular.woff2`,
+  `http://localhost:8888/fonts/DMSans-Regular.ttf`,
 ).then((res) => res.arrayBuffer());
 
-const fontMedium = fetch(
-  `https://alexnguyen.co.nz/fonts/DMSans-Medium.woff2`,
-).then((res) => res.arrayBuffer());
+const fontMedium = fetch(`http://localhost:8888/fonts/DMSans-Medium.ttf`).then(
+  (res) => res.arrayBuffer(),
+);
 
 const fontSemiBold = fetch(
-  `https://alexnguyen.co.nz/fonts/DMSans-SemiBold.woff2`,
+  `http://localhost:8888/fonts/DMSans-SemiBold.ttf`,
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: Request) {
@@ -57,7 +56,7 @@ export default async function handler(req: Request) {
       </div>
     ),
     {
-      /*     fonts: [
+      fonts: [
         {
           name: "DMSans",
           data: fontDataRegular,
@@ -76,7 +75,7 @@ export default async function handler(req: Request) {
           style: "normal",
           weight: 700,
         },
-      ],*/
+      ],
     },
   );
 }

@@ -35,6 +35,9 @@ const ogImageUrl = new URL(
           type: "article",
           image: ogImageUrl.href,
         },
+        optional: {
+          description: post.data.description,
+        },
       }}
     />
   </Fragment>

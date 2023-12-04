@@ -1,0 +1,125 @@
+---
+import { cn } from "@/lib/utils";
+import { links } from "@/lib/data";
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+---
+
+<button id="mobile-toggle" class="relative h-[16px] w-[20px] sm:hidden">
+  {Array.from(Array(3).keys()).map(() => <span />)}
+</button>
+
+<nav
+  id="mobile-menu"
+  class="absolute left-0 top-14 hidden w-full rounded-3xl border border-b-0 border-slate-200 bg-white p-3.5 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:hidden"
+>
+  <ul class="flex flex-col items-center gap-2">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={cn(
+              "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-slate-700 transition hover:bg-slate-800 hover:text-slate-100 hover:shadow-sm dark:text-slate-100 dark:hover:bg-slate-600",
+              link.href === "/"
+                ? pathname === "/" &&
+                    "bg-slate-800 text-slate-100 shadow-sm dark:bg-slate-600"
+                : pathname.startsWith(link.href) &&
+                    "bg-slate-800 text-slate-100 shadow-sm dark:bg-slate-600",
+            )}
+            data-astro-prefetch
+          >
+            {link.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  li {
+    width: 100%;
+    text-align: center;
+  }
+
+  a {
+    display: block;
+  }
+
+  nav {
+    opacity: 0;
+  }
+
+  nav {
+    animation: fade-header 0.25s forwards;
+  }
+
+  #mobile-toggle span {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: #334155;
+    transform: rotate(0);
+    transition: 0.25s ease-in-out;
+  }
+
+  html.dark #mobile-toggle span {
+    background: #f1f5f9;
+  }
+
+  #mobile-toggle span:nth-child(1) {
+    top: 0;
+  }
+
+  #mobile-toggle.open span:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+  }
+
+  #mobile-toggle span:nth-child(2) {
+    top: 7px;
+  }
+
+  #mobile-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-toggle span:nth-child(3) {
+    top: 14px;
+  }
+
+  #mobile-toggle.open span:nth-child(3) {
+    top: 7px;
+    transform: rotate(-45deg);
+  }
+</style>
+
+<script>
+  function initMobileMenu() {
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileToggle && mobileMenu)
+      mobileToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        mobileToggle.classList.toggle("open");
+      });
+  }
+
+  initMobileMenu();
+
+  document.addEventListener("astro:after-swap", () => {
+    initMobileMenu();
+
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      navbar.classList.remove("hidden");
+    }
+  });
+</script>

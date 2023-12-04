@@ -36,11 +36,10 @@ const tags = defineCollection({
 
 const posts = defineCollection({
   type: "content",
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
       title: z.string(),
       date: z.date(),
-      image: image(),
       tags: z.array(reference("tags")),
       description: z.string(),
       published: z.boolean(),

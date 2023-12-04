@@ -72,15 +72,17 @@ h3 {
 }
 
 main a,
-.prose a {
+.prose a,
+a.link {
   text-decoration: underline transparent;
   transition: text-decoration 200ms ease;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
-main a:hover,
-.prose a:hover {
+main:not(:has(article)) a:hover,
+.prose a:hover,
+a.link:hover {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;

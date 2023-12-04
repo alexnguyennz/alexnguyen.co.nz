@@ -3,7 +3,7 @@ import { getEntries, type CollectionEntry } from "astro:content";
 
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
-import { cn } from "../../../lib/utils";
+import { cn } from "@/lib/utils";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -48,7 +48,7 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
 
     <div class="mt-auto">
       <h2>
-        <a href={`/project/${project.slug}`} data-astro-prefetch>
+        <a href={`/project/${project.slug}`} class="link" data-astro-prefetch>
           {project.data.name}
         </a>
       </h2>

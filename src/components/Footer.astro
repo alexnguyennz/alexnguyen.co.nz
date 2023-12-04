@@ -1,10 +1,8 @@
 ---
 import { Icon } from "astro-icon";
-
-import ThemeToggle from "@/components/ThemeToggle.astro";
 ---
 
-<footer class="mt-auto flex flex-col items-center gap-2 py-6">
+<footer class="mt-auto flex flex-col items-center gap-2 py-6 pt-10">
   <div class="flex items-center justify-center gap-6">
     <a href="mailto:me@alexnguyen.co.nz" title="My email" aria-label="Email">
       <Icon name="mail" class="h-[26px] w-[26px]" />
@@ -31,6 +29,4 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
       <Icon name="github-dark" class="dark-logo h-[24px] w-[24px]" />
     </a>
   </div>
-
-  <ThemeToggle />
 </footer>

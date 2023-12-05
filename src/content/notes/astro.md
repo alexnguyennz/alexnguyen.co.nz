@@ -1,6 +1,6 @@
 ---
 title: All About Astro
-date: 2023-12-05T00:00:00Z
+date: 2023-12-06T00:00:00Z
 ---
 
 <p class="mt-0"><a
@@ -11,12 +11,13 @@ date: 2023-12-05T00:00:00Z
 
 <p>These are some findings or quirks I've noted when using it. These may be things I've missed in the documentation, something I've done incorrectly (very likely), or an actual issue/bug (less likely).</p>
 
-<section>
+## Upgrade to 4.0
+
+### astro-icon
+
+Update to [0.8.2](https://github.com/natemoo-re/astro-icon/releases/tag/astro-icon%400.8.2) for Astro 4.0 (which uses Vite 5) compatibility with local icons.
 
 ## View Transitions
-</section>
-
-<section>
 
 ### Selectors with page events
 
@@ -37,9 +38,6 @@ When selecting elements, make sure to call them inside the function or block of 
   document.addEventListener("astro:after-swap", () => initMenu());
 </script>
 ```
-</section>
-
-<section>
 
 ### define:vars with lifecycle events
 
@@ -56,9 +54,6 @@ const pathname = new URL(Astro.request.url).pathname;
   });
 </script>
 ```
-</section>
-
-<section>
 
 ### Issues with CSS animations
 
@@ -71,14 +66,8 @@ The workaround was to use a fallback of `swap`:
 ```astro
 <ViewTransitions fallback="swap" />
 ```
-</section>
-
-<section>
 
 ## Astro Image
-</section>
-
-<section>
 
 ### Remote images with subdomains
 
@@ -109,39 +98,26 @@ export default defineConfig({
 ```
 
 
-</section>
+## Framework Components / Islands
 
-<section>
-
-## Framework Components
-</section>
-
-<section>
 
 ### Mixing frameworks
 
-When using components from multiple frameworks together, not adding the extension can result in an error of `This component likely uses @astrojs/react ...`:
+When using components from multiple frameworks together, not adding the extension may result in an error of `This component likely uses @astrojs/react ...`:
 
 ```ts
-import { Gallery } from "./Gallery"; // doesn't work
+import { Gallery } from "./Gallery"; 
 ```
 
 Change this to: 
 
 ```ts
-import { Gallery } from "./Gallery.tsx"; // React
+import { Gallery } from "./Gallery"; // React
 import { Gallery } from "./Gallery.vue"; // Vue
 import { Gallery } from "./Gallery.svelte"; // Svelte
 ```
 
-This is likely because without it, Astro doesn't know how to process that particular component.
-
 Alternatively (although I'm not sure why you would do this), you can force the component to hydrate for a particular framework with [client:only](https://docs.astro.build/en/reference/directives-reference/#clientonly) to make it work without the extension.
-</section>
-
-<section>
-
-<section>
 
 ### Svelte without client directive
 
@@ -172,12 +148,8 @@ The same behaviour also happens with [named slots](https://svelte.dev/docs/speci
 ```
 
 You don't need to do this with React or Vue.
-</section>
 
 ## TypeScript
-</section>
-
-<section>
 
 ### Props with client directives
 
@@ -206,25 +178,14 @@ export function Fade({
 ```
 
 There is likely a better solution as this hides the error even if the prop(s) isn't optional.
-</section>
-
-<section>
 
 ### WebStorm
 
 There are some issues resolving types with WebStorm with an [active issue here](https://youtrack.jetbrains.com/issue/WEB-59503). 
 
-One solution which solves a lot of the problems is using the bundled TypeScript - Settings > Preferences > Languages & Frameworks > TypeScript > Bundled. 
-
-</section>
-
-
-<section>
+One solution which solves a lot of the problems is using the bundled TypeScript - Settings > Preferences > Languages & Frameworks > TypeScript > Bundled.
 
 ## Miscellaneous
-</section>
-
-<section>
 
 ### Importing the Astro config
 
@@ -286,9 +247,6 @@ console.log("config", config);
 ```
 
 With this method you won't be able to read the functions you set, but if you wanted to, you could set additional key values in the config object (`config.ts`) which you import in `astro.config.mjs`, and manually add the functions to the relevant key e.g. `integrations` based on which ones exist.
-</section>
-
-<section>
 
 ### Syntax or rehype plugins
 
@@ -301,8 +259,6 @@ markdown: {
 ```
 
 Astro's highlighting runs last, so it has priority over any existing plugins.
-
-</section>
 
 <p class="text-sm">Credit to <a
   href="https://kld.dev/toc-animation/"

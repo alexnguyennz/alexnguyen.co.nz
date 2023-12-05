@@ -24,16 +24,19 @@ const { pathname } = Astro.props;
           <a
             href={link.href}
             class={cn(
-              "rounded-3xl px-3.5 py-1.5 font-medium tracking-tight text-slate-700 transition hover:bg-slate-800 hover:text-slate-100 hover:shadow-sm dark:text-slate-100 dark:hover:bg-slate-600",
-              link.href === "/"
-                ? pathname === "/" &&
-                    "bg-slate-800 text-slate-100 shadow-sm dark:bg-slate-600"
-                : pathname.startsWith(link.href) &&
-                    "bg-slate-800 text-slate-100 shadow-sm dark:bg-slate-600",
+              "relative p-1.5 font-medium tracking-tight text-slate-700 dark:text-slate-100",
             )}
             data-astro-prefetch
           >
             {link.name}
+
+            {link.href === "/"
+              ? pathname === "/" && (
+                  <span class="absolute bottom-0 left-0 right-0 mx-auto h-2 w-2 rounded-full bg-slate-700 dark:bg-slate-100" />
+                )
+              : pathname.startsWith(link.href) && (
+                  <span class="absolute bottom-0 left-0 right-0 mx-auto h-2 w-2 rounded-full bg-slate-700 dark:bg-slate-100" />
+                )}
           </a>
         </li>
       ))
@@ -63,10 +66,10 @@ const { pathname } = Astro.props;
     position: absolute;
     display: block;
     width: 20px;
-    height: 3px;
+    height: 2px;
     background: #334155;
     transform: rotate(0);
-    transition: 0.25s ease-in-out;
+    transition: 0.2s ease-in-out;
   }
 
   html.dark #mobile-toggle span {

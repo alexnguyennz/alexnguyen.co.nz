@@ -46,9 +46,9 @@ const { frontmatter, headings, tags } = Astro.props;
           ))
       }
     </div>
-    <div class="prose mt-4 dark:prose-invert">
-      <div class="flex flex-col md:flex-row md:items-start">
-        <article class="flex-1">
+    <div class="mt-4">
+      <div class="flex flex-col lg:flex-row lg:items-start">
+        <article class="prose dark:prose-invert sm:max-w-prose">
           <slot />
         </article>
 
@@ -57,9 +57,3 @@ const { frontmatter, headings, tags } = Astro.props;
     </div>
   </Fade>
 </Layout>
-
-<style is:global>
-  pre.astro-code {
-    border-radius: 1.5rem;
-  }
-</style>

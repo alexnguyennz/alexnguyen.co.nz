@@ -29,6 +29,16 @@ module.exports = {
             li: {
               margin: 0,
             },
+            figcaption: {
+              display: "inline-block",
+              padding: "0.5rem",
+              backgroundColor: "#24292e" /* github-dark */,
+              color: "#E1E4E8" /* github-dark */,
+              borderBottom: "2px solid #4A88C7" /* WebStorm tab */,
+            },
+            pre: {
+              borderRadius: 0,
+            },
           },
         },
       }),

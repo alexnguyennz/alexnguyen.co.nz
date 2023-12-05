@@ -3,6 +3,11 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypePrettyCode from "rehype-pretty-code";
+
+const prettyCodeOptions = {
+  theme: "github-dark",
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,7 +25,14 @@ export default defineConfig({
   ],
   prefetch: true,
   markdown: {
+    syntaxHighlight: false,
     rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: "github-dark",
+        },
+      ],
       [
         rehypeExternalLinks,
         {
@@ -33,9 +45,5 @@ export default defineConfig({
         },
       ],
     ],
-    shikiConfig: {
-      theme: "dracula",
-      wrap: true,
-    },
   },
 });

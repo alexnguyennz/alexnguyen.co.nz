@@ -23,7 +23,7 @@ One way to do this is to use a separate loading element alongside your framework
 
 ### React example
 
-```astro
+```astro title="*.astro"
 <!-- some sort of indicator or spinner --> 
 <svg
   class="spinner"
@@ -33,8 +33,7 @@ One way to do this is to use a separate loading element alongside your framework
 <ReactComponent client:only="react" />
 ```
 
-```tsx
-/* ReactComponent.tsx */
+```tsx  title="ReactComponent.tsx"
 import { useEffect } from "react";
 
 export function ReactComponent() {
@@ -58,8 +57,7 @@ export function ReactComponent() {
 <VueComponent client:only="vue" />
 ```
 
-```vue
-<!-- VueComponent.vue -->
+```vue title="VueComponent.vue"
 <script setup lang="ts">
   import { onMounted } from "vue";
 
@@ -84,8 +82,7 @@ export function ReactComponent() {
 <SvelteComponent client:only="svelte" />
 ```
 
-```svelte
-<!-- SvelteComponent.svelte -->
+```svelte title="SvelteComponent.svelte"
 <script lang="ts">
   import { onMount } from 'svelte';
 

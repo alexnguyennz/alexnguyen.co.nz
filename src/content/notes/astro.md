@@ -1,6 +1,6 @@
 ---
 title: All About Astro
-date: 2023-11-31T00:00:00Z
+date: 2023-12-05T00:00:00Z
 ---
 
 <p class="mt-0"><a
@@ -151,8 +151,7 @@ You must use a [client directive](https://docs.astro.build/en/reference/directiv
 <Button client:load>Button Text</Button>
 ```
 
-```svelte
-<!-- Button.svelte -->
+```svelte title="Button.svelte"
 <button>
   <slot />
 </button>
@@ -166,8 +165,7 @@ The same behaviour also happens with [named slots](https://svelte.dev/docs/speci
 </Button>
 ```
 
-```svelte
-<!-- Button.svelte -->
+```svelte title="Button.svelte"
 <button>
   <slot name="text" />
 </button>
@@ -234,17 +232,17 @@ If you want to import your config from `astro.config.mjs` elsewhere in your proj
 
 All of these methods will fail during build:
 
-```ts
+```ts title="*.astro"
 import config from "../../astro.config.mjs";
 console.log("Astro config", config);
 ```
 
-```ts
+```ts title="*.astro"
 const config = await Astro.glob("../../astro.config.mjs");
 console.log("Astro config", config[0].default);
 ```
 
-```ts
+```ts title="*.astro"
 const config = import.meta.glob("../../astro.config.mjs");
 
 for (const path in config) {
@@ -254,12 +252,11 @@ for (const path in config) {
 }
 ```
 
-This is due to the use of any Astro imports like `@astrojs/react` which I guess can't be properly statically parsed. 
+This is due to the use of any Astro imports like `@astrojs/react` which I guess can't be properly parsed during build. 
 
 One workaround is to create a separate config file that doesn't use any Astro related imports which you import in `astro.config.mjs` and anywhere else:
 
-```ts
-// src/config.ts
+```ts title="src/config.ts"
 export default {
   site: "example.com",
   server: {
@@ -269,8 +266,7 @@ export default {
 };
 ```
 
-```ts
-// astro.config.mjs
+```ts title="astro.config.mjs"
 import config from "/src/config.ts";
 import react from "@astrojs/react";
 
@@ -284,8 +280,7 @@ export default defineConfig({
 
 ```
 
-```ts
-// Astro.component
+```ts title="*.astro"
 import config from "../config.ts";
 console.log("config", config);
 ```
@@ -299,13 +294,13 @@ With this method you won't be able to read the functions you set, but if you wan
 
 To use a plugin like [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/), you will need to disable the default Astro syntax highlighting in your `astro.config.mjs`:
 
-```ts
+```ts title="astro.config.mjs"
 markdown: {
-  syntaxHighlight: false,
+  syntaxHighlight: false
 }
 ```
 
-I believe Astro's highlighting runs last so it overtakes any existing plugins)
+Astro's highlighting runs last, so it has priority over any existing plugins.
 
 </section>
 
@@ -317,4 +312,4 @@ I believe Astro's highlighting runs last so it overtakes any existing plugins)
   href="https://lab.hakim.se/progress-nav/"
   target="_blank"
   rel="noreferrer noopener nofollow">Hakim El Hattab <span>↗</span></a
-> for the table of contents.</p>
+> for the table of contents code.</p>

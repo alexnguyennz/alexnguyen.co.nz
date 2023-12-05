@@ -88,17 +88,19 @@ a.link:hover {
   text-underline-offset: 3px;
 }
 
+/* external link arrows */
 main span {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-input,
-textarea {
-  @apply appearance-none; /* reset Safari styles to fix inputs with box shadow */
+pre {
+  border: 1px solid rgb(100 116 139);
 }
 
-label.required:after {
-  @apply font-bold text-red-500;
-  content: " *";
+/* fix overflow issue with rehype-pretty-code */
+@media (max-width: 768px) {
+  pre {
+    max-width: 38rem;
+  }
 }

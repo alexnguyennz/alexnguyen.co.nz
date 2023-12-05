@@ -9,7 +9,11 @@ interface Props {
 const { pathname } = Astro.props;
 ---
 
-<button id="mobile-toggle" class="relative h-[16px] w-[20px] sm:hidden">
+<button
+  id="mobile-toggle"
+  class="relative h-[16px] w-[20px] sm:hidden"
+  aria-label="toggle mobile menu"
+>
   {Array.from(Array(3).keys()).map(() => <span />)}
 </button>
 

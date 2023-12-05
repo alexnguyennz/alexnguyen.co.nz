@@ -1,0 +1,45 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import Layout from "@/layouts/Layout.astro";
+import { Fade } from "@/components/Fade";
+import BlogPostCard from "@/components/pages/blog/BlogPostCard.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  const tags = [
+    ...new Set(
+      posts.map((post) => post.data.tags.map((tag) => tag.slug)).flat(),
+    ),
+  ];
+
+  return tags.map((tag) => {
+    return {
+      params: { tag },
+      props: {
+        posts: posts.filter((post) =>
+          post.data.tags.map((tag) => tag.slug).includes(tag),
+        ),
+      },
+    };
+  });
+}
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={`Posts tagged with ${tag} -`}>
+  <Fade client:visible><h1>Posts tagged with "{tag}"</h1></Fade>
+
+  <Fade client:visible delay={0.25}>
+    <div class="grid gap-6">
+      {posts.map((post) => <BlogPostCard post={post} />)}
+    </div>
+  </Fade>
+</Layout>

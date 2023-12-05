@@ -7,14 +7,14 @@ import { SEO } from "astro-seo";
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: { project },
   }));
-};
+}
 
 const { project } = Astro.props;
 const { Content } = await project.render();

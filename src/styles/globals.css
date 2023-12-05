@@ -43,10 +43,6 @@ html.dark {
   );
 }
 
-html:not(.dark) .dark-logo {
-  display: none;
-}
-
 body {
   font-family: "DM Sans", sans-serif;
 }
@@ -73,7 +69,8 @@ h3 {
 
 main a,
 .prose a,
-a.link {
+a.link,
+.toc a {
   text-decoration: underline transparent;
   transition: text-decoration 200ms ease;
   text-decoration-thickness: 2px;
@@ -82,7 +79,8 @@ a.link {
 
 main:not(:has(article)) a:hover,
 .prose a:hover,
-a.link:hover {
+a.link:hover,
+.toc a:hover {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
@@ -94,13 +92,19 @@ main span {
   line-height: 1.25rem;
 }
 
-pre {
-  border: 1px solid rgb(100 116 139);
-}
-
 /* fix overflow issue with rehype-pretty-code */
 @media (max-width: 768px) {
   pre {
     max-width: 38rem;
   }
+}
+
+article.post img {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
 }

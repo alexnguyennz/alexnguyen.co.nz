@@ -3,8 +3,8 @@ title: Astro Loading Spinners
 date: 2023-11-30T00:00:00Z
 tags:
   - astro
-published: true
 description: How to use loading spinners with Astro framework components
+published: true
 ---
 
 <section>

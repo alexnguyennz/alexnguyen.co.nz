@@ -23,12 +23,12 @@ const { name, slug, url } = Astro.props;
       slug === "astro" ? (
         <>
           <Icon name="astro" class="h-7 w-auto dark:hidden" />
-          <Icon name="astro-dark" class="dark-logo h-7 w-auto" />
+          <Icon name="astro-dark" class="hidden h-7 w-auto dark:block" />
         </>
       ) : slug === "nodejs" ? (
         <>
           <Icon name="nodejs" class="h-7 w-auto dark:hidden" />
-          <Icon name="nodejs-dark" class="dark-logo h-7 w-auto" />
+          <Icon name="nodejs-dark" class="hidden h-7 w-auto dark:block" />
         </>
       ) : (
         <Icon name={slug} class="h-7 w-auto fill-[#00ACD7]" />

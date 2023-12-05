@@ -5,14 +5,14 @@ import { SEO } from "astro-seo";
 
 import PostLayout from "@/layouts/PostLayout.astro";
 
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const posts = await getCollection("posts");
 
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
-};
+}
 
 const { post } = Astro.props;
 const { Content, headings } = await post.render();
@@ -43,15 +43,3 @@ const ogImageUrl = new URL(
   </Fragment>
   <Content />
 </PostLayout>
-
-<style is:global>
-  article img {
-    width: 100%;
-    max-width: 32rem;
-    margin: 0 auto;
-    border-radius: 1rem;
-    box-shadow:
-      0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
-  }
-</style>

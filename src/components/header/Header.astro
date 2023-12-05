@@ -10,10 +10,7 @@ import { links } from "@/lib/data";
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<header
-  class="fixed left-1/2 top-6 z-10 w-full -translate-x-1/2"
-  transition:animate="none"
->
+<header class="fixed left-1/2 top-6 z-10 w-full -translate-x-1/2">
   <div
     id="navbar"
     class="relative z-50 mx-auto flex hidden max-w-[170px] items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white p-2 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:max-w-[460px]"
@@ -39,22 +36,31 @@ const pathname = new URL(Astro.request.url).pathname;
               <a
                 href={link.href}
                 class={cn(
-                  "relative inline-flex p-1.5 font-medium tracking-tight text-slate-700 transition dark:text-slate-100",
+                  "group relative inline-flex p-1.5 font-medium tracking-tight text-slate-700 transition dark:text-slate-100",
                 )}
                 data-astro-prefetch
               >
                 {link.name}
 
+                <span
+                  class={cn(
+                    "absolute bottom-0 left-0 right-0 mx-auto hidden h-1 w-1 animate-[bounce_0.75s_forwards] rounded-full bg-slate-700 group-hover:block dark:bg-slate-100",
+                    link.href === "/"
+                      ? pathname === "/" && "block"
+                      : pathname.startsWith(link.href) && "block",
+                  )}
+                />
+
                 {link.href === "/"
                   ? pathname === "/" && (
                       <span
-                        class="absolute bottom-0 left-0 right-0 mx-auto h-2 w-2 animate-[fade-image_0.5s_0.1s_forwards] rounded-full bg-slate-700 dark:bg-slate-100"
+                        class="absolute bottom-0 left-0 right-0 mx-auto h-2 w-2 animate-[bounce_0.75s_forwards] rounded-full bg-slate-700 dark:bg-slate-100"
                         transition:name="active-link"
                       />
                     )
                   : pathname.startsWith(link.href) && (
                       <span
-                        class="absolute bottom-0 left-0 right-0 mx-auto h-2 w-2 animate-[fade-image_0.5s_0.1s_forwards] rounded-full bg-slate-700 dark:bg-slate-100"
+                        class="absolute bottom-0 left-0 right-0 mx-auto h-2 w-2 animate-[bounce_0.75s_forwards] rounded-full bg-slate-700 dark:bg-slate-100"
                         transition:name="active-link"
                       />
                     )}
@@ -94,12 +100,12 @@ const pathname = new URL(Astro.request.url).pathname;
     }
   }
 
-  @keyframes fade-image {
+  @keyframes bounce {
     0% {
       scale: 50%;
     }
     50% {
-      scale: 125%;
+      scale: 135%;
     }
     100% {
       scale: 100%;
@@ -138,7 +144,7 @@ const pathname = new URL(Astro.request.url).pathname;
       const headerImage = document.querySelector("img");
       if (headerImage) {
         headerImage.classList.add("opacity-0");
-        headerImage.style.animation = "fade-image 0.5s 0.25s forwards";
+        headerImage.style.animation = "bounce 0.5s 0.25s forwards";
       }
     },
     { once: true },

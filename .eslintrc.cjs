@@ -10,7 +10,11 @@ module.exports = {
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },
-      rules: {},
+      rules: {
+        "astro/no-conflict-set-directives": "error",
+        "astro/no-unused-define-vars-in-style": "error",
+        "jsx-a11y/control-has-associated-label": "error",
+      },
     },
   ],
 };

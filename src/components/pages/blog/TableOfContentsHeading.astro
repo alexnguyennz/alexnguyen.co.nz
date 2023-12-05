@@ -1,5 +1,5 @@
 ---
-import type { Heading } from "../../../lib/types";
+import type { Heading } from "@/lib/types";
 
 interface Props {
   heading: Heading;
@@ -9,12 +9,12 @@ const { heading } = Astro.props;
 ---
 
 <li>
-  <a href={"#" + heading.slug}>
+  <a href={`#${heading.slug}`} class="my-2 inline-block text-sm">
     {heading.text}
   </a>
   {
     heading.subheadings.length > 0 && (
-      <ul>
+      <ul class="ml-6">
         {heading.subheadings.map((subheading) => (
           <Astro.self heading={subheading} />
         ))}
@@ -22,30 +22,3 @@ const { heading } = Astro.props;
     )
   }
 </li>
-
-<style>
-  ul {
-    list-style-type: none;
-    margin-top: 0;
-    padding-left: 1rem;
-  }
-
-  a {
-    display: block;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.5rem 0.75rem;
-    transition-property: color, background-color, border-color,
-      text-decoration-color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-  }
-
-  a:not(.active) {
-    color: #0284c7;
-  }
-
-  html.dark a:not(.active) {
-    color: #67e8f9;
-  }
-</style>

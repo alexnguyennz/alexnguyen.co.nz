@@ -6,7 +6,9 @@ import { Fade } from "@/components/Fade";
 import BlogPostCard from "@/components/pages/blog/BlogPostCard.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = (
+    await getCollection("posts", ({ data }) => data.published)
+  ).sort((a, b) => Number(b.data.date) - Number(a.data.date));
 
   const tags = [
     ...new Set(

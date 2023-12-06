@@ -29,8 +29,12 @@ module.exports = {
             li: {
               margin: 0,
             },
+            figure: {
+              marginTop: 0,
+            },
             figcaption: {
               display: "inline-block",
+              marginTop: 0,
               padding: "0.5rem",
               backgroundColor: "#24292e" /* github-dark */,
               color: "#E1E4E8" /* github-dark */,

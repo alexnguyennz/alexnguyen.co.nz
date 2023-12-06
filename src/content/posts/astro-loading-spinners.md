@@ -1,5 +1,5 @@
 ---
-title: Astro Loading Spinners
+title: Astro loading spinners
 date: 2023-11-30T00:00:00Z
 tags:
   - astro
@@ -7,15 +7,13 @@ description: How to use loading spinners with Astro framework components
 published: true
 ---
 
-## Loading spinners with framework components
-
 If you use a framework component with a [client directive](https://docs.astro.build/en/reference/directives-reference/#clientonly) of `client:only`, you may see a flash of no content until the component renders.
 
 In this case, it may be useful to show a loading state like a spinner or skeleton until the component loads - especially if it will take longer than a second.
 
 One way to do this is to use a separate loading element alongside your framework component, and hide or remove that element once the component mounts.
 
-### React example
+## React example
 
 ```astro title="*.astro"
 <!-- some sort of indicator or spinner --> 
@@ -41,9 +39,9 @@ export function ReactComponent() {
 
 ```
 
-### Vue example
+## Vue example
 
-```astro
+```astro title="*.astro"
 <VueComponent client:only="vue" />
 ```
 
@@ -62,9 +60,9 @@ export function ReactComponent() {
 </template>
 ```
 
-### Svelte example
+## Svelte example
 
-```astro
+```astro title="*.astro"
 <SvelteComponent client:only="svelte" />
 ```
 
@@ -81,7 +79,7 @@ export function ReactComponent() {
 <div>Svelte content</div>
 ```
 
-### Alternative
+## Alternative
 
 If you're using another directive like `client:load` or `client:visible`, your component's initial view (before it hydrates) may render right away. 
 

@@ -8,9 +8,7 @@ import TableOfContents from "@/components/pages/blog/TableOfContents.astro";
 import { Fade } from "@/components/Fade";
 
 interface Props {
-  frontmatter:
-    | CollectionEntry<"posts">["data"]
-    | CollectionEntry<"notes">["data"];
+  frontmatter: CollectionEntry<"posts">["data"];
   headings: MarkdownHeading[];
   tags?: CollectionEntry<"tags">[];
 }

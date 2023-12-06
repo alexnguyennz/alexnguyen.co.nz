@@ -108,16 +108,17 @@ const { pathname } = Astro.props;
   }
 </style>
 
-<script>
+<script is:inline>
   function initMobileMenu() {
     const mobileToggle = document.getElementById("mobile-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    if (mobileToggle && mobileMenu)
+    if (mobileToggle && mobileMenu) {
       mobileToggle.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
         mobileToggle.classList.toggle("open");
       });
+    }
   }
 
   initMobileMenu();

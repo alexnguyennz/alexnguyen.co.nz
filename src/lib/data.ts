@@ -17,10 +17,6 @@ export const links: Link[] = [
     href: "/blog",
   },
   {
-    name: "Astro",
-    href: "/astro",
-  },
-  {
     name: "About",
     href: "/about",
   },

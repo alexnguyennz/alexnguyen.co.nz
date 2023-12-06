@@ -1,5 +1,5 @@
 ---
-title: Astro Loading Spinners
+title: Astro loading spinners
 date: 2023-11-30T00:00:00Z
 tags:
   - astro

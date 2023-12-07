@@ -78,13 +78,12 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
                       class={"hidden h-6 fill-[#034AD8] dark:block"}
                     />
                   </>
+                ) : slug === "cloudcannon" ? (
+                  <Icon name={slug} class={cn("h-6 fill-[#034AD8]")} />
                 ) : (
                   <Icon
                     name={slug}
-                    class={cn(
-                      "fill-[#034AD8]",
-                      tag.name === "Nuxt" ? "h-8" : "h-6",
-                    )}
+                    class={cn(tag.name === "Nuxt" ? "h-8" : "h-6")}
                   />
                 )}
               </a>

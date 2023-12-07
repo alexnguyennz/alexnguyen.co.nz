@@ -25,13 +25,20 @@ const { frontmatter, headings, tags } = Astro.props;
 
   <Fade client:visible delay={0.25}>
     <p class="mb-2 text-center text-sm">
-      {frontmatter.title === "All About Astro" && "Last updated"}
       {
-        new Date(frontmatter.date).toLocaleDateString("en-NZ", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
+        frontmatter.lastUpdated
+          ? `Last updated ${new Date(
+              frontmatter.lastUpdated,
+            ).toLocaleDateString("en-NZ", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}`
+          : `${new Date(frontmatter.date).toLocaleDateString("en-NZ", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}`
       }
     </p>
     <div class="flex items-center justify-center gap-1.5">

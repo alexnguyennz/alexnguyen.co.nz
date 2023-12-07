@@ -129,10 +129,13 @@ const pathname = new URL(Astro.request.url).pathname;
     () => {
       const navbar = document.getElementById("navbar");
       if (navbar) {
+        /* set a timeout as a workaround for View Transitions "bug" on All About Astro page in production when page is reloaded
+         TODO find cause
+         */
         setTimeout(() => {
           navbar.classList.remove("hidden");
           navbar.style.animation = "animate-header 1s forwards";
-        }, 50);
+        }, 100);
       }
 
       const headerNav = document.querySelector("nav");

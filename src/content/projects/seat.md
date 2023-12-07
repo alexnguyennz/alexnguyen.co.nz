@@ -1,6 +1,6 @@
 ---
 name: blueseat.co.nz
-description: SvelteKit site
+description: SvelteKit
 cover: "./seat-cover.png"
 image: "./seat.png"
 url: https://blueseat.co.nz

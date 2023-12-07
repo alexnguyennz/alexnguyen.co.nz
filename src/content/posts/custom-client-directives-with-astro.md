@@ -124,4 +124,4 @@ To see if it's working, open up your browser's network tab, and check if this co
 
 ![Browser network tab showing component requests](../../assets/posts/custom-client-directives-with-astro/network-tab-requests.png)
 
-You may not ever need to use a custom client directive, but it's a pretty cool feature that helps highlight Astro's flexibility.
+You may not ever need to use a custom client directive, but it's a pretty cool feature that highlights Astro's flexibility.

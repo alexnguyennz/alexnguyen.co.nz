@@ -40,6 +40,7 @@ const posts = defineCollection({
     z.object({
       title: z.string(),
       date: z.date(),
+      lastUpdated: z.date().optional(),
       tags: z.array(reference("tags")),
       description: z.string(),
       published: z.boolean(),

@@ -1,6 +1,6 @@
 ---
 name: Concept Food
-description: Eleventy + Alpine.js site
+description: Eleventy + Alpine.js
 cover: "./conceptfood-cover.png"
 image: "./conceptfood.png"
 url: https://conceptfood.co.nz

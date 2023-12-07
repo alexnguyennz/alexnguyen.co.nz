@@ -1,8 +1,11 @@
 ---
+import { Picture } from "astro:assets";
 import { Icon } from "astro-icon";
 
 import Layout from "@/layouts/Layout.astro";
 import { Fade } from "@/components/Fade";
+
+import image from "@/assets/img/about.jpg";
 ---
 
 <Layout title="About -">
@@ -21,6 +24,21 @@ import { Fade } from "@/components/Fade";
         movies and shows, and play the piano (poorly). I also watch too much
         basketball.
       </p>
+
+      <a
+        href="https://waterfalls.co.nz/waterfalls-by-region/292-new-zealand-waterfalls/north-island/wellington-and-wairarapa/327-fish-ladder-waterfall"
+        target="_blank"
+        rel="noreferrer noopener nofollow"
+      >
+        <Picture
+          src={image}
+          width="1000"
+          formats={["avif", "webp"]}
+          alt="View from the Fish Ladder at Trelissick Park, Wellington"
+          title="View from the Fish Ladder at Trelissick Park, Wellington"
+          class="h-auto w-full rounded-2xl shadow-lg"
+        /></a
+      >
 
       <p>
         This site is built with <a
@@ -63,6 +81,16 @@ import { Fade } from "@/components/Fade";
             class="mb-0.5 hidden h-7 dark:inline"
           /></a
         >.
+      </p>
+
+      <p class="flex justify-center">
+        <a href="/rss.xml"
+          ><span class="sr-only">RSS feed</span><Icon
+            pack="lucide"
+            name="rss"
+            class="h-6"
+          /></a
+        >
       </p>
     </div>
   </Fade>

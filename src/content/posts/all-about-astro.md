@@ -1,6 +1,7 @@
 ---
-title: All About Astro
+title: All about Astro
 date: 2023-12-07T00:00:00Z
+lastUpdated: 2023-12-07T00:00:00Z
 tags:
   - astro
 description: Collection of findings or quirks I've noted when using Astro
@@ -51,6 +52,7 @@ If you use [define:vars](https://docs.astro.build/en/reference/directives-refere
 ---
 const pathname = new URL(Astro.request.url).pathname;
 ---
+
 <script define:vars={{ pathname }}>
   // this will log for every pathname change, not just once on initial site load
   document.addEventListener("astro:page-load", () => console.log("page-load"), {

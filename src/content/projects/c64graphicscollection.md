@@ -1,10 +1,11 @@
 ---
 name: C64 Graphics Collection
-description: Nuxt + Supabase app
+description: Nuxt + Supabase
 cover: "./c64graphicscollection-cover.png"
 image: "./c64graphicscollection.png"
 url: https://c64graphicscollection.art
 tags:
+  - vue
   - nuxt
   - supabase
   - tailwind

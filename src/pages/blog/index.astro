@@ -8,6 +8,8 @@ import BlogPostCard from "@/components/pages/blog/BlogPostCard.astro";
 const posts = (await getCollection("posts", ({ data }) => data.published)).sort(
   (a, b) => Number(b.data.date) - Number(a.data.date),
 );
+
+console.log("posts", posts[0]);
 ---
 
 <Layout title="Blog -">

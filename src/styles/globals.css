@@ -107,3 +107,13 @@ article.post img {
     0 10px 15px -3px rgb(0 0 0 / 0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
+
+pre button.copy-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 0.5rem;
+  background: inherit;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}

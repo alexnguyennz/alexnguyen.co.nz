@@ -28,7 +28,7 @@ Update to [astro-icon@0.8.2](https://github.com/natemoo-re/astro-icon/releases/t
 
 When selecting elements, make sure to call them inside the called function of the event listener, otherwise the reference will be stale when you get to the next page:
 
-```astro title="*.astro"
+```html title="*.astro"
 <script is:inline>
   // this won't work after you navigate
   // const menu = document.getElementById("menu");
@@ -48,7 +48,7 @@ When selecting elements, make sure to call them inside the called function of th
 
 If you use [define:vars](https://docs.astro.build/en/reference/directives-reference/#definevars) to pass frontmatter variables into your script tag, everything inside will re-run everytime that variable changes:
 
-```astro title="*.astro"
+```html title="*.astro"
 ---
 const pathname = new URL(Astro.request.url).pathname;
 ---

@@ -41,6 +41,7 @@ module.exports = {
               borderBottom: "2px solid #4A88C7" /* WebStorm tab */,
             },
             pre: {
+              marginTop: 0,
               borderRadius: 0,
             },
           },

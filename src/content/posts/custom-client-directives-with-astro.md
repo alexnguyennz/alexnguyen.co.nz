@@ -1,6 +1,7 @@
 ---
 title: Custom client directives with Astro
 date: 2023-12-07T00:00:00Z
+lastUpdated: 2023-12-09T00:00:00Z
 tags:
   - astro
 description: Creating a hover or mouseover client directive with Astro
@@ -29,7 +30,7 @@ Did it improve the performance to a level where I could perceive it? No, but it 
 
 We'll look at creating a custom hover or `mouseover` client directive.
 
-Somewhere in your Astro project, (like a `lib` folder or similar), create a folder called `client-directives`. In this folder, create a `mouseover.js` file and add:
+Somewhere in your Astro project, (like a `lib` folder or similar), create a folder called `client-directives`. In this folder, create a `mouseover.js` (or `mouseover.ts` if you prefer TypeScript) file and add:
 
 ```js title="mouseover.js"
 /**
@@ -47,9 +48,24 @@ export default (load, opts, element) => {
 };
 ```
 
+```ts title="mouseover.ts"
+import type { ClientDirective } from "astro";
+
+export default (function (load, _opts, element) {
+  element.addEventListener(
+    "mouseover",
+    async () => {
+      const hydrate = await load();
+      await hydrate();
+    },
+  { once: true },
+);
+} satisfies ClientDirective);
+```
+
 This will hydrate the component once the `mouseover` event is triggered on the element.
 
-Then add this directive as an Astro integration. Create a `register.js` file and add:
+Then add this directive as an Astro integration. Create a `register.js` or `register.ts` file and add:
 
 ```js title="register.js"
 /**
@@ -62,6 +78,22 @@ export default () => ({
       addClientDirective({
         name: "mouseover",
         entrypoint: "./src/lib/client-directives/mouseover.js",
+      });
+    },
+  },
+});
+```
+
+```ts title="register.ts"
+import type { AstroIntegration } from "astro";
+
+export default (): AstroIntegration => ({
+  name: "client:mouseover",
+  hooks: {
+    "astro:config:setup": ({ addClientDirective }) => {
+      addClientDirective({
+        name: "mouseover",
+        entrypoint: "./src/lib/client-directives/mouseover.ts",
       });
     },
   },
@@ -98,9 +130,9 @@ export default defineConfig({
 
 We can add it to any component like so:
 
-```astro title="*.astro"
+```tsx title="*.astro"
 <ReactComponent client:mouseover />
-<!-- You may get warnings about using it in your IDE (for example, that it requires a value in WebStorm), you could explicitly pass it a value of `true` (which doesn't affect anything but removes the warning) or just leave it. -->
+{/* You may get warnings about using it in your IDE (for example, that it requires a value in WebStorm), you could explicitly pass it a value of `true` (which doesn't affect anything but removes the warning) or just leave it. */}
 ```
 
 

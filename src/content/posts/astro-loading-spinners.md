@@ -15,8 +15,8 @@ One way to do this is to use a separate loading element alongside your framework
 
 ## React example
 
-```astro title="*.astro"
-<!-- some sort of indicator or spinner --> 
+```tsx title="*.astro"
+{/* some sort of indicator or spinner */} 
 <svg
   class="spinner"
   ...
@@ -41,7 +41,7 @@ export function ReactComponent() {
 
 ## Vue example
 
-```astro title="*.astro"
+```tsx title="*.astro"
 <VueComponent client:only="vue" />
 ```
 
@@ -62,7 +62,7 @@ export function ReactComponent() {
 
 ## Svelte example
 
-```astro title="*.astro"
+```tsx title="*.astro"
 <SvelteComponent client:only="svelte" />
 ```
 

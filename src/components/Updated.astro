@@ -1,0 +1,25 @@
+---
+const lastUpdated = new Date();
+---
+
+<astro-updated data-lastupdated={lastUpdated}>
+  <span class="text-sm text-slate-500">🛠️ Updated</span>
+</astro-updated>
+
+<script>
+  import dayjs from "dayjs";
+  import relativeTime from "dayjs/plugin/relativeTime";
+  dayjs.extend(relativeTime);
+
+  class Updated extends HTMLElement {
+    constructor() {
+      super();
+
+      const date = this.dataset.lastupdated;
+      const span = this.querySelector("span");
+      if (span) span.textContent = `🛠️ Updated ${dayjs().to(dayjs(date))}`;
+    }
+  }
+
+  customElements.define("astro-updated", Updated);
+</script>

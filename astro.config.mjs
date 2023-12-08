@@ -4,10 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
-
-const prettyCodeOptions = {
-  theme: "github-dark",
-};
+import { remarkReadingTime } from "./src/lib/reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +23,7 @@ export default defineConfig({
   prefetch: true,
   markdown: {
     syntaxHighlight: false,
+    remarkPlugins: [remarkReadingTime],
     rehypePlugins: [
       [
         rehypePrettyCode,

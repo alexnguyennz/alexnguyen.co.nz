@@ -5,10 +5,6 @@ import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 
-const prettyCodeOptions = {
-  theme: "github-dark",
-};
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://alexnguyen.co.nz",

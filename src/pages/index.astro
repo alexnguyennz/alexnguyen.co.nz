@@ -13,6 +13,13 @@ const tools = (await getCollection("tools")).sort(
 const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
+
+/*const audio = await fetch(`${Astro.request.url}/api/voice`, {
+  method: "POST",
+  body: JSON.stringify({
+    text: "This is a test. Made a bit longer this time.",
+  }),
+});*/
 ---
 
 <Layout>

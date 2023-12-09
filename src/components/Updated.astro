@@ -2,8 +2,8 @@
 const lastUpdated = new Date();
 ---
 
-<astro-updated data-lastupdated={lastUpdated}>
-  <span class="text-sm text-slate-500">🛠️ Updated</span>
+<astro-updated data-lastupdated={lastUpdated} transition:persist>
+  <span class="text-sm text-slate-500">🛠️...</span>
 </astro-updated>
 
 <script>
@@ -17,7 +17,11 @@ const lastUpdated = new Date();
 
       const date = this.dataset.lastupdated;
       const span = this.querySelector("span");
-      if (span) span.textContent = `🛠️ Updated ${dayjs().to(dayjs(date))}`;
+      if (span) {
+        setTimeout(() => {
+          span.textContent = `🛠️ Updated ${dayjs().to(dayjs(date))}`;
+        }, 1000);
+      }
     }
   }
 

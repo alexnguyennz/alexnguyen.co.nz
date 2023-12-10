@@ -1,5 +1,10 @@
 import { defineCollection, z, reference } from "astro:content";
 
+const pages = defineCollection({
+  type: "content",
+  schema: () => z.object({}),
+});
+
 const tools = defineCollection({
   type: "content",
   schema: () =>
@@ -47,4 +52,4 @@ const posts = defineCollection({
     }),
 });
 
-export const collections = { tools, projects, tags, posts };
+export const collections = { pages, tools, projects, tags, posts };

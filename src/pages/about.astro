@@ -7,17 +7,17 @@ import { Fade } from "@/components/Fade";
 
 import image from "@/assets/img/about.jpg";
 
-import { rawContent } from "@/content/pages/about.md";
+/*import { rawContent } from "@/content/pages/about.md";
 
 if (import.meta.env.PROD) {
-  await fetch(`${Astro.request.url}/api/voice`, {
+  await fetch(`${Astro.url.origin}/api/voice`, {
     method: "POST",
     body: JSON.stringify({
       id: "about",
-      textInput: "About page content. Testing now.",
+      textInput: rawContent(),
     }),
   });
-}
+}*/
 ---
 
 <Layout title="About -" voice>

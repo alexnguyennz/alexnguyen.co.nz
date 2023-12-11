@@ -1,5 +1,4 @@
 ---
-import { getEntry } from "astro:content";
 import { Picture } from "astro:assets";
 import { Icon } from "astro-icon";
 
@@ -8,21 +7,35 @@ import { Fade } from "@/components/Fade";
 
 import image from "@/assets/img/about.jpg";
 
-const page = await getEntry("pages", "about");
-const { Content } = await page.render();
+import { rawContent } from "@/content/pages/about.md";
 
-import { rawContent, compiledContent } from "@/content/pages/about.md";
-
-console.log("rawContent", rawContent);
-console.log("compiledCOmponent", compiledContent);
+if (import.meta.env.PROD) {
+  await fetch(`${Astro.request.url}/api/voice`, {
+    method: "POST",
+    body: JSON.stringify({
+      id: "about",
+      textInput: "About page content. Testing now.",
+    }),
+  });
+}
 ---
 
-<Layout title="About -">
+<Layout title="About -" voice>
   <Fade client:visible><h1>About</h1></Fade>
 
   <Fade client:visible delay={0.25}>
     <div class="prose max-w-xl dark:prose-invert">
-      <Content />
+      <p>
+        Hi there, I'm a web developer from New Zealand. After studying to be a
+        network engineer and working in IT support related roles, I decided to
+        become a developer in 2023.
+      </p>
+
+      <p>
+        In my spare time, I like to read (slowly), run on local tracks, watch
+        movies and shows, and play the piano (poorly). I also watch too much
+        basketball.
+      </p>
 
       <a
         href="https://waterfalls.co.nz/waterfalls-by-region/292-new-zealand-waterfalls/north-island/wellington-and-wairarapa/327-fish-ladder-waterfall"

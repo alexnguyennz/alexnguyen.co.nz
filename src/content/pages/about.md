@@ -9,3 +9,5 @@ become a developer in 2023.
 In my spare time, I like to read (slowly), run on local tracks, watch
 movies and shows, and play the piano (poorly). I also watch too much
 basketball.
+
+This site is built with Astro and Tailwind CSS. Hosted on Netlify. Source code is available here.

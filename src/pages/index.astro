@@ -17,7 +17,7 @@ const projects = (await getCollection("projects")).sort(
 const page = await getEntry("pages", "home");
 const { headings } = await page.render();
 
-const text = headings
+const textInput = headings
   .map((heading) => heading.text)
   .join(`<break time="0.5s" />`);
 
@@ -25,13 +25,13 @@ if (import.meta.env.PROD) {
   /*await fetch(`${Astro.request.url}/api/voice`, {
     method: "POST",
     body: JSON.stringify({
-      text,
+      textInput,
     }),
   });*/
 }
 ---
 
-<Layout>
+<Layout voice>
   <Fade client:visible>
     <h1>{headings[0].text}</h1>
   </Fade>

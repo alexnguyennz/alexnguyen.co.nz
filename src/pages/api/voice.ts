@@ -8,29 +8,11 @@ const voice = new ElevenLabs({
 });
 
 export const POST: APIRoute = async ({ request }) => {
-  const { text } = await request.json();
-
-  /*const options = {
-    method: "POST",
-    headers: {
-      Accept: "audio/mpeg",
-      "xi-api-key": import.meta.env.XI_API_KEY,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ text: "hi" }),
-    responseType: "stream",
-  };
-
-  const response = await fetch(
-    `https://api.elevenlabs.io/v1/text-to-speech/${
-      import.meta.env.XI_VOICE_ID
-    }`,
-    options,
-  );*/
+  const { id, textInput } = await request.json();
 
   const response = await voice.textToSpeech({
-    fileName: "public/voice/index.mp3",
-    textInput: text,
+    fileName: `public/voice/${id}.mp3`,
+    textInput,
   });
 
   return new Response(JSON.stringify(response));

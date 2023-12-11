@@ -8,52 +8,77 @@ const { id } = Astro.props;
 
 {
   id && (
-    <button
-      id="play-voice"
-      class="div absolute right-3 top-3 z-20"
-      aria-label="play text content"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+    <astro-voice data-id={id}>
+      <button
+        id="play-voice"
+        class="absolute right-3 top-3 z-20 flex w-16 items-center gap-1 text-sm"
+        aria-label="play text content as audio"
       >
-        <polygon points="5 3 19 12 5 21 5 3" />
-      </svg>
-    </button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
+            stroke-width="0"
+            fill="currentColor"
+          />
+        </svg>
+        Talk
+      </button>
+    </astro-voice>
   )
 }
 
 <script>
-  const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
-  const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="4" height="16" x="6" y="4"/><rect width="4" height="16" x="14" y="4"/></svg>`;
+  const playIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>`;
+  const pauseIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" stroke-width="0" fill="currentColor" /><path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" stroke-width="0" fill="currentColor" /></svg>`;
 
-  const audio = new Audio();
-  audio.volume = 0.5;
-  audio.src = "/voice/index.mp3";
+  class AstroGreet extends HTMLElement {
+    constructor() {
+      super();
 
-  function initVoice() {
-    const button = document.querySelector("button#play-voice");
+      // Read the message from the data attribute.
+      const id = this.dataset.id;
 
-    if (button) {
-      button.addEventListener("click", () => {
-        if (audio.paused) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      });
+      const audio = new Audio();
+      audio.volume = 0.5;
+      audio.src = `/voice/${id === "/" ? "index" : id?.slice(1)}.mp3`;
 
-      audio.addEventListener("play", () => (button.innerHTML = pauseIcon));
-      audio.addEventListener("pause", () => (button.innerHTML = playIcon));
+      const button = document.querySelector("button#play-voice");
+
+      if (button) {
+        button.addEventListener("click", () => {
+          if (audio.paused) {
+            audio.play();
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener(
+          "play",
+          () => (button.innerHTML = pauseIcon + "Stop"),
+        );
+        audio.addEventListener(
+          "pause",
+          () => (button.innerHTML = playIcon + "Talk"),
+        );
+      }
     }
   }
+
+  customElements.define("astro-voice", AstroGreet);
+
+  function initVoice() {}
 
   initVoice();
 

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
 
 import { SEO } from "astro-seo";
 
@@ -18,6 +18,8 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await project.render();
+
+const image = await getImage({ src: project.data.image });
 ---
 
 <Layout title={project.data.name + " -"}>
@@ -32,6 +34,8 @@ const { Content } = await project.render();
         },
       }}
     />
+
+    <link rel="preload" href={image.src} as="image" />
   </Fragment>
 
   <Fade client:visible>
@@ -51,8 +55,8 @@ const { Content } = await project.render();
         rel="noopener"
         aria-label={project.data.name + " link"}
       >
-        <Image
-          src={project.data.image}
+        <img
+          src={image.src}
           width={800}
           alt={project.data.name}
           class="w-full max-w-xl rounded-[3rem] shadow-lg"

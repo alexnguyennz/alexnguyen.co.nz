@@ -32,34 +32,34 @@ import image from "../assets/project.png".
 const optimizedImage = await getImage({
   src: image,
   format: "webp",
-  width: 500,
-  height: 500,
+  width: 500, // resize optional 
+  height: 500, // resize optional
 });
 ---
 ```
 
-To use this optimized image, we can use a normal `<img>` tag:
-```astro
-<img
-  src={optimizedImage.src}
-  width={500}
-  height={500}
-  alt=""
-/>
-```
-
-You can also still use the `<Image />` component, which will be transformed into a normal `<img>` without optimizing the image (due to the use of `src` or an image path string):
+To use this optimized image, you can still use the `<Image />` component:
 
 ```astro
 <Image
-  src={optimizedImage.src}
-  width={500}
-  height={500}
+  src={optimizedImage.options.src}
+  width={optimizedImage.attributes.width}
+  height={optimizedImage.attributes.height}
   alt=""
 />
 ```
 
-Finally, add `preload` tag with the image to your page's head element:
+You can also use a normal `<img>` tag:
+```astro
+<img
+  src={optimizedImage.src}
+  width={optimizedImage.attributes.width}
+  height={optimizedImage.attributes.height}
+  alt=""
+/>
+```
+
+Finally, add a preload with the image to your page's head element:
 
 ```astro title="*.astro"
 <head>
@@ -110,7 +110,7 @@ There doesn't seem to be a simple built-in way of checking preloaded resources. 
 
 ![browser network tab showing image resources](../../assets/posts/preloading-images-with-astro/browser-network-tab.png)
 
-You can also remove the filter to see how it compares with all other request types, or re-build with the preload removed to see how it changes .
+You can also remove the filter to see how it compares with all other request types, or re-build with the preload removed to see how it changes.
 
 Make sure to also check the page source - the paths in the `<link>` tag and `<img>` tag should match:
 ```html

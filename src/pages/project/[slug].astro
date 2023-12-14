@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { getImage } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
 import { SEO } from "astro-seo";
 
@@ -55,9 +55,10 @@ const image = await getImage({ src: project.data.image });
         rel="noopener"
         aria-label={project.data.name + " link"}
       >
-        <img
+        <Image
           src={image.src}
-          width={800}
+          width={image.attributes.width}
+          height={image.attributes.height}
           alt={project.data.name}
           class="w-full max-w-xl rounded-[3rem] shadow-lg"
           fetchpriority="high"

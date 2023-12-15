@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
+import expressiveCode from "astro-expressive-code";
 import { remarkReadingTime } from "./src/lib/reading-time.mjs";
 
 // https://astro.build/config
@@ -19,6 +20,7 @@ export default defineConfig({
         page !==
         "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/",
     }),
+    expressiveCode({ themes: ["dracula"] }),
   ],
   prefetch: true,
   markdown: {

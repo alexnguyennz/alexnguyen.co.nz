@@ -16,8 +16,6 @@ module.exports = {
             "--tw-prose-invert-links": "white",
             "--tw-prose-bullets": "black",
             "--tw-prose-invert-bullets": "white",
-            "--tw-prose-code": theme("colors.red[500]"),
-            "--tw-prose-invert-code": theme("colors.red[300]"),
             maxWidth: "64rem",
             h2: {
               textAlign: "left",
@@ -28,21 +26,6 @@ module.exports = {
             },
             li: {
               margin: 0,
-            },
-            figure: {
-              marginTop: 0,
-            },
-            figcaption: {
-              display: "inline-block",
-              marginTop: 0,
-              padding: "0.5rem",
-              backgroundColor: "#24292e" /* github-dark */,
-              color: "#E1E4E8" /* github-dark */,
-              borderBottom: "2px solid #4A88C7" /* WebStorm tab */,
-            },
-            pre: {
-              marginTop: 0,
-              borderRadius: 0,
             },
           },
         },

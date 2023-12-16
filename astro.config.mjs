@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import expressiveCode from "astro-expressive-code";
-import { remarkReadingTime } from "./src/lib/reading-time.mjs";
+import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,7 +25,7 @@ export default defineConfig({
   prefetch: true,
   markdown: {
     syntaxHighlight: false,
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [readingTime, modifiedTime],
     rehypePlugins: [
       [
         rehypePrettyCode,

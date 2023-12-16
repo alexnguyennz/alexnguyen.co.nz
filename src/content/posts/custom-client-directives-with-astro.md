@@ -1,7 +1,6 @@
 ---
 title: Custom client directives with Astro
 date: 2023-12-07T00:00:00Z
-lastUpdated: 2023-12-09T00:00:00Z
 tags:
   - astro
 description: Creating a hover or mouseover client directive with Astro

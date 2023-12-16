@@ -5,6 +5,11 @@ import { SEO } from "astro-seo";
 
 import PostLayout from "@/layouts/PostLayout.astro";
 
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+dayjs.extend(utc);
+
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
 
@@ -30,6 +35,7 @@ const ogImageUrl = new URL(
   headings={headings}
   tags={tags}
   readingTime={remarkPluginFrontmatter.minutesRead}
+  lastModified={remarkPluginFrontmatter.lastModified}
 >
   <Fragment slot="head">
     <SEO

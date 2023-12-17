@@ -5,7 +5,6 @@ import { Image, getImage } from "astro:assets";
 import { SEO } from "astro-seo";
 
 import Layout from "@/layouts/Layout.astro";
-import { Fade } from "@/components/Fade";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -38,36 +37,32 @@ const image = await getImage({ src: project.data.image });
     <link rel="preload" href={image.src} as="image" />
   </Fragment>
 
-  <Fade client:visible>
-    <h1>
-      <a href={project.data.url} target="_blank" rel="noopener">
-        {project.data.name}
-        <span class="text-xl">↗</span>
-      </a>
-    </h1>
-  </Fade>
+  <h1>
+    <a href={project.data.url} target="_blank" rel="noopener">
+      {project.data.name}
+      <span class="text-xl">↗</span>
+    </a>
+  </h1>
 
-  <Fade client:visible delay={0.25}>
-    <div class="grid gap-10">
-      <a
-        href={project.data.url}
-        target="_blank"
-        rel="noopener"
-        aria-label={project.data.name + " link"}
-      >
-        <Image
-          src={image.src}
-          width={image.attributes.width}
-          height={image.attributes.height}
-          alt={project.data.name}
-          class="w-full max-w-xl rounded-[3rem] shadow-lg"
-          fetchpriority="high"
-          loading="eager"
-        />
-      </a>
-      <div class="prose max-w-xl dark:prose-invert">
-        <Content />
-      </div>
+  <div class="grid gap-10">
+    <a
+      href={project.data.url}
+      target="_blank"
+      rel="noopener"
+      aria-label={project.data.name + " link"}
+    >
+      <Image
+        src={image.src}
+        width={image.attributes.width}
+        height={image.attributes.height}
+        alt={project.data.name}
+        class="w-full max-w-xl rounded-[3rem] shadow-lg"
+        fetchpriority="high"
+        loading="eager"
+      />
+    </a>
+    <div class="prose max-w-xl dark:prose-invert">
+      <Content />
     </div>
-  </Fade>
+  </div>
 </Layout>

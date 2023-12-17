@@ -3,7 +3,6 @@ import { Picture } from "astro:assets";
 import { Icon } from "astro-icon";
 
 import Layout from "@/layouts/Layout.astro";
-import { Fade } from "@/components/Fade";
 
 import image from "@/assets/img/about.jpg";
 
@@ -21,82 +20,80 @@ if (import.meta.env.PROD) {
 ---
 
 <Layout title="About -" voice>
-  <Fade client:visible><h1>About</h1></Fade>
+  <h1>About</h1>
 
-  <Fade client:visible delay={0.25}>
-    <div class="prose max-w-xl dark:prose-invert">
-      <p>
-        Hi there, I'm a web developer from New Zealand. After studying to be a
-        network engineer and working in IT support related roles, I decided to
-        become a developer in 2023.
-      </p>
+  <div class="prose max-w-xl dark:prose-invert">
+    <p>
+      Hi there, I'm a web developer from New Zealand. After studying to be a
+      network engineer and working in IT support related roles, I decided to
+      become a developer in 2023.
+    </p>
 
-      <p>
-        In my spare time, I like to read (slowly), run on local tracks, watch
-        movies and shows, and play the piano (poorly). I also watch too much
-        basketball.
-      </p>
+    <p>
+      In my spare time, I like to read (slowly), run on local tracks, watch
+      movies and shows, and play the piano (poorly). I also watch too much
+      basketball.
+    </p>
 
-      <a
-        href="https://waterfalls.co.nz/waterfalls-by-region/292-new-zealand-waterfalls/north-island/wellington-and-wairarapa/327-fish-ladder-waterfall"
+    <a
+      href="https://waterfalls.co.nz/waterfalls-by-region/292-new-zealand-waterfalls/north-island/wellington-and-wairarapa/327-fish-ladder-waterfall"
+      target="_blank"
+      rel="noreferrer noopener nofollow"
+    >
+      <Picture
+        src={image}
+        width="1000"
+        formats={["avif", "webp"]}
+        alt="View from the Fish Ladder at Trelissick Park, Wellington"
+        title="View from the Fish Ladder at Trelissick Park, Wellington"
+        class="h-auto w-full rounded-2xl shadow-lg"
+      /></a
+    >
+
+    <p>
+      This site is built with <a
+        href="https://astro.build"
         target="_blank"
         rel="noreferrer noopener nofollow"
-      >
-        <Picture
-          src={image}
-          width="1000"
-          formats={["avif", "webp"]}
-          alt="View from the Fish Ladder at Trelissick Park, Wellington"
-          title="View from the Fish Ladder at Trelissick Park, Wellington"
-          class="h-auto w-full rounded-2xl shadow-lg"
+        title="Astro"
+        ><span class="sr-only">Astro</span><Icon
+          name="astro-name"
+          class="mt-0.5 inline h-7 dark:hidden"
+        /><Icon
+          name="astro-name-dark"
+          class="mt-0.5 hidden h-7 dark:inline"
         /></a
-      >
-
-      <p>
-        This site is built with <a
-          href="https://astro.build"
-          target="_blank"
-          rel="noreferrer noopener nofollow"
-          title="Astro"
-          ><span class="sr-only">Astro</span><Icon
-            name="astro-name"
-            class="mt-0.5 inline h-7 dark:hidden"
-          /><Icon
-            name="astro-name-dark"
-            class="mt-0.5 hidden h-7 dark:inline"
-          /></a
-        > and
-        <a
-          href="https://tailwindcss.com"
-          target="_blank"
-          rel="noreferrer noopener nofollow"
-          class="mx-1"
-          title="Tailwind CSS"
-          ><span class="sr-only">Tailwind CSS</span><Icon
-            name="tailwind-name"
-            class="-mr-0.5 mb-0.5 inline h-3.5 dark:hidden"
-          /><Icon
-            name="tailwind-name-dark"
-            class="-mr-0.5 mb-0.5 hidden h-3.5 dark:inline"
-          /></a
-        >. Hosted on <a
-          href="https://www.netlify.com"
-          target="_blank"
-          rel="noreferrer noopener nofollow"
-          class="mx-1"
-          title="Netlify"
-          ><span class="sr-only">Netlify</span><Icon
-            name="netlify-name"
-            class="mb-0.5 inline h-7 dark:hidden"
-          /><Icon
-            name="netlify-name-dark"
-            class="mb-0.5 hidden h-7 dark:inline"
-          /></a
-        >. Source code is available <a
-          href="https://github.com/alexnguyennz/alexnguyen.co.nz"
-          target="_blank">here</a
-        >.
-      </p>
-    </div>
-  </Fade>
+      > and
+      <a
+        href="https://tailwindcss.com"
+        target="_blank"
+        rel="noreferrer noopener nofollow"
+        class="mx-1"
+        title="Tailwind CSS"
+        ><span class="sr-only">Tailwind CSS</span><Icon
+          name="tailwind-name"
+          class="-mr-0.5 mb-0.5 inline h-3.5 dark:hidden"
+        /><Icon
+          name="tailwind-name-dark"
+          class="-mr-0.5 mb-0.5 hidden h-3.5 dark:inline"
+        /></a
+      >. Hosted on <a
+        href="https://www.netlify.com"
+        target="_blank"
+        rel="noreferrer noopener nofollow"
+        class="mx-1"
+        title="Netlify"
+        ><span class="sr-only">Netlify</span><Icon
+          name="netlify-name"
+          class="mb-0.5 inline h-7 dark:hidden"
+        /><Icon
+          name="netlify-name-dark"
+          class="mb-0.5 hidden h-7 dark:inline"
+        /></a
+      >. Source code is available <a
+        href="https://github.com/alexnguyennz/alexnguyen.co.nz"
+        target="_blank">here</a
+      >.
+    </p>
+  </div>
 </Layout>

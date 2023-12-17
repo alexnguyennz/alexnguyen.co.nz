@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
-import { Fade } from "@/components/Fade";
 import BlogPostCard from "@/components/pages/blog/BlogPostCard.astro";
 
 export async function getStaticPaths() {
@@ -37,11 +36,9 @@ const { posts } = Astro.props;
 ---
 
 <Layout title={`Posts tagged with ${tag} -`}>
-  <Fade client:visible><h1>Posts tagged with "{tag}"</h1></Fade>
+  <h1>Posts tagged with "{tag}"</h1>
 
-  <Fade client:visible delay={0.25}>
-    <div class="grid gap-6">
-      {posts.map((post) => <BlogPostCard post={post} />)}
-    </div>
-  </Fade>
+  <div class="grid gap-6">
+    {posts.map((post) => <BlogPostCard post={post} />)}
+  </div>
 </Layout>

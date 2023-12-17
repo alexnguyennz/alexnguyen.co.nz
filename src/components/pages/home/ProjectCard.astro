@@ -39,7 +39,7 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
         height={192}
         alt={project.data.name}
         class={cn(
-          "mx-auto mb-2 h-[128px] object-contain",
+          "mx-auto mb-2 h-[128px] object-contain opacity-0 animate-show",
           project.slug === "vsctrustorgnz" && "dark:invert",
         )}
         loading="lazy"
@@ -100,5 +100,15 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
     transition-property: box-shadow, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
+    animation: animate-in ease-in both;
+    animation-timeline: view();
+    animation-range: entry 25% cover calc(35% - 10vh);
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      scale: 0.8;
+    }
   }
 </style>

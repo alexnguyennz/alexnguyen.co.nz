@@ -33,8 +33,12 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
   </div>
 
   <div>
-    <a href={`/project/${project.slug}`} data-astro-prefetch
-      ><Image
+    <a
+      href={`/project/${project.slug}`}
+      aria-label={`${project.data.name} project page`}
+      data-astro-prefetch
+    >
+      <Image
         src={project.data.cover}
         height={192}
         alt={project.data.name}

@@ -1,0 +1,20 @@
+---
+import { Picture } from "astro:assets";
+import { Icon } from "astro-icon";
+
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Search -">
+  <Fragment slot="head">
+    <script>
+      import { getOramaDB, search } from "@orama/plugin-astro/client";
+      const db = await getOramaDB("search");
+
+      console.log("Search Results");
+      console.log(await search(db, { term: "astro" }));
+    </script>
+  </Fragment>
+
+  <h1>Search</h1>
+</Layout>

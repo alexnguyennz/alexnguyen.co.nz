@@ -38,7 +38,12 @@ const image = await getImage({ src: project.data.image });
   </Fragment>
 
   <h1>
-    <a href={project.data.url} target="_blank" rel="noopener">
+    <a
+      href={project.data.url}
+      target="_blank"
+      rel="noopener"
+      transition:name={`project-${project.data.name}-name`}
+    >
       {project.data.name}
       <span class="text-xl">↗</span>
     </a>
@@ -59,6 +64,7 @@ const image = await getImage({ src: project.data.image });
         class="w-full max-w-xl rounded-[3rem] shadow-lg"
         fetchpriority="high"
         loading="eager"
+        transition:name={`project-${project.data.name}-image`}
       />
     </a>
     <div class="prose max-w-xl dark:prose-invert">

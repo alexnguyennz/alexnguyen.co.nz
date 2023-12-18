@@ -47,12 +47,18 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
           project.slug === "vsctrustorgnz" && "dark:invert",
         )}
         loading="lazy"
+        transition:name={`project-${project.data.name}-image`}
       /></a
     >
 
     <div class="mt-auto">
       <h2>
-        <a href={`/project/${project.slug}`} class="link" data-astro-prefetch>
+        <a
+          href={`/project/${project.slug}`}
+          class="link"
+          data-astro-prefetch
+          transition:name={`project-${project.data.name}-name`}
+        >
           {project.data.name}
         </a>
       </h2>

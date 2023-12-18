@@ -33,9 +33,7 @@ const lastUpdated = new Date();
       const date = this.dataset.lastupdated;
       const span = this.querySelector("span");
 
-      setTimeout(() => {
-        span!.textContent = `🛠️ Updated ${dayjs().to(dayjs(date))}`;
-      }, 1000);
+      span!.textContent = `🛠️ Updated ${dayjs().to(dayjs(date))}`;
     }
   }
 

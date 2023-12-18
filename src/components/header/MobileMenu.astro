@@ -7,6 +7,12 @@ interface Props {
 }
 
 const { pathname } = Astro.props;
+
+const mobileLinks = [...links];
+mobileLinks.push({
+  name: "Search",
+  href: "/search",
+});
 ---
 
 <button
@@ -24,7 +30,7 @@ const { pathname } = Astro.props;
 >
   <ul class="flex flex-col items-center gap-2">
     {
-      links.map((link) => (
+      mobileLinks.map((link) => (
         <li>
           <a
             href={link.href}

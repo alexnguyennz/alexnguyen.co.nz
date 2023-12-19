@@ -25,8 +25,8 @@ export default defineConfig({
     expressiveCode({ themes: ["dracula"] }),
     orama({
       search: {
-        pathMatcher: /^/,
-        contentSelectors: ["h1", "main", "body"],
+        pathMatcher: /^blog\/.+$/,
+        contentSelectors: ["h1", "article"],
       },
     }),
   ],

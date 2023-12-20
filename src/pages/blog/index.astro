@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 
 import Layout from "@/layouts/Layout.astro";
-import { Fade } from "@/components/Fade";
 import BlogPostCard from "@/components/pages/blog/BlogPostCard.astro";
 
 const posts = (await getCollection("posts", ({ data }) => data.published)).sort(
@@ -11,11 +10,9 @@ const posts = (await getCollection("posts", ({ data }) => data.published)).sort(
 ---
 
 <Layout title="Blog -">
-  <Fade client:visible><h1>Blog</h1></Fade>
+  <h1>Blog</h1>
 
-  <Fade client:visible delay={0.25}>
-    <div class="grid gap-6">
-      {posts.map((post) => <BlogPostCard post={post} />)}
-    </div>
-  </Fade>
+  <div class="grid gap-6">
+    {posts.map((post) => <BlogPostCard post={post} />)}
+  </div>
 </Layout>

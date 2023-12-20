@@ -2,10 +2,12 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import orama from "@orama/plugin-astro";
+
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import expressiveCode from "astro-expressive-code";
-import { remarkReadingTime } from "./src/lib/reading-time.mjs";
+import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,11 +23,17 @@ export default defineConfig({
         "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/",
     }),
     expressiveCode({ themes: ["dracula"] }),
+    orama({
+      search: {
+        pathMatcher: /^blog\/.+$/,
+        contentSelectors: ["h1", "article"],
+      },
+    }),
   ],
   prefetch: true,
   markdown: {
     syntaxHighlight: false,
-    remarkPlugins: [remarkReadingTime],
+    remarkPlugins: [readingTime, modifiedTime],
     rehypePlugins: [
       [
         rehypePrettyCode,

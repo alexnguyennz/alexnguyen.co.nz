@@ -21,9 +21,10 @@ const pathname = Astro.url.pathname;
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
+    <meta charset="UTF-8" />
+
     <title>{title} Alex Nguyen - Web Developer</title>
 
-    <meta charset="UTF-8" />
     <meta name="description" content="Website of web developer Alex Nguyen" />
     <meta
       name="keywords"
@@ -33,7 +34,6 @@ const pathname = Astro.url.pathname;
 
     <slot name="head" />
 
-    <link rel="preload" href="/logo.png" as="image" />
     <link
       rel="preload"
       href="/fonts/DMSans-Regular.woff2"

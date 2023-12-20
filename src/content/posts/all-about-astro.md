@@ -1,7 +1,6 @@
 ---
 title: All about Astro
 date: 2023-12-07T00:00:00Z
-lastUpdated: 2023-12-07T00:00:00Z
 tags:
   - astro
 description: Collection of findings or quirks I've noted when using Astro

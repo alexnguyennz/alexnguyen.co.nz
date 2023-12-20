@@ -1,14 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Fade } from "@/components/Fade";
 ---
 
 <Layout title="404 Page Not Found -">
-  <Fade client:visible><h1>Page Not Found :(</h1></Fade>
+  <h1>Page Not Found :(</h1>
 
-  <Fade client:visible delay={0.25}>
-    <h2>
-      <a href="/" class="animated-link">Home</a>
-    </h2>
-  </Fade>
+  <h2>
+    <a href="/" class="animated-link">Home</a>
+  </h2>
 </Layout>

@@ -33,22 +33,32 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
   </div>
 
   <div>
-    <a href={`/project/${project.slug}`} data-astro-prefetch
-      ><Image
+    <a
+      href={`/project/${project.slug}`}
+      aria-label={`${project.data.name} project page`}
+      data-astro-prefetch
+    >
+      <Image
         src={project.data.cover}
         height={192}
         alt={project.data.name}
         class={cn(
-          "mx-auto mb-2 h-[128px] object-contain",
+          "mx-auto mb-2 h-[128px] object-contain opacity-0 animate-show",
           project.slug === "vsctrustorgnz" && "dark:invert",
         )}
         loading="lazy"
+        transition:name={`project-${project.data.name}-image`}
       /></a
     >
 
     <div class="mt-auto">
       <h2>
-        <a href={`/project/${project.slug}`} class="link" data-astro-prefetch>
+        <a
+          href={`/project/${project.slug}`}
+          class="link"
+          data-astro-prefetch
+          transition:name={`project-${project.data.name}-name`}
+        >
           {project.data.name}
         </a>
       </h2>
@@ -100,5 +110,15 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
     transition-property: box-shadow, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
+    animation: animate-in ease-in both;
+    animation-timeline: view();
+    animation-range: entry 25% cover calc(35% - 10vh);
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      scale: 0.8;
+    }
   }
 </style>

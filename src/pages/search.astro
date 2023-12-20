@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import Input from "@/components/ui/Input.astro";
+---
+
+<Layout title="Search -">
+  <h1 class="flex items-center gap-3">Search</h1>
+
+  <div class="w-full max-w-xl">
+    <Input
+      type="text"
+      id="search"
+      name="search"
+      placeholder="Search"
+      required
+    />
+  </div>
+
+  <div id="no-of-results" class="text-sm font-semibold"></div>
+
+  <div id="search-results" class="flex flex-col gap-3"></div>
+</Layout>
+
+<script>
+  import { getOramaDB, search } from "@orama/plugin-astro/client";
+  const db = await getOramaDB("search");
+
+  function initSearch() {
+    const searchInput =
+      document.querySelector<HTMLInputElement>("input#search");
+
+    searchInput?.addEventListener("input", async (e) => {
+      if (e.target instanceof HTMLInputElement) {
+        const searchResults = document.querySelector("#search-results");
+        const noOfResults = document.querySelector("#no-of-results");
+
+        if (e.target.value.length > 2) {
+          const results = await search(db, { term: e.target.value });
+
+          searchResults!.innerHTML = "";
+          noOfResults!.innerHTML = `${results.count} results`;
+
+          for (const result of results.hits) {
+            searchResults!.innerHTML += `
+            <a href="${result.document.path}">
+              ${getTitle(result.document.title as string)}
+            </a>`;
+          }
+        } else {
+          searchResults!.innerHTML = "";
+          noOfResults!.innerHTML = "";
+        }
+      }
+    });
+  }
+
+  initSearch();
+
+  document.addEventListener("astro:after-swap", () => initSearch());
+
+  function getTitle(str: string) {
+    const match = str.match(/^(.*?)\s-\s.*$/);
+    return match ? match[1] : "";
+  }
+</script>

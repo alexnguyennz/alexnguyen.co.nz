@@ -5,7 +5,6 @@ import sitemap from "@astrojs/sitemap";
 import orama from "@orama/plugin-astro";
 
 import rehypeExternalLinks from "rehype-external-links";
-import rehypePrettyCode from "rehype-pretty-code";
 import expressiveCode from "astro-expressive-code";
 import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
@@ -35,12 +34,6 @@ export default defineConfig({
     syntaxHighlight: false,
     remarkPlugins: [readingTime, modifiedTime],
     rehypePlugins: [
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-        },
-      ],
       [
         rehypeExternalLinks,
         {

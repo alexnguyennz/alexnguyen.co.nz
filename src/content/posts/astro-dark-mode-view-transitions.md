@@ -4,7 +4,7 @@ date: 2023-12-18T00:00:00Z
 tags:
   - astro
 description: How to use dark mode with View Transitions in Astro
-published: true
+published: false
 ---
 
 This tutorial will cover how to implement a theme toggle feature in your Astro site (3.0+ or 4.0+) that works with [View Transitions](https://docs.astro.build/en/guides/view-transitions/).

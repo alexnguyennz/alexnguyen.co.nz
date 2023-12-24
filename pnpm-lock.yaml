@@ -20,6 +20,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: 5.0.3
     version: 5.0.3(astro@4.0.6)(tailwindcss@3.3.7)
+  '@orama/orama':
+    specifier: 2.0.0-beta.11
+    version: 2.0.0-beta.11
   '@orama/plugin-astro':
     specifier: 2.0.0-beta.10
     version: 2.0.0-beta.10(astro@4.0.6)
@@ -1148,6 +1151,11 @@ packages:
 
   /@orama/orama@2.0.0-beta.10:
     resolution: {integrity: sha512-gZGuEiOVx1iYJS+qPxHivikViY/3B9YN4nYCPUEdE2XoqsptrjjY4HT82lc4OfXA6gHKp4x/A4fuRTiGHlUktQ==}
+    engines: {node: '>= 16.0.0'}
+    dev: false
+
+  /@orama/orama@2.0.0-beta.11:
+    resolution: {integrity: sha512-yNi4LY9NSH626LB2eb80AZENKfDTWUBlL6aWoUPuWF6+hydRlqL6U87Rc/ELp4q/0Y5Gvnnd+NkpJsPGiilkZQ==}
     engines: {node: '>= 16.0.0'}
     dev: false
 

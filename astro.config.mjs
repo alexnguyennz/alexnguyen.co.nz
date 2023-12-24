@@ -19,7 +19,9 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         page !==
-        "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/",
+          "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/" &&
+        page !==
+          "https://alexnguyen.co.nz/blog/astro-dark-mode-view-transitions/",
     }),
     expressiveCode({ themes: ["dracula"] }),
     orama({

@@ -36,6 +36,49 @@ import Input from "@/components/ui/Input.astro";
         const noOfResults = document.querySelector("#no-of-results");
 
         if (e.target.value.length > 2) {
+          //const results = await search(db, { term: e.target.value });
+
+          const response = await fetch(`/api/search?term=${e.target.value}`);
+          const results = await response.json();
+
+          searchResults!.innerHTML = "";
+          noOfResults!.innerHTML = `${results.count} results`;
+          console.log("res", results);
+
+          for (const result of results.hits) {
+            searchResults!.innerHTML += `
+            <a href="/blog/${result.document.slug}">
+              ${result.document.data.title}
+            </a>`;
+          }
+        } else {
+          searchResults!.innerHTML = "";
+          noOfResults!.innerHTML = "";
+        }
+      }
+    });
+  }
+
+  initSearch();
+
+  document.addEventListener("astro:after-swap", () => initSearch());
+</script>
+
+<!--
+<script>
+  import { getOramaDB, search } from "@orama/plugin-astro/client";
+  const db = await getOramaDB("search");
+
+  function initSearch() {
+    const searchInput =
+      document.querySelector<HTMLInputElement>("input#search");
+
+    searchInput?.addEventListener("input", async (e) => {
+      if (e.target instanceof HTMLInputElement) {
+        const searchResults = document.querySelector("#search-results");
+        const noOfResults = document.querySelector("#no-of-results");
+
+        if (e.target.value.length > 2) {
           const results = await search(db, { term: e.target.value });
 
           searchResults!.innerHTML = "";
@@ -64,3 +107,4 @@ import Input from "@/components/ui/Input.astro";
     return match ? match[1] : "";
   }
 </script>
+-->

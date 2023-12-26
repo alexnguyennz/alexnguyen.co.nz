@@ -10,12 +10,12 @@ import { links } from "@/lib/data";
 const pathname = new URL(Astro.request.url).pathname;
 ---
 
-<header class="fixed left-1/2 top-6 z-10 w-full -translate-x-1/2">
+<header class="fixed left-1/2 top-6 z-10 -translate-x-1/2">
   <div
     id="navbar"
-    class="relative z-50 mx-auto flex hidden max-w-[170px] items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white p-2 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:max-w-[440px]"
+    class="relative z-50 mx-auto flex hidden items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white px-5 py-3 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:py-2"
   >
-    <a href="/"
+    <a href="/" class="w-[40px]"
       ><span class="sr-only">home page</span><img
         src="data:image/webp;base64,UklGRqIFAABXRUJQVlA4TJYFAAAvK8EvEOdhIG2brPcv+x4Yto2kOOVjeBgCSVvofoVt27Yhdg+nDoCLgYeg4SNoCD4aChcDwcFCsLBRGLiotyB4GLgq/aOmTO/olOvGTJnOWCmzlZ1czkw35XR6p4ya/lHhKGjbRor5w97ugRARE9B3DjDMKseSaGtvGymzWYLBEMhMIGAIhvDTe695/wfbkiLJkqgnov8EkjZ7iVvBbSRJivQk4j2K77+r+TvdakT/a7H7f8Iu3HJU1x9mN3XpDjB4qQMAJB915R5O6z3U8U2cXeegrj3AuVr3dPE2ZtZ4pz1mF33T5buYL3imoxtYWu2Yrt7HYpVj0InljY5BJ1aUHYPONQ1uQee6klPQubbeJ+hcXecRdG6odQg6t9S4A53bis5A59aCL9C5udoT6CSo8gM6KTb6AZ0kZbeg0y0MPYBsyQXopKt3ADop19mPTtJad6DTLQzdg3zRdHTSFzyBTgqGOgKdJAx1AzppGGo1OpnKTkCnWxh6AOOSB9BJyVD70UnLUPPRScxQ49HpFobuIWDRcnRyMNRudPIw1Gx0MjHUaHRyMdRodLIx1GR0uoWhB4hashedvAy1Fp3cDDUWnewMNRWdbmHoHiIX7USnDIZaiU4pDDUSnWIYajE6n35kY6jF6Hz78ysbQ+1F54sv0/SJjaHWovPJh+lk79kYaiw6X3+fTnvDxlBT0fn883R2L9kYaig6H72bzu8ZG0PtROerb9NMj01n6EaUm+b2g4+hRqLz7c9ptq92M3T/QsrN98lshp5/Rrml3hvN0NPXKDcb760b1UenUW4u7luXlUenUW5Vzwxm6AMrN00Cbl3SHJ1YuUnErev1RidXTsat69RGp1ZOyq1rlUanVk7OrWtURidXTs6tQ9QYnVo5SbcOQV90auVk3TrU6qJTKyfs1qFSFp1aOXG3blQWnVo5ebcuq4pOrZzEWzcoik6tnMxbl/REp1ZO6K3rtUSnVk7sreuURCdWbmHrWhXRqZUj1tnF0E0rt7R1iPqhUyu3tnUI2qFTK7e6daiVQydWbn3rUKmGTq3cAOtG1dCJlRthXVYMnVg5bZ01DH1o5aZYl7RCJ1ZujnW9TujUyg2yrlMJnVi5Uda1CqETK/cv66xg6KaVG2YdojboxMqNsw5BF3Ri5QZah1oVdGLlJlqHShF0YuVmWjcqgk6s3FDrshroxMr93zrdGfrAyg22LumATqzcZOt6DdCJlZttXacAOq1y061ri0cnVm68dU3h6MTKzbcOsWx0YuUCWIdQMjqxchGsQ10wOq1yIaxDVSw6sXIprBuLRadVLod1uVB0WuVWtE5Vhj6wclGsSyWi0yoXxrq+PHRi5dJY1xWHTqtcHuvawtBplVvZOhUZumHlElmHWBI6rXKZrEMoB51WuVTWoS4GnVa5WNahKgSdVrlg1o2FoNMql8y6XAQ6rXLZrBsKQKdVLp11ST46rXLxrOulo9MqF9C6Tjg6qXIRrWtFo9Mql9G6RjA6rXIhrUOUi06rXErrEKSi0yqX0zrUQtFJlUtqHSqR6LTKRbVuFIlOqlxY67JAdFLl4lo3iEOnVS6vdUkaOqlyia3rZaHTKhfZuk4UOqlyoa1rBaGTKjfduvIZulnlYluHKAWdVLng1iHIQCdVLrp1qEWgkyqX3TpUAtBJlUtv3SgAnVS5+NZldnRS5QpYNzCjkypXwbrEi06qXAfrek50UuVaWNcxolMq18O6lg2dVLki1jVM6KTKNbEOkQedVLkq1iFwoJMqV8Y61AzolMrVsQ4VOTqpcn2sG8nRKZVrZF0mRqdUrpN1Ayk6qXKlrEuU6JTK1bKup0MnVa6XdR0ZOqVyzaxridApletmXUOCTqpcN+sQKdAplWtnHcJ2dErl+lmHejM6pXIFrUO1+8dxOw=="
         alt="logo"
@@ -71,11 +71,8 @@ const pathname = new URL(Astro.request.url).pathname;
               "group relative inline-flex p-1.5 font-medium tracking-tight text-slate-700 transition dark:text-slate-100",
             )}
             data-astro-prefetch
-            ><span class="sr-only grow">Search page</span><Icon
-              pack="tabler"
-              name="search"
-              class="h-5 w-5"
-            />
+            ><span class="sr-only grow">Search page</span>
+            <Icon pack="tabler" name="search" class="h-5 w-5" />
             {
               pathname.startsWith("/search") && (
                 <span
@@ -152,7 +149,7 @@ const pathname = new URL(Astro.request.url).pathname;
          */
         setTimeout(() => {
           navbar.classList.remove("hidden");
-          navbar.style.animation = "animate-header 1s forwards";
+          navbar.style.animation = "animate-header 0.5s 0s forwards";
         }, 100);
       }
 

@@ -1,10 +1,14 @@
+export const prerender = false;
+
+import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { create, insertMultiple, search } from "@orama/orama";
 
-export async function GET() {
-  const posts = await getCollection("posts");
+export const GET: APIRoute = async ({ request }) => {
+  const url = new URL(request.url);
+  const params = new URLSearchParams(url.search);
 
-  /*console.log("posts", posts);
+  const posts: never[] = await getCollection("posts");
 
   const searchDB = await create({
     schema: {
@@ -14,7 +18,6 @@ export async function GET() {
       collection: "string",
       data: {
         title: "string",
-        date: "string",
         tags: {
           slug: "string",
           collection: "string",
@@ -25,11 +28,11 @@ export async function GET() {
     },
   });
 
-  await insertMultiple(searchDB, posts as never[]);
+  await insertMultiple(searchDB, posts);
 
-  const searchResult = await search(searchDB, {
-    term: "",
-  });*/
+  const results = await search(searchDB, {
+    term: params.get("term") ?? "",
+  });
 
-  return new Response(JSON.stringify(posts));
-}
+  return new Response(JSON.stringify(results));
+};

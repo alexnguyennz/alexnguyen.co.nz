@@ -92,6 +92,8 @@ We'll load the database, run Orama's `search` function against it every time the
 </script>
 ```
 
+For an example of this search in action, check out my [search page](https://alexnguyen.co.nz/search) - code is [available here](https://github.com/alexnguyennz/alexnguyen.co.nz/blob/main/src/pages/search.astro).
+
 ### Testing in development 
 
 By default, this won't work during development as Orama has to read the database file generated during the build process. This is a common problem with static search solutions where you can't easily test things in development.
@@ -170,7 +172,7 @@ Go to `http://localhost:4321/api/search?term=` and enter some terms to test thin
 
 To display the results on a page, we can use the previous example, and change things around a bit:
 
-```astro title="Search.astro"
+```astro title="pages/search.astro"
 <script>
   const searchInput = document.querySelector<HTMLInputElement>("input#search");
 
@@ -199,7 +201,7 @@ We can also generate a database statically. We can do this by fetching or gettin
 
 In an Astro page or component, fetch the data you want (again, this could be from a collection or from another source like an API):
 
-```astro title="Search.astro"
+```astro title="pages/search.astro"
 ---
 import { getCollection } from "astro:content";
 const posts = await getCollection("posts");
@@ -208,7 +210,7 @@ const posts = await getCollection("posts");
 
 Next, we'll [pass this data to our script](https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts) so we can use it with Orama - it'll need to be serialized from server to client:
 
-```astro title="Search.astro"
+```astro title="pages/search.astro"
 <input type="text" id="search" name="search" />
 
 <div id="search-results"></div>
@@ -230,7 +232,7 @@ Next, we'll [pass this data to our script](https://docs.astro.build/en/guides/cl
 
 Finally, we'll add the search functionality (similar to the previous scripts):
 
-```astro title="Search.astro"
+```astro title="pages/search.astro"
 <script>
   import { create, insertMultiple, search } from "@orama/orama";
 
@@ -282,3 +284,4 @@ Finally, we'll add the search functionality (similar to the previous scripts):
   customElements.define("astro-search", AstroSearch);
 </script>
 ```
+

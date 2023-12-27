@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import netlify from "@astrojs/netlify";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
@@ -50,6 +49,4 @@ export default defineConfig({
       ],
     ],
   },
-/*  output: 'hybrid',
-  adapter: netlify(),*/
 });

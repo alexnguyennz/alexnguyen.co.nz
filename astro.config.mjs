@@ -5,7 +5,6 @@ import sitemap from "@astrojs/sitemap";
 import orama from "@orama/plugin-astro";
 
 import rehypeExternalLinks from "rehype-external-links";
-import rehypePrettyCode from "rehype-pretty-code";
 import expressiveCode from "astro-expressive-code";
 import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
@@ -20,7 +19,9 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         page !==
-        "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/",
+          "https://alexnguyen.co.nz/blog/third-party-authentication-with-surrealdb/" &&
+        page !==
+          "https://alexnguyen.co.nz/blog/astro-dark-mode-view-transitions/",
     }),
     expressiveCode({ themes: ["dracula"] }),
     orama({
@@ -35,12 +36,6 @@ export default defineConfig({
     syntaxHighlight: false,
     remarkPlugins: [readingTime, modifiedTime],
     rehypePlugins: [
-      [
-        rehypePrettyCode,
-        {
-          theme: "github-dark",
-        },
-      ],
       [
         rehypeExternalLinks,
         {

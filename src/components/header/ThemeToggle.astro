@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 ---
 
 <button
@@ -10,13 +10,11 @@ import { Icon } from "astro-icon";
 >
   <span class="sr-only">toggle theme</span>
   <Icon
-    pack="lucide"
-    name="sun"
+    name="lucide:sun"
     class="absolute -left-1/2 -top-1/2 h-6 w-6 rotate-0 scale-100 transition duration-200 dark:-rotate-90 dark:scale-0"
   />
   <Icon
-    pack="lucide"
-    name="moon"
+    name="lucide:moon"
     class="absolute -left-1/2 -top-1/2 h-6 w-6 rotate-90 scale-0 transition duration-200 dark:rotate-0 dark:scale-100"
   />
 </button>

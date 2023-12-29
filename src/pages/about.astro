@@ -1,10 +1,12 @@
 ---
-import { Picture } from "astro:assets";
-import { Icon } from "astro-icon";
+import { Image, getImage } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 import Layout from "@/layouts/Layout.astro";
 
-import image from "@/assets/img/about.jpg";
+import aboutImage from "@/assets/img/about.jpg";
+
+const image = await getImage({ src: aboutImage });
 
 /*import { rawContent } from "@/content/pages/about.md";
 
@@ -39,15 +41,17 @@ if (import.meta.env.PROD) {
       target="_blank"
       rel="noreferrer noopener nofollow"
     >
-      <Picture
-        src={image}
-        width="1000"
-        formats={["avif", "webp"]}
+      <Image
+        src={image.src}
+        width={image.attributes.width}
+        height={image.attributes.height}
         alt="View from the Fish Ladder at Trelissick Park, Wellington"
         title="View from the Fish Ladder at Trelissick Park, Wellington"
         class="h-auto w-full rounded-2xl shadow-lg"
-      /></a
-    >
+        fetchpriority="high"
+        loading="eager"
+      />
+    </a>
 
     <p>
       This site is built with <a
@@ -57,10 +61,10 @@ if (import.meta.env.PROD) {
         title="Astro"
         ><span class="sr-only">Astro</span><Icon
           name="astro-name"
-          class="mt-0.5 inline h-7 dark:hidden"
+          class="inline h-7 w-auto dark:hidden"
         /><Icon
           name="astro-name-dark"
-          class="mt-0.5 hidden h-7 dark:inline"
+          class="hidden h-7 w-auto dark:inline"
         /></a
       > and
       <a
@@ -71,10 +75,10 @@ if (import.meta.env.PROD) {
         title="Tailwind CSS"
         ><span class="sr-only">Tailwind CSS</span><Icon
           name="tailwind-name"
-          class="-mr-0.5 mb-0.5 inline h-3.5 dark:hidden"
+          class="-mr-0.5 inline h-3.5 w-auto dark:hidden"
         /><Icon
           name="tailwind-name-dark"
-          class="-mr-0.5 mb-0.5 hidden h-3.5 dark:inline"
+          class="-mr-0.5 hidden h-3.5 w-auto dark:inline"
         /></a
       >. Hosted on <a
         href="https://www.netlify.com"
@@ -84,10 +88,10 @@ if (import.meta.env.PROD) {
         title="Netlify"
         ><span class="sr-only">Netlify</span><Icon
           name="netlify-name"
-          class="mb-0.5 inline h-7 dark:hidden"
+          class="inline h-7 w-auto dark:hidden"
         /><Icon
           name="netlify-name-dark"
-          class="mb-0.5 hidden h-7 dark:inline"
+          class="hidden h-7 w-auto dark:inline"
         /></a
       >. Source code is available <a
         href="https://github.com/alexnguyennz/alexnguyen.co.nz"

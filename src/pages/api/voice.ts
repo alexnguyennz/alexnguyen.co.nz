@@ -1,3 +1,4 @@
+/*
 import type { APIRoute } from "astro";
 
 import ElevenLabs from "elevenlabs-node";
@@ -17,3 +18,4 @@ export const POST: APIRoute = async ({ request }) => {
 
   return new Response(JSON.stringify(response));
 };
+*/

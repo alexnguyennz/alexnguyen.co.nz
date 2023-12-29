@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 import MobileMenu from "./MobileMenu.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -7,7 +7,7 @@ import ThemeToggle from "./ThemeToggle.astro";
 import { cn } from "@/lib/utils";
 import { links } from "@/lib/data";
 
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = Astro.url.pathname;
 ---
 
 <header class="fixed left-1/2 top-6 z-10 -translate-x-1/2">
@@ -72,7 +72,7 @@ const pathname = new URL(Astro.request.url).pathname;
             )}
             data-astro-prefetch
             ><span class="sr-only grow">Search page</span>
-            <Icon pack="tabler" name="search" class="h-5 w-5" />
+            <Icon name="lucide:search" class="h-5 w-5" />
             {
               pathname.startsWith("/search") && (
                 <span

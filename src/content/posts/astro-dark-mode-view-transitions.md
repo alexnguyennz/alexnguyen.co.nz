@@ -1,13 +1,13 @@
 ---
 title: Astro dark mode and View Transitions
-date: 2023-12-18T00:00:00Z
+date: 2023-12-28T00:00:00Z
 tags:
   - astro
-description: How to use dark mode with View Transitions in Astro
+description: How to use dark mode with View Transitions
 published: false
 ---
 
-This tutorial will cover how to implement a theme toggle feature in your Astro site (3.0+ or 4.0+) that works with [View Transitions](https://docs.astro.build/en/guides/view-transitions/).
+This tutorial will cover how to implement a theme toggle feature in your Astro site that works with [View Transitions](https://docs.astro.build/en/guides/view-transitions/).
 
 Dark mode will be toggled based on a `dark` class that is added to the `<html>` element.
 
@@ -19,7 +19,7 @@ First, we'll add our markup and icons we need for our dark mode toggle.
 
 Create a `ThemeToggle.astro` somewhere, like in your `/src/components` folder, and add:
 
-```astro title="ThemeToggle.astro"
+```astro title="/src/components/ThemeToggle.astro"
 <button
   type="button"
   id="themeToggle"

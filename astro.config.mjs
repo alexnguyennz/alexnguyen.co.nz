@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import icon from "astro-icon";
 import orama from "@orama/plugin-astro";
 
 import rehypeExternalLinks from "rehype-external-links";
@@ -23,13 +24,28 @@ export default defineConfig({
         page !==
           "https://alexnguyen.co.nz/blog/astro-dark-mode-view-transitions/",
     }),
-    expressiveCode({ themes: ["dracula"] }),
+    icon({
+      include: {
+        lucide: ["sun", "moon", "search"],
+      },
+      svgoOptions: {
+        plugins: [
+          {
+            name: "inlineStyles",
+            params: {
+              onlyMatchedOnce: false,
+            }
+          }
+        ],
+      },
+    }),
     orama({
       search: {
         pathMatcher: /^blog\/.+$/,
         contentSelectors: ["h1", "article"],
       },
     }),
+    expressiveCode({ themes: ["dracula"] }),
   ],
   prefetch: true,
   markdown: {

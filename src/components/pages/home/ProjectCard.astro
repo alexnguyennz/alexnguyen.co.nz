@@ -2,7 +2,10 @@
 import { getEntries, type CollectionEntry } from "astro:content";
 
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
+
+import ReactIcon from "@/components/ReactIcon.astro";
+
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -79,21 +82,22 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
                 <span class="sr-only">{tag.name}</span>
                 {slug === "astro" ? (
                   <>
-                    <Icon
-                      name="astro"
-                      class={"h-6 fill-[#034AD8] dark:hidden"}
-                    />
+                    <Icon name="astro" class={"h-6 w-auto dark:hidden"} />
                     <Icon
                       name="astro-dark"
-                      class={"hidden h-6 fill-[#034AD8] dark:block"}
+                      class={"hidden h-6 w-auto dark:block"}
                     />
                   </>
-                ) : slug === "cloudcannon" ? (
-                  <Icon name={slug} class={cn("h-6 fill-[#034AD8]")} />
+                ) : slug === "react" ? (
+                  <ReactIcon />
                 ) : (
                   <Icon
                     name={slug}
-                    class={cn(tag.name === "Nuxt" ? "h-8" : "h-6")}
+                    class={cn(
+                      tag.name === "Nuxt"
+                        ? "h-8 w-auto"
+                        : "h-6 w-auto text-black",
+                    )}
                   />
                 )}
               </a>

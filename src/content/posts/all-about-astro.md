@@ -19,10 +19,6 @@ Update to [astro-icon@0.8.2](https://github.com/natemoo-re/astro-icon/releases/t
 
 ## View Transitions
 
-### client:only priority
-
-`client:only` is meant to have a high priority and behaves like `client:load` (except server rendering is skipped), but any component using `client:only` won't immediately show its static content (without hydration) resulting in a flash (unlike `client:load`). This doesn't seem to change if your page is server rendered or static.
-
 ### Selectors with page events
 
 When selecting elements, make sure to call them inside the called function of the event listener, otherwise the reference will be stale when you get to the next page:
@@ -76,6 +72,16 @@ The workaround was to use a fallback of `swap`:
 ```
 
 This is something I'll look to investigate in the future.
+
+### z-index
+
+If you use `z-index` on an element (this could be a sticky header) that is placed over an element that uses a transition animation (for example, an `h1` heading with `transition:name`), this element may show in front of the header during page transitions.
+
+As a workaround, set `transition:name` on this z-index element, even if that element doesn't use any animations:
+
+```astro
+<header transition:name="header"></header>
+```
 
 ## Collections
 
@@ -135,6 +141,9 @@ You may need to do this for compatibility with your CMS, for example, if it does
 
 ## Framework Components / Islands
 
+### client:only priority
+
+`client:only` is meant to have a high priority and behaves like `client:load` (except server rendering is skipped), but any component using `client:only` won't immediately show its static content (without hydration) resulting in a flash (unlike `client:load`). This doesn't seem to change if your page is server rendered or static.
 
 ### Mixing frameworks
 

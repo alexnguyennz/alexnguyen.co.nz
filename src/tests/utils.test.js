@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils.ts";
 
-test("cn returns valid className string", async () => {
+test("returns valid className string", async () => {
   const classNames = cn(
     "px-2 py-1 bg-red hover:bg-dark-red",
     "p-3 bg-[#B91C1C]",

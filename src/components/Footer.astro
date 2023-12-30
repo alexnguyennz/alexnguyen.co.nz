@@ -4,7 +4,10 @@ import { Icon } from "astro-icon/components";
 import Updated from "./Updated.astro";
 ---
 
-<footer class="mt-auto flex flex-col items-center gap-2 pb-8 pt-10">
+<footer
+  data-testid="footer"
+  class="mt-auto flex flex-col items-center gap-2 pb-8 pt-10"
+>
   <div class="flex items-center justify-center gap-6">
     <a href="mailto:me@alexnguyen.co.nz" title="My email" aria-label="Email">
       <Icon name="mail" class="h-[26px] w-[26px]" />

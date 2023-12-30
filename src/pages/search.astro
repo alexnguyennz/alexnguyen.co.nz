@@ -11,6 +11,7 @@ import Input from "@/components/ui/Input.astro";
     <Input
       type="text"
       id="search"
+      data-testid="search"
       name="search"
       placeholder="Search"
       required
@@ -19,7 +20,12 @@ import Input from "@/components/ui/Input.astro";
 
   <div id="no-of-results" class="text-sm font-semibold"></div>
 
-  <div id="search-results" class="flex flex-col gap-3"></div>
+  <div
+    id="search-results"
+    data-testid="search-results"
+    class="flex flex-col gap-3"
+  >
+  </div>
 </Layout>
 
 <script>

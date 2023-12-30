@@ -1,29 +1,29 @@
-it("LinkedIn link opens", () => {
-  cy.visit("/");
+describe("Footer", () => {
+  beforeEach(() => cy.visit("/"));
 
-  cy.get('footer a[href="https://www.linkedin.com/in/anguyennz/"]')
-    .should("be.visible")
-    .click();
-});
+  it("LinkedIn link opens", () => {
+    cy.getByData("footer")
+      .find('a[href="https://www.linkedin.com/in/anguyennz/"]')
+      .should("be.visible")
+      .click()
+      .url();
+  });
 
-it("X link opens", () => {
-  cy.visit("/");
+  it("X link opens", () => {
+    cy.getByData("footer")
+      .find('a[href="https://twitter.com/anguyendev"]')
+      .should("be.visible")
+      .click();
+  });
 
-  cy.get('footer a[href="https://twitter.com/anguyendev"]')
-    .should("be.visible")
-    .click();
-});
+  it("GitHub link opens", () => {
+    cy.getByData("footer")
+      .find('a[href="https://github.com/alexnguyennz"]')
+      .should("be.visible")
+      .click();
+  });
 
-it("GitHub link opens", () => {
-  cy.visit("/");
-
-  cy.get('footer a[href="https://github.com/alexnguyennz"]')
-    .should("be.visible")
-    .click();
-});
-
-it("last updated date displays", () => {
-  cy.visit("/");
-
-  cy.get("astro-updated span").should("contain.text", "🛠️ Updated");
+  it("last updated date displays", () => {
+    cy.getByData("updated").should("contain.text", "🛠️ Updated");
+  });
 });

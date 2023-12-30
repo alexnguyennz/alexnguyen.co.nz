@@ -13,7 +13,7 @@ const pathname = Astro.url.pathname;
 <header class="fixed left-1/2 top-6 z-10 -translate-x-1/2">
   <div
     id="navbar"
-    class="relative z-50 mx-auto flex hidden items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white px-5 py-3 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:py-2"
+    class="relative z-50 mx-auto flex hidden items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white px-5 py-3 shadow-md sm:py-2 dark:border-slate-800 dark:bg-cyan-950"
   >
     <a href="/" class="w-[40px]"
       ><span class="sr-only">home page</span><img
@@ -24,7 +24,7 @@ const pathname = Astro.url.pathname;
       /></a
     >
 
-    <nav class="hidden sm:block">
+    <nav data-testid="header-nav" class="hidden sm:block">
       <ul class="flex items-center gap-2">
         {
           links.map((link) => (

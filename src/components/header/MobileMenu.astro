@@ -18,6 +18,7 @@ mobileLinks.push({
 <button
   type="button"
   id="mobile-toggle"
+  data-testid="mobile-toggle"
   class="relative h-[16px] w-[20px] sm:hidden"
   aria-label="toggle mobile menu"
 >
@@ -26,7 +27,8 @@ mobileLinks.push({
 
 <nav
   id="mobile-menu"
-  class="absolute left-0 top-14 hidden w-full rounded-3xl border border-b-0 border-slate-200 bg-white py-2 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:hidden"
+  data-testid="mobile-menu"
+  class="absolute left-0 top-14 hidden w-full rounded-3xl border border-b-0 border-slate-200 bg-white py-2 shadow-md sm:hidden dark:border-slate-800 dark:bg-cyan-950"
 >
   <ul class="flex flex-col items-center gap-2">
     {

@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 
 <button
   type="button"
-  id="themeToggle"
+  id="theme-toggle"
   aria-label="toggle theme"
   class="relative rounded-full p-1.5 text-slate-700 dark:text-slate-100"
 >
@@ -32,7 +32,7 @@ import { Icon } from "astro-icon/components";
 
     // run page animation
     const { top, left, width, height } = document
-      .getElementById("themeToggle")
+      .getElementById("theme-toggle")
       .getBoundingClientRect();
 
     const x = left + width / 2;
@@ -65,7 +65,7 @@ import { Icon } from "astro-icon/components";
     }
 
     document
-      .getElementById("themeToggle")
+      .getElementById("theme-toggle")
       .addEventListener("click", handleToggleClick);
   }
 
@@ -76,7 +76,7 @@ import { Icon } from "astro-icon/components";
   document.addEventListener(
     "astro:page-load",
     () => {
-      const themeToggle = document.querySelector("#themeToggle");
+      const themeToggle = document.querySelector("#theme-toggle");
       if (themeToggle && window.innerWidth > 640) {
         themeToggle.classList.add("opacity-0");
         themeToggle.style.animation = "fade 0.5s 0.25s forwards";

@@ -6,20 +6,20 @@ This site uses Astro and Tailwind CSS, and is hosted on Netlify.
 
 - [Astro](https://astro.build/) - web framework
 - [Tailwind CSS](https://tailwindcss.com) - CSS framework
-- [Framer Motion](https://www.framer.com/motion/) - animations
 - [Netlify](https://www.netlify.com/) - hosting and edge functions for OG images
+- [Vitest](https://vitest.dev/) and [Cypress](https://www.cypress.io/) - testing
 
 ### Setup
 
 1. Install:
 
-```bash
+```sh
 pnpm install
 ```
 
 2. Start development server:
 
-```bash
+```sh
 pnpm dev
 ```
 

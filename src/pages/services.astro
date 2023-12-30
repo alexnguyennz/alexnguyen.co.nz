@@ -193,21 +193,45 @@ if (import.meta.env.PROD) {
       <div class="grid gap-4 sm:grid-cols-2">
         <div>
           <Label htmlFor="name" className="required">Name</Label>
-          <Input type="text" id="name" name="name" required />
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            data-testid="name-input"
+            required
+          />
         </div>
 
         <div>
           <Label htmlFor="email" className="required">Email</Label>
-          <Input type="email" id="email" name="email" required />
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            data-testid="email-input"
+            required
+          />
         </div>
       </div>
 
       <div>
         <Label htmlFor="message" className="required">Message</Label>
-        <Textarea id="message" name="message" rows={4} required />
+        <Textarea
+          id="message"
+          name="message"
+          rows={4}
+          data-testid="message-textarea"
+          required
+        />
       </div>
 
-      <Button type="submit" className="mt-1 self-start">Get in touch</Button>
+      <Button
+        type="submit"
+        className="mt-1 self-start"
+        data-testid="submit-button"
+      >
+        Get in touch
+      </Button>
     </form>
   </div>
 </Layout>

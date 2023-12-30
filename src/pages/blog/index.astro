@@ -12,7 +12,7 @@ const posts = (await getCollection("posts", ({ data }) => data.published)).sort(
 <Layout title="Blog -">
   <h1>Blog</h1>
 
-  <div class="grid gap-6">
+  <div data-testid="blog-posts" class="grid gap-6">
     {posts.map((post) => <BlogPostCard post={post} />)}
   </div>
 </Layout>

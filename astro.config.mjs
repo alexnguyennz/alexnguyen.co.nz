@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
@@ -13,7 +12,6 @@ import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 export default defineConfig({
   site: "https://alexnguyen.co.nz",
   integrations: [
-    react(),
     tailwind({
       applyBaseStyles: false,
     }),
@@ -25,6 +23,7 @@ export default defineConfig({
           "https://alexnguyen.co.nz/blog/astro-dark-mode-view-transitions/",
     }),
     icon({
+      iconDir: "src/assets/icons",
       include: {
         lucide: ["sun", "moon", "search"],
       },

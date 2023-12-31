@@ -10,7 +10,10 @@ import { links } from "@/lib/data";
 const pathname = Astro.url.pathname;
 ---
 
-<header class="fixed left-1/2 top-6 z-10 -translate-x-1/2">
+<header
+  transition:name="header"
+  class="fixed left-1/2 top-6 z-10 -translate-x-1/2"
+>
   <div
     id="navbar"
     class="relative z-50 mx-auto flex hidden items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white px-5 py-3 shadow-md sm:py-2 dark:border-slate-800 dark:bg-cyan-950"
@@ -144,13 +147,8 @@ const pathname = Astro.url.pathname;
     () => {
       const navbar = document.getElementById("navbar");
       if (navbar) {
-        /* set a timeout as a workaround for View Transitions "bug" on All About Astro page in production when page is reloaded
-         TODO find cause
-         */
-        setTimeout(() => {
-          navbar.classList.remove("hidden");
-          navbar.style.animation = "animate-header 0.5s 0s forwards";
-        }, 100);
+        navbar.classList.remove("hidden");
+        navbar.style.animation = "animate-header 0.5s 0s forwards";
       }
 
       const headerNav = document.querySelector("nav");

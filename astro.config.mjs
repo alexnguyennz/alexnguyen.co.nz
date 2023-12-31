@@ -5,7 +5,7 @@ import icon from "astro-icon";
 import orama from "@orama/plugin-astro";
 
 import rehypeExternalLinks from "rehype-external-links";
-import expressiveCode from "astro-expressive-code";
+import astroExpressiveCode from "astro-expressive-code";
 import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
 // https://astro.build/config
@@ -44,7 +44,7 @@ export default defineConfig({
         contentSelectors: ["h1", "article"],
       },
     }),
-    expressiveCode({ themes: ["dracula"] }),
+    astroExpressiveCode({ themes: ["dracula"] }),
   ],
   prefetch: true,
   markdown: {

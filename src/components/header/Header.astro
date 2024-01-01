@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 
 import MobileMenu from "./MobileMenu.astro";
-import ThemeToggle from "./ThemeToggle.astro";
 
 import { cn } from "@/lib/utils";
 import { links } from "@/lib/data";
@@ -90,8 +89,6 @@ const pathname = Astro.url.pathname;
     </nav>
 
     <MobileMenu pathname={pathname} />
-
-    <ThemeToggle />
   </div>
 </header>
 

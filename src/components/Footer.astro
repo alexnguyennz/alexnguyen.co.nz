@@ -1,49 +1,68 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import ThemeToggle from "./ThemeToggle.astro";
 import Updated from "./Updated.astro";
 ---
 
 <footer
   data-testid="footer"
-  class="mt-auto flex flex-col items-center gap-2 pb-8 pt-10"
+  class="container mb-10 mt-auto max-w-xl gap-2 text-sm"
 >
-  <div class="flex items-center justify-center gap-6">
-    <a href="mailto:me@alexnguyen.co.nz" title="My email" aria-label="Email">
-      <Icon name="mail" class="h-[26px] w-[26px]" />
-    </a>
+  <hr class="mb-6 mt-10 border-t border-slate-300" />
 
-    <a
-      href="https://www.linkedin.com/in/anguyennz/"
-      target="_blank"
-      rel="noopener"
-      title="My LinkedIn"
-      aria-label="LinkedIn"
-    >
-      <Icon name="linkedin" class="h-[24px] w-[24px]" />
-    </a>
+  <div class="space-y-4">
+    <div class="flex items-center justify-between">
+      <p>© 2023 Alex Nguyen</p>
 
-    <a
-      href="https://twitter.com/anguyendev"
-      target="_blank"
-      rel="noopener"
-      title="My X or Twitter"
-      aria-label="X or Twitter"
-    >
-      <Icon name="x" class="h-[24px] w-[24px]" />
-    </a>
+      <div class="flex items-center justify-center gap-4">
+        <a
+          href="mailto:me@alexnguyen.co.nz"
+          title="My email"
+          aria-label="Email"
+        >
+          <Icon name="mail" class="h-[26px] w-[26px]" />
+        </a>
 
-    <a
-      href="https://github.com/alexnguyennz"
-      target="_blank"
-      rel="noopener"
-      title="My GitHub"
-      aria-label="GitHub"
-    >
-      <Icon name="github" class="h-[24px] w-[24px] dark:hidden" />
-      <Icon name="github-dark" class="hidden h-[24px] w-[24px] dark:block" />
-    </a>
+        <a
+          href="https://www.linkedin.com/in/anguyennz/"
+          target="_blank"
+          rel="noopener"
+          title="My LinkedIn"
+          aria-label="LinkedIn"
+        >
+          <Icon name="linkedin" class="h-[24px] w-[24px]" />
+        </a>
+
+        <a
+          href="https://twitter.com/anguyendev"
+          target="_blank"
+          rel="noopener"
+          title="My X or Twitter"
+          aria-label="X or Twitter"
+        >
+          <Icon name="x" class="h-[24px] w-[24px]" />
+        </a>
+
+        <a
+          href="https://github.com/alexnguyennz"
+          target="_blank"
+          rel="noopener"
+          title="My GitHub"
+          aria-label="GitHub"
+        >
+          <Icon name="github" class="h-[24px] w-[24px] dark:hidden" />
+          <Icon
+            name="github-dark"
+            class="hidden h-[24px] w-[24px] dark:block"
+          />
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <Updated />
+      <ThemeToggle />
+    </div>
   </div>
-
-  <Updated />
 </footer>

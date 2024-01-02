@@ -25,7 +25,7 @@ export default defineConfig({
     icon({
       iconDir: "src/assets/icons",
       include: {
-        lucide: ["sun", "moon", "search"],
+        lucide: ["sun", "moon", "search", "rss"],
       },
       svgoOptions: {
         plugins: [

@@ -29,9 +29,9 @@ if (import.meta.env.PROD) {
 ---
 
 <Layout voice>
-  <div class="prose max-w-lg dark:prose-invert">
-    <h1>Hi there, I'm Alex.</h1>
-    <p>
+  <div class="prose dark:prose-invert">
+    <h1>Hi, I'm Alex.</h1>
+    <p class="text-center">
       I'm a web developer based in New Zealand. Currently I work as a
       freelancer.
     </p>
@@ -53,7 +53,7 @@ if (import.meta.env.PROD) {
   <h2 class="mt-6">Some of my projects</h2>
 
   <div
-    class="grid justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10"
+    class="grid max-w-4xl justify-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
   >
     {projects.map((project) => <ProjectCard project={project} />)}
   </div>

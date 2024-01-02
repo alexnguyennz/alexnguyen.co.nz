@@ -5,13 +5,9 @@ import ThemeToggle from "./ThemeToggle.astro";
 import Updated from "./Updated.astro";
 ---
 
-<footer
-  data-testid="footer"
-  class="container mb-10 mt-auto max-w-xl gap-2 text-sm"
->
-  <hr class="mb-6 mt-10 border-t border-slate-300" />
-
-  <div class="space-y-4">
+<footer data-testid="footer" class="mb-10 mt-auto gap-2 text-sm">
+  <div class="mx-auto max-w-2xl space-y-4">
+    <hr class="mb-6 mt-10 border-t border-slate-300" />
     <div class="flex items-center justify-between">
       <p>© 2023 Alex Nguyen</p>
 
@@ -56,6 +52,10 @@ import Updated from "./Updated.astro";
             name="github-dark"
             class="hidden h-[24px] w-[24px] dark:block"
           />
+        </a>
+
+        <a href="/rss.xml" title="My RSS feed" aria-label="RSS">
+          <Icon name="lucide:rss" class="h-[24px] w-[24px]" />
         </a>
       </div>
     </div>

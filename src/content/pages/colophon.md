@@ -4,29 +4,28 @@
 
 # Colophon
 
-This colophon outlines the technology and tools used to build this site.
+This colophon page outlines the technology and tools used to build this site.
 
 ## Technology 
 
-This site is built using [Astro v4.0](https://astro.build), a web framework. This site is statically build.
+This site is built with [Astro](https://astro.build), a web framework.
 
-[Tailwind CSS](https://tailwindcss.com/) is used as the CSS framework.
+[Tailwind CSS](https://tailwindcss.com/), a CSS framework, is used for styling.
 
-[Netlify](https://www.netlify.com/) handles hosting, deployment and edge functions used to dynamically generate `og:image`s for my blog posts.
+[Netlify](https://www.netlify.com/) handles hosting, deployment, and edge functions used to generate Open Graph images.
 
-[Orama](https://www.oramasearch.com/) is used as the search engine for searching blog posts.
+[Orama](https://www.oramasearch.com/) is used for search functionality.
 
-My domain is registered with [Squarespace](https://domains.squarespace.com/) (from the Google Domains buyout).
+Unit tests are run with [Vitest](https://vitest.dev/). End-to-end tests are run with [Cypress](https://www.cypress.io/).
 
-### Testing
-[Vitest](https://vitest.dev/) is used for unit tests, and [Cypress](https://www.cypress.io/) is used for end-to-end tests.
+### Design and Visual Elements
+[DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the Open Font License.
 
-### Design 
-The single font used is [DM Sans](https://fonts.google.com/specimen/DM+Sans).
+Icons used are from [Lucide](https://lucide.dev/).
 
-Any photos or screenshots have been taken from my personal or professional projects, or taken by myself.
+Any third-party logos are from official sources like press kits or brand pages.
 
-This site ranks high in [carbon ranking](https://www.websitecarbon.com/website/alexnguyen-co-nz/).
+Any other images have been sourced from my projects, or created by myself.
 
-### Open Source
-The source code for this site is available on [GitHub](https://github.com/alexnguyennz/alexnguyen.co.nz/). Feel free to create an [issue](https://github.com/alexnguyennz/alexnguyen.co.nz/issues) if you notice any typos or issues.
+### Code
+The source code is available on [GitHub](https://github.com/alexnguyennz/alexnguyen.co.nz/) under the MIT License. Feel free to create an [issue](https://github.com/alexnguyennz/alexnguyen.co.nz/issues) if you notice any mistakes or errors.

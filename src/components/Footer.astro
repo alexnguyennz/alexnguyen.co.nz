@@ -7,17 +7,17 @@ import Updated from "./Updated.astro";
 
 <footer data-testid="footer" class="mb-10 mt-auto gap-2 text-sm">
   <div class="mx-auto max-w-2xl space-y-4">
-    <hr class="mb-6 mt-10 border-t border-slate-300" />
+    <hr class="mb-6 mt-10 border-t-4 border-slate-300" />
     <div class="flex items-center justify-between">
-      <p><a href="/colophon">Colophon</a></p>
+      <p><a href="/colophon" class="link">Colophon</a></p>
 
       <div class="flex items-center justify-center gap-4">
-        <a
-          href="mailto:me@alexnguyen.co.nz"
-          title="My email"
-          aria-label="Email"
-        >
-          <Icon name="mail" class="h-[26px] w-[26px]" />
+        <a href="mailto:me@alexnguyen.co.nz" title="My email">
+          <span class="sr-only">My email</span>
+          <Icon
+            name="mail"
+            class="h-[26px] w-[26px] opacity-75 transition hover:opacity-100"
+          />
         </a>
 
         <a
@@ -25,9 +25,12 @@ import Updated from "./Updated.astro";
           target="_blank"
           rel="noopener"
           title="My LinkedIn"
-          aria-label="LinkedIn"
         >
-          <Icon name="linkedin" class="h-[24px] w-[24px]" />
+          <span class="sr-only">My LinkedIn</span>
+          <Icon
+            name="linkedin"
+            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100"
+          />
         </a>
 
         <a
@@ -35,9 +38,12 @@ import Updated from "./Updated.astro";
           target="_blank"
           rel="noopener"
           title="My X or Twitter"
-          aria-label="X or Twitter"
         >
-          <Icon name="x" class="h-[24px] w-[24px]" />
+          <span class="sr-only">My X or Twitter</span>
+          <Icon
+            name="x"
+            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100"
+          />
         </a>
 
         <a
@@ -45,17 +51,24 @@ import Updated from "./Updated.astro";
           target="_blank"
           rel="noopener"
           title="My GitHub"
-          aria-label="GitHub"
         >
-          <Icon name="github" class="h-[24px] w-[24px] dark:hidden" />
+          <span class="sr-only">My GitHub</span>
+          <Icon
+            name="github"
+            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100 dark:hidden"
+          />
           <Icon
             name="github-dark"
-            class="hidden h-[24px] w-[24px] dark:block"
+            class="hidden h-[24px] w-[24px] opacity-75 transition hover:opacity-100 dark:block"
           />
         </a>
 
-        <a href="/rss.xml" title="My RSS feed" aria-label="RSS">
-          <Icon name="lucide:rss" class="h-[24px] w-[24px]" />
+        <a href="/rss.xml" title="My RSS feed">
+          <span class="sr-only">My RSS feed</span>
+          <Icon
+            name="lucide:rss"
+            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100"
+          />
         </a>
       </div>
     </div>

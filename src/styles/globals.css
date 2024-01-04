@@ -68,14 +68,18 @@ h3 {
   font-weight: 500;
 }
 
-main a,
 .prose a,
 a.link,
 .toc a {
-  text-decoration: underline transparent;
+  text-decoration: underline;
   transition: text-decoration 200ms ease;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+}
+
+a.link,
+.toc a {
+  text-decoration: none;
 }
 
 main:not(:has(article)) a:hover,

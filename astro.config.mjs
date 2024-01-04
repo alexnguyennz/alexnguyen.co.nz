@@ -4,7 +4,6 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import orama from "@orama/plugin-astro";
 
-import rehypeExternalLinks from "rehype-external-links";
 import astroExpressiveCode from "astro-expressive-code";
 import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
@@ -25,7 +24,7 @@ export default defineConfig({
     icon({
       iconDir: "src/assets/icons",
       include: {
-        lucide: ["sun", "moon", "search", "rss"],
+        lucide: ["sun-medium", "moon", "search", "rss"],
       },
       svgoOptions: {
         plugins: [
@@ -50,18 +49,5 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
     remarkPlugins: [readingTime, modifiedTime],
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: "noopener noreferrer nofollow",
-          content: {
-            type: "text",
-            value: " ↗",
-          },
-        },
-      ],
-    ],
   },
 });

@@ -37,7 +37,7 @@ module.exports = {
         },
       },
       animation: {
-        show: "show 0.5s 0s forwards",
+        show: "show 0.5s 0.5s forwards",
       },
     },
   },

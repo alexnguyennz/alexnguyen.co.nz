@@ -1,6 +1,5 @@
 ---
 import { Image, getImage } from "astro:assets";
-import { Icon } from "astro-icon/components";
 
 import Layout from "@/layouts/Layout.astro";
 
@@ -54,56 +53,10 @@ if (import.meta.env.PROD) {
         height={image.attributes.height}
         alt="View from the Fish Ladder at Trelissick Park, Wellington"
         title="View from the Fish Ladder at Trelissick Park, Wellington"
-        class="h-auto w-full rounded-2xl shadow-lg"
+        class="mx-auto h-auto w-96 rounded-2xl shadow-lg"
         fetchpriority="high"
         loading="eager"
       />
     </a>
-
-    <p>
-      This site is built with <a
-        href="https://astro.build"
-        target="_blank"
-        rel="noreferrer noopener nofollow"
-        title="Astro"
-        ><span class="sr-only">Astro</span><Icon
-          name="astro-name"
-          class="inline h-7 w-auto dark:hidden"
-        /><Icon
-          name="astro-name-dark"
-          class="hidden h-7 w-auto dark:inline"
-        /></a
-      > and
-      <a
-        href="https://tailwindcss.com"
-        target="_blank"
-        rel="noreferrer noopener nofollow"
-        class="mx-1"
-        title="Tailwind CSS"
-        ><span class="sr-only">Tailwind CSS</span><Icon
-          name="tailwind-name"
-          class="-mr-0.5 inline h-3.5 w-auto dark:hidden"
-        /><Icon
-          name="tailwind-name-dark"
-          class="-mr-0.5 hidden h-3.5 w-auto dark:inline"
-        /></a
-      >. Hosted on <a
-        href="https://www.netlify.com"
-        target="_blank"
-        rel="noreferrer noopener nofollow"
-        class="mx-1"
-        title="Netlify"
-        ><span class="sr-only">Netlify</span><Icon
-          name="netlify-name"
-          class="inline h-7 w-auto dark:hidden"
-        /><Icon
-          name="netlify-name-dark"
-          class="hidden h-7 w-auto dark:inline"
-        /></a
-      >. Code is available <a
-        href="https://github.com/alexnguyennz/alexnguyen.co.nz"
-        target="_blank">here</a
-      >.
-    </p>
   </div>
 </Layout>

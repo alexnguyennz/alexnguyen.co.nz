@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+
+const page = await getEntry("pages", "colophon");
+const { Content } = await page.render();
+---
+
+<Layout title="Colophon - ">
+  <div class="prose max-w-2xl dark:prose-invert">
+    <Content />
+  </div>
+</Layout>

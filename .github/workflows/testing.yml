@@ -31,7 +31,11 @@ jobs:
         with:
           version: 8
       - run: pnpm install
+      - run: pnpm astro build
       - name: Run Cypress
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
+          start: pnpm preview
+          # quote the url to be safe against YML parsing surprises
+          wait-on: 'http://localhost:4321'

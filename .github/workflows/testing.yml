@@ -1,7 +1,7 @@
 name: testing
 on: push
 jobs:
-  test:
+  unit:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
@@ -10,5 +10,5 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-      - run: pnpm install
-      - run: pnpm vitest run
+      - run: npm install
+      - run: npm vitest run

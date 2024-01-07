@@ -139,6 +139,16 @@ image: /src/content/posts/my-post.jpg
 
 You may need to do this for compatibility with your CMS, for example, if it doesn't support reading relative paths for things like image previews.
 
+### `_image` endpoint
+
+In `hybrid` or `server` mode, you can manually use the `_image` endpoint to optimize an image in your public folder:
+
+```
+http://localhost:4321/_image?href=photo.jpg&w=100&f=jpg
+```
+
+With a `/public/photo.jpg` folder. The URL will need to be encoded properly.
+
 ## Framework Components / Islands
 
 ### client:only priority
@@ -228,6 +238,26 @@ There is likely a better solution as this hides the error even if the prop(s) is
 There are some issues resolving types with WebStorm with an [active issue here](https://youtrack.jetbrains.com/issue/WEB-59503).
 
 One solution which solves a lot of the problems is using the bundled TypeScript setting. Open Settings > Preferences > Languages & Frameworks > TypeScript > Bundled.
+
+## Forms
+
+### Could not parse content as FormData
+
+If you get an error of `Could not parse content as FormData` when trying to parse form data in an API endpoint, it may be because the site is static. The site will need to be in `hybrid` or `server` mode.
+
+### Preventing a page change 
+
+For doing things like preventing a page from changing for unsaved form changes with View Transitions, you can use the `before-preparation` event:
+
+```js
+document.addEventListener('astro:before-preparation', (e) => e.preventDefault());
+```
+
+Or normally without using View Transitions:
+
+```js
+window.addEventListener('beforeunload', (e) => e.preventDefault());
+```
 
 ## Miscellaneous
 

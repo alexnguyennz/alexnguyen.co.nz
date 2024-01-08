@@ -139,6 +139,31 @@ image: /src/content/posts/my-post.jpg
 
 You may need to do this for compatibility with your CMS, for example, if it doesn't support reading relative paths for things like image previews.
 
+### `_image` endpoint
+
+In `hybrid` or `server` mode, you can manually use the `_image` endpoint to optimize an image in your public folder:
+
+```
+http://localhost:4321/_image?href=photo.jpg&w=100&f=jpg
+```
+
+With a `/public/photo.jpg` folder. The URL will need to be encoded properly.
+
+### Referencing images in .md or .mdx
+
+You can use TypeScript alias based imports for any content or body images:
+
+```markdown
+---
+---
+
+![](@/assets/image.png)
+
+<Image src={import("@/assets/image.png") alt="" />
+```
+
+This will also work when built, unlike absolute paths (like `/src/assets/image.png`).
+
 ## Framework Components / Islands
 
 ### client:only priority
@@ -229,6 +254,44 @@ There are some issues resolving types with WebStorm with an [active issue here](
 
 One solution which solves a lot of the problems is using the bundled TypeScript setting. Open Settings > Preferences > Languages & Frameworks > TypeScript > Bundled.
 
+## Forms
+
+### Could not parse content as FormData
+
+If you get an error of `Could not parse content as FormData` when trying to parse form data in an API endpoint, it may be because the site is static. The site will need to be in `hybrid` or `server` mode.
+
+### Preventing a page change 
+
+For doing things like preventing a page from changing for unsaved form changes with View Transitions, you can use the `before-preparation` event:
+
+```js
+document.addEventListener('astro:before-preparation', (e) => e.preventDefault());
+```
+
+Or normally without using View Transitions:
+
+```js
+window.addEventListener('beforeunload', (e) => e.preventDefault());
+```
+
+## Cookies
+
+### Passing credentials
+
+You don't need to use `credentials` in a fetch call to an Astro endpoint for it to receive your cookies. If you pass `omit` however, it naturally won't work.
+
+```html title="*.astro"
+<script>
+  fetch("/api/someendpoint", {
+    method: "POST",
+    body: JSON.stringify(something),
+    // credentials: "include",
+  });
+</script>
+```
+
+Make sure to not call the endpoint from the frontmatter as well - you won't receive any cookies because this call will be made from a server perspective, not the client.
+
 ## Miscellaneous
 
 ### Importing the Astro config
@@ -303,3 +366,41 @@ markdown: {
 ```
 
 Astro's highlighting runs last, so it has priority over any existing plugins.
+
+### CSS define:vars
+
+When using a property like `content`, you will need to wrap your variable in additional quotes for it to work - otherwise the style will only be `content: Hello`:
+
+```astro title="*.astro"
+---
+const content = "'Hello'";
+---
+
+<style define:vars={{ content }}>
+  div::after {
+    content: var(--content);
+  }
+</style>
+```
+
+### Using additional asset types e.g. zip
+
+You can include other asset types like `.zip`s by including them in your Vite configuration's `assetsInclude` array:
+
+```js title="astro.config.mjs"
+export default defineConfig({
+  vite: {
+    assetsInclude: ['**!/!*.zip'],
+  },
+})
+```
+
+If you want to use these in content collections, you can reference the assets as strings (if the file is in the same folder as the collection for example):
+
+```markdown title="*.md"
+---
+archive: ./files.zip
+---
+```
+
+And then you can dynamically import them with `import.meta.glob`.

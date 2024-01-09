@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import { SEO } from "astro-seo";
+
 import Layout from "@/layouts/Layout.astro";
 
 import Label from "@/components/ui/Label.astro";
@@ -20,9 +22,29 @@ if (import.meta.env.PROD) {
     }),
   });
 }*/
+
+const ogImageUrl = new URL(
+  `/api/og/?title=Services of web developer Alex Nguyen`,
+  Astro.site,
+);
 ---
 
 <Layout title="Services -" voice>
+  <Fragment slot="head">
+    <SEO
+      description="Services of web developer Alex Nguyen"
+      openGraph={{
+        basic: {
+          title: `Services - Alex Nguyen - Web Developer`,
+          type: "website",
+          image: ogImageUrl.href,
+        },
+        optional: {
+          description: "Services of web developer Alex Nguyen",
+        },
+      }}
+    />
+  </Fragment>
   <h1>Services</h1>
 
   <div class="prose max-w-2xl dark:prose-invert">

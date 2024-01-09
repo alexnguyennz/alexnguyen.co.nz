@@ -1,13 +1,35 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-
 import { getEntry } from "astro:content";
+
+import { SEO } from "astro-seo";
+
+import Layout from "@/layouts/Layout.astro";
 
 const page = await getEntry("pages", "colophon");
 const { Content } = await page.render();
+
+const ogImageUrl = new URL(
+  `/api/og/?title=Colophon - tech and tools`,
+  Astro.site,
+);
 ---
 
 <Layout title="Colophon - ">
+  <Fragment slot="head">
+    <SEO
+      description="Colophon - tech and tools"
+      openGraph={{
+        basic: {
+          title: `Colophon - Alex Nguyen - Web Developer`,
+          type: "website",
+          image: ogImageUrl.href,
+        },
+        optional: {
+          description: "Colophon - tech and tools",
+        },
+      }}
+    />
+  </Fragment>
   <div class="prose max-w-2xl dark:prose-invert">
     <Content />
   </div>

@@ -1,10 +1,29 @@
 ---
+import { SEO } from "astro-seo";
+
 import Layout from "@/layouts/Layout.astro";
 
 import Input from "@/components/ui/Input.astro";
+
+const ogImageUrl = new URL(`/api/og/?title=Search`, Astro.site);
 ---
 
 <Layout title="Search -">
+  <Fragment slot="head">
+    <SEO
+      description="Search"
+      openGraph={{
+        basic: {
+          title: `Search - Alex Nguyen - Web Developer`,
+          type: "website",
+          image: ogImageUrl.href,
+        },
+        optional: {
+          description: "Search",
+        },
+      }}
+    />
+  </Fragment>
   <h1 class="flex items-center gap-3">Search</h1>
 
   <div class="w-full max-w-lg">

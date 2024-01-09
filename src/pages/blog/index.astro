@@ -1,15 +1,37 @@
 ---
 import { getCollection } from "astro:content";
 
+import { SEO } from "astro-seo";
+
 import Layout from "@/layouts/Layout.astro";
 import BlogPostCard from "@/components/pages/blog/BlogPostCard.astro";
 
 const posts = (await getCollection("posts", ({ data }) => data.published)).sort(
   (a, b) => Number(b.data.date) - Number(a.data.date),
 );
+
+const ogImageUrl = new URL(
+  `/api/og/?title=Blog posts from Alex Nguyen`,
+  Astro.site,
+);
 ---
 
 <Layout title="Blog -">
+  <Fragment slot="head">
+    <SEO
+      description="Blog posts from Alex Nguyen"
+      openGraph={{
+        basic: {
+          title: `Blog - Alex Nguyen - Web Developer`,
+          type: "website",
+          image: ogImageUrl.href,
+        },
+        optional: {
+          description: "Blog posts from Alex Nguyen",
+        },
+      }}
+    />
+  </Fragment>
   <h1>Blog</h1>
 
   <div data-testid="blog-posts" class="grid gap-6">

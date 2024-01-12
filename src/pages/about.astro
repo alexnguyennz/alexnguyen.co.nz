@@ -7,7 +7,11 @@ import Layout from "@/layouts/Layout.astro";
 
 import aboutImage from "@/assets/img/about.jpg";
 
-const image = await getImage({ src: aboutImage });
+const image = await getImage({
+  src: aboutImage,
+  width: aboutImage.width / 2,
+  height: aboutImage.height / 2,
+});
 
 /*import { rawContent } from "@/content/pages/about.md";
 

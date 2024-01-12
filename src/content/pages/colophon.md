@@ -8,9 +8,9 @@ This colophon page outlines the technology and tools used to build this site.
 
 ## Technology 
 
-This site is built with [Astro](https://astro.build), a web framework.
+This site is built with [Astro](https://astro.build).
 
-[Tailwind CSS](https://tailwindcss.com/) is used for base CSS styles.
+[Tailwind CSS](https://tailwindcss.com/) is used for base styles.
 
 [Netlify](https://www.netlify.com/) handles hosting, deployment, and edge functions used to generate Open Graph images.
 
@@ -21,13 +21,13 @@ Unit tests are run with [Vitest](https://vitest.dev/). End-to-end tests are run 
 Analytics are powered by [Clarity](https://clarity.microsoft.com/). Privacy info is [available here](https://learn.microsoft.com/en-us/clarity/faq#privacy).
 
 ### Design and Visual Elements
-[DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the Open Font License.
+[DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the [Open Font License](https://openfontlicense.org/).
 
-Icons used are from [Lucide](https://lucide.dev/).
+Icons are from [Lucide](https://lucide.dev/).
 
 Any third-party logos are from official sources like press kits or brand pages.
 
 Any other images have been sourced from my projects, or created by myself.
 
 ### Code
-The source code is available on [GitHub](https://github.com/alexnguyennz/alexnguyen.co.nz/) under the MIT License. Feel free to create an [issue](https://github.com/alexnguyennz/alexnguyen.co.nz/issues) if you notice any mistakes or errors.
+The source code is available on [GitHub](https://github.com/alexnguyennz/alexnguyen.co.nz/) under the MIT License. Feel free to create an [issue](https://github.com/alexnguyennz/alexnguyen.co.nz/issues) for any mistakes or errors.

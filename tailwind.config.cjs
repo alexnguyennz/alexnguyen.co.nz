@@ -7,7 +7,7 @@ module.exports = {
       center: true,
     },
     extend: {
-      typography: ({ theme }) => ({
+      typography: () => ({
         DEFAULT: {
           css: {
             "--tw-prose-body": "black",

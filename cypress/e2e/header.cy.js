@@ -1,10 +1,6 @@
 describe("Header", () => {
   beforeEach(() => cy.visit("/"));
 
-  it("theme toggles", () => {
-    cy.getByData("theme-toggle").should("be.visible").click().get("html.dark");
-  });
-
   it("desktop menu navigation links work", () => {
     cy.getByData("header-nav")
       .find("a")

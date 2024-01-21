@@ -2,24 +2,24 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<button
-  type="button"
-  id="theme-toggle"
-  data-testid="theme-toggle"
-  aria-label="toggle theme"
-  class="relative rounded-full p-1.5"
->
-  <span class="sr-only">toggle theme</span>
-  <Icon
-    name="lucide:sun-medium"
-    stroke-width="4px"
-    class="absolute -left-1/2 -top-1/2 h-6 w-6 rotate-0 scale-100 opacity-75 transition duration-200 hover:opacity-100 dark:-rotate-90 dark:scale-0"
-  />
-  <Icon
-    name="lucide:moon"
-    class="absolute -left-1/2 -top-1/2 h-6 w-6 rotate-90 scale-0 opacity-75 transition duration-200 hover:opacity-100 dark:rotate-0 dark:scale-100"
-  />
-</button>
+<div id="theme-toggle" data-testid="theme-toggle">
+  <button type="button" aria-label="toggle light theme" class="relative">
+    <span class="sr-only">toggle light theme</span>
+    <Icon
+      name="lucide:sun-medium"
+      stroke-width="4px"
+      class="h-7 w-7 scale-110 rounded-l-lg border-2 border-black bg-black text-white dark:scale-100 dark:bg-white dark:text-black hover:dark:scale-110"
+    />
+  </button>
+  <button type="button" aria-label="toggle dark theme" class="relative">
+    <span class="sr-only">toggle dark theme</span>
+    <Icon
+      name="lucide:moon"
+      stroke-width="4px"
+      class="h-7 w-7 scale-100 rounded-r-lg border-2 border-black hover:scale-110 dark:scale-110 dark:bg-black dark:text-white"
+    />
+  </button>
+</div>
 
 <script is:inline>
   const handleToggleClick = async () => {

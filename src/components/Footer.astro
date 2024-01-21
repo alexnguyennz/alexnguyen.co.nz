@@ -9,15 +9,19 @@ import Updated from "./Updated.astro";
   <div class="mx-auto max-w-2xl space-y-4">
     <hr class="mb-6 mt-10 border-t-4 border-slate-300" />
     <div class="flex items-center justify-between">
-      <p><a href="/colophon" class="link">Colophon</a></p>
+      <p>
+        <a href="/colophon"
+          ><span class="sr-only">Colophon page</span><Icon
+            name="lucide:info"
+            class="size-[24px] hover:scale-110"
+          /></a
+        >
+      </p>
 
       <div class="flex items-center justify-center gap-4">
         <a href="mailto:me@alexnguyen.co.nz" title="My email">
           <span class="sr-only">My email</span>
-          <Icon
-            name="mail"
-            class="h-[26px] w-[26px] opacity-75 transition hover:opacity-100"
-          />
+          <Icon name="mail" class="size-[26px] hover:scale-110" />
         </a>
 
         <a
@@ -27,10 +31,7 @@ import Updated from "./Updated.astro";
           title="My LinkedIn"
         >
           <span class="sr-only">My LinkedIn</span>
-          <Icon
-            name="linkedin"
-            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100"
-          />
+          <Icon name="linkedin" class="size-6 hover:scale-110" />
         </a>
 
         <a
@@ -40,10 +41,7 @@ import Updated from "./Updated.astro";
           title="My X or Twitter"
         >
           <span class="sr-only">My X or Twitter</span>
-          <Icon
-            name="x"
-            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100"
-          />
+          <Icon name="x" class="size-6 hover:scale-110" />
         </a>
 
         <a
@@ -53,22 +51,16 @@ import Updated from "./Updated.astro";
           title="My GitHub"
         >
           <span class="sr-only">My GitHub</span>
-          <Icon
-            name="github"
-            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100 dark:hidden"
-          />
+          <Icon name="github" class="size-6 hover:scale-110 dark:hidden" />
           <Icon
             name="github-dark"
-            class="hidden h-[24px] w-[24px] opacity-75 transition hover:opacity-100 dark:block"
+            class="hidden size-6 hover:scale-110 dark:block"
           />
         </a>
 
         <a href="/rss.xml" title="My RSS feed">
           <span class="sr-only">My RSS feed</span>
-          <Icon
-            name="lucide:rss"
-            class="h-[24px] w-[24px] opacity-75 transition hover:opacity-100"
-          />
+          <Icon name="lucide:rss" class="size-6 hover:scale-110" />
         </a>
       </div>
     </div>

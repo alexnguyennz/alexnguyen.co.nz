@@ -24,7 +24,7 @@ export default defineConfig({
     icon({
       iconDir: "src/assets/icons",
       include: {
-        lucide: ["sun-medium", "moon", "search", "rss"],
+        lucide: ["info", "sun-medium", "moon", "search", "rss"],
       },
       svgoOptions: {
         plugins: [
@@ -32,8 +32,8 @@ export default defineConfig({
             name: "inlineStyles",
             params: {
               onlyMatchedOnce: false,
-            }
-          }
+            },
+          },
         ],
       },
     }),

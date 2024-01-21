@@ -1,24 +1,13 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const lastUpdated = new Date();
 ---
 
 <astro-updated data-lastupdated={lastUpdated} transition:persist>
   <span data-testid="updated"
-    >🛠️ <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="inline animate-pulse"
-      ><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"
-      ></circle><circle cx="5" cy="12" r="1"></circle></svg
-    ></span
-  >
+    ><Icon name="lucide:hammer" class="inline size-5" />
+  </span>
 </astro-updated>
 
 <script>
@@ -30,10 +19,8 @@ const lastUpdated = new Date();
     constructor() {
       super();
 
-      const date = this.dataset.lastupdated;
-      const span = this.querySelector("span");
-
-      span!.textContent = `🛠️ Updated ${dayjs().to(dayjs(date))}`;
+      this.querySelector("span")!.innerHTML +=
+        `Updated ${dayjs().to(dayjs(this.dataset.lastupdated))}`;
     }
   }
 

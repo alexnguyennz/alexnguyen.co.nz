@@ -20,6 +20,8 @@ Unit tests are run with [Vitest](https://vitest.dev/). End-to-end tests are run 
 
 Analytics are powered by [Clarity](https://clarity.microsoft.com/). Privacy info is [available here](https://learn.microsoft.com/en-us/clarity/faq#privacy).
 
+Recordings for each page are AI generated with [ElevenLabs](elevenlabs.io/?from=partnerhale9484) using a cloned voice from recordings of my actual voice. The link includes my referral.
+
 ### Design and Visual Elements
 [DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the [Open Font License](https://openfontlicense.org/).
 

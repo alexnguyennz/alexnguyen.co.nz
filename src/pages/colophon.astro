@@ -8,13 +8,23 @@ import Layout from "@/layouts/Layout.astro";
 const page = await getEntry("pages", "colophon");
 const { Content } = await page.render();
 
+/*import { rawContent } from "@/content/pages/colophon_voice.md";
+
+await fetch(`${Astro.url.origin}/api/voice`, {
+  method: "POST",
+  body: JSON.stringify({
+    id: "colophon",
+    textInput: rawContent(),
+  }),
+});*/
+
 const ogImageUrl = new URL(
   `/api/og/?title=Colophon - tech and tools`,
   Astro.site,
 );
 ---
 
-<Layout title="Colophon - ">
+<Layout title="Colophon - " voice>
   <Fragment slot="head">
     <SEO
       description="Colophon - tech and tools"

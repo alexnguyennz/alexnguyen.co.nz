@@ -1,6 +1,6 @@
-/*
 import type { APIRoute } from "astro";
 
+// @ts-ignore - no types available
 import ElevenLabs from "elevenlabs-node";
 
 const voice = new ElevenLabs({
@@ -14,8 +14,8 @@ export const POST: APIRoute = async ({ request }) => {
   const response = await voice.textToSpeech({
     fileName: `public/voice/${id}.mp3`,
     textInput,
+    modelId: "eleven_turbo_v2",
   });
 
   return new Response(JSON.stringify(response));
 };
-*/

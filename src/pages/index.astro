@@ -12,17 +12,13 @@ const projects = (await getCollection("projects")).sort(
 
 /*import { rawContent } from "@/content/pages/index.md";
 
-import { POST } from "./api/voice.ts";
-
-if (import.meta.env.PROD) {
-  await fetch(`${Astro.url.origin}/api/voice`, {
-    method: "POST",
-    body: JSON.stringify({
-      id: "index",
-      textInput: rawContent(),
-    }),
-  });
-}*/
+await fetch(`${Astro.url.origin}/api/voice`, {
+  method: "POST",
+  body: JSON.stringify({
+    id: "index",
+    textInput: rawContent(),
+  }),
+});*/
 
 const ogImageUrl = new URL(
   `/api/og/?title=Home of web developer Alex Nguyen`,

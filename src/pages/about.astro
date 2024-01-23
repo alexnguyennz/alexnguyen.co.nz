@@ -15,15 +15,13 @@ const image = await getImage({
 
 /*import { rawContent } from "@/content/pages/about.md";
 
-if (import.meta.env.PROD) {
-  await fetch(`${Astro.url.origin}/api/voice`, {
-    method: "POST",
-    body: JSON.stringify({
-      id: "about",
-      textInput: rawContent(),
-    }),
-  });
-}*/
+await fetch(`${Astro.url.origin}/api/voice`, {
+  method: "POST",
+  body: JSON.stringify({
+    id: "about",
+    textInput: rawContent(),
+  }),
+});*/
 
 const ogImageUrl = new URL(
   `/api/og/?title=About web developer Alex Nguyen`,

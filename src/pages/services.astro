@@ -13,15 +13,13 @@ import ReactIcon from "@/components/ReactIcon.astro";
 
 /*import { rawContent } from "@/content/pages/services.md";
 
-if (import.meta.env.PROD) {
-  await fetch(`${Astro.url.origin}/api/voice`, {
-    method: "POST",
-    body: JSON.stringify({
-      id: "services",
-      textInput: rawContent(),
-    }),
-  });
-}*/
+await fetch(`${Astro.url.origin}/api/voice`, {
+  method: "POST",
+  body: JSON.stringify({
+    id: "services",
+    textInput: rawContent(),
+  }),
+});*/
 
 const ogImageUrl = new URL(
   `/api/og/?title=Services of web developer Alex Nguyen`,
@@ -29,7 +27,7 @@ const ogImageUrl = new URL(
 );
 ---
 
-<Layout title="Services -" voice>
+<Layout title="Services -" voice="services">
   <Fragment slot="head">
     <SEO
       description="Services of web developer Alex Nguyen"
@@ -53,7 +51,7 @@ const ogImageUrl = new URL(
       exposure to backend tech.
     </p>
 
-    <h2 class="text-center text-base">Some cool things I've worked with</h2>
+    <h2 class="text-center text-xl">Some cool things I've worked with</h2>
 
     <div class="flex flex-wrap items-center justify-center gap-4">
       <a

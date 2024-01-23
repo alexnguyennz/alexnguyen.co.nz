@@ -51,7 +51,7 @@ const { id } = Astro.props;
 
       const id = this.dataset.id;
 
-      audio.src = `/voice/${id === "/" ? "index" : id?.slice(1)}.mp3`;
+      audio.src = `/voice/${id}.mp3`;
 
       const button = document.querySelector("button#play-voice");
 

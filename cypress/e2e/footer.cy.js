@@ -24,7 +24,7 @@ describe("Footer", () => {
   });
 
   it("last updated date displays", () => {
-    cy.getByData("updated").should("contain.text", "🛠️ Updated");
+    cy.getByData("updated").should("contain.text", "Updated");
   });
 
   it("theme toggles", () => {

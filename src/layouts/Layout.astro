@@ -10,12 +10,10 @@ import PlayVoice from "@/components/PlayVoice.astro";
 
 interface Props {
   title?: string;
-  voice?: boolean;
+  voice?: string;
 }
 
 const { title, voice } = Astro.props;
-
-const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -67,7 +65,7 @@ const pathname = Astro.url.pathname;
       <slot />
     </main>
 
-    {/*voice && <PlayVoice id={pathname} />*/}
+    {voice && <PlayVoice id={voice} />}
 
     <Footer />
 

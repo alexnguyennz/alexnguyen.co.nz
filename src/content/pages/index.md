@@ -2,8 +2,8 @@
 
 ---
 
-Hi, I'm Alex.
+Hi, I'm Alex. - 
 
-Some cool things I've worked with
+I'm a web developer. - 
 
-Some of my projects
+Currently I work as a freelancer.

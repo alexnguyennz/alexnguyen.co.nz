@@ -1,7 +1,6 @@
 ---
 name: Astro AWS Amplify
 description: Astro + Amplify SSR Hosting
-cover: "./astroawsamplify-cover.png"
 image: "./astroawsamplify.png"
 url: https://www.astroawsamplify.com/
 tags:

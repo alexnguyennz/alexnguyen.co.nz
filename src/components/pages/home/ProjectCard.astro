@@ -41,17 +41,23 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
       aria-label={`${project.data.name} project page`}
       data-astro-prefetch
     >
-      <Image
-        src={project.data.cover}
-        height={192}
-        alt={project.data.name}
-        class={cn(
-          "mx-auto mb-2 h-[128px] object-contain opacity-0 animate-show",
-          project.slug === "vsctrustorgnz" && "dark:invert",
-        )}
-        loading="lazy"
-        transition:name={`project-${project.data.name}-image`}
-      /></a
+      {
+        project.data.cover ? (
+          <Image
+            src={project.data.cover}
+            height={192}
+            alt={project.data.name}
+            class={cn(
+              "mx-auto mb-2 h-[128px] animate-show object-contain opacity-0",
+              project.slug === "vsctrustorgnz" && "dark:invert",
+            )}
+            loading="lazy"
+            transition:name={`project-${project.data.name}-image`}
+          />
+        ) : (
+          <div class="h-[128px] w-full" />
+        )
+      }</a
     >
 
     <div class="mt-auto">

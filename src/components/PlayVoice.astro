@@ -11,9 +11,10 @@ const { id } = Astro.props;
     <astro-voice data-id={id}>
       <button
         id="play-voice"
-        class="absolute right-3 top-3 z-20 flex w-16 items-center gap-1 text-sm"
+        class="fixed right-3 top-3 z-20 flex w-24 items-center gap-1 text-sm"
         aria-label="play text content as audio"
       >
+        <span class="sr-only">play text content as audio</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -32,7 +33,7 @@ const { id } = Astro.props;
             fill="currentColor"
           />
         </svg>
-        Read
+        Read (AI)
       </button>
     </astro-voice>
   )
@@ -70,7 +71,7 @@ const { id } = Astro.props;
         );
         audio.addEventListener(
           "pause",
-          () => (button.innerHTML = playIcon + "Read"),
+          () => (button.innerHTML = playIcon + "Read (AI)"),
         );
       }
     }

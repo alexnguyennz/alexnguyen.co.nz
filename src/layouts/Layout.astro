@@ -53,6 +53,33 @@ const { title, voice } = Astro.props;
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <script>
+      interface Window {
+        [key: string]: any;
+      }
+
+      (function (
+        c: Window,
+        l,
+        a: string,
+        r: string,
+        i: string,
+        t?: HTMLScriptElement,
+        y?: Element,
+      ) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r) as HTMLScriptElement;
+        t.async = true;
+
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y?.parentNode?.insertBefore(t, y);
+      })(window, document, "clarity", "script", "kh936c7uh5");
+    </script>
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
@@ -68,20 +95,5 @@ const { title, voice } = Astro.props;
     {voice && <PlayVoice id={voice} />}
 
     <Footer />
-
-    <script is:inline>
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "kh936c7uh5");
-    </script>
   </body>
 </html>

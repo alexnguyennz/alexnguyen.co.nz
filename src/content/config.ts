@@ -1,18 +1,12 @@
 import { defineCollection, z, reference } from "astro:content";
 
-const pages = defineCollection({
-  type: "content",
-  schema: () => z.object({}),
-});
-
 const tools = defineCollection({
   type: "content",
-  schema: () =>
-    z.object({
-      name: z.string(),
-      url: z.string(),
-      order: z.number(),
-    }),
+  schema: z.object({
+    name: z.string(),
+    url: z.string(),
+    order: z.number(),
+  }),
 });
 
 const projects = defineCollection({
@@ -32,24 +26,22 @@ const projects = defineCollection({
 
 const tags = defineCollection({
   type: "content",
-  schema: () =>
-    z.object({
-      name: z.string(),
-      url: z.string(),
-    }),
+  schema: z.object({
+    name: z.string(),
+    url: z.string(),
+  }),
 });
 
 const posts = defineCollection({
   type: "content",
-  schema: () =>
-    z.object({
-      title: z.string(),
-      date: z.date(),
-      lastUpdated: z.date().optional(),
-      tags: z.array(reference("tags")),
-      description: z.string(),
-      published: z.boolean(),
-    }),
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    lastUpdated: z.date().optional(),
+    tags: z.array(reference("tags")),
+    description: z.string(),
+    published: z.boolean(),
+  }),
 });
 
-export const collections = { pages, tools, projects, tags, posts };
+export const collections = { tools, projects, tags, posts };

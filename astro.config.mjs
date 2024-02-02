@@ -3,7 +3,6 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 import orama from "@orama/plugin-astro";
-
 import astroExpressiveCode from "astro-expressive-code";
 import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 

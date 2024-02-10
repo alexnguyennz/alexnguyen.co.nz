@@ -18,7 +18,7 @@ This site is built with [Astro](https://astro.build).
 
 Unit tests are run with [Vitest](https://vitest.dev/). End-to-end tests are run with [Cypress](https://www.cypress.io/).
 
-Analytics are powered by [Clarity](https://clarity.microsoft.com/). Privacy info is [available here](https://learn.microsoft.com/en-us/clarity/faq#privacy).
+Analytics are powered by [Umami](https://umami.is/).
 
 Recordings for each page are AI generated with [ElevenLabs](elevenlabs.io/?from=partnerhale9484) using a cloned voice from recordings of my actual voice. The link includes my referral.
 

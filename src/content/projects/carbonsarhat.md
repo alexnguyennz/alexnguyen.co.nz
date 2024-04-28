@@ -9,7 +9,7 @@ tags:
   - nextjs
   - mantine
   - turborepo
-order: 1
+order: 3
 ---
 
 Carbon Sarhat is a digital currency-powered financial market infrastructure streamlining private market investments.

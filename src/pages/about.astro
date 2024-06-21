@@ -13,23 +13,13 @@ const image = await getImage({
   height: aboutImage.height / 2,
 });
 
-/*import { rawContent } from "@/content/pages/about.md";
-
-await fetch(`${Astro.url.origin}/api/voice`, {
-  method: "POST",
-  body: JSON.stringify({
-    id: "about",
-    textInput: rawContent(),
-  }),
-});*/
-
 const ogImageUrl = new URL(
   `/api/og/?title=About web developer Alex Nguyen`,
   Astro.site,
 );
 ---
 
-<Layout title="About -" voice="about">
+<Layout title="About -">
   <Fragment slot="head">
     <SEO
       description="About web developer Alex Nguyen"

@@ -9,7 +9,7 @@ tags:
   - sveltekit
   - meltui
   - tailwind
-order: 2
+order: 5
 ---
 
 Blue Seat / Yellow Seat / Orange Seat / Green Seat are a set of businesses offering services such as catering, cleaning and event management.

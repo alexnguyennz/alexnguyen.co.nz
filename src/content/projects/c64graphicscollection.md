@@ -9,7 +9,7 @@ tags:
   - nuxt
   - supabase
   - tailwind
-order: 3
+order: 6
 ---
 
 C64 Graphics Collection is an app for viewing graphics releases from the Commodore 64 hobbyist game scene.

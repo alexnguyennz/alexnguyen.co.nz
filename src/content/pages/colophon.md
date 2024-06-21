@@ -20,8 +20,6 @@ Unit tests are run with [Vitest](https://vitest.dev/). End-to-end tests are run 
 
 Analytics are powered by [Umami](https://umami.is/).
 
-Recordings for each page are AI generated with [ElevenLabs](elevenlabs.io/?from=partnerhale9484) using a cloned voice from recordings of my actual voice. The link includes my referral.
-
 ### Design and Visual Elements
 [DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the [Open Font License](https://openfontlicense.org/).
 
@@ -29,7 +27,7 @@ Icons are from [Lucide](https://lucide.dev/).
 
 Any third-party logos are from official sources like press kits or brand pages.
 
-Any other images have been sourced from my projects, or created by myself.
+Any other images have been sourced from my projects or created by myself.
 
 ### Code
-The source code is available on [GitHub](https://github.com/alexnguyennz/alexnguyen.co.nz/) under the MIT License. Feel free to create an [issue](https://github.com/alexnguyennz/alexnguyen.co.nz/issues) for any mistakes or errors.
+The source code is available on [GitHub](https://github.com/alexnguyennz/alexnguyen.co.nz/) under the MIT License.

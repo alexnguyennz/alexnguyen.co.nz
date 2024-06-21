@@ -1,3 +1,4 @@
+import { test, expect } from "vitest";
 import { cn } from "@/lib/utils.ts";
 
 test("returns valid className string", async () => {

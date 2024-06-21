@@ -50,6 +50,7 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
             class={cn(
               "mx-auto mb-2 h-[128px] animate-show object-contain opacity-0",
               project.slug === "vsctrustorgnz" && "dark:invert",
+              project.slug === "astrowp" && "rounded-[2.25rem] bg-slate-900",
             )}
             loading="lazy"
             transition:name={`project-${project.data.name}-image`}

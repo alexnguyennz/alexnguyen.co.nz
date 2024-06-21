@@ -8,7 +8,7 @@ source: https://github.com/alexnguyennz/pagerefresher
 tags:
   - chrome
   - edge
-order: 5
+order: 8
 ---
 
 A simple per-tab automatic page refresher/reloader for Google Chrome and Microsoft Edge.

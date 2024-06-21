@@ -11,23 +11,13 @@ import Textarea from "@/components/ui/Textarea.astro";
 import Button from "@/components/ui/Button.astro";
 import ReactIcon from "@/components/ReactIcon.astro";
 
-/*import { rawContent } from "@/content/pages/services.md";
-
-await fetch(`${Astro.url.origin}/api/voice`, {
-  method: "POST",
-  body: JSON.stringify({
-    id: "services",
-    textInput: rawContent(),
-  }),
-});*/
-
 const ogImageUrl = new URL(
   `/api/og/?title=Services of web developer Alex Nguyen`,
   Astro.site,
 );
 ---
 
-<Layout title="Services -" voice="services">
+<Layout title="Services -">
   <Fragment slot="head">
     <SEO
       description="Services of web developer Alex Nguyen"

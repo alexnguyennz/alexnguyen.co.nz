@@ -15,23 +15,13 @@ const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
 
-/*import { rawContent } from "@/content/pages/index.md";
-
-await fetch(`${Astro.url.origin}/api/voice`, {
-  method: "POST",
-  body: JSON.stringify({
-    id: "index",
-    textInput: rawContent(),
-  }),
-});*/
-
 const ogImageUrl = new URL(
   `/api/og/?title=Home of web developer Alex Nguyen`,
   Astro.site,
 );
 ---
 
-<Layout voice="index">
+<Layout>
   <Fragment slot="head">
     <SEO
       description="Website of web developer Alex Nguyen"

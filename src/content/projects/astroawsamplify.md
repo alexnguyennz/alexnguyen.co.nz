@@ -6,7 +6,7 @@ url: https://www.astroawsamplify.com/
 tags:
   - astro
   - aws-amplify
-order: 1
+order: 2
 ---
 
 Astro AWS Amplify is an adapter for SSR deployments with Astro websites on AWS Amplify Hosting.

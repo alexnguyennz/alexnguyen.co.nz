@@ -1,4 +1,5 @@
 const eslintPluginAstro = require("eslint-plugin-astro");
+const eslintTypeScriptParser = require("@typescript-eslint/parser");
 const eslintConfigPrettier = require("eslint-config-prettier");
 const jsxA11y = require("eslint-plugin-jsx-a11y");
 
@@ -7,7 +8,10 @@ module.exports = [
   ...eslintPluginAstro.configs["flat/recommended"],
   eslintConfigPrettier,
   {
-    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.astro"],
+    languageOptions: {
+      parser: eslintTypeScriptParser,
+    },
+    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     plugins: {
       "jsx-a11y": jsxA11y,
     },

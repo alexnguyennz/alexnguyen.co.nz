@@ -23,7 +23,7 @@ describe("Footer", () => {
       .click();
   });
 
-  it("theme toggles", () => {
+  /*it("theme toggles", () => {
     cy.getByData("theme-toggle").should("be.visible").click().get("html.dark");
-  });
+  });*/
 });

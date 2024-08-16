@@ -1,82 +1,76 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import ThemeToggle from "./ThemeToggle.astro";
-import Updated from "./Updated.astro";
 ---
 
 <footer data-testid="footer" class="mb-10 mt-auto gap-2 text-sm">
-  <div class="mx-auto max-w-2xl space-y-4">
-    <hr class="mb-6 mt-10 border-t-4 border-slate-300" />
-    <div class="flex items-center justify-between">
-      <p>
-        <a href="/colophon"
-          ><span class="sr-only">Colophon page</span><Icon
-            name="lucide:info"
-            class="size-[24px] hover:rotate-6 hover:scale-110"
-          /></a
-        >
-      </p>
+  <div class="container max-w-4xl space-y-4">
+    <div class="mt-10 flex items-center justify-center">
+      <div class="flex flex-col items-center justify-center gap-4">
+        <div class="flex items-center justify-between gap-4">
+          <a href="mailto:me@alexnguyen.co.nz" title="My email">
+            <span class="sr-only">My email</span>
+            <Image
+              src={import("../assets/icons/email.png")}
+              class="size-9 transition hover:scale-125"
+              alt=""
+            />
+          </a>
 
-      <div class="flex items-center justify-center gap-4">
-        <a href="mailto:me@alexnguyen.co.nz" title="My email">
-          <span class="sr-only">My email</span>
-          <Icon
-            name="mail"
-            class="size-[26px] hover:rotate-6 hover:scale-110"
-          />
-        </a>
+          <a
+            href="https://www.linkedin.com/in/anguyennz/"
+            target="_blank"
+            rel="noopener"
+            title="My LinkedIn"
+          >
+            <span class="sr-only">My LinkedIn</span>
+            <Icon name="linkedin" class="size-9 transition hover:scale-125" />
+          </a>
 
-        <a
-          href="https://www.linkedin.com/in/anguyennz/"
-          target="_blank"
-          rel="noopener"
-          title="My LinkedIn"
-        >
-          <span class="sr-only">My LinkedIn</span>
-          <Icon name="linkedin" class="size-6 hover:rotate-6 hover:scale-110" />
-        </a>
+          <a
+            href="https://twitter.com/anguyendev"
+            target="_blank"
+            rel="noopener"
+            title="My X or Twitter"
+          >
+            <span class="sr-only">My X or Twitter</span>
+            <Icon name="twitter" class="size-9 transition hover:scale-125" />
+          </a>
 
-        <a
-          href="https://twitter.com/anguyendev"
-          target="_blank"
-          rel="noopener"
-          title="My X or Twitter"
-        >
-          <span class="sr-only">My X or Twitter</span>
-          <Icon name="x" class="size-6 hover:rotate-6 hover:scale-110" />
-        </a>
+          <a
+            href="https://github.com/alexnguyennz"
+            target="_blank"
+            rel="noopener"
+            title="My GitHub"
+          >
+            <span class="sr-only">My GitHub</span>
+            <Icon name="github" class="size-9 transition hover:scale-125" />
+          </a>
+        </div>
 
-        <a
-          href="https://github.com/alexnguyennz"
-          target="_blank"
-          rel="noopener"
-          title="My GitHub"
-        >
-          <span class="sr-only">My GitHub</span>
-          <Icon
-            name="github"
-            class="size-6 hover:rotate-6 hover:scale-110 dark:hidden"
-          />
-          <Icon
-            name="github-dark"
-            class="hidden size-6 hover:rotate-6 hover:scale-110 dark:block"
-          />
-        </a>
+        <div class="flex justify-between gap-4">
+          <ThemeToggle />
 
-        <a href="/rss.xml" title="My RSS feed">
-          <span class="sr-only">My RSS feed</span>
-          <Icon
-            name="lucide:rss"
-            class="size-6 hover:rotate-6 hover:scale-110"
-          />
-        </a>
+          <a href="/rss.xml" title="My RSS feed">
+            <span class="sr-only">My RSS feed</span>
+
+            <Image
+              src={import("../assets/icons/rss.png")}
+              class="size-9 transition hover:scale-125"
+              alt=""
+            />
+          </a>
+
+          <a href="/colophon"
+            ><span class="sr-only">Colophon page</span><Icon
+              name="info"
+              class="size-9 transition hover:scale-125"
+            /></a
+          >
+        </div>
       </div>
-    </div>
-
-    <div class="flex items-center justify-between">
-      <Updated />
-      <ThemeToggle />
     </div>
   </div>
 </footer>

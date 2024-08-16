@@ -23,7 +23,7 @@ Analytics are powered by [Umami](https://umami.is/).
 ### Design and Visual Elements
 [DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the [Open Font License](https://openfontlicense.org/).
 
-Icons are from [Lucide](https://lucide.dev/).
+Icons are from [Lucide](https://lucide.dev/) and [Icons8](https://icons8.com).
 
 Any third-party logos are from official sources like press kits or brand pages.
 

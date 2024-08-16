@@ -23,10 +23,6 @@ describe("Footer", () => {
       .click();
   });
 
-  it("last updated date displays", () => {
-    cy.getByData("updated").should("contain.text", "Updated");
-  });
-
   it("theme toggles", () => {
     cy.getByData("theme-toggle").should("be.visible").click().get("html.dark");
   });

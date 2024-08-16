@@ -19,7 +19,6 @@
     "@astrojs/rss": "4.0.7",
     "@astrojs/sitemap": "3.1.6",
     "@astrojs/tailwind": "5.1.0",
-    "@iconify/tools": "^4.0.5",
     "@orama/plugin-astro": "2.0.23",
     "astro": "4.14.2",
     "astro-expressive-code": "0.35.6",
@@ -50,5 +49,10 @@
     "prettier-plugin-tailwindcss": "0.6.6",
     "vite": "5.4.1",
     "vitest": "2.0.5"
+  },
+  "overrides": {
+    "astro-icon": {
+      "@iconify/tools": "^4.0.0"
+    }
   }
 }

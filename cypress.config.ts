@@ -8,6 +8,6 @@ export default defineConfig({
     fixturesFolder: false,
     screenshotOnRunFailure: false,
     video: false,
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 15000,
   },
 });

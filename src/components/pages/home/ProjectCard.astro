@@ -97,6 +97,14 @@ const tags: CollectionEntry<"tags">[] = await getEntries(project.data.tags);
                   </>
                 ) : slug === "react" ? (
                   <ReactIcon />
+                ) : slug === "angular" ? (
+                  <>
+                    <Icon name="angular" class={"h-6 w-auto dark:hidden"} />
+                    <Icon
+                      name="angular-dark"
+                      class={"hidden h-6 w-auto dark:block"}
+                    />
+                  </>
                 ) : (
                   <Icon
                     name={slug}

@@ -23,7 +23,15 @@ export default defineConfig({
     icon({
       iconDir: "src/assets/icons",
       include: {
-        lucide: ["info", "hammer", "sun-medium", "moon", "search", "rss"],
+        lucide: [
+          "info",
+          "hammer",
+          "sun-medium",
+          "moon",
+          "search",
+          "rss",
+          "arrow-right",
+        ],
       },
       svgoOptions: {
         plugins: [
@@ -44,7 +52,9 @@ export default defineConfig({
     }),
     astroExpressiveCode({ themes: ["dracula"] }),
   ],
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+  },
   markdown: {
     syntaxHighlight: false,
     remarkPlugins: [readingTime, modifiedTime],

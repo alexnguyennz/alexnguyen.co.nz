@@ -30,15 +30,6 @@ module.exports = {
           },
         },
       }),
-      keyframes: {
-        show: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 100 },
-        },
-      },
-      animation: {
-        show: "show 0.5s 0.5s forwards",
-      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

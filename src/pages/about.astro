@@ -1,17 +1,7 @@
 ---
-import { Image, getImage } from "astro:assets";
-
 import { SEO } from "astro-seo";
 
 import Layout from "@/layouts/Layout.astro";
-
-import aboutImage from "@/assets/img/about.jpg";
-
-const image = await getImage({
-  src: aboutImage,
-  width: aboutImage.width / 2,
-  height: aboutImage.height / 2,
-});
 
 const ogImageUrl = new URL(
   `/api/og/?title=About web developer Alex Nguyen`,
@@ -41,36 +31,20 @@ const ogImageUrl = new URL(
     <p>
       Hi there, I'm a web developer based in Wellington, New Zealand. After
       studying to be a network engineer and working in IT support related roles,
-      I decided to become a developer in 2023.
+      I decided to become a freelance developer in 2023.
     </p>
 
     <p>
-      I've always been interested in computers and tech. From an early age, I've
-      loved computers - from setting up emulators to play old games, installing
-      and configuring different OSs, building my own PCs, and dabbling in
-      software and game development.
+      I've always been interested in computers and tech. From an early age I
+      loved using computers - from setting up emulators to play old games,
+      installing and configuring different operating systems, building my own
+      PCs, and dabbling in software and game development.
     </p>
 
     <p>
       In my spare time, I like to read (slowly), run on local tracks, go to the
-      cinema, and play the piano (poorly). I also watch too much basketball.
+      cinema, and play the piano (poorly). I'm currently writing a comedy
+      fiction book. I also watch too much basketball.
     </p>
-
-    <a
-      href="https://waterfalls.co.nz/waterfalls-by-region/292-new-zealand-waterfalls/north-island/wellington-and-wairarapa/327-fish-ladder-waterfall"
-      target="_blank"
-      rel="noreferrer noopener nofollow"
-    >
-      <Image
-        src={image.src}
-        width={image.attributes.width}
-        height={image.attributes.height}
-        alt="View from the Fish Ladder at Trelissick Park, Wellington"
-        title="View from the Fish Ladder at Trelissick Park, Wellington"
-        class="mx-auto h-auto w-96 rounded-2xl shadow-lg"
-        fetchpriority="high"
-        loading="eager"
-      />
-    </a>
   </div>
 </Layout>

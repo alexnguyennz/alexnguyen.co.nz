@@ -22,7 +22,7 @@ const tags = await getEntries(project.data.tags);
 >
   <div class="m-auto flex flex-1 flex-col">
     <a
-      href={`/project/${project.slug}`}
+      href={`/project/${project.id}`}
       aria-label={`${project.data.name} project page`}
       class="m-auto mb-2 after:absolute after:inset-0 after:z-10"
     >
@@ -33,8 +33,8 @@ const tags = await getEntries(project.data.tags);
             alt={project.data.name}
             class={cn(
               "max-h-[128px] w-auto",
-              project.slug === "vsctrustorgnz" && "dark:invert",
-              project.slug === "astrowp" && "invert dark:invert-0",
+              project.id === "vsctrustorgnz" && "dark:invert",
+              project.id === "astrowp" && "invert dark:invert-0",
             )}
             loading="lazy"
             transition:name={`project-${project.data.name}-image`}
@@ -48,7 +48,7 @@ const tags = await getEntries(project.data.tags);
     <div class="mt-auto">
       <h2>
         <a
-          href={`/project/${project.slug}`}
+          href={`/project/${project.id}`}
           class="link"
           data-astro-prefetch
           transition:name={`project-${project.data.name}-name`}
@@ -62,7 +62,7 @@ const tags = await getEntries(project.data.tags);
 
         <div class="relative flex items-center justify-center gap-4">
           {
-            tags.map(({ slug, data: tag }) => (
+            tags.map(({ id, data: tag }) => (
               <a
                 href={tag.url}
                 target="_blank"
@@ -72,7 +72,7 @@ const tags = await getEntries(project.data.tags);
                 aria-label={tag.name}
               >
                 <span class="sr-only">{tag.name}</span>
-                {slug === "astro" ? (
+                {id === "astro" ? (
                   <>
                     <Icon name="astro" class={"h-6 w-auto dark:hidden"} />
                     <Icon
@@ -80,9 +80,9 @@ const tags = await getEntries(project.data.tags);
                       class={"hidden h-6 w-auto dark:block"}
                     />
                   </>
-                ) : slug === "react" ? (
+                ) : id === "react" ? (
                   <ReactIcon />
-                ) : slug === "angular" ? (
+                ) : id === "angular" ? (
                   <>
                     <Icon name="angular" class={"h-6 w-auto dark:hidden"} />
                     <Icon
@@ -92,7 +92,7 @@ const tags = await getEntries(project.data.tags);
                   </>
                 ) : (
                   <Icon
-                    name={slug}
+                    name={id}
                     class={cn(
                       tag.name === "Nuxt"
                         ? "h-8 w-auto"

@@ -14,11 +14,7 @@ This site is built with [Astro](https://astro.build).
 
 [Netlify](https://www.netlify.com/) handles hosting, deployment, and edge functions used to generate Open Graph images.
 
-[Orama](https://www.oramasearch.com/) is used for search functionality.
-
 Unit tests are run with [Vitest](https://vitest.dev/). End-to-end tests are run with [Cypress](https://www.cypress.io/).
-
-Analytics are powered by [Umami](https://umami.is/).
 
 ### Design and Visual Elements
 [DM Sans](https://fonts.google.com/specimen/DM+Sans) is a sans serif font under the [Open Font License](https://openfontlicense.org/).

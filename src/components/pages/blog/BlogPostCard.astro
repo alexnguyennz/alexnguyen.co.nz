@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -7,10 +7,10 @@ interface Props {
 
 const { post } = Astro.props;
 
-const { remarkPluginFrontmatter } = await post.render();
+const { remarkPluginFrontmatter } = await render(post);
 ---
 
-<a href={`/blog/${post.slug}/`} data-astro-prefetch>
+<a href={`/blog/${post.id}/`} data-astro-prefetch>
   <span class="sr-only">{post.data.title} article</span>
   <article
     class="group flex origin-top flex-col rounded-2xl p-5 transition duration-300 hover:bg-white hover:shadow-lg dark:hover:bg-slate-800"

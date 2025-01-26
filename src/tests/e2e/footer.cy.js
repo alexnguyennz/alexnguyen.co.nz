@@ -9,13 +9,6 @@ describe("Footer", () => {
       .url();
   });
 
-  it("X link opens", () => {
-    cy.getByData("footer")
-      .find('a[href="https://twitter.com/anguyendev"]')
-      .should("be.visible")
-      .click();
-  });
-
   it("GitHub link opens", () => {
     cy.getByData("footer")
       .find('a[href="https://github.com/alexnguyennz"]')

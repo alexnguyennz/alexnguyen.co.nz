@@ -53,6 +53,13 @@ const { title } = Astro.props;
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Alex Nguyen"
+      href={new URL("rss.xml", Astro.site)}
+    />
+
     <ClientRouter fallback="swap" />
   </head>
   <body class="mx-auto flex min-h-screen flex-col px-5">

@@ -15,7 +15,7 @@ describe("Contact Form", () => {
 
     cy.get('input[data-testid="name-input"]:invalid').should("have.length", 1);
     cy.getByData("name-input").then(($input) => {
-      expect($input[0].validationMessage).to.eq("Please fill in this field.");
+      expect($input[0].validationMessage).to.eq("Please fill out this field.");
     });
   });
 
@@ -26,7 +26,7 @@ describe("Contact Form", () => {
 
     cy.get('input[data-testid="email-input"]:invalid').should("have.length", 1);
     cy.getByData("email-input").then(($input) => {
-      expect($input[0].validationMessage).to.eq("Please fill in this field.");
+      expect($input[0].validationMessage).to.eq("Please fill out this field.");
     });
   });
 
@@ -54,7 +54,7 @@ describe("Contact Form", () => {
       1,
     );
     cy.getByData("message-textarea").then(($input) => {
-      expect($input[0].validationMessage).to.eq("Please fill in this field.");
+      expect($input[0].validationMessage).to.eq("Please fill out this field.");
     });
   });
 });

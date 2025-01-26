@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 
 import MobileMenu from "./MobileMenu.astro";
 
@@ -16,7 +15,7 @@ const pathname = Astro.url.pathname;
 >
   <div
     id="navbar"
-    class="relative z-50 mx-auto flex hidden items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white px-5 py-3 shadow-md sm:py-2 dark:border-slate-800 dark:bg-cyan-950"
+    class="relative z-50 mx-auto flex hidden items-center justify-center gap-6 rounded-3xl border border-b-0 border-slate-200 bg-white px-5 py-3 shadow-md dark:border-slate-800 dark:bg-cyan-950 sm:py-2"
   >
     <a href="/" class="w-[40px]"
       ><span class="sr-only">home page</span>
@@ -33,7 +32,6 @@ const pathname = Astro.url.pathname;
                 class={cn(
                   "group relative inline-flex p-1.5 font-medium tracking-tight text-slate-700 transition dark:text-slate-100",
                 )}
-                data-astro-prefetch
               >
                 {link.name}
 
@@ -63,25 +61,6 @@ const pathname = Astro.url.pathname;
             </li>
           ))
         }
-        <li>
-          <a
-            href="/search"
-            class={cn(
-              "group relative inline-flex p-1.5 font-medium tracking-tight text-slate-700 transition dark:text-slate-100",
-            )}
-            data-astro-prefetch
-            ><span class="sr-only grow">Search page</span>
-            <Icon name="lucide:search" class="h-5 w-5" />
-            {
-              pathname.startsWith("/search") && (
-                <span
-                  class="absolute -bottom-0.5 left-0 right-0 mx-auto h-2 w-2 animate-[bounce_0.75s_forwards] rounded-full bg-slate-700 dark:bg-slate-100"
-                  transition:name="active-link"
-                />
-              )
-            }
-          </a>
-        </li>
       </ul>
     </nav>
 

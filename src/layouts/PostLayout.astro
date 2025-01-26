@@ -46,8 +46,8 @@ const { frontmatter, headings, tags, readingTime, lastModified } = Astro.props;
   <div class="mb-4 flex items-center justify-center gap-1.5">
     {
       tags &&
-        tags.map(({ slug, data: tag }) => (
-          <a href={`/tags/${slug}`}>
+        tags.map(({ id, data: tag }) => (
+          <a href={`/tags/${id}`}>
             <span class="rounded-3xl bg-slate-800 px-2 py-1 text-xs text-white">
               {tag.name}
             </span>

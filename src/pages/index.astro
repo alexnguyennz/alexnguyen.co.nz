@@ -48,8 +48,8 @@ const ogImageUrl = new URL(
       <h2>Some cool things I've worked with</h2>
       <ul class="grid grid-cols-2 justify-center gap-6 sm:grid-cols-4">
         {
-          tools.map(({ slug, data: tool }) => (
-            <Tool name={tool.name} slug={slug} url={tool.url} />
+          tools.map(({ id, data: tool }) => (
+            <Tool name={tool.name} id={id} url={tool.url} />
           ))
         }
       </ul>

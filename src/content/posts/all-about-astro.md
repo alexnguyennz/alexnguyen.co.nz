@@ -324,7 +324,7 @@ This is due to the use of any Astro imports like `@astrojs/react` which I guess 
 
 One workaround is to create a separate config file that doesn't use any Astro related imports which you import in `astro.config.mjs` and anywhere else:
 
-```ts title="src/config.ts"
+```ts title="src/content.config.ts"
 export default {
   site: "example.com",
   server: {
@@ -335,7 +335,7 @@ export default {
 ```
 
 ```ts title="astro.config.mjs"
-import config from "/src/config.ts";
+import config from "/src/content.config.ts";
 import react from "@astrojs/react";
 
 export default defineConfig({
@@ -349,11 +349,11 @@ export default defineConfig({
 ```
 
 ```ts title="*.astro"
-import config from "../config.ts";
+import config from "../content.config.ts";
 console.log("config", config);
 ```
 
-With this method you won't be able to read the functions you set, but if you wanted to, you could set additional values in the config object (`config.ts`) which you import in `astro.config.mjs`, and manually add the functions to the relevant key like `integrations`, based on which ones exist.
+With this method you won't be able to read the functions you set, but if you wanted to, you could set additional values in the config object (`content.config.ts`) which you import in `astro.config.mjs`, and manually add the functions to the relevant key like `integrations`, based on which ones exist.
 
 ### Syntax or rehype plugins
 

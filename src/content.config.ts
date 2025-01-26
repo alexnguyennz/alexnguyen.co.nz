@@ -1,7 +1,18 @@
 import { defineCollection, z, reference } from "astro:content";
+import { glob } from "astro/loaders";
+
+const pages = defineCollection({
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/pages",
+  }),
+});
 
 const tools = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/tools",
+  }),
   schema: z.object({
     name: z.string(),
     url: z.string(),
@@ -10,7 +21,10 @@ const tools = defineCollection({
 });
 
 const projects = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/projects",
+  }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -25,7 +39,10 @@ const projects = defineCollection({
 });
 
 const tags = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/tags",
+  }),
   schema: z.object({
     name: z.string(),
     url: z.string(),
@@ -33,7 +50,10 @@ const tags = defineCollection({
 });
 
 const posts = defineCollection({
-  type: "content",
+  loader: glob({
+    pattern: "**/[^_]*.{md,mdx}",
+    base: "./src/content/posts",
+  }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -44,4 +64,4 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { tools, projects, tags, posts };
+export const collections = { pages, tools, projects, tags, posts };

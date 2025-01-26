@@ -1,12 +1,15 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 
 import { SEO } from "astro-seo";
 
 import Layout from "@/layouts/Layout.astro";
 
 const page = await getEntry("pages", "colophon");
-const { Content } = await page.render();
+
+if (!page) throw new Error("Could not find page");
+
+const { Content } = await render(page);
 
 const ogImageUrl = new URL(
   `/api/og/?title=Colophon - tech and tools`,
@@ -30,6 +33,7 @@ const ogImageUrl = new URL(
       }}
     />
   </Fragment>
+
   <div class="prose max-w-2xl dark:prose-invert">
     <Content />
   </div>

@@ -2,11 +2,9 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
-import orama from "@orama/plugin-astro";
 import astroExpressiveCode from "astro-expressive-code";
 import { readingTime, modifiedTime } from "./src/lib/remark.mjs";
 
-// https://astro.build/config
 export default defineConfig({
   site: "https://alexnguyen.co.nz",
   integrations: [
@@ -42,12 +40,6 @@ export default defineConfig({
             },
           },
         ],
-      },
-    }),
-    orama({
-      search: {
-        pathMatcher: /^blog\/.+$/,
-        contentSelectors: ["h1", "article"],
       },
     }),
     astroExpressiveCode({ themes: ["dracula"] }),

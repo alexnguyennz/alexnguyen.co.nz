@@ -10,9 +10,7 @@ export async function getStaticPaths() {
   ).sort((a, b) => Number(b.data.date) - Number(a.data.date));
 
   const tags = [
-    ...new Set(
-      posts.map((post) => post.data.tags.map((tag) => tag.slug)).flat(),
-    ),
+    ...new Set(posts.map((post) => post.data.tags.map((tag) => tag.id)).flat()),
   ];
 
   return tags.map((tag) => {
@@ -20,7 +18,7 @@ export async function getStaticPaths() {
       params: { tag },
       props: {
         posts: posts.filter((post) =>
-          post.data.tags.map((tag) => tag.slug).includes(tag),
+          post.data.tags.map((tag) => tag.id).includes(tag),
         ),
       },
     };

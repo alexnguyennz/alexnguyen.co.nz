@@ -66,7 +66,18 @@ const { pathname } = Astro.props;
   }
 
   nav {
-    animation: fade-header 0.25s forwards;
+    animation: fade-mobile-header 0.25s forwards;
+  }
+
+  @keyframes fade-mobile-header {
+    0% {
+      opacity: 0;
+      scale: 0.75;
+    }
+    100% {
+      opacity: 100%;
+      scale: 1;
+    }
   }
 
   #mobile-toggle span {
@@ -74,9 +85,10 @@ const { pathname } = Astro.props;
     display: block;
     width: 20px;
     height: 2px;
-    background: #334155;
-    transform: rotate(0);
-    transition: 0.2s ease-in-out;
+    background: black;
+    transition:
+      top 0.2s ease-out,
+      transform 0.2s ease-out;
   }
 
   html.dark #mobile-toggle span {

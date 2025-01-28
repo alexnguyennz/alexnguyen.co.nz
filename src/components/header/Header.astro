@@ -35,6 +35,7 @@ const pathname = Astro.url.pathname;
               >
                 {link.name}
 
+                <!-- hover dots -->
                 <span
                   class={cn(
                     "absolute bottom-0 left-0 right-0 mx-auto hidden h-1 w-1 animate-[bounce_0.75s_forwards] rounded-full bg-slate-700 group-hover:block dark:bg-slate-100",
@@ -44,6 +45,7 @@ const pathname = Astro.url.pathname;
                   )}
                 />
 
+                <!-- dot transition between pages -->
                 {link.href === "/"
                   ? pathname === "/" && (
                       <span
@@ -96,7 +98,7 @@ const pathname = Astro.url.pathname;
       scale: 50%;
     }
     50% {
-      scale: 135%;
+      scale: 125%;
     }
     100% {
       scale: 100%;

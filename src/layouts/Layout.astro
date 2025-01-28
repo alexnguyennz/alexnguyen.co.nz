@@ -60,7 +60,7 @@ const { title } = Astro.props;
       href={new URL("rss.xml", Astro.site)}
     />
 
-    <ClientRouter fallback="swap" />
+    <ClientRouter />
   </head>
   <body class="mx-auto flex min-h-screen flex-col px-5">
     <Header />

@@ -8,18 +8,6 @@ const pages = defineCollection({
   }),
 });
 
-const tools = defineCollection({
-  loader: glob({
-    pattern: "**/[^_]*.{md,mdx}",
-    base: "./src/content/tools",
-  }),
-  schema: z.object({
-    name: z.string(),
-    url: z.string(),
-    order: z.number(),
-  }),
-});
-
 const projects = defineCollection({
   loader: glob({
     pattern: "**/[^_]*.{md,mdx}",
@@ -64,4 +52,4 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { pages, tools, projects, tags, posts };
+export const collections = { pages, projects, tags, posts };

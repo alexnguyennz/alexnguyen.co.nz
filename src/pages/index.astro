@@ -6,10 +6,6 @@ import { SEO } from "astro-seo";
 import Layout from "@/layouts/Layout.astro";
 import ProjectCard from "@/components/pages/home/ProjectCard.astro";
 
-const tools = (await getCollection("tools")).sort(
-  (a, b) => a.data.order - b.data.order,
-);
-
 const projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order,
 );
